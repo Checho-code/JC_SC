@@ -1,0 +1,130 @@
+body {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.cont_ppal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 32px auto;
+    padding: 10px;
+    border-radius: 30px;
+}
+.titulo{
+    color:#177c03;
+}
+
+.form_regis {
+    width: 50rem;
+    margin: auto;
+    border-radius: 15px;
+    border: #177c03 solid 20px;
+}
+
+.logo {
+    width: 140px;
+    height: 140px;
+    margin-top: 20px;
+}
+
+.cont-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+
+.icon {
+    width: 25px;
+    height: 25px;
+  position: absolute;
+   margin-left:125px ;
+   top: 687px;
+    opacity: 0.8;
+    cursor: pointer;
+   
+}
+
+.icon:hover{
+    opacity: 1;
+}
+
+.entradas {
+    margin-top: 20px ;
+    font-size: 1em; 
+    padding:15px;
+    text-align: center;
+    color: #177c03;
+}
+
+.term-cond{
+   display: inline-block;
+   grid-template-columns: 50% 50%;
+}
+.acepto{
+   padding: 15px;
+  font-size: 0.9em;
+  margin-left: 180px;
+}
+.ok{
+    margin-left: 30px;
+    margin-top: 30px;
+    text-align: center;
+}
+.checkbox{
+    width: 20px;
+}
+.link1 {
+    margin: auto 5px;
+    text-decoration: none;
+    font-size: 0.95em;
+    color: #177c03;
+}
+
+.link1:hover {
+    color: #ffbb00;
+    font-weight: 650;
+}
+.botonera {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.btn-reg {
+    width: 225px;
+    font-size: 1em;
+    font-weight: 600;
+    background-color: #177c03;
+    border-radius: 5px;
+    border: none;
+    color: #ffbb00;
+    padding: 9px;
+    margin-right: 50px;
+    
+}
+
+
+.btn-cancel {
+    width: 225px;
+    font-size: 1em;
+    font-weight: 600;
+    background-color: #ffbb00;
+    border-radius: 5px;
+    border: none;
+    color: #177c03;
+    padding: 9px;
+    margin-left:50px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.error{
+    color:red;
+    font-size: 0.65em;
+}

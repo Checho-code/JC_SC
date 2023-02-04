@@ -1,0 +1,118 @@
+body {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.cont_ppal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 32px auto;
+    padding: 10px;
+    border-radius: 30px;
+
+}
+.titulo{
+    color:#177c03;
+}
+
+.form_login {
+    width: 27rem;
+    margin: auto;
+    border-radius: 15px;
+    border: #177c03 solid 20px;
+}
+
+.logo {
+    width: 140px;
+    height: 140px;
+    margin-top: 20px;
+}
+
+.cont-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+   
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+  position: absolute;
+   margin-left:285px ;
+   top: 420px;
+    opacity: 0.8;
+    cursor: pointer;
+   
+}
+
+.icon:hover {
+    opacity: 1;
+}
+
+
+.entradas {
+    margin: 20px auto;
+    font-size: 1em;
+}
+
+
+.olvido {
+    text-align: right;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 0.9em;
+    color: #177c03;
+}
+
+.link:hover {
+    color: #ffbb00;
+    font-weight: 600;
+}
+
+
+
+.botonera {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px auto;
+}
+
+
+.btn-registro {
+    width: 120px;
+    font-size: 0.95em;
+    font-weight: 700;
+    background-color: #ffbb00;
+    border-radius: 5px;
+    border: none;
+    color: #177c03;
+    padding: 10px;
+    margin-right: 20px;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn-ingreso {
+       width: 140px;
+    font-size: 1em;
+    font-weight: 700;
+    background-color: #177c03;
+    border-radius: 5px;
+    border: none;
+    color: #ffbb00;
+    padding: 9px;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
