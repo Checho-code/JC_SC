@@ -6,14 +6,16 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<title>Solcomercial</title>
+	<title>Inicio | Solcomercial</title>
 
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/mi_estilo.css" />
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="css/galeria.css" />
-
+	<link rel="stylesheet" type="text/css" href="./mis_css/menuCliente.css" />
+	<link rel="stylesheet" type="text/css" href="./mis_css/menuBasico.css" />
+	<link rel="stylesheet" type="text/css" href="./mis_css/estilos-index.css" />
+	<link rel="stylesheet" type="text/css" href="./css/galeria.css" />
 	<script type="text/javascript" src="js/jquery.js"></script>
-
+	<script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 		function cargar_carrito(str, unidad, contador, cantidad) {
 			var xmlhttp;
@@ -34,7 +36,7 @@
 				} else {
 					xmlhttp = new ActiveXObjet("Microsoft.XMLHTTP");
 				}
-				xmlhttp.onreadystatechange = function () {
+				xmlhttp.onreadystatechange = function() {
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 						document.getElementById("carro").innerHTML = '';
 						document.getElementById("carro").innerHTML = xmlhttp.responseText;
@@ -58,79 +60,73 @@
 	</script>
 </head>
 
-<body>
+<body class="p-3 m-0 border-0 bd-example">
 	<div class="container-fluid">
-		<!-- <?php
-		//Buscamos la cantidad de elementos que tiene el carrito
-		$b_carrito2 = @mysqli_query($conexion, "SELECT id_registro FROM carrito WHERE id_usuario IS NULL AND invitado='$invitado'");
-		$row_carrito2 = @mysqli_fetch_assoc($b_carrito2);
-		$filas2 = @mysqli_num_rows($b_carrito2);
-		echo $filas;
-		?> -->
+		<!-- 
+				//Buscamos la cantidad de elementos que tiene el carrito
+				$b_carrito2 = @mysqli_query($conexion, "SELECT id_registro FROM carrito WHERE id_usuario IS NULL AND invitado='$invitado'");
+				$row_carrito2 = @mysqli_fetch_assoc($b_carrito2);
+				$filas2 = @mysqli_num_rows($b_carrito2);
+				echo $filas;
+				?> -->
 		<!--<div class="row">
-	<div class="col-sm-12" align="center">
-		
-		
-		</div>
-	</div>-->
+			<div class="col-sm-12" align="center">
+				
+				
+				</div>
+			</div>-->
 		<div class="row fixed-top">
-			<div class="col-md-11"><!--INICIO DEL MENU-->
+			<div class="col-md-12">
+				<!--INICIO DEL MENU-->
 
 				<!-- <?php //session_start(); 
-				if ($_SESSION['nivel'] <= 3) {
-					include('menuPrincipal.php');
-				} else {
-					include('menuBasico.php');
-				}
-				?> -->
-
+						if ($_SESSION['nivel'] <= 3) {
+							include('menuPrincipal.php');
+						} else {
+							include('menuBasico.php');
+						}
+						?> -->
+				<?php include('vistas/menuBasico.php'); ?>
 			</div>
-			<div class="col-md-1" align="center"><a href="carrito"><img src="img/sistema/carrito.png" width="70"
-						height="60" /></a>
-				<div align="center"><span class="carro" id="carro">
-						<?php echo $filas2; ?>
+		</div>
+
+		<!--Menu de categorias-->
+		<div class="categorias">
+			<div class="row row-cols-1 row-cols-md-2 g-4">
+				<div class="col">
+					<div class="card">
+						<a class="links"><img src="img/fruCamp.webp" class="card-img-top " id="img1" alt="Logo Frutos del Campo"></a>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card">
+						<a class="links"><img src="img/Fonda.webp" class="card-img-top" id="img2" alt="Logo La Fonda Chocoana"></a>
+					</div>
 				</div>
 			</div>
 		</div>
+		<!--Menu de Recomendado-->
 		<div class="row">
-			<div class="col-md-12"><br><br><img src="img/sistema/logo.png" width="120" height="120" /></div>
 
-
-
-
-		</div>
-		<div class="row">
-			<div class="col-sm-2">
-				<!--Ingresamos el segundo menú-->
-
-				<!-- <?php include('menu_lateral.php'); ?> -->
-
-			</div>
 			<div class="col-sm-10">
 				<!--<h2>Elija los productos que desea comprar</h2>-->
 				<!--Inicio de la talba modal para enviar los pedidos-->
-
-
-
-
 
 				<?php $contador = 0;
 				do { ?>
 
 					<div>
 						<!--  <?php $idSubdepartamento = $row_subdepartamentos['idSubdepartamento'];
-						$b_productos = mysqli_query($conexion, "SELECT * FROM productos WHERE idSubdepartamento=$idSubdepartamento AND estado>0");
-						$row_productos = @mysqli_fetch_assoc($b_productos);
-						?> -->
+								$b_productos = mysqli_query($conexion, "SELECT * FROM productos WHERE idSubdepartamento=$idSubdepartamento AND estado>0");
+								$row_productos = @mysqli_fetch_assoc($b_productos);
+								?> -->
 						<ul class="galeria">
 							<?php do { ?>
-								<div style="align-content: center; width: 350px; margin: 15px; background-color: #ccc; border-radius: 3px;"
-									align="center">
+								<div style="align-content: center; width: 350px; margin: 15px; background-color: #ccc; border-radius: 3px;" align="center">
 									<li>
 										<figure>
 											<a href="img/<?php echo $row_productos['imagen']; ?>" target="_blank">
-													<img src="img/miniaturas/<?php echo $row_productos['imagen']; ?>" width="320"
-													alt="<?php echo $row_productos['nombre_producto']; ?>" />
+												<img src="img/miniaturas/<?php echo $row_productos['imagen']; ?>" width="320" alt="<?php echo $row_productos['nombre_producto']; ?>" />
 											</a>
 											<figcaption><b style="font-size: 20px;">
 													<?php echo $row_productos['nombre_producto']; ?>
@@ -141,12 +137,9 @@
 													<?php echo $row_productos['unidad']; ?>
 												</b><br>
 
-												<input name="cantidad" type="text" id="cantidad<?php echo $contador; ?>"
-													placeholder="Cantidad" autocomplete="off"
-													onkeyup="cargar_carrito(<?php echo $row_productos['idProducto']; ?>, '<?php echo $row_productos['unidad']; ?>',<?php echo $contador; ?>, this.value) "
-													size="6" />
+												<input name="cantidad" type="text" id="cantidad<?php echo $contador; ?>" placeholder="Cantidad" autocomplete="off" onkeyup="cargar_carrito(<?php echo $row_productos['idProducto']; ?>, '<?php echo $row_productos['unidad']; ?>',<?php echo $contador; ?>, this.value) " size="6" />
 
-												<!-- <?php $id_prod = $row_productos['idProducto'];
+												<!-- < $id_prod = $row_productos['idProducto'];
 												$texto = '';
 												$clase = "";
 												$b_carro = mysqli_query($conexion, "SELECT cantidad FROM carrito WHERE idProducto=$id_prod AND invitado='$invitado' AND estado=1");
@@ -161,8 +154,7 @@
 												}
 
 												?> -->
-												<span id="carro<?php echo $contador; ?>" class="btn btn-success btn-sm"
-													style="font-size: 12px;"><?php echo $texto; ?></span>
+												<span id="carro<?php echo $contador; ?>" class="btn btn-success btn-sm" style="font-size: 12px;"><?php echo $texto; ?></span>
 											</figcaption>
 										</figure>
 									</li>
@@ -171,35 +163,35 @@
 										<?php echo $row_productos['descripcion']; ?>
 									</div>
 								</div>
-								
-								<?php $contador++;
+
+							<?php $contador++;
 							} while ($row_productos = @mysqli_fetch_assoc($b_productos)); ?>
 
 						</ul>
 					</div>
-					
+
 				<?php } while ($row_subdepartamentos = mysqli_fetch_assoc($b_subdepartamentos)); ?>
 
 
 			</div>
 		</div>
 
-		<div class="row">
+		<!-- <div class="row">
 
-			<div class="col-sm-3">
-				<!--<h1>Super</h1>-->
-			</div>
-			<div class="col-sm-9">
+											<div class="col-sm-3">
+												<<h1>Super</h1>
+											</div>
+											<div class="col-sm-9">
+												
+											</div>
+										</div> -->
 
-			</div>
-		</div>
 
-
-		<div class="row">
-			<div class="col-md-12">
-				<?php include('footer.php'); ?>
-			</div>
-		</div>
+		<!-- <div class="row">
+											<div class="col-md-12">
+												< include('footer.php'); ?>
+											</div>
+										</div> -->
 
 
 
@@ -208,8 +200,9 @@
 
 
 
+
+	<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/popper.js"></script>
 </body>
 

@@ -1,0 +1,30 @@
+.categorias{
+    /* background-color: #1dd84f; */
+    margin-top: 300px;
+   
+}
+div.categorias{
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+.card{
+    border:none;
+}
+#img1{
+    width: 190px;
+    margin: 1px 25px;
+    border: solid 3px #089808;
+    border-radius: 20px;
+    padding: 17px;
+}
+#img2{
+    background-color: #ffffff;
+    width: 180px;
+    margin: 1px 25px;
+    border: solid 3px #089808;
+    border-radius: 20px;
+    padding: 20px;
+}
