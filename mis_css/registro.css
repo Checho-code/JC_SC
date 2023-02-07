@@ -1,10 +1,14 @@
 body {
-    display: block;
+    display: flex;
     justify-content: center;
     align-items: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 .cont_ppal {
     display: flex;
     justify-content: center;
@@ -37,28 +41,18 @@ body {
     margin-bottom: 35px;
 }
 
-
-.icon {
-    width: 25px;
-    height: 25px;
-  position: absolute;
-   margin-left:125px ;
-   top: 687px;
-    opacity: 0.8;
-    cursor: pointer;
-   
-}
-
-.icon:hover{
-    opacity: 1;
-}
-
 .entradas {
     margin-top: 20px ;
-    font-size: 1em; 
+    font-size: 1em;
+    font-weight: 500; 
     padding:15px;
     text-align: center;
     color: #177c03;
+}
+.tip-doc{
+    width: 80%;
+    padding: 10px; 
+    background-color: #4d2323;
 }
 
 .term-cond{
@@ -80,13 +74,16 @@ body {
 }
 .link1 {
     margin: auto 5px;
-    text-decoration: none;
+    text-decoration: none !important;
     font-size: 0.95em;
     color: #177c03;
 }
 
 .link1:hover {
     color: #ffbb00;
+    background-color:#177c03;
+    border-radius: 10px;
+    padding: 5px;
     font-weight: 650;
 }
 .botonera {
@@ -97,7 +94,7 @@ body {
 }
 
 .btn-reg {
-    width: 225px;
+    width: 150px;
     font-size: 1em;
     font-weight: 600;
     background-color: #177c03;
@@ -109,9 +106,13 @@ body {
     
 }
 
+.btn-reg:hover{
+    background-color: #ffbb00;
+    color: #177c03;
+}
 
 .btn-cancel {
-    width: 225px;
+    width: 150px;
     font-size: 1em;
     font-weight: 600;
     background-color: #ffbb00;
@@ -121,10 +122,10 @@ body {
     padding: 9px;
     margin-left:50px;
     text-align: center;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
-.error{
-    color:red;
-    font-size: 0.65em;
+.btn-cancel:hover{
+    color: #ffbb00;
+    background-color: #177c03;
 }

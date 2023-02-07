@@ -1,0 +1,100 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.cont_ppal {
+    width: 30rem;
+    margin-top: 50px;
+    padding: 5px;
+    border-radius: 30px;
+    background-color: #177c03;
+}
+
+.form_recuperar {
+    width: 27rem;
+    margin: 30px auto;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+}
+
+.cont-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    margin: 20px auto;
+}
+
+
+.entradas {
+    width: 90%;
+    margin: 20px 50px;
+    font-weight: 500;
+}
+
+label {
+    color: #177c03;
+    font-size: 1em;
+}
+
+input {
+    width: 85%;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    border: solid 1px #177c03;
+}
+
+.botonera {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin: 25px auto;
+}
+
+.btn-cancel {
+    width: 130px;
+    font-size: 1em;
+    font-weight: 700;
+    background-color: #ffbb00;
+    border-radius: 5px;
+    border: none;
+    color: #177c03;
+    padding: 10px;
+    margin: 25px 20px;
+    text-align: center;
+    text-decoration: none !important;
+}
+.btn-cancel:hover{
+    background-color: #177c03;
+    color: #ffbb00;
+}
+.btn-enviar {
+    width: 130px;
+    font-size: 1em;
+    font-weight: 700;
+    background-color: #177c03;
+    border-radius: 5px;
+    border: none;
+    color: antiquewhite;
+    padding: 10px;
+    margin: 25px 20px;
+}
+
+.btn-enviar:hover{
+    color: #177c03;
+    background-color: #ffbb00;
+}

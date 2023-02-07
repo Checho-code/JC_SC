@@ -33,7 +33,7 @@ if (!empty($_POST["btn-login"])) {
 				setcookie("email", $row_usuario['email'], time() + 30*24*60*60);
 				setcookie("clave", $clave, time() + 30*24*60*60);
 				mysqli_query($conexion, "UPDATE usuarios SET intentos=0 WHERE email='$usuario'");
-				header('Location: index');
+				header('Location: ../aa/menuBasico.php');
 			
 				
 			} else {
@@ -50,7 +50,7 @@ if (!empty($_POST["btn-login"])) {
 						Swal.fire({
 							icon: 'question',
 							title: 'Oops...',
-							text: 'Contraseña invalida, vuelve a intentar!',
+							text: 'Contraseña incorrecta, verifica nuevamente, si haz olvidado tu contraseña, ve a la opción “Recuperar Contraseña”!',
 							confirmButtonColor: '#177c03',
 
 						})
@@ -64,7 +64,7 @@ if (!empty($_POST["btn-login"])) {
 				Swal.fire({
 					icon: 'error',
 					title: 'Oops...',
-					text: 'Correo invalido o sin registrar, verifica o registrate sino lo haz hecho!',
+					text: 'Lo sentimos el correo que ingresaste no ha sido registrado, verifícalo nuevamente y vuelve a intentarlo.!',
 					confirmButtonColor: '#177c03',
 
 				})
@@ -76,7 +76,7 @@ if (!empty($_POST["btn-login"])) {
 			Swal.fire({
 				icon: 'info',
 				title: 'Oops...',
-				text: 'Por favor verifica, porque hay campos vacios!',
+				text: 'Lo sentimos, debes completar todos los campos para realizar el ingreso, vuelve a intentarlo!',
 				confirmButtonColor: '#177c03',
 			})
 		</script>

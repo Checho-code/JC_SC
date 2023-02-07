@@ -1,0 +1,40 @@
+.ppal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.card-body {
+    font-size: 1em;
+    color: #177c17;
+}
+
+
+
+.navbar {
+    background-color: #ffbb00;
+}
+
+
+.link {
+    color: #ffffff;
+    margin-left: 25px;
+}
+
+.link:hover {
+    color: #ffffff;
+    background-color: #28a745;
+    border-radius: 55%;
+}
+
+.linkcar {
+    background-color: rgb(255, 255, 255);
+    width: 120px;
+    color: #2eb30d;
+}
+.numProd{
+    color: #ff0000;
+    font-weight: 500;
+    margin-left: 8px;
+}

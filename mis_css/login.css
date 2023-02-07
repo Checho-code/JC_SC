@@ -1,7 +1,8 @@
 body {
-    display: block;
+    display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #df5757;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -58,22 +59,32 @@ body {
 .entradas {
     margin: 20px auto;
     font-size: 1em;
+    color: #177c03;
+    font-weight: 500;
 }
 
 
 .olvido {
+    width: 100% !important;
+    margin-top: 15px;
     text-align: right;
+    
 }
 
 .link {
     text-decoration: none;
-    font-size: 0.9em;
+    padding:4px 8px 6px 8px;
     color: #177c03;
+    font-size: 0.7em;
+    font-weight: 400;
+    border-radius: 16px;
+   
 }
 
 .link:hover {
+    background-color: #177c03;
     color: #ffbb00;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 
@@ -87,6 +98,7 @@ body {
 
 
 .btn-registro {
+    text-decoration: none !important;
     width: 120px;
     font-size: 0.95em;
     font-weight: 700;
@@ -98,8 +110,11 @@ body {
     margin-right: 20px;
     margin-top: 10px;
     text-align: center;
-    text-decoration: none;
     cursor: pointer;
+}
+.btn-registro:hover{
+background-color: #177c03;
+color: #ffbb00;
 }
 .btn-ingreso {
        width: 140px;
@@ -116,3 +131,7 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+.btn-ingreso:hover{
+    color: #177c03;
+    background-color: #ffbb00;
+    }

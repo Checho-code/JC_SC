@@ -4,9 +4,10 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+
 require('../conexion/conexion.php');
 
-error_reporting(0);//No mostrar errores de php.ini
+error_reporting(0); //No mostrar errores de php.ini
 
 //Load Composer's autoloader
 require '../phpMailer/Exception.php';
@@ -30,58 +31,57 @@ if (!empty($_POST["enviar"])) {
         if ($row_usuario >= 1) {
             $mail = new PHPMailer(true);
 
-           
-                //Server settings
-               // $mail->SMTPDebug = 0;
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'frrutosdelcampoandes@gmail.com';
-                $mail->Password = 'ntbctqrnqpxfjzxf';
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-                $mail->Port = 465;
 
-                //Recipients
-                $mail->setFrom('frrutosdelcampoandes@gmail.com', 'Solcomercial');
-                $mail->addAddress("$correo");
+            //Server settings
+            // $mail->SMTPDebug = 0;
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'frrutosdelcampoandes@gmail.com';
+            $mail->Password = 'ntbctqrnqpxfjzxf';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port = 465;
 
-                //Content
-                $mail->isHTML(true);
-                $mail->Subject = 'Recuperacion datos cuenta Solcomcial';
-                $mail->Body = 'Cordial saludo Señor(a) <b>' . $nom . '</b> de parte del equipo de Solcomercial.<br><br> 
-                
-                Detectamos una solicitud de recuperación de tu información para el acceso a tu cuenta de compras en nuestra plataforma.<br><br> 
-                
-                A continuación encontraras tus datos de acceso:<br><br>
+            //Recipients
+            $mail->setFrom('frrutosdelcampoandes@gmail.com', 'Solcomercial');
+            $mail->addAddress("$correo");
 
-                E-mail: <b>' . $correo . '</b><br><br>
+            //Content
+            $mail->isHTML(true);
+            $mail->Subject = 'Bienvenid@ a Solcomcial';
+            $mail->Body = 'Cordial saludo de parte del equipo de Solcomercial.<br/><br/>
 
-                Contraseña: <b>' . $password . '</b><br><br>
+            Señor(a) <b>' . $nom . '.</b><br/>
+                Queremos darte la bienvenida a nuestra tienda virtual, por la cual podrás tener acceso a gran variedad de productos, y así ayudar a fortalecer el trabajo de muchos emprendedores y productores de nuestro país.<br/><br/>
 
-                Recuerda guardar tus datos en un lugar seguro, y estamos prestos a solucionar cualquier inquietud que tengas.
-                <br><br><br><br>
+                Tu registro fue exitoso y te recordamos tus datos de acceso, los cuales son:<br/><br/>
 
-                
-                Feliz día.';
+                E-mail: <b>' . $correo . '</b><br/>
 
-                $mail->send();
-                ?>
-                <script>
-                    Swal.fire({
-                        title: 'Muy bien',
-                        text: "Enviamos un correo con tus datos de acceso al correo que registraste en nuestra plataforma.!",
-                        icon: 'success',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'Continuar!'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            
-                            window.location ='../vistas/login.php';
-                        }
-                    })
-                </script>
-    <?php
-            
+                Contraseña: <b>' . $password . '</b><br/>
+
+                Ya estás listo para realizar tu primer pedido y empezar a acumular por cada compra que realices,<br/><br/>
+                 y redimir entre una gran cantidad de premios y obsequios que tenemos para ti.';
+
+
+            $mail->send();
+?>
+            <script>
+                Swal.fire({
+                    title: 'Solcomercial',
+                    text: "Enviamos un correo de bievenida al correo que registraste en nuestra plataforma.!",
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Continuar!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        window.location = '../vistas/login.php';
+                    }
+                })
+            </script>
+        <?php
+
         } else { ?>
             <script>
                 Swal.fire({

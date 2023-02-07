@@ -22,27 +22,72 @@ if (!empty($_POST["btn-R"])) {
 		$intentos = 0;
 		$fecha_registro = date('Y-m-d');
 
-		//Registramos el usuario
+		//validamos email iguales
+		if ($email === $email2) {
 
-		$sql = $conexion->query("INSERT INTO usuarios (nombre_usuario,apellido_usuario,tipo_doc,num_doc,telefono,email,clave,rku,nivel,estado,intentos,fecha_registro) VALUES('$nombre', '$apellido','$tipo_doc', '$num_doc','$tel','$email','$clave','$clave2','$nivel','$estado','$intentos','$fecha_registro')");
+			//validamos password iguales
+			if ($clave_natural === $clave2) {
 
-		if ($sql) { ?>
+				//validamos si existe el usuario
+				$validar = "SELECT email, num_doc FROM usuarios WHERE email='$email' AND num_doc='$num_doc'";
+				$result = mysqli_query($conexion, $validar);
+				if ($result->num_rows > 0) { ?>
+					<script>
+						Swal.fire({
+							icon: 'error',
+							title: 'Oops...',
+							text: 'El correo y/o numero de docuemto ya se encuentra registrado, porfavor verifica e intenta de nuevo!',
+							confirmButtonColor: '#177c03',
+						})
+					</script>
+					<?php
+
+				} else {
+
+					//Registramos el usuario
+					$sql = $conexion->query("INSERT INTO usuarios (nombre_usuario,apellido_usuario,tipo_doc,num_doc,telefono,email,clave,rku,nivel,estado,intentos,fecha_registro) VALUES('$nombre', '$apellido','$tipo_doc', '$num_doc','$tel','$email','$clave','$clave2','$nivel','$estado','$intentos','$fecha_registro')");
+					if ($sql) { ?>
+						<script>
+							Swal.fire({
+								title: 'Registro realizado con éxito!',
+								text: "A tu bandeja de entrada de correo llegara un mensaje de bienvenida y recordaremos tus datos de registro.!",
+								icon: 'success',
+								confirmButtonColor: '#3085d6',
+								confirmButtonText: 'Continuar'
+							}).then((result) => {
+								if (result.isConfirmed) {
+
+									window.location = '../vistas/login.php';
+								}
+							})
+						</script>
+				<?php
+
+					}
+				}
+			} else {
+				?>
+				<script>
+					Swal.fire({
+						icon: 'error',
+						title: 'Oops...',
+						text: 'Las contraseñas deben ser iguales, porfavor verifica e intenta de nuevo!',
+						confirmButtonColor: '#177c03',
+					})
+				</script>
+			<?php
+			}
+		} else {
+			?>
 			<script>
 				Swal.fire({
-					title: 'Registro realizado con éxito!',
-					text: "A tu bandeja de entrada de correo llegara un mensaje de bienvenida y recordaremos tus datos de registro.!",
-					icon: 'success',
-					confirmButtonColor: '#3085d6',
-					confirmButtonText: 'Continuar'
-				}).then((result) => {
-					if (result.isConfirmed) {
-						
-						window.location ='../vistas/login.php';
-					}
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Los correos deben ser iguales, porfavor verifica e intenta de nuevo!',
+					confirmButtonColor: '#177c03',
 				})
 			</script>
 <?php
-			
 		}
 	}
 }

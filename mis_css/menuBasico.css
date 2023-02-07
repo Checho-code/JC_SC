@@ -1,0 +1,51 @@
+.ppal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.card-body {
+font-size: 1em;
+color: #177c17;
+}
+.botonera{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.login{
+    background-color: #ffffff;
+    color: #ffbb00;
+    border:solid 2px #28a745;
+    font-size: 1em;
+    width: 125px;
+    padding: 5px;
+    border-radius: 30px;
+    margin: 15px auto;
+}
+
+.register{
+    color: #28a745;
+    background-color: #ffffff;
+    border:solid 2px #ffbb00;
+    font-size: 1em;
+    width: 125px;
+    padding: 5px;
+    border-radius: 30px;
+    margin: 15px auto;
+}
+.navbar{
+  background-color: #ffbb00;
+}
+
+.link{
+    color: #ffffff;
+    margin-left: 25px;
+}
+.link:hover{
+    color:#ffffff;
+    background-color: #28a745;
+    border-radius: 55%;
+}
