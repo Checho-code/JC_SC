@@ -2,19 +2,19 @@
 <html lang="es">
 
 <head>
-	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-	<link rel="shortcut icon" href="../img/sistema/logo.ico">
-	<meta charset="utf-8">
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<meta name="robots" content="index, follow">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link rel="stylesheet" href="../mis_css/registro.css">
-	<link rel="stylesheet" href="../css/bootstrap.min.css">
-	<script type="text/javascript" src="../js/jquery.js"></script>
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-	<script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
+<link rel="shortcut icon" href="../img/sistema/logo.ico">
+  <meta charset="utf-8">
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="../mis_css/registro.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script rel="stylesheet" src="../js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../js/jquery.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
+  
 	<title>Registro | SolComercial</title>
 
 
@@ -27,7 +27,7 @@
 		<form class="row form_regis needs-validation" novalidate method="post" id="registro">
 
 			<div class="cont-img col-12">
-				<img src="../img/sistema/logo.png" alt="Solcomercial" class="logo" />
+				<a href="../index.php"><img src="../img/sistema/logo.png" alt="Solcomercial" class="logo" /></a>
 			</div>
 			<?php
 			include('../controladores/registro.php');
@@ -173,9 +173,9 @@
 
 
 
-	<script type="text/javascript" src="../js/popper.js"></script>
+
 	<script type="text/javascript" src="../js/ver_password-reg.js"></script>
-	<link rel="stylesheet" href="../js/bootstrap.min.js">
+	<link rel="stylesheet" href="../js/js_bootstrap/bootstrap.bundle.min.js">
 
 
 	<script type="text/javascript">

@@ -4,8 +4,12 @@ require('../conexion/conexion.php');
 
 //capturamos y escapamos todo lo que se envio por el formulario
 if (!empty($_POST["btn-R"])) {
-
+    
 	if (!empty($_POST["nomb"]) and !empty($_POST["ape"]) and !empty($_POST["tipo"]) and !empty($_POST["num"]) and !empty($_POST["tel"]) and !empty($_POST["corr"]) and !empty($_POST["corr1"]) and !empty($_POST["cla1"]) and !empty($_POST["cla2"])) {
+		?><script>
+		alert('campos llenos');
+	</script>
+	<?php
 
 		$nombre = $_POST["nomb"];
 		$apellido = $_POST["ape"];
@@ -24,23 +28,25 @@ if (!empty($_POST["btn-R"])) {
 
 		//validamos email iguales
 		if ($email === $email2) {
+			?><script>
+			alert('Email iguales');
+		</script>
+		<?php
 
 			//validamos password iguales
 			if ($clave_natural === $clave2) {
-
+				?><script>
+				alert('pass iguales');
+			</script>
+			<?php
 				//validamos si existe el usuario
 				$validar = "SELECT email, num_doc FROM usuarios WHERE email='$email' AND num_doc='$num_doc'";
 				$result = mysqli_query($conexion, $validar);
-				if ($result->num_rows > 0) { ?>
-					<script>
-						Swal.fire({
-							icon: 'error',
-							title: 'Oops...',
-							text: 'El correo y/o numero de docuemto ya se encuentra registrado, porfavor verifica e intenta de nuevo!',
-							confirmButtonColor: '#177c03',
-						})
-					</script>
-					<?php
+				if ($result->num_rows > 0) {
+					?><script>
+					alert('usuario encontrado');
+				</script>
+				<?php
 
 				} else {
 
@@ -92,4 +98,3 @@ if (!empty($_POST["btn-R"])) {
 	}
 }
 
-?>

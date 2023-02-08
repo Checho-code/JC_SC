@@ -2,7 +2,6 @@
 <html lang="es">
 
 <head>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <link rel="shortcut icon" href="../img/sistema/logo.ico">
   <meta charset="utf-8">
   <meta name="description" content="" />
@@ -11,10 +10,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="../mis_css/login.css">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script rel="stylesheet" src="../js/bootstrap.min.js"></script>
   <script type="text/javascript" src="../js/jquery.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
+  
   <title>Login |SolComercial</title>
 
 
@@ -27,7 +27,7 @@
     <form class="row form_login" method="post" action="">
 
       <div class="cont-img col-12">
-        <img src="../img/sistema/logo.png" alt="Solcomercial" class="logo" />
+      <a href="../index.php"><img src="../img/sistema/logo.png" alt="Solcomercial" class="logo" /></a>
       </div>
       <?php
       include('../controladores/inicio_sesion.php');

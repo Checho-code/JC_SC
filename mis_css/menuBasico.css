@@ -4,10 +4,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.card-body {
-    font-size: 1em;
-    color: #177c17;
-}
+
 
 .botonera {
     display: flex;
@@ -64,6 +61,38 @@
 }
 
 .link{
-   color: #177c17;
-   font-weight: 500;
+    border-radius: 15px;
+    border-bottom: solid 2px #177c17 ;
+    border-left: solid 2px #177c17 ;
+}
+.link:hover{
+    color: #ffbb00 !important;
+    background-color: #177c17;
+    border-radius: 15px;
+    border-bottom: solid 2px #000000 ;
+    border-left: solid 2px #000000 ;
+
+}
+.coche{
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+.linkcar{
+    width: 170px;
+    background-color: #177c17;
+    margin-right: 55px;
+    padding: 8px;
+    border-radius: 15px;
+    border-radius: 15px;
+    border-bottom: solid 2px #ffffff ;
+    border-left: solid 2px #ffffff ;
+}
+.numProd{
+    color: #ff0000;
+    background-color: #fff;
+    font-size: 1em;
+    font-weight: 700;
+    margin-left: 15px;
+    padding: 8px;
+    border-radius: 15px;
 }
