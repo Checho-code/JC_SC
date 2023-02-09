@@ -14,6 +14,8 @@
   <script type="text/javascript" src="../js/jquery.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   
 	<title>Registro | SolComercial</title>
 
@@ -38,113 +40,71 @@
 
 			<div class="entradas col-6">
 				<label for="nombres" class="form-label">Nombre *</label>
-				<input required name="nomb" type="text" autofocus="autofocus" class="form-control" <?php if (isset($_REQUEST['nomb']) && $_REQUEST['nomb'] != ''): ?> value="<?php echo $_REQUEST['nomb']; ?>" <?php endif; ?>>
-				<div class="valid-feedback">
+				<input  name="nombre" type="text" autofocus="autofocus" class="form-control" <?php if (isset($_REQUEST['nombre']) && $_REQUEST['nombre'] != ''): ?> value="<?php echo $_REQUEST['nombre']; ?>" <?php endif; ?>>
+				<!-- <div class="valid-feedback">
 					OK
 				</div>
 				<div class="invalid-feedback">
 					El nombre es requerido.
-				</div>
+				</div> -->
 			</div>
 
 			<div class="entradas col-6">
 				<label for="apellidos" class="form-label">Apellido *</label>
-				<input required name="ape" type="text" class="form-control"<?php if (isset($_REQUEST['ape']) && $_REQUEST['ape'] != ''): ?> value="<?php echo $_REQUEST['ape']; ?>" <?php endif; ?> >
-				<div class="valid-feedback">
-					OK
-				</div>
-				<div class="invalid-feedback">
-					El apellido es requerido.
-				</div>
+				<input required name="apellido" type="text" class="form-control"<?php if (isset($_REQUEST['apellido']) && $_REQUEST['apellido'] != ''): ?> value="<?php echo $_REQUEST['apellido']; ?>" <?php endif; ?> >
+				
 			</div>
 
 			<div class="entradas col-4">
 			
 						<label for="tipo-docs">Tipo documento *</label>
-						<select class="tip-doc form-control" name="tip-doc">
+						<select class="tip-doc form-control" name="tipo-doc">
 							<option value="Cedula Ciudadania">Ced.Ciudadania</option>
 							<option value="Cedula Extranjeria">Ced.Extranjeria</option>
 							<option value="Pasaporte">Pasaporte</option>
 						</select>
-					
-				<div class="valid-feedback">
-					OK
-				</div>
-				<div class="invalid-feedback">
-					El tipo es requerido.
-				</div>
 			</div>
 
 			<div class="entradas col-4">
 				<label for="num-docs" class="form-label">Número docuemnto *</label>
-				<input required name="num" type="number" class="form-control" <?php if (isset($_REQUEST['num']) && $_REQUEST['num'] != ''): ?> value="<?php echo $_REQUEST['num']; ?>" <?php endif; ?>>
-				<div class="valid-feedback">
-					OK
-				</div>
-				<div class="invalid-feedback">
-					El numero es requerido.
-				</div>
+				<input required name="numero" type="number" class="form-control" <?php if (isset($_REQUEST['numero']) && $_REQUEST['numero'] != ''): ?> value="<?php echo $_REQUEST['numero']; ?>" <?php endif; ?>>
+				
 			</div>
 
 			<div class="entradas col-4">
 				<label for="num-tel" class="form-label">Número telefono *</label>
 				<input required name="tel" type="number" class="form-control" <?php if (isset($_REQUEST['tel']) && $_REQUEST['tel'] != ''): ?> value="<?php echo $_REQUEST['tel']; ?>" <?php endif; ?>>
-				<div class="valid-feedback">
-					OK
-				</div>
-				<div class="invalid-feedback">
-					El telefono es requerido.
-				</div>
+				
 			</div>
 
 
 			<div class="entradas col-6">
 				<label for="correo1s" class="form-label">Correo *</label>
-				<input required type="email" name="corr" class="form-control" <?php if (isset($_REQUEST['corr']) && $_REQUEST['corr'] != ''): ?> value="<?php echo $_REQUEST['corr']; ?>" <?php endif; ?>>
-				<div class="valid-feedback">
-					OK
-				</div>
-				<div class="invalid-feedback">
-					El correo es requerido.
-				</div>
+				<input required type="email" name="correo1" class="form-control" <?php if (isset($_REQUEST['correo1']) && $_REQUEST['correo1'] != ''): ?> value="<?php echo $_REQUEST['correo1']; ?>" <?php endif; ?>>
+				
 			</div>
 
 			<div class="entradas col-6">
 				<label for="correo2s" class="form-label">Repetir correo *</label>
-				<input required type="email" name="corr1" class="form-control" <?php if (isset($_REQUEST['corr1']) && $_REQUEST['corr1'] != ''): ?> value="<?php echo $_REQUEST['corr1']; ?>" <?php endif; ?>>
-				<div class="valid-feedback">
-					OK
-				</div>
-				<div class="invalid-feedback">
-					El correo es requerido.
-				</div>
+				<input required type="email" name="correo2" class="form-control" <?php if (isset($_REQUEST['correo2']) && $_REQUEST['correo2'] != ''): ?> value="<?php echo $_REQUEST['correo2']; ?>" <?php endif; ?>>
+				
 			</div>
 
 			<div class="entradas col-6">
 				<label for="clave1s" class="form-label">Contraseña *</label>
 				<div class="input-group ">
-					<input required type="password" class="form-control" name="cla1" id="password" <?php if (isset($_REQUEST['cla1']) && $_REQUEST['cla1'] != ''): ?> value="<?php echo $_REQUEST['cla1']; ?>" <?php endif; ?>>
+					<input required type="password" class="form-control" name="clave1" id="password" <?php if (isset($_REQUEST['clave1']) && $_REQUEST['clave1'] != ''): ?> value="<?php echo $_REQUEST['clave1']; ?>" <?php endif; ?>>
 					<span class=" input-group-text" id="basic-addon2"><i class="fa-solid fa-eye" id="eye"></i></span>
-					<div class="valid-feedback">
-						OK
-					</div>
-					<div class="invalid-feedback">
-						Contraseñas requeridas e iguales
-					</div>
+					
 				</div>
 			</div>
 
 			<div class="entradas col-6">
 				<label for="clave2s" class="form-label">Repetir Contraseña *</label>
 				<div class="input-group ">
-					<input required type="password" class="form-control" name="cla2" id="password1" <?php if (isset($_REQUEST['cla2']) && $_REQUEST['cla2'] != ''): ?> value="<?php echo $_REQUEST['cla2']; ?>" <?php endif; ?>>
+					<input required type="password" class="form-control" name="clave2" id="password1" <?php if (isset($_REQUEST['clave2']) && $_REQUEST['clave2'] != ''): ?> value="<?php echo $_REQUEST['clave2']; ?>" <?php endif; ?>>
 					<span class=" input-group-text" id="basic-addon2"><i class="fa-solid fa-eye" id="eye1"></i></span>
-					<div class="valid-feedback">
-						OK
-					</div>
-					<div class="invalid-feedback">
-						Contraseñas requeridas e iguales.
-					</div>
+					
 				</div>
 			</div>
 
@@ -152,17 +112,12 @@
 				<label class="form-label acepto" for="contrato">Acepto el <a href="contrato.html" target="_blanck"
 						class="link1">Contrato</a>*</label>
 				<input  name="checkbox" type="checkbox" required="required" id="checkbox" class="checkbox ">
-				<div class="valid-feedback ok">
-					OK
-				</div>
-				<div class="invalid-feedback ok">
-					El check es requerido.
-				</div>
+				
 			</div>
 
 			<div class="botonera col-12">
 				<a href="login.php" class="btn-cancel">Cancelar</a>
-				<input type="submit" class="btn-reg" name="btn-R" value="Registrar">
+				<input type="submit" class="btn-reg" name="btnRegistrar" value="Registrar">
 			</div>
 
 
@@ -178,7 +133,7 @@
 	<link rel="stylesheet" href="../js/js_bootstrap/bootstrap.bundle.min.js">
 
 
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		// Example starter JavaScript for disabling form submissions if there are invalid fields
 		(() => {
 		'use strict'
@@ -198,7 +153,7 @@
 		}, false)
 		})
 		})()
-		</script>
+		</script> -->
 </body>
 
 </html>

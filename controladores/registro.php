@@ -3,56 +3,57 @@ require('../conexion/conexion.php');
 // require('escape.php');
 
 //capturamos y escapamos todo lo que se envio por el formulario
-if (!empty($_POST["btn-R"])) {
-    
-	if (!empty($_POST["nomb"]) and !empty($_POST["ape"]) and !empty($_POST["tipo"]) and !empty($_POST["num"]) and !empty($_POST["tel"]) and !empty($_POST["corr"]) and !empty($_POST["corr1"]) and !empty($_POST["cla1"]) and !empty($_POST["cla2"])) {
-		?><script>
-		alert('campos llenos');
-	</script>
-	<?php
+if (!empty($_POST['btnRegistrar'])) {
 
-		$nombre = $_POST["nomb"];
-		$apellido = $_POST["ape"];
-		$tipo_doc = $_POST["tipo"];
-		$num_doc = $_POST["num"];
+
+	if (!empty($_POST["nombre"]) and !empty($_POST["apellido"]) and !empty($_POST["tipo-doc"]) and !empty($_POST["numero"]) and !empty($_POST["tel"]) and !empty($_POST["correo1"]) and !empty($_POST["correo2"]) and !empty($_POST["clave1"]) and !empty($_POST["clave2"])) {
+
+		$nombre = $_POST["nombre"];
+		$apellido = $_POST["apellido"];
+		$tipo_doc = $_POST["tipo-doc"];
+		$num_doc = $_POST["numero"];
 		$tel = $_POST["tel"];
-		$email = $_POST["corr"];
-		$email2 = $_POST["corr1"];
-		$clave_natural = $_POST["cla1"];
-		$clave = password_hash($_POST['cla1'], PASSWORD_DEFAULT);
-		$clave2 = $_POST["cla2"];
+		$email = $_POST["correo1"];
+		$email2 = $_POST["correo2"];
+		$clave_natural = $_POST["clave1"];
+		$clave = password_hash($_POST['clave1'], PASSWORD_DEFAULT);
+		$clave2 = $_POST["clave2"];
 		$nivel = 4;
 		$estado = 1;
 		$intentos = 0;
 		$fecha_registro = date('Y-m-d');
 
-		//validamos email iguales
 		if ($email === $email2) {
-			?><script>
-			alert('Email iguales');
-		</script>
-		<?php
-
-			//validamos password iguales
 			if ($clave_natural === $clave2) {
-				?><script>
-				alert('pass iguales');
-			</script>
-			<?php
+
 				//validamos si existe el usuario
-				$validar = "SELECT email, num_doc FROM usuarios WHERE email='$email' AND num_doc='$num_doc'";
+				$validar = "SELECT email, num_doc FROM usuarios WHERE email='$email' OR num_doc='$num_doc'";
 				$result = mysqli_query($conexion, $validar);
+
 				if ($result->num_rows > 0) {
-					?><script>
-					alert('usuario encontrado');
-				</script>
+					?>
+					<script>
+						Swal.fire({
+							title: 'hooooo nooooo!',
+							text: "Usuario registrado OJO ERROR!",
+							icon: 'success',
+							confirmButtonColor: '#3085d6',
+							confirmButtonText: 'Continuar'
+						}).then((result) => {
+							if (result.isConfirmed) {
+	
+								// window.location = '../vistas/login.php';
+							}
+						})
+					</script>
 				<?php
-
+					
 				} else {
-
+					echo "No Encontrados los campos";
 					//Registramos el usuario
 					$sql = $conexion->query("INSERT INTO usuarios (nombre_usuario,apellido_usuario,tipo_doc,num_doc,telefono,email,clave,rku,nivel,estado,intentos,fecha_registro) VALUES('$nombre', '$apellido','$tipo_doc', '$num_doc','$tel','$email','$clave','$clave2','$nivel','$estado','$intentos','$fecha_registro')");
-					if ($sql) { ?>
+					if ($sql) {
+?>
 						<script>
 							Swal.fire({
 								title: 'Registro realizado con éxito!',
@@ -67,7 +68,7 @@ if (!empty($_POST["btn-R"])) {
 								}
 							})
 						</script>
-				<?php
+					<?php
 
 					}
 				}
@@ -75,10 +76,16 @@ if (!empty($_POST["btn-R"])) {
 				?>
 				<script>
 					Swal.fire({
-						icon: 'error',
-						title: 'Oops...',
-						text: 'Las contraseñas deben ser iguales, porfavor verifica e intenta de nuevo!',
-						confirmButtonColor: '#177c03',
+						title: 'hooooo nooooo!',
+						text: "Calves no coinciden.!",
+						icon: 'success',
+						confirmButtonColor: '#3085d6',
+						confirmButtonText: 'Continuar'
+					}).then((result) => {
+						if (result.isConfirmed) {
+
+							// window.location = '../vistas/login.php';
+						}
 					})
 				</script>
 			<?php
@@ -87,14 +94,37 @@ if (!empty($_POST["btn-R"])) {
 			?>
 			<script>
 				Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: 'Los correos deben ser iguales, porfavor verifica e intenta de nuevo!',
-					confirmButtonColor: '#177c03',
+					title: 'hooooo nooooo!',
+					text: "Email no iguales.!",
+					icon: 'success',
+					confirmButtonColor: '#3085d6',
+					confirmButtonText: 'Continuar'
+				}).then((result) => {
+					if (result.isConfirmed) {
+
+						// window.location = '../vistas/login.php';
+					}
 				})
 			</script>
-<?php
+		<?php
 		}
+	} else {
+		?>
+		<script>
+			Swal.fire({
+				title: 'Opppsssss  OJO !',
+				text: "Hhhhaaa campos vacios.!",
+				icon: 'error',
+				confirmButtonColor: '#3085d6',
+				confirmButtonText: 'Continuar'
+			}).then((result) => {
+				if (result.isConfirmed) {
+
+					// window.location = '../vistas/login.php';
+				}
+			})
+		</script>
+<?php
+
 	}
 }
-

@@ -1,6 +1,6 @@
 <?php
 //Conexion local
-$conexion = mysqli_connect('localhost', 'root', '', 'solcomer_mercado');
+$conexion = mysqli_connect('localhost', 'root', '', 'web_solco');
 $conexion->set_charset('utf8');
 
 
