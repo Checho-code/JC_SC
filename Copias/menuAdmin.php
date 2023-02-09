@@ -1,61 +1,21 @@
-<?php
-//require("../conexion/conexion.php")
-// require('crear_cookie.php');
-//include('escape.php');
-//determino si hay una sesion iniciada para mostrar la foto
-//session_start();
-// $puntos=0;
-// $invitado=$_COOKIE['Invitado'];
 
-//Buscamos la cantidad de elementos que tiene el carrito
-// $b_carrito2=@mysqli_query($conexion, "SELECT id_registro FROM carrito WHERE idCliente IS NULL AND invitado='$invitado'");
-// $row_carrito2=@mysqli_fetch_assoc($b_carrito2);
-// $filas2=@mysqli_num_rows($b_carrito2);
-//@session_start();
-
-
-
-// $ver= 'nover';
-// if(isset($_SESSION['nombre_usuario']) && $_SESSION['nombre_usuario'] != ''){
-// 	$id_usuario=$_SESSION['id_usuario'];
-// 	//Actualizo los productos del carrito que tengan el idUsuario vacio y pertenezcan a este invitado
-// 	mysqli_query($conexion, "UPDATE carrito SET id_usuario=$id_usuario  WHERE invitado='$invitado'");
-// 	$ver='';
-// 	//Busco el usuario que esta logueado
-// 	$sql_usuario="SELECT correo_usuario, nombre_usuario, nivel FROM usuarios WHERE email = ?";
-// 	$stmt_usuario=$conexion->prepare($sql_usuario);
-// 	$stmt_usuario->bind_param('s', $_SESSION['usuario']);
-// 	$stmt_usuario->execute();
-// 	$stmt_usuario->bind_result($correo1, $nombre_usuario1, $nivel1);
-// 	$stmt_usuario->fetch();
-// 	$stmt_usuario->close();
-
-// //Busco todo lo que hay en el carrito de este usuario
-// $b_puntos=mysqli_query($conexion, "SELECT porcentaje FROM carrito WHERE id_usuario=$id_usuario AND estado=1");
-
-// while(@$row_puntos=mysqli_fetch_assoc($b_puntos)){
-//   $puntos+=@$row_puntos['porcentaje'];
-// }
-// //Busco los abonos que se ha hecho a esos puntos
-// $b_abonos=mysqli_query($conexion, "SELECT SUM(total) AS total_abonos FROM abono_comision WHERE id_usuario=$id_usuario");
-// $row_abonos=mysqli_fetch_assoc($b_abonos);
-// $total_abonos=$row_abonos['total_abonos'];
-// $puntos=$puntos-$total_abonos;
-
-// 	}
-
-//   //Busco los pedidos que hay nuevos
-//   $ped='';
-//   $buscar_nuevos=mysqli_query($conexion, "SELECT idPedido FROM pedidos WHERE estado=0");
-//   $row_ped=mysqli_fetch_assoc($buscar_nuevos);
-//   $ped=mysqli_num_rows($buscar_nuevos);
-//   if($ped==0){
-//     $ped='';
-//   }
-
-
-//
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/mi_estilo.css" />
+	<link rel="stylesheet" type="text/css" href="./mis_css/menuCliente.css" />
+	<link rel="stylesheet" type="text/css" href="../mis_css/menuBasico.css" />
+	<link rel="stylesheet" type="text/css" href="./mis_css/estilos-index.css" />
+	<link rel="stylesheet" type="text/css" href="./css/galeria.css" />
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 
 <div class="ppal">
 		<div class="card mb-3 mt-3" style="max-width: 95%; border: none;">
@@ -195,7 +155,7 @@
 
           <a class="dropdown-item" href="ver_pedidos"><dfn title="Mire todos los pedidos">Todos los pedidos</dfn></a>
 
-
+<!-- Esto esta en panel admin -->
 
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="solicitud_premio" title="Lista de premios por entregar">Solicitud premios</a>

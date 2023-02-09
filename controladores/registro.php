@@ -1,5 +1,9 @@
 <?php
 require('../conexion/conexion.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 // require('escape.php');
 
 //capturamos y escapamos todo lo que se envio por el formulario
@@ -24,6 +28,7 @@ if (!empty($_POST['btnRegistrar'])) {
 		$fecha_registro = date('Y-m-d');
 
 		if ($email === $email2) {
+
 			if ($clave_natural === $clave2) {
 
 				//validamos si existe el usuario
@@ -31,61 +36,105 @@ if (!empty($_POST['btnRegistrar'])) {
 				$result = mysqli_query($conexion, $validar);
 
 				if ($result->num_rows > 0) {
-					?>
+?>
 					<script>
 						Swal.fire({
-							title: 'hooooo nooooo!',
-							text: "Usuario registrado OJO ERROR!",
-							icon: 'success',
+							title: 'Ooopss...!',
+							text: "Usuario y/o numero de documento ya se encuentran resgistrados, por favor verifique e intente de nuevo.!",
+							icon: 'error',
 							confirmButtonColor: '#3085d6',
 							confirmButtonText: 'Continuar'
-						}).then((result) => {
-							if (result.isConfirmed) {
-	
-								// window.location = '../vistas/login.php';
-							}
 						})
 					</script>
-				<?php
-					
+					<?php
+
 				} else {
-					echo "No Encontrados los campos";
+
 					//Registramos el usuario
 					$sql = $conexion->query("INSERT INTO usuarios (nombre_usuario,apellido_usuario,tipo_doc,num_doc,telefono,email,clave,rku,nivel,estado,intentos,fecha_registro) VALUES('$nombre', '$apellido','$tipo_doc', '$num_doc','$tel','$email','$clave','$clave2','$nivel','$estado','$intentos','$fecha_registro')");
 					if ($sql) {
-?>
-						<script>
-							Swal.fire({
-								title: 'Registro realizado con éxito!',
-								text: "A tu bandeja de entrada de correo llegara un mensaje de bienvenida y recordaremos tus datos de registro.!",
-								icon: 'success',
-								confirmButtonColor: '#3085d6',
-								confirmButtonText: 'Continuar'
-							}).then((result) => {
-								if (result.isConfirmed) {
+										
+											error_reporting(0); //No mostrar errores de php.ini
 
-									window.location = '../vistas/login.php';
-								}
-							})
+											//Load Composer's autoloader
+											require '../phpMailer/Exception.php';
+											require '../phpMailer/PHPMailer.php';
+											require '../phpMailer/SMTP.php';
+
+
+											$password = $clave_natural;
+											$nom = $nombre;
+											$correo = $email;
+
+
+											$mail = new PHPMailer(true);
+
+
+											//Server settings
+											// $mail->SMTPDebug = 0;
+											$mail->isSMTP();
+											$mail->Host = 'smtp.gmail.com';
+											$mail->SMTPAuth = true;
+											$mail->Username = 'frrutosdelcampoandes@gmail.com';
+											$mail->Password = 'ntbctqrnqpxfjzxf';
+											$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+											$mail->Port = 465;
+
+											//Recipients
+											$mail->setFrom('frrutosdelcampoandes@gmail.com', 'Solcomercial');
+											$mail->addAddress($correo);
+
+											//Content
+											$mail->isHTML(true);
+											$mail->Subject = 'Bienvenid@ a Solcomercial';
+											$mail->Body = 'Cordial saludo de parte del equipo de Solcomercial.<br/><br/>
+
+            Señor(a) <b>' . $nom . '.</b><br/><br/><br/>
+                Queremos darte la bienvenida a nuestra tienda virtual, por la cual podrás tener acceso a gran variedad de productos, y así ayudar a fortalecer el trabajo de muchos emprendedores y productores de nuestro país.<br/><br/>
+
+                Tu registro fue exitoso y te recordamos tus datos de acceso, los cuales son:<br/><br/>
+
+                E-mail: <b>' . $correo . '</b><br/>
+
+                Contraseña: <b>' . $password . '</b><br/><br/>
+
+                Ya estás listo para realizar tu primer pedido y empezar a acumular por cada compra que realices,
+                 y redimir entre una gran cantidad de premios y obsequios que tenemos para ti.';
+
+
+											$mail->send();
+											?>
+												
+												<script>
+												Swal.fire({
+													title: 'Registro realizado con éxito.!',
+													text: "A tu bandeja de entrada de correo llegara un mensaje de bienvenida y recordaremos tus datos de registro.!",
+													icon: 'success',
+													confirmButtonColor: '#3085d6',
+													confirmButtonText: 'Continuar'
+												}).then((result) => {
+													if (result.isConfirmed) {
+
+														window.location = '../vistas/login.php';
+													}
+												})
 						</script>
-					<?php
+				<?php
+
 
 					}
 				}
+				//---------------------------------- End validar usuario
+
 			} else {
 				?>
 				<script>
 					Swal.fire({
-						title: 'hooooo nooooo!',
-						text: "Calves no coinciden.!",
-						icon: 'success',
+						title: 'Ooopss...!',
+						text: "Las contraseñas no coinciden, por favor verifique e intente de nuevo.!",
+						icon: 'error',
 						confirmButtonColor: '#3085d6',
 						confirmButtonText: 'Continuar'
-					}).then((result) => {
-						if (result.isConfirmed) {
-
-							// window.location = '../vistas/login.php';
-						}
 					})
 				</script>
 			<?php
@@ -94,16 +143,11 @@ if (!empty($_POST['btnRegistrar'])) {
 			?>
 			<script>
 				Swal.fire({
-					title: 'hooooo nooooo!',
-					text: "Email no iguales.!",
-					icon: 'success',
+					title: 'Ooopss...!',
+					text: "Los correos no coinciden, por favor verifique e intente de nuevo.!",
+					icon: 'error',
 					confirmButtonColor: '#3085d6',
 					confirmButtonText: 'Continuar'
-				}).then((result) => {
-					if (result.isConfirmed) {
-
-						// window.location = '../vistas/login.php';
-					}
 				})
 			</script>
 		<?php
@@ -112,16 +156,11 @@ if (!empty($_POST['btnRegistrar'])) {
 		?>
 		<script>
 			Swal.fire({
-				title: 'Opppsssss  OJO !',
-				text: "Hhhhaaa campos vacios.!",
+				title: 'Ooopss...!',
+				text: "Lo sentimos, debes completar todos los campos para realizar el proceso de registro, vuelve a intentarlo.!",
 				icon: 'error',
 				confirmButtonColor: '#3085d6',
 				confirmButtonText: 'Continuar'
-			}).then((result) => {
-				if (result.isConfirmed) {
-
-					// window.location = '../vistas/login.php';
-				}
 			})
 		</script>
 <?php

@@ -30,12 +30,28 @@ if (!empty($_POST["btn-login"])) {
 				$_SESSION['direccio'] = $row_usuario['direccion'];
 				$_SESSION['nivel'] = $row_usuario['nivel'];
 				$_SESSION['clave_maestra'] = '963852';
-				setcookie("email", $row_usuario['email'], time() + 30*24*60*60);
-				setcookie("clave", $clave, time() + 30*24*60*60);
+				setcookie("email", $row_usuario['email'], time() + 30 * 24 * 60 * 60);
+				setcookie("clave", $clave, time() + 30 * 24 * 60 * 60);
 				mysqli_query($conexion, "UPDATE usuarios SET intentos=0 WHERE email='$usuario'");
-				header('Location: ../index.php');
-			
-				
+
+
+				switch ($_SESSION['nivel']) {
+					case '1':
+					header('location: menuRepartidor.html');
+					break;
+                    case '2':
+						header('location: menuVendedor.html');
+                        break;
+						case '3':
+							header('location: menuAdmin.html');
+                            break;
+                            case '4':
+                                header('location: menuCliente.html');
+                                break;
+
+				}
+
+					
 			} else {
 				$intentos++;
 				mysqli_query($conexion, "UPDATE usuarios SET intentos=$intentos WHERE email='$usuario'");
@@ -45,7 +61,7 @@ if (!empty($_POST["btn-login"])) {
 					session_destroy();
 					header('Location: cuenta_bloqueada');
 				} else {
-					?>
+?>
 					<script>
 						Swal.fire({
 							icon: 'question',
@@ -55,7 +71,7 @@ if (!empty($_POST["btn-login"])) {
 
 						})
 					</script>
-					<?php
+			<?php
 				}
 			}
 		} else {
@@ -69,7 +85,7 @@ if (!empty($_POST["btn-login"])) {
 
 				})
 			</script>
-			<?php
+		<?php
 		}
 	} else { ?>
 		<script>
@@ -80,6 +96,6 @@ if (!empty($_POST["btn-login"])) {
 				confirmButtonColor: '#177c03',
 			})
 		</script>
-		<?php
+<?php
 	}
 }

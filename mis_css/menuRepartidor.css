@@ -57,28 +57,5 @@ margin-left:35px !important ;
     border-left: solid 2px #000000 ;
 
 }
-.coche{
-    font-size: 1.1em;
-    margin: 2px 5px;
-    
-}
-.linkcar{
-    width: 120px;
-    background-color: #177c17;
-    margin: 0px 20px;
-    padding: 1px;
-    border-radius: 15px;
-    border-radius: 15px;
-    border-bottom: solid 2px #ffffff ;
-    border-left: solid 2px #ffffff ;
-}
-.numProd{
-    color: #ff0000;
-    background-color: #fff;
-    font-size: 1em;
-    font-weight: 600;
-    margin-left: 25px;
-    padding: 3px;
-    border-radius: 30%;
-}
+
 

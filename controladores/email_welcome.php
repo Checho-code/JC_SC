@@ -1,11 +1,11 @@
 <?php
+
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require('../conexion/conexion.php');
 
 error_reporting(0); //No mostrar errores de php.ini
 
@@ -14,21 +14,12 @@ require '../phpMailer/Exception.php';
 require '../phpMailer/PHPMailer.php';
 require '../phpMailer/SMTP.php';
 
-//Busco el registro  del usuario 
-if (!empty($_POST["enviar"])) {
 
-    if (!empty($_POST['num-doc'])) {
+        $password = $clave;
+        $nom = $nombre;
+        $correo = $email;
 
-        $datos = '';
-        $doc = $_POST['num-doc'];
-
-        $buscar_usuario = mysqli_query($conexion, "SELECT nombre_usuario,email,rku FROM usuarios WHERE num_doc ='$doc'");
-        $row_usuario = mysqli_fetch_assoc($buscar_usuario);
-        $password = $row_usuario['rku'];
-        $nom = $row_usuario['nombre_usuario'];
-        $correo = $row_usuario['email'];
-
-        if ($row_usuario >= 1) {
+        
             $mail = new PHPMailer(true);
 
 
@@ -44,11 +35,11 @@ if (!empty($_POST["enviar"])) {
 
             //Recipients
             $mail->setFrom('frrutosdelcampoandes@gmail.com', 'Solcomercial');
-            $mail->addAddress("$correo");
+            $mail->addAddress($correo);
 
             //Content
             $mail->isHTML(true);
-            $mail->Subject = 'Bienvenid@ a Solcomcial';
+            $mail->Subject = 'Bienvenid@ a Solcomercial';
             $mail->Body = 'Cordial saludo de parte del equipo de Solcomercial.<br/><br/>
 
             Señor(a) <b>' . $nom . '.</b><br/>
@@ -82,31 +73,4 @@ if (!empty($_POST["enviar"])) {
             </script>
         <?php
 
-        } else { ?>
-            <script>
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Documento no encontrado',
-                    confirmButtonColor: '#177c03',
-
-                })
-            </script>
-        <?php
-
-        }
-    } else { ?>
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Campo vacio, por favor verifica!',
-                confirmButtonColor: '#177c03',
-
-            })
-        </script>
-<?php
-
-
-    }
-}
+      

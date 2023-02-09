@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="es">
 
@@ -8,9 +9,9 @@
 
 	<title>Inicio | Solcomercial</title>
 
-	<link rel="stylesheet" type="text/css" href="css/css_bootstrap/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/css/css_bootstrap/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/mi_estilo.css" />
-	<link rel="stylesheet" type="text/css" href="./mis_css/menuCliente.css" />
+	<link rel="stylesheet" type="text/css" href="/mis_css/menuCliente.css" />
 	<link rel="stylesheet" type="text/css" href="./mis_css/menuBasico.css" />
 	<link rel="stylesheet" type="text/css" href="./mis_css/estilos-index.css" />
 	<link rel="stylesheet" type="text/css" href="./css/galeria.css" />
@@ -82,7 +83,7 @@
 			<div class="col-md-12">
 				<!--INICIO DEL MENU-->
 
-				<!-- <?php //session_start(); 
+				<!-- <//?php //session_start(); 
 						if ($_SESSION['nivel'] <= 3) {
 							include('menuPrincipal.php');
 						} else {
@@ -91,7 +92,7 @@
 						?> -->
 				<!-- <//?php include('vistas/menuPrincipal.php'); ?>-->
 				<!-- <//?php include('vistas/menuBasico.php'); ?> -->
-				<?php include('vistas/menuBasico.php'); ?>
+				<!-- <//?php include('./vistas/menuCliente.php'); ?> -->
 			</div>
 		</div>
 

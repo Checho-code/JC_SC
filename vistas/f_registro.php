@@ -31,9 +31,7 @@
 			<div class="cont-img col-12">
 				<a href="../index.php"><img src="../img/sistema/logo.png" alt="Solcomercial" class="logo" /></a>
 			</div>
-			<?php
-			include('../controladores/registro.php');
-			?>
+			
 			<div class="cont-img col-12">
 				<h3 class="titulo">Formulario de registro </h3>
 			</div>
@@ -122,9 +120,11 @@
 
 
 		</form>
-
 	</div>
 
+		<?php
+			include('../controladores/registro.php');
+			?>
 
 
 
@@ -133,27 +133,6 @@
 	<link rel="stylesheet" href="../js/js_bootstrap/bootstrap.bundle.min.js">
 
 
-	<!-- <script type="text/javascript">
-		// Example starter JavaScript for disabling form submissions if there are invalid fields
-		(() => {
-		'use strict'
-
-		// Fetch all the forms we want to apply custom Bootstrap validation styles to
-		const forms = document.querySelectorAll('.needs-validation')
-
-		// Loop over them and prevent submission
-		Array.from(forms).forEach(form => {
-		form.addEventListener('submit', event => {
-		if (!form.checkValidity()) {
-		event.preventDefault()
-		event.stopPropagation()
-		}
-
-		form.classList.add('was-validated')
-		}, false)
-		})
-		})()
-		</script> -->
 </body>
 
 </html>

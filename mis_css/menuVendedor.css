@@ -4,56 +4,40 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .botonera {
     display: flex;
     justify-content: center;
     align-items: center;
+margin-left:35px !important ;
 
 }
-
-.cont-login {
+.card-body{
     display: flex;
     justify-content: center;
-    text-align: center;
-    margin-bottom: 5px;
 }
-
-.cont-reg {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin-top: 5px;
-}
-
-.login {
-    color: #ffbb00;
-    border: solid 2px #177c17;
-    width: 125px;
-    padding: 5px;
-    border-radius: 30px;
-    text-decoration: none !important;
-}
-
-.register {
+.card-text{
+    width: 600px;
     color: #177c17;
-    background-color: #ffffff;
-    border: solid 2px #ffbb00;
-    width: 125px;
     padding: 5px;
-    border-radius: 30px;
-    text-decoration: none !important;
+    text-justify: distribute;
 }
-
-.register:hover {
-    color: #ffffff;
-    background-color: #ffbb00;
-}
-
-.login:hover {
-    color: #ffffff;
+.btn1{
+    border: none;
+    border-radius: 10px;
     background-color: #177c17;
+    color: #ffffff;
+    padding: 7px;
+    font-size: 0.9em;
+}
+#user{
+    margin:5px;
+    font-size: 1.5em;
 }
 
 .navbar {
@@ -74,11 +58,12 @@
 
 }
 .coche{
-    font-size: 1.3em;
+    font-size: 1.1em;
     margin: 2px 5px;
+    
 }
 .linkcar{
-    width: 160px;
+    width: 150px;
     background-color: #177c17;
     margin: 0px 20px;
     padding: 1px;
@@ -90,9 +75,10 @@
 .numProd{
     color: #ff0000;
     background-color: #fff;
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 600;
-    margin-left: 15px;
+    margin-left: 25px;
     padding: 3px;
     border-radius: 30%;
 }
+
