@@ -1,17 +1,19 @@
 
  <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="/mis_css/menuCliente.css" />
-	<link rel="stylesheet" type="text/css" href="/mis_css/menuBasico.css" />
-	<script type="text/javascript" src="../js/jquery.js"></script>
-	<script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 
-	<title>Cliente</title>
+	<link rel="stylesheet" type="text/css" href="../mis_css/menuCliente.css" />
+	<link rel="stylesheet" type="text/css" href="../mis_css/categorias.css" />
+	<link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+	
+
+	<title>Cliente | SolComercial</title>
 </head>
 <body>
 	<div class="ppal">
@@ -33,15 +35,15 @@
 			</div>
 			<div class=" botonera col-sm-4 col-md-3 col-lg-2 ">
 				<div class="dropdown">
-					<!--Haver css del btn1-->
 					<button class="btn1 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 						<i class="fa-solid fa-user" id="user"></i>
-						Bienvenido <b>Juan</b>
+						Bienvenido <b>Cliente</b>
 					</button>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="#">Mi perfil</a></li>
 						<li><a class="dropdown-item" href="#">Mis compras y puntos</a></li>
-						<li><a class="dropdown-item" href="cerrar_sesion.php">Cerrar Sesion</a></li>
+						<li><a class="dropdown-item" href="../controladores/cerrar_sesion.php">Cerrar Sesión</a></li>
+
 					</ul>
 				</div>
 			</div>
@@ -93,10 +95,12 @@
 	
 </nav>
 
-<h4>Cliente</h4>
-<script src="../js/js_bootstrap/bootstrap.bundle.min.js"></script>
-	<script src="../js/jquery.js"></script>
-	<script src="../js/popper.js"></script>
-</body>
+<?php 
+include 'categorias.php';
+?>
 
+<script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
+<script  src="../js/jquery.js"></script>
+<script  src="../js/popper.min.js"></script>
+</body>
 </html>

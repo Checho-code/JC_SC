@@ -1,215 +1,130 @@
-
-<!doctype html>
-<html lang="es">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" type="text/css" href="css/css_bootstrap/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="mis_css/menuBasico.css" />
+	<link rel="stylesheet" type="text/css" href="mis_css/categorias.css" />
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<title>Inicio | Solcomercial</title>
-
-	<link rel="stylesheet" type="text/css" href="/css/css_bootstrap/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="css/mi_estilo.css" />
-	<link rel="stylesheet" type="text/css" href="/mis_css/menuCliente.css" />
-	<link rel="stylesheet" type="text/css" href="./mis_css/menuBasico.css" />
-	<link rel="stylesheet" type="text/css" href="./mis_css/estilos-index.css" />
-	<link rel="stylesheet" type="text/css" href="./css/galeria.css" />
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
+	<title>Inicio | Solcomercial</title>
 
-	<script type="text/javascript">
-		function cargar_carrito(str, unidad, contador, cantidad) {
-			var xmlhttp;
-
-
-			/*if(isNaN(cantidad) || cantidad==0){
-				alert('Valor invalido, no se ha realizado el registro');
-			}*/
-
-			if (cantidad && cantidad > 0) {
-
-				if (str == "") {
-					document.getElementById("txtHint").innerHTML = "";
-					return;
-				}
-				if (window.XMLHttpRequest) {
-					xmlhttp = new XMLHttpRequest();
-				} else {
-					xmlhttp = new ActiveXObjet("Microsoft.XMLHTTP");
-				}
-				xmlhttp.onreadystatechange = function() {
-					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-						document.getElementById("carro").innerHTML = '';
-						document.getElementById("carro").innerHTML = xmlhttp.responseText;
-						document.getElementById("carro" + contador).innerHTML = "Agregado" + " " + cantidad;
-
-					}
-				}
-			}
-
-			xmlhttp.open("GET", "cargar_carrito.php?idProducto=" + str + "&cantidad=" + cantidad, true);
-			xmlhttp.send();
-
-		}
-
-		function aumentar(contador) {
-			var nuevo_valor = document.getElementById('cantidad' + contador).value;
-			nuevo_valor = parseInt(nuevo_valor);
-			nuevo_valor = nuevo_valor + 1;
-			document.getElementById('cantidad' + contador).value = nuevo_valor;
-		}
-	</script>
 </head>
-
-<body class="p-3 m-0 border-0 bd-example">
-	<div class="container-fluid">
-		<!-- 
-				//Buscamos la cantidad de elementos que tiene el carrito
-				$b_carrito2 = @mysqli_query($conexion, "SELECT id_registro FROM carrito WHERE id_usuario IS NULL AND invitado='$invitado'");
-				$row_carrito2 = @mysqli_fetch_assoc($b_carrito2);
-				$filas2 = @mysqli_num_rows($b_carrito2);
-				echo $filas;
-				?> -->
-		<!--<div class="row">
-			<div class="col-sm-12" align="center">
-				
-				
-				</div>
-			</div>-->
-		<div class="row fixed-top">
-			<div class="col-md-12">
-				<!--INICIO DEL MENU-->
-
-				<!-- <//?php //session_start(); 
-						if ($_SESSION['nivel'] <= 3) {
-							include('menuPrincipal.php');
-						} else {
-							include('menuBasico.php');
-						}
-						?> -->
-				<!-- <//?php include('vistas/menuPrincipal.php'); ?>-->
-				<!-- <//?php include('vistas/menuBasico.php'); ?> -->
-				<!-- <//?php include('./vistas/menuCliente.php'); ?> -->
+<body>
+<div class="ppal">
+	<div class="card mb-3 mt-3" style="max-width: 95%; border: none;">
+		<div class="row g-0">
+			<div class="logo col-sm-4 col-md-3 col-lg-2">
+				<img src="img/sistema/logo.png" class="img-fluid " alt="Logo Solcomercial">
 			</div>
-		</div>
+			<div class="col-sm-4 col-md-6 col-lg-7 mt-3">
+				<div class="card-body">
+					<p class="card-text">
+						Somos una empresa ubicada en el municipio de Andes-Antioquia, creada para
+						acompañar a los campesinos y emprendedores en el proceso de comercialización de sus
+						productos, vinculando diferentes marcas, permitiendo tener un amplio portafolio al alcance
+						de su mano y desde la comodidad de su hogar.</p>
 
-		<!--Menu de categorias-->
-		<div class="categorias">
-			<div class="row row-cols-1 row-cols-md-2 g-4">
-				<div class="col">
-					<div class="card">
-						<a class="links"><img src="img/fruCamp.webp" class="card-img-top " id="img1" alt="Logo Frutos del Campo"></a>
-					</div>
 				</div>
-				<div class="col">
-					<div class="card">
-						<a class="links"><img src="img/Fonda.webp" class="card-img-top" id="img2" alt="Logo La Fonda Chocoana"></a>
-					</div>
+			</div>
+			<div class=" botonera col-sm-4 col-md-3 col-lg-2">
+				<div class="btn-group-vertical">
+					<div class="cont-login"><a href="vistas/login.php" class="login">Ingresar</a></div>
+					<div class="cont-reg"><a class="register" href="vistas/f_registro.php">Registrate</a></div>
 				</div>
 			</div>
 		</div>
-		<!--Menu de Recomendado-->
-		<div class="row">
+	</div>
+</div>
+<!---------------------------------------------------------------->
 
-			<div class="col-sm-10">
-				<!--<h2>Elija los productos que desea comprar</h2>-->
-				<!--Inicio de la talba modal para enviar los pedidos-->
+<nav class="navbar navbar-expand-lg">
+<div class="container-fluid ">
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
 
-				<?php $contador = 0;
-				do { ?>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav me-auto nav-item dropdown">
+			<li class="nav-item p-2">
+				<a class="link nav-link fs-6 fw-semibold text-dark " href="#">Inicio</a>
+			</li>
 
-					<div>
-						<!--  <?php $idSubdepartamento = $row_subdepartamentos['idSubdepartamento'];
-								$b_productos = mysqli_query($conexion, "SELECT * FROM productos WHERE idSubdepartamento=$idSubdepartamento AND estado>0");
-								$row_productos = @mysqli_fetch_assoc($b_productos);
-								?> -->
-						<ul class="galeria">
-							<?php do { ?>
-								<div style="align-content: center; width: 350px; margin: 15px; background-color: #ccc; border-radius: 3px;" align="center">
-									<li>
-										<figure>
-											<a href="img/<?php echo $row_productos['imagen']; ?>" target="_blank">
-												<img src="img/miniaturas/<?php echo $row_productos['imagen']; ?>" width="320" alt="<?php echo $row_productos['nombre_producto']; ?>" />
-											</a>
-											<figcaption><b style="font-size: 20px;">
-													<?php echo $row_productos['nombre_producto']; ?>
-												</b><br><br>
+			<li class="nav-item p-2">
+				<a class="link nav-link fs-6 fw-semibold text-dark" href="#">¿Quiénes somos?</a>
+			</li>
 
-												<b style="font-size: 24px;">
-													<?php echo "$" . number_format($row_productos['precio']); ?> &nbsp;
-													<?php echo $row_productos['unidad']; ?>
-												</b><br>
+			<li class="nav-item p-2">
+				<a class="link nav-link fs-6 fw-semibold text-dark" href="#">Contáctanos</a>
+			</li>
 
-												<input name="cantidad" type="text" id="cantidad<?php echo $contador; ?>" placeholder="Cantidad" autocomplete="off" onkeyup="cargar_carrito(<?php echo $row_productos['idProducto']; ?>, '<?php echo $row_productos['unidad']; ?>',<?php echo $contador; ?>, this.value) " size="6" />
-
-												<!-- < $id_prod = $row_productos['idProducto'];
-												$texto = '';
-												$clase = "";
-												$b_carro = mysqli_query($conexion, "SELECT cantidad FROM carrito WHERE idProducto=$id_prod AND invitado='$invitado' AND estado=1");
-												$row_prod = @mysqli_fetch_assoc($b_carro);
-												$promocion = $row_productos['promocion'];
-												$prom = "";
-												if ($promocion == 1) {
-													$prom = "Promocion";
-												}
-												if (@$row_prod['cantidad'] != '') {
-													$texto = "Agregado" . " " . $row_prod['cantidad'];
-												}
-
-												?> -->
-												<span id="carro<?php echo $contador; ?>" class="btn btn-success btn-sm" style="font-size: 12px;"><?php echo $texto; ?></span>
-											</figcaption>
-										</figure>
-									</li>
-									<div class="<?php echo $prom; ?>"><?php echo $prom; ?></div>
-									<div style="margin: 10px; padding: 5px;">
-										<?php echo $row_productos['descripcion']; ?>
-									</div>
-								</div>
-
-							<?php $contador++;
-							} while ($row_productos = @mysqli_fetch_assoc($b_productos)); ?>
-
-						</ul>
-					</div>
-
-				<?php } while ($row_subdepartamentos = mysqli_fetch_assoc($b_subdepartamentos)); ?>
-
-
-			</div>
-		</div>
-
-		<!-- <div class="row">
-
-											<div class="col-sm-3">
-												<<h1>Super</h1>
-											</div>
-											<div class="col-sm-9">
-												
-											</div>
-										</div> -->
-
-
-		<!-- <div class="row">
-											<div class="col-md-12">
-												< include('footer.php'); ?>
-											</div>
-										</div> -->
-
-
+			<li class="nav-item p-2">
+				<a class="link nav-link fs-6 fw-semibold text-dark" href="#">Puntos Solcomercial</a>
+			</li>
+		</ul>
+		<ul class="navbar-nav nav-pills mr-l">
+			<li class="linkcar nav-item ">
+				<a class="nav-link text-light" href="#"><i class="coche icon fa-solid fa-cart-shopping"></i> Carrito <span class="numProd">0</span> </a>
+			</li>
+			<form class="d-flex" role="search">
+				<input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"></input>
+				<button class="btn btn-outline-success " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+			</form>
+		</ul>
 
 	</div>
+	</div>
+	
+</nav>
 
+<div class="contenedor">
+ 
+    <h4 class="text">Nuestras marcas</h4>
+  
+  <div class="container-fluid secundario">
 
+    <div class="row cont-marcas">
 
+      <div class="col-3 columnas">
+        <div class="card tarjeta ">
+          <img src="img/cam.webp" class="logo" id="frutos" alt="...">
+          <div class=" mt-3">
+            <p>Frutos del campo</p>
+          </div>
+        </div>
+      </div>
 
+      <div class="col-3 columnas">
+        <div class="card tarjeta ">
+          <img src="img/fon.webp" class="logo " id="fonda" alt="...">
+          <div class=" mt-3">
+            <p>La fonda chocoana</p>
+          </div>
+        </div>
+      </div>
 
-	<script src="js/js_bootstrap/bootstrap.bundle.min.js"></script>
-	<script src="js/jquery.js"></script>
-	<script src="js/popper.js"></script>
+      <div class="col-3 columnas">
+        <div class="card tarjeta ">
+          <img src="img/cam.webp" class="logo" id="frutos2" alt="...">
+          <div class=" mt-3">
+            <p>Artesanias andinas</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script  src="js/js_bootstrap/bootstrap.bundle.min.js"></script>
+<script  src="js/jquery.js"></script>
+<script  src="js/popper.min.js"></script>
 </body>
-
 </html>
+

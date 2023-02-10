@@ -13,7 +13,7 @@
   <link rel="stylesheet"  href="../mis_css/recuperarClave.css">
   <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <title>Solcomercial | Recuperar clave</title> 
+  <title> Recuperar clave | Solcomercial </title> 
   
 </head>
 

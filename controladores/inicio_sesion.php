@@ -4,13 +4,15 @@ require('../conexion/conexion.php');
 
 
 //Busco el registro  del usuario para determinar si ya tiene intentos
-if (!empty($_POST["btn-login"])) {
+if (!empty($_POST["btnLogin"])) {
+
+	error_reporting(0);
+
+	$intentos = '';
+	$usuario = $_POST['user'];
+	$clave = $_POST['pass'];
 
 	if (!empty($_POST["user"]) and !empty($_POST["pass"])) {
-
-		$intentos = '';
-		$usuario = $_POST['user'];
-		$clave = $_POST['pass'];
 
 		$buscar_usuario = mysqli_query($conexion, "SELECT * FROM usuarios WHERE email='$usuario'");
 		$row_usuario = mysqli_fetch_assoc($buscar_usuario);
@@ -37,21 +39,18 @@ if (!empty($_POST["btn-login"])) {
 
 				switch ($_SESSION['nivel']) {
 					case '1':
-					header('location: menuRepartidor.html');
-					break;
-                    case '2':
-						header('location: menuVendedor.html');
-                        break;
-						case '3':
-							header('location: menuAdmin.html');
-                            break;
-                            case '4':
-                                header('location: menuCliente.html');
-                                break;
-
+						header('location: ../vistas/menuRepartidor.php');
+						break;
+					case '2':
+						header('location: ../vistas/menuVendedor.php');
+						break;
+					case '3':
+						header('location: ../vistas/menuAdmin.php');
+						break;
+					case '4':
+						header('location: ../vistas/menuCliente.php');
+						break;
 				}
-
-					
 			} else {
 				$intentos++;
 				mysqli_query($conexion, "UPDATE usuarios SET intentos=$intentos WHERE email='$usuario'");
@@ -61,7 +60,7 @@ if (!empty($_POST["btn-login"])) {
 					session_destroy();
 					header('Location: cuenta_bloqueada');
 				} else {
-?>
+					?>
 					<script>
 						Swal.fire({
 							icon: 'question',
@@ -98,4 +97,5 @@ if (!empty($_POST["btn-login"])) {
 		</script>
 <?php
 	}
+
 }

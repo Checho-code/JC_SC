@@ -29,7 +29,7 @@
 		<form class="row form_regis needs-validation" novalidate method="post" id="registro">
 
 			<div class="cont-img col-12">
-				<a href="../index.php"><img src="../img/sistema/logo.png" alt="Solcomercial" class="logo" /></a>
+				<a href="../index.php"><img src="../img/sistema/logo.png" alt="Solcomercial" class="logo" title="Regresar a Menu Principal"/></a>
 			</div>
 			
 			<div class="cont-img col-12">

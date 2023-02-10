@@ -115,7 +115,7 @@ if (!empty($_POST['btnRegistrar'])) {
 												}).then((result) => {
 													if (result.isConfirmed) {
 
-														window.location = '../vistas/login.php';
+														window.location = '../vistas/menuCliente.php';
 													}
 												})
 						</script>

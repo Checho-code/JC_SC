@@ -63,7 +63,7 @@ margin-left:35px !important ;
     
 }
 .linkcar{
-    width: 120px;
+    width: auto;
     background-color: #177c17;
     margin: 0px 20px;
     padding: 1px;
@@ -75,7 +75,7 @@ margin-left:35px !important ;
 .numProd{
     color: #ff0000;
     background-color: #fff;
-    font-size: 1em;
+    font-size: 0.5em;
     font-weight: 600;
     margin-left: 25px;
     padding: 3px;

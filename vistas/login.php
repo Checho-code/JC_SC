@@ -1,3 +1,7 @@
+<?php
+session_name("LOGIN");
+session_start();
+?>
 <!doctype html>
 <html lang="es">
 
@@ -24,12 +28,12 @@
   <!-- Formulario login -->
   <div class="container cont_ppal">
 
-    <form class="row form_login" method="post" action="">
-
+    <form class="row form_login"  action="" method="POST">
+    
       <div class="cont-img col-12">
-      <a href="../index.php"><img src="../img/sistema/logo.png" alt="Solcomercial" class="logo" /></a>
+      <a href="../index.php"><img src="../img/sistema/logo.png" alt="Solcomercial" class="logo" title="Regresar a Menu Principal" /></a>
       </div>
-      <?php
+       <?php
       include('../controladores/inicio_sesion.php');
       ?>
       <div class="cont-img col-12">
@@ -54,7 +58,7 @@
 
       <div class="botonera col-12 p-2 ">
         <a href="f_registro.php" class="btn-registro" >Registrarme</a>
-        <button type="submit" name="btn-login" value="ok" class="btn-ingreso">Ingresar</button>
+        <button type="submit" name="btnLogin" value="ok" class="btn-ingreso">Ingresar</button>
       </div>
 
     </form>
