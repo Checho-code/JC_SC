@@ -5,11 +5,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<link rel="stylesheet" type="text/css" href="../mis_css/menuVendedor.css" />
-	<link rel="stylesheet" type="text/css" href="../mis_css/categorias.css" />
 	<link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="../mis_css/menuVendedor.css" />
+	<link rel="stylesheet" type="text/css" href="../mis_css/categoriasIndex.css" />
 	
 	<title>Vendedor | SolComercial</title>
 </head>
@@ -63,13 +63,19 @@
 				<a class="link nav-link fs-6 fw-semibold text-dark " href="#">Inicio</a>
 			</li>
 
-			<li class="nav-item p-2">
-				<a class="link nav-link fs-6 fw-semibold text-dark" href="#">¿Quiénes somos?</a>
-			</li>
+			
+			<li class="nav-item dropdown p-2">
+						<a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Solcomercial
 
-			<li class="nav-item p-2">
-				<a class="link nav-link fs-6 fw-semibold text-dark" href="#">Contáctanos</a>
-			</li>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-dark">
+							<li><a class="dropdown-item" href="#">¿Quiénes somos?</a></li>
+							<li><a class="dropdown-item" href="#">Contáctanos</a></li>
+							<li><a class="dropdown-item" href="#">Noticias</a></li>
+						</ul>
+					</li>
+			
 
 			<li class="nav-item p-2">
 				<a class="link nav-link fs-6 fw-semibold text-dark" href="#">Puntos Solcomercial</a>
@@ -92,7 +98,7 @@
 	</div>
 	
 </nav>
-
+<!---------------- Marcas --------------->
 <?php 
 include 'categorias.php';
 ?>

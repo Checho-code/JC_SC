@@ -8,7 +8,7 @@
 
 	<link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="../mis_css/menuRepartidor.css" />
-	<link rel="stylesheet" type="text/css" href="../mis_css/categorias.css" />
+	<link rel="stylesheet" type="text/css" href="../mis_css/categoriasIndex.css" />
 	<link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -69,12 +69,16 @@
 						<a class="link nav-link fs-6 fw-semibold text-dark " href="#">Inicio</a>
 					</li>
 
-					<li class="nav-item p-2">
-						<a class="link nav-link fs-6 fw-semibold text-dark" href="#">¿Quiénes somos?</a>
-					</li>
+					<li class="nav-item dropdown p-2">
+						<a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Solcomercial
 
-					<li class="nav-item p-2">
-						<a class="link nav-link fs-6 fw-semibold text-dark" href="#">Contáctanos</a>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-dark">
+							<li><a class="dropdown-item" href="#">¿Quiénes somos?</a></li>
+							<li><a class="dropdown-item" href="#">Contáctanos</a></li>
+							<li><a class="dropdown-item" href="#">Noticias</a></li>
+						</ul>
 					</li>
 
 					<li class="nav-item p-2">
@@ -100,11 +104,8 @@
 
 	</nav>
 
-	
-
-	<?php 
-include 'categorias.php';
-?>
+<!---------------- Marcas --------------->	
+	<?php include 'categorias.php';?>
 
 <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 <script  src="../js/jquery.js"></script>

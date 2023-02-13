@@ -84,11 +84,10 @@
 
 }
 .coche{
-    font-size: 1.3em;
+    font-size: 1em;
     margin: 2px 5px;
 }
 .linkcar{
-    width: 160px;
     background-color: #177c17;
     margin: 0px 20px;
     padding: 1px;
@@ -100,7 +99,7 @@
 .numProd{
     color: #ff0000;
     background-color: #fff;
-    font-size: 1.1em;
+    font-size: 0.8em;
     font-weight: 600;
     margin-left: 15px;
     padding: 3px;

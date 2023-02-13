@@ -13,43 +13,14 @@ body {
     margin-top: 5px;
 }
 
-
-
-#frutos {
-    width: 100%;
-    border: solid 3px #177c17;
-    box-shadow: -2px -2px 5px 2px #177c17 inset;
-    border-radius: 15px;
-    padding: 5px;
-}
-
-#frutos2 {
-    width: 100%;
-    border: solid 3px #177c17;
-    box-shadow: -2px -2px 5px 2px #177c17 inset;
-    border-radius: 15px;
-    padding: 5px;
-}
-
-
-#fonda {
-    width: 100%;
-    border: solid 3px #177c17;
-    box-shadow: -2px -2px 5px 2px #177c17 inset;
-    border-radius: 15px;
-    padding: 5px;
-}
-
 .secundario {
     display: flex;
     justify-content: center;
-    padding: 20px;
 }
 
 .cont-marcas {
     display: flex;
     justify-content: center;
-    background-color: #ffbb00;
 }
 
 .columnas {
@@ -64,13 +35,26 @@ body {
     align-items: center;
     padding: 10px;
     cursor: pointer;
-    margin: 20px 30px;
+    margin: 20px 0px;
+    width: 50%;
 }
 
+.img-marca {
+    border: solid 3px #177c17;
+    box-shadow: -2px -2px 5px 2px #177c17 inset;
+    border-radius: 15px;
+    padding: 5px;
+    width: 80%;
+}
 
 .titulo {
     font-size: 1em;
     font-weight: 700;
     color: #177c17;
     text-align: center;
+}
+
+.titulo_marca{
+    color: #177c17;
+    font-size: 3em;
 }
