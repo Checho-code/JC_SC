@@ -2,6 +2,7 @@
     /* background-color: #1dd84f; */
     margin-top: 300px;
    
+    /* Revisar de donde es este css OJO.......... */
 }
 div.categorias{
     border: none;
@@ -13,6 +14,7 @@ div.categorias{
 .card{
     border:none;
 }
+/* Revisar de donde es este css OJO.......... */
 #img1{
     width: 190px;
     margin: 1px 25px;
@@ -28,3 +30,5 @@ div.categorias{
     border-radius: 20px;
     padding: 20px;
 }
+
+/* Revisar de donde es este css OJO.......... */

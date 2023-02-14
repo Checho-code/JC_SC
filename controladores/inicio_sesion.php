@@ -1,16 +1,17 @@
 <?php
 require('../conexion/conexion.php');
-// require('escape.php');
-
 
 //Busco el registro  del usuario para determinar si ya tiene intentos
+
 if (!empty($_POST["btnLogin"])) {
+	session_start();
+
 
 	error_reporting(0);
 
 	$intentos = '';
-	$usuario = $_POST['user'];
-	$clave = $_POST['pass'];
+	$usuario = $_SESSION['user'] = htmlentities($_POST['user']);
+	$clave = $_SESSION['pass'] = htmlentities($_POST['pass']);
 
 	if (!empty($_POST["user"]) and !empty($_POST["pass"])) {
 
@@ -21,7 +22,6 @@ if (!empty($_POST["btnLogin"])) {
 			$intentos = $row_usuario['intentos'];
 
 			if (password_verify($clave, $row_usuario['clave'])) {
-				session_start();
 				$_SESSION['id_usuario'] = $row_usuario['id_usuario'];
 				$_SESSION['mombre'] = $row_usuario['nombre_usuario'];
 				$_SESSION['tipo-doc'] = $row_usuario['tipo_doc'];
@@ -35,8 +35,8 @@ if (!empty($_POST["btnLogin"])) {
 				setcookie("email", $row_usuario['email'], time() + 30 * 24 * 60 * 60);
 				setcookie("clave", $clave, time() + 30 * 24 * 60 * 60);
 				mysqli_query($conexion, "UPDATE usuarios SET intentos=0 WHERE email='$usuario'");
-
-
+				
+				$_SESSION['datosU'] = $row_usuario;
 				switch ($_SESSION['nivel']) {
 					case '1':
 						header('location: ../vistas/menuRepartidor.php');
@@ -60,7 +60,7 @@ if (!empty($_POST["btnLogin"])) {
 					session_destroy();
 					header('Location: cuenta_bloqueada');
 				} else {
-					?>
+?>
 					<script>
 						Swal.fire({
 							icon: 'question',
@@ -97,5 +97,4 @@ if (!empty($_POST["btnLogin"])) {
 		</script>
 <?php
 	}
-
 }

@@ -1,7 +1,4 @@
-<?php
-session_name("LOGIN");
-session_start();
-?>
+
 <!doctype html>
 <html lang="es">
 
@@ -12,12 +9,14 @@ session_start();
   <meta name="keywords" content="" />
   <meta name="robots" content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" href="../mis_css/login.css">
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <script rel="stylesheet" src="../js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="../js/jquery.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../mis_css/login.css">
+  <script type="text/javascript" src="../js/jquery.js"></script>
   
   <title>Login |SolComercial</title>
 
@@ -33,9 +32,7 @@ session_start();
       <div class="cont-img col-12">
       <a href="../index.php"><img src="../img/sistema/logo.png" alt="Solcomercial" class="logo" title="Regresar a Menu Principal" /></a>
       </div>
-       <?php
-      include('../controladores/inicio_sesion.php');
-      ?>
+      <?php include ('../controladores/inicio_sesion.php')?>
       <div class="cont-img col-12">
         <h3 class="titulo">Iniciar Sesión </h3>
       </div>
@@ -68,7 +65,7 @@ session_start();
 
 
   <script type="text/javascript" src="../js/ver_password-login.js"></script>
-
+  
 
 </body>
 

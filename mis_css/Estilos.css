@@ -1,0 +1,97 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+
+/*Aquí debajo va el FOOTER*/
+
+footer{
+    width: 100%;
+    padding: 20px 0px;
+   *background-image: url(../img/background-footer.svg);
+    *background-size: cover;
+    
+     background-color: #177c03;
+    -webkit-mask-image: url("../img/background-footer.svg");
+    mask-image: url("../img/background-footer.svg");
+    -webkit-mask-size: cover;
+    mask-size: cover; 
+}
+
+.container__footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 60px;
+   }
+
+.box__footer{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.box__footer .logo img{
+    width: 180px;
+    border-radius: 50%;
+}
+
+.box__footer .terms{
+    max-width: 350px;
+    margin-top: 20px;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    text-justify: distribute-all-lines;
+}
+
+.box__footer h2{
+    margin-top:150px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.box__footer a{
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.box__footer a:hover{
+    opacity: 0.5;
+}
+
+.box__footer a .fab{
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+.box__copyright{
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+    padding: 0px 20px;
+    font-size: 11px;
+}
+
+.box__copyright p{
+    margin-top: 5px;
+    color: #ffffff;
+}
+
+.box__copyright hr{
+    border: none;
+    height: 2px;
+    background-color: #000000;
+}

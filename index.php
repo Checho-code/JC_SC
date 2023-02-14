@@ -14,7 +14,10 @@
 	
 	<link rel="stylesheet" type="text/css" href="css/css_bootstrap/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="mis_css/menuBasico.css" />
-	<link rel="stylesheet" type="text/css" href="mis_css/categoriasIndex.css" />
+	<link rel="stylesheet" type="text/css" href="mis_css/marcas.css" />
+	<link rel="stylesheet" type="text/css" href="mis_css/Estilos.css" />
+
+	<link rel="stylesheet" type="text/css" href="mis_css/productos-destacados.css" />
 	
 	<title>Inicio | Solcomercial</title>
 	
@@ -123,12 +126,78 @@
 	</div>
 
 
-	<!---------------------------------------------------------------->
+	<!--------------------- Productos -------------------->
 
 
+	<div class="contenedorP">
+		<div class="cont-txt-prod">
+		<h4 class="textP">Productos más destacados</h4>
+		</div>
+		<div class="container-fluid secundarioP ">
+			
+			<div class="row cont-productos">
+			<?php
+				$query = mysqli_query($conexion, "SELECT * FROM productos WHERE  estado>0");
+				while ($consulta = mysqli_fetch_array($query)) { ?>
+					<div class="col-4 columnasP ">
+						<div class="card  tarjetaP ">
+							<img src="img/miniaturas/<?php echo $consulta['imagen']; ?>" class="img-producto " alt="Imagen Frutos del campo">
+							<div class=" mt-3">
+								<p class="titulo_producto"><?php echo $consulta['nombre_producto'] ?></p>
+							</div>
+						</div>
+					</div>
+					<?php
+				}
+				?>
 
-	<h3>Hola que tal</h3>
+
+			</div>
+		</div>
+	</div>
+
 	
+	
+<!---------------- Footer --------------->
+<footer>
+
+<div class="container__footer">
+    <div class="box__footer">
+        <div class="logo">
+            <img src="img/sistema/logo.png" alt="">
+        </div>
+        <div class="terms">
+            <p>Somos una empresa ubicada en el municipio de Andes-Antioquia, creada para
+							acompañar a los campesinos y emprendedores en el proceso de comercialización de sus
+							productos, vinculando diferentes marcas, permitiendo tener un amplio portafolio al alcance
+							de su mano y desde la comodidad de su hogar.</p>
+        </div>
+    </div>
+    
+
+    <div class="box__footer">
+        <h2>Nuestas marcas</h2>
+        <a href="#">Frutos del campo</a>
+        <a href="#">La fonda chocoana</a>
+        <a href="#">Artesanisa Andinas</a>
+    </div>
+
+    <div class="box__footer">
+        <h2>Redes Sociales</h2>
+        <a href="#"> <i class="fab fa-facebook-square"></i> Facebook</a>
+        <a href="#"><i class="fab fa-whatsapp-square"></i> WhastsApp</a>
+        <a href="#"><i class="fab fa-instagram-square"></i> Instagram</a>
+    </div>
+
+</div>
+
+<div class="box__copyright">
+    <hr>
+    <p>Todos los derechos reservados © 2023 <b>Juanda-Code</b> <img src="img/código.png" alt="Logo programador" style="width: 3%; border-radius: 50%; "></p>
+    <p>Contacto:<b> 300-725-61-49</b> -- E-mail: <b>codigopractico23@gmail.com</b></p>
+</div>
+</footer>
+
 	<script src="js/js_bootstrap/bootstrap.bundle.min.js"></script>
 	<script src="js/jquery.js"></script>
 	<script src="js/popper.min.js"></script>

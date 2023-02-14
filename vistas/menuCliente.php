@@ -1,3 +1,8 @@
+<?php
+session_start();
+$usuario= $_SESSION['datosU']['nombre_usuario'];
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -9,11 +14,11 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
 
-	<link rel="stylesheet" type="text/css" href="../mis_css/categoriasIndex.css" />
+
 	<link rel="stylesheet" type="text/css" href="../mis_css/menuCliente.css" />
-
-
-
+	<link rel="stylesheet" type="text/css" href="../mis_css/marcas.css" />
+	<link rel="stylesheet" type="text/css" href="../mis_css/Estilos.css" />
+	<link rel="stylesheet" type="text/css" href="../mis_css/productos-destacados.css" />
 
 	<title>Cliente | SolComercial</title>
 </head>
@@ -40,7 +45,7 @@
 					<div class="dropdown">
 						<button class="btn1 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 							<i class="fa-solid fa-user" id="user"></i>
-							Bienvenido <b>Cliente</b>
+							Bienvenido <b><?php echo $usuario; ?></b>
 						</button>
 						<ul class="dropdown-menu dropdown-menu-dark">
 							<li><a class="dropdown-item" href="#">Mi perfil</a></li>
@@ -74,7 +79,6 @@
 
 						</a>
 						<ul class="dropdown-menu dropdown-menu-dark">
-							<li><a class="dropdown-item" href="#">¿Quiénes somos?</a></li>
 							<li><a class="dropdown-item" href="#">Contáctanos</a></li>
 							<li><a class="dropdown-item" href="#">Noticias</a></li>
 						</ul>
@@ -106,7 +110,16 @@
 
 	</nav>
 	<!---------------- Marcas --------------->
-	<?php include 'categorias.php'; ?>
+	<?php include 'marcas.php'; ?>
+	
+	<!---------------- Pdoductos destacados --------------->
+	<?php 
+include 'prod-destacados.php';
+?>
+
+<!---------------- Pdoductos destacados --------------->
+<?php include 'footer.php'; ?>
+
 
 	<script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 	<script src="../js/jquery.js"></script>

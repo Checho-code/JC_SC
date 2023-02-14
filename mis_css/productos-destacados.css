@@ -1,0 +1,64 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+    
+}
+.cont-txt-prod{
+background-color: #177c17;
+text-align: center;
+padding: 10px;
+border-top: 5px solid #000;
+border-bottom: 5px solid #000;
+}
+.textP {
+    border-color: #177c17 !important;
+    color:#ffbb00;
+    font-weight: 600;
+    text-align: center;
+}
+.contenedorP {
+    margin-top: 10px;
+}
+
+
+.secundarioP {
+    display: flex;
+    justify-content: center;
+    background-color: #b8b8b8;
+}
+
+.cont-productos {
+    display: flex;
+    justify-content: center;
+}
+
+.columnasP {
+    display: flex;
+    justify-content: center;
+}
+
+.tarjetaP {
+    border-radius: 20px !important;
+    box-shadow: 12px 10px 15px 2px #637c63 ;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    margin: 20px 0px;
+    width: 50%;
+}
+
+.img-producto {
+    border: solid 3px #177c17;
+    box-shadow: -2px -2px 5px 2px #177c17 inset;
+    border-radius: 15px;
+    padding: 5px;
+    width: 80%;
+}
+
+.titulo_producto {
+    font-size: 1em;
+    font-weight: 700;
+    color: #177c17;
+    text-align: center;
+}
+
