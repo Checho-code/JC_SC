@@ -15,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="css/css_bootstrap/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="mis_css/menuBasico.css" />
 	<link rel="stylesheet" type="text/css" href="mis_css/marcas.css" />
-	<link rel="stylesheet" type="text/css" href="mis_css/Estilos.css" />
+	<link rel="stylesheet" type="text/css" href="mis_css/footer.css" />
 
 	<link rel="stylesheet" type="text/css" href="mis_css/productos-destacados.css" />
 	
@@ -67,9 +67,6 @@
 						<a class="link nav-link fs-6 fw-semibold text-dark " href="index.php">Inicio</a>
 					</li>
 
-					<li class="nav-item p-2">
-						<a class="link nav-link fs-6 fw-semibold text-dark" href="#">¿Quiénes somos?</a>
-					</li>
 
 					<li class="nav-item p-2">
 						<a class="link nav-link fs-6 fw-semibold text-dark" href="#">Contáctanos</a>

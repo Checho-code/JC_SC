@@ -1,29 +1,4 @@
-<?php
-session_start();
-$usuario= $_SESSION['datosU']['nombre_usuario'];
-?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-	<link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	<link rel="stylesheet" type="text/css" href="../mis_css/menuAdmin1.css" />
-  <link rel="stylesheet" type="text/css" href="../mis_css/marcas.css" />
-	<link rel="stylesheet" type="text/css" href="../mis_css/Estilos.css" />
-	<link rel="stylesheet" type="text/css" href="../mis_css/productos-destacados.css" />
-
-
-  <title>Admin | SolComercial</title>
-
-</head>
-<body>
   <div class="ppal">
     <div class="card mb-3 mt-3" style="max-width: 95%; border: none;">
       <div class="row ">
@@ -72,15 +47,14 @@ $usuario= $_SESSION['datosU']['nombre_usuario'];
             Solcomercial
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="#">Caja</a></li>
+            <li><a class="dropdown-item" href="caja.php">Caja</a></li>
             <li><a class="dropdown-item" href="crear_marca.php">Crear marca</a></li>
-            <li><a class="dropdown-item" href="#">Crear premios</a></li>
-            <li><a class="dropdown-item" href="#">Solicitud premios</a></li>
-            <li><a class="dropdown-item" href="#">Premios entregados</a></li>
+            <li><a class="dropdown-item" href="crear-premios.php">Crear premios</a></li>
+            <li><a class="dropdown-item" href="solicitud-premio.php">Solicitud premios</a></li>
+            <li><a class="dropdown-item" href="premios-entregados.php">Premios entregados</a></li>
             <li><a class="dropdown-item" href="#">Puntos Solcomercial</a></li>
-            <li><a class="dropdown-item" href="#">¿Quiénes somos?</a></li>
             <li><a class="dropdown-item" href="#">Contáctanos</a></li>
-            <li><a class="dropdown-item" href="#">Noticias</a></li>
+            <li><a class="dropdown-item" href="noticias.php">Noticias</a></li>
           </ul>  
         </li>
         <li class="nav-item dropdown p-2">
@@ -88,8 +62,8 @@ $usuario= $_SESSION['datosU']['nombre_usuario'];
            Sectores
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="#">Nuevo sector</a></li>
-            <li><a class="dropdown-item" href="#">Listado de sectores</a></li>
+            <li><a class="dropdown-item" href="crear-sector.php">Crear sector</a></li>
+            <li><a class="dropdown-item" href="listado-sectores.php">Listado de sectores</a></li>
           </ul>  
         </li>
         <li class="nav-item dropdown p-2">
@@ -97,9 +71,9 @@ $usuario= $_SESSION['datosU']['nombre_usuario'];
            Vendedores
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="#">Registrar vendedor</a></li>
-            <li><a class="dropdown-item" href="#">Listado de vendedores</a></li>
-            <a class="dropdown-item" href="#" title="Buscar informacion sobre vendedores en un rango determinado">Filtrar</a>
+            <li><a class="dropdown-item" href="registro-vendedor.php">Registrar vendedor</a></li>
+            <li><a class="dropdown-item" href="lista-vendedores.php">Listado de vendedores</a></li>
+            <a class="dropdown-item" href="filtrar-vendedor.php" title="Buscar informacion sobre vendedores en un rango determinado">Filtrar</a>
           </ul>  
         </li>
         <li class="nav-item dropdown p-2">
@@ -107,8 +81,8 @@ $usuario= $_SESSION['datosU']['nombre_usuario'];
           Productos
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="#">Registrar producto</a></li>
-            <li><a class="dropdown-item" href="#">Listado de productos</a></li>
+            <li><a class="dropdown-item" href="crear-producto.php">Registrar producto</a></li>
+            <li><a class="dropdown-item" href="listado-productos.php">Listado de productos</a></li>
           </ul>  
         </li>
         <li class="nav-item dropdown p-2">
@@ -116,8 +90,8 @@ $usuario= $_SESSION['datosU']['nombre_usuario'];
             Pedidos
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="#">Pedidos nuevos</a></li>
-            <li><a class="dropdown-item" href="#">Todos los pedidos</a></li>
+            <li><a class="dropdown-item" href="ver-pedidos-nuevos.php">Pedidos nuevos</a></li>
+            <li><a class="dropdown-item" href="todos-pedidos.php">Todos los pedidos</a></li>
           </ul>  
         </li>
         <li class="nav-item dropdown p-2">
@@ -125,9 +99,9 @@ $usuario= $_SESSION['datosU']['nombre_usuario'];
           Clientes
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="#">Listado de clientes</a></li>
-            <li><a class="dropdown-item" href="#">Listado de usuarios</a></li>
-            <li><a class="dropdown-item" href="#">Cambiar contraseña</a></li>
+           <li><a class="dropdown-item" href="ver-cli.php">Listado de clientes</a></li> <!---- aca voy ---->
+            <li><a class="dropdown-item" href="ver-usuario.php">Listado de usuarios</a></li>
+            <li><a class="dropdown-item" href="cambio-contraseña.php">Cambiar contraseña</a></li>
           </ul>  
         </li>
         <li class="nav-item dropdown p-2">
@@ -135,10 +109,10 @@ $usuario= $_SESSION['datosU']['nombre_usuario'];
           Informes
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="#">Informe general</a></li>
-            <li><a class="dropdown-item" href="#">Informe por vendedor</a></li>
-            <li><a class="dropdown-item" href="#">Informe por producto y rango</a></li>
-            <li><a class="dropdown-item" href="#">Informe por vendedor y rango</a></li>
+            <li><a class="dropdown-item" href="info-gnral.php">Informe general</a></li>
+            <li><a class="dropdown-item" href="info-vendedor.php">Informe por vendedor</a></li>
+            <li><a class="dropdown-item" href="info-productos.php">Informe por producto y rango</a></li>
+            <li><a class="dropdown-item" href="info-vendedoryrango.php">Informe por vendedor y rango</a></li>
           </ul>  
         </li>
       </ul>
@@ -156,23 +130,3 @@ $usuario= $_SESSION['datosU']['nombre_usuario'];
   </div>
 </nav>
         
-       
-  
-    
-<!---------------- Marcas --------------->
-<?php 
-include 'marcas.php';
-?>
-<!---------------- Pdoductos destacados --------------->
-<?php 
-include 'prod-destacados.php';
-?>
-
-<!---------------- Pdoductos destacados --------------->
-<?php include 'footer.php'; ?>
-
-<script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
-<script  src="../js/jquery.js"></script>
-<script  src="../js/popper.min.js"></script>
-</body>
-</html>

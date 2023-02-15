@@ -6,7 +6,7 @@ include '../vistas/menuAdmin.php';
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -30,46 +30,16 @@ include '../vistas/menuAdmin.php';
 </head>
 
 <body>
-    <div class="container-fluid mt-5 mb-5 ">
-        <div class="row ">
-            <div class="col-sm-12">
-                <form method="post" enctype="multipart/form-data">
-                    <h3 style="color: #177c03; text-align: center;">Agregar marca </h3>
-                    <br>
-                    <br>
-                    <?php include('../controladores/crear_marca.php') ?>
-                    <div class="form-group">
-                        <label for="nombre producto">Nombre marca *</label>
-                        <input name="nombre_marca" type="text" class="form-control" placeholder="Ingrese nombre de la marca" autocomplete="off">
-                    </div>
-
-                    
-                        <br>
-                        <br>
-                   
-
-                    <div class="form-group">
-                        <label for="imagen">Seleccione la imagen de la marca</label>
-                        <input type="file" name="foto" class="form-control-file" accept="image/jpeg, image/jpg, image/png, image/gif" lang="es">
-                    </div>
-
-                    
-                        <br>
-                        <br>
-                   
-
-                    <div class="form-group">
-                        <input type="submit" name="btnGuardar" value="Guardar" class="btn" style="background-color: #177c03; color:#ffffff">
-                        <a href="index-base.php"><input type="button" value="Cancelar" class="btn btn-warning"></a>
-                    </div>
+<div class="container-fluid mt-5 mb-5 ">
 
 
-                </form>
-            </div>
-        </div>
-    </div>
 
-    <br>
+
+
+
+</div>
+
+<br>
     <br>
     <br>
     <br>

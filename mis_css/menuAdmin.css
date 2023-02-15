@@ -21,7 +21,7 @@ margin-left:35px !important ;
     display: flex;
     justify-content: center;
 }
-.card-text{
+.texto-sol{
     width: 600px;
     color: #177c17;
     padding: 5px;
@@ -39,6 +39,10 @@ margin-left:35px !important ;
     margin:5px;
     font-size: 1.5em;
 }
+.navbar-contenedor{
+background-color: #fb0;
+
+}
 
 .link{
     border-radius: 15px;
@@ -53,12 +57,13 @@ margin-left:35px !important ;
     border-left: solid 2px #000000 ;
 
 }
-/* .coche{
-    font-size: 0.7em;
-    margin: 2px 5px;
-    
-} */
-/* .linkcar{
+.coche{
+    font-size: 1em;
+    margin: 2px 15px 2px 5px;
+
+} 
+
+.linkcar{
     background-color: #177c17;
     margin: 0px 10px;
     padding: 1px;
@@ -66,14 +71,14 @@ margin-left:35px !important ;
     border-radius: 15px;
     border-bottom: solid 2px #ffffff ;
     border-left: solid 2px #ffffff ;
-} */
+    width: 25%;
+}
 .numProd{
     color: #ff0000;
     background-color: #fff;
-    font-size: 1em;
+    font-size: 0.8em;
     font-weight: 600;
-    margin-left: 25px;
-    padding: 3px;
+    padding: 1px;
     border-radius: 30%;
 }
 

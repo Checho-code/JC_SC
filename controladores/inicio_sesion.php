@@ -35,22 +35,10 @@ if (!empty($_POST["btnLogin"])) {
 				setcookie("email", $row_usuario['email'], time() + 30 * 24 * 60 * 60);
 				setcookie("clave", $clave, time() + 30 * 24 * 60 * 60);
 				mysqli_query($conexion, "UPDATE usuarios SET intentos=0 WHERE email='$usuario'");
-				
+
 				$_SESSION['datosU'] = $row_usuario;
-				switch ($_SESSION['nivel']) {
-					case '1':
-						header('location: ../vistas/menuRepartidor.php');
-						break;
-					case '2':
-						header('location: ../vistas/menuVendedor.php');
-						break;
-					case '3':
-						header('location: ../vistas/menuAdmin.php');
-						break;
-					case '4':
-						header('location: ../vistas/menuCliente.php');
-						break;
-				}
+
+				header('location: ../vistas/index-base.php');
 			} else {
 				$intentos++;
 				mysqli_query($conexion, "UPDATE usuarios SET intentos=$intentos WHERE email='$usuario'");
