@@ -32,7 +32,7 @@
       <div class="cont-img col-12">
       <a href="../index.php"><img src="../img/sistema/logo.png" alt="Solcomercial" class="logo" title="Regresar a Menu Principal" /></a>
       </div>
-      <?php include ('../controladores/inicio_sesion.php')?>
+      <?php include ('../controladores/inicio_sesion_C.php')?>
       <div class="cont-img col-12">
         <h3 class="titulo">Iniciar Sesión </h3>
       </div>
@@ -47,7 +47,6 @@
 				<div class="input-group ">
 					<input type="password" class="form-control" name="pass" id="password" placeholder="Ingrese su contraseña">
 					<span class=" input-group-text" id="basic-addon2"><i class="fa-solid fa-eye" id="eye"></i></span>
-			</div>
 
       <div class="olvido col-10 mb-3">
         <a href="recuperar_clave.php" class="link">Recuperar contraseña</a>

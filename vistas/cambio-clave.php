@@ -3,24 +3,6 @@ session_start();
 $usuario = $_SESSION['datosU']['nombre_usuario'];
 include '../conexion/conexion.php';
 include '../vistas/menuAdmin.php';
-if(isset($_POST['correo_usuario'])){
-    $correo_usuario=($_POST['correo_usuario']);
-    $clave=($_POST['clave']);
-    $clave=password_hash($clave, PASSWORD_DEFAULT);
-    $actualizar=mysqli_query($conexion, "UPDATE usuarios SET clave='$clave' WHERE correo_usuario='$correo_usuario'");
-    if($actualizar){
-        echo "<script type='text/javascript'>
-        alert('El cambio de contraseña se realizó correctamente');
-        </script>";
-    }
-    else{
-        echo "<script type='text/javascript'>
-        alert('Hubo un error, no se hizo cambios');
-        </script>";
-    }
-}
-
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -29,7 +11,10 @@ if(isset($_POST['correo_usuario'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
@@ -48,28 +33,29 @@ if(isset($_POST['correo_usuario'])){
 
 <body>
 <div class="container-fluid mt-5 mb-5 ">
-
-<div class="row">
-	
-<div class="col-sm-12">
-<h3 style="color: #177c03; text-align: center;">Cambio de contraseña </h2>
-                    <br>
-<form name="cambio_clave" method="POST">
-    <div class="form-group">
-        <label for="cedula">Cedula del cliente *</label>
-        <input type="text" name="correo_usuario" class="form-control" required placeholder="ingrese la cedula del cliente" />
-    </div>
-    <br>
-    <br>
+    
+    <div class="row">
+        
+        <div class="col-sm-12">
+            <h3 style="color: #177c03; text-align: center;">Cambio de contraseña </h2>
+            <br>
+            <form name="cambio_clave" method="POST">
+                <div class="form-group">
+                    <label for="cedula">Cedula del cliente *</label>
+                    <input type="text" name="documento" class="form-control"  placeholder="ingrese la cedula del cliente" />
+                </div>
+                <br>
+                <br>
+                <?php include('../controladores/cambio-clave_C.php') ?>
 
     <div class="form-group">
         <label for="clave">Nueva Contraseña *</label>
-        <input type="password" class="form-control" required placeholder="Nueva contraseña" name="clave" />
+        <input type="password"  name="clave" class="form-control"  placeholder="Nueva contraseña" />
     </div>
     <br>
     <br>
     <div class="form-group">
-        <input type="submit" value="Cambiar contraseña" class="btn" style="background-color: #177c03; color:#ffffff"/>
+        <input type="submit" value="Guardar cambios" class="btn" name="btnCambioClave" style="background-color: #177c03; color:#ffffff"/>
         <a href="index-base.php"><input type="button" value="Cancelar" class="btn btn-warning"></a>
 
     </div>

@@ -24,7 +24,7 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item" href="#">Mi perfil</a></li>
-              <li><a class="dropdown-item" href="../controladores/cerrar_sesion.php">Cerrar Sesión</a></li>
+              <li><a class="dropdown-item" href="../controladores/cerrar_sesion_C.php">Cerrar Sesión</a></li>
             </ul>
           </div>
         </div>
@@ -101,7 +101,7 @@
           <ul class="dropdown-menu dropdown-menu-dark">
            <li><a class="dropdown-item" href="ver-cli.php">Listado de clientes</a></li> <!---- aca voy ---->
             <li><a class="dropdown-item" href="ver-usuario.php">Listado de usuarios</a></li>
-            <li><a class="dropdown-item" href="cambio-contraseña.php">Cambiar contraseña</a></li>
+            <li><a class="dropdown-item" href="cambio-clave.php">Cambiar contraseña</a></li>
           </ul>  
         </li>
         <li class="nav-item dropdown p-2">

@@ -26,7 +26,7 @@
 						<ul class="dropdown-menu dropdown-menu-dark">
 							<li><a class="dropdown-item" href="#">Mi perfil</a></li>
 							<li><a class="dropdown-item" href="#">Pendiente</a></li>
-							<li><a class="dropdown-item" href="../controladores/cerrar_sesion.php">Cerrar Sesión</a></li>
+							<li><a class="dropdown-item" href="../controladores/cerrar_sesion_C.php">Cerrar Sesión</a></li>
 
 						</ul>
 					</div>
