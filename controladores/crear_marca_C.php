@@ -24,10 +24,11 @@ if (!empty($_POST['btnGuardar'])) {
 					text: "Registro exitoso!",
 					icon: 'success',
 					confirmButtonColor: '#3085d6',
-					confirmButtonText: 'Continuar'
+					confirmButtonText: 'Continuar',
 				})
 			</script>
 		<?php
+		
 		} else {
 		?>
 			<script>
@@ -58,5 +59,6 @@ if (!empty($_POST['btnGuardar'])) {
 }
 
 	//Juego de registros de los premios creados
-$b_marca = mysqli_query($conexion, "SELECT * FROM marcas  ORDER BY id_marca;");
-$row_marca = mysqli_fetch_assoc($b_marca);
+
+	$b_marca = mysqli_query($conexion, "SELECT * FROM marcas  ORDER BY id_marca;");
+	$dataMarca = mysqli_fetch_assoc($b_marca);
