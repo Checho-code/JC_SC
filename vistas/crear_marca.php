@@ -3,10 +3,10 @@ session_start();
 $usuario = $_SESSION['datosU']['nombre_usuario'];
 include '../conexion/conexion.php';
 include '../vistas/menuAdmin.php';
-
+// error_reporting(0);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@ include '../vistas/menuAdmin.php';
     <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="../mis_css/menuAdmin.css" />
+    <link rel="stylesheet" type="text/css" href="../mis_css/menuPpal.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/productos-destacados.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/marcas.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/footer.css" />
@@ -29,13 +29,14 @@ include '../vistas/menuAdmin.php';
 
     <title>Frutos del campo</title>
 
+
 </head>
 
 <body>
     <div class="container-fluid mt-5 mb-5 ">
-        <?php include('../controladores/crear_marca.php') ?>
+        <?php include('../controladores/crear_marca_C.php') ?>
         <div class="row ">
-            <div class="col-sm-12">
+            <div class="col-sm-5">
                 <form method="post" enctype="multipart/form-data">
                     <h3 style="color: #177c03; text-align: center;">Agregar marca </h3>
                     <br>
@@ -49,15 +50,15 @@ include '../vistas/menuAdmin.php';
                         <label for="imagen">Seleccione la imagen de la marca</label>
                         <input type="file" name="foto" class="form-control-file" accept="image/jpeg, image/jpg, image/png, image/gif, image/webp" lang="es">
                     </div>
-                    
-                    <div class="form-group mt-5 mb-5"">
-			
-						<label for="tipo-docs">Estado *</label>
-						<select class="tip-doc form-control" name="estado">
-							<option value="ver">Activo</option>
-							<option value="nover">Inactivo</option>
-						</select>
-			</div>
+
+                    <div class="form-group mt-5 mb-5">
+
+                        <label for="tipo-docs">Estado *</label>
+                        <select class="tip-doc form-control" name="estado">
+                            <option value="ver">Activo</option>
+                            <option value="nover">Inactivo</option>
+                        </select>
+                    </div>
                     <div class="form-group mt-5 mb-5">
                         <input type="submit" name="btnGuardar" value="Guardar" class="btn" style="background-color: #177c03; color:#ffffff">
                         <a href="index-base.php"><input type="button" value="Cancelar" class="btn btn-warning"></a>
@@ -66,9 +67,50 @@ include '../vistas/menuAdmin.php';
 
                 </form>
             </div>
+
+
+            <div class="col-md-7 ">
+                <h3 style="color: #177c03; text-align: center;">Marcas</h3>
+
+                <div class="table-responsive mt-5">
+
+                    <table class="table table-bordered table-striped table-hover table-sm">
+                        <tbody>
+                            <tr align="center">
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Logo</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                            <?php do { 	?>
+                                
+                                <tr align="center">
+                                    <td><?php echo $row_marca['id_marca']; ?></td>
+                                    <td><?php echo $row_marca['nom_marca']; ?></td>
+                                    <td><img src="../<?php echo $row_marca['logo']; ?>" width="100" height="100" /></td>
+                                    <td><?php $est = $row_marca['estado'];
+                                        echo ($est == 1) ? '<p style="color:green;font-weight:700; ">Activo </p>' : '<p style="color:red; font-weight:700; ">Inactivo </p>' ?></td>
+                                    <td>
+                                        <?php include '../controladores/eliminar-marca_C.php';?>
+                                        <form  method="post" enctype="multipart/form-data">
+                                    <input  name="id" value="<?php echo $row_marca['id_marca']; ?>">
+                                    <input  name="nombre" value="<?php echo $row_marca['nom_marca']; ?>">
+                                        <!-- <button type="submit" class="btn btn-danger" name="btnBorraMarca">Borrar</button> -->
+                                        <input type="submit" name="btnBorraMarca" value="delete" class="btn" style="background-color: #177c03; color:#ffffff">
+                              </form>
+                                    </td>
+                            </tr>
+                                  <?php } while ($row_marca = mysqli_fetch_assoc($b_marca)); ?>
+                                </tbody>
+                            </table>
+                </div>
+            </div>
         </div>
     </div>
+ 
 
+  
     <br>
     <br>
     <br>
@@ -76,9 +118,13 @@ include '../vistas/menuAdmin.php';
     <!---------------- Footer --------------->
     <?php include('footer.php') ?>
 
-    <script src="js/js_bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../js/js_bootstrap/bootstrap.bundle.min.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/popper.min.js"></script>
+
+ 
+
+
 </body>
 
 </html>

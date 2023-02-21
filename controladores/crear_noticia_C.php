@@ -1,19 +1,30 @@
 <?php
 require('../conexion/conexion.php');
+function RandomString()
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $randstring = '';
+    for ($i = 0; $i < 30; $i++) {
+        $randstring = @$randstring . @$characters[rand(0, strlen($characters))];
+    }
+    return $randstring;
+}
 
 if (!empty($_POST['btnGuardar'])) {
-	if (!empty($_POST["nombre_marca"])&& ($_FILES['foto']['name']!=null)) {
-		$nom_marca = $_POST['nombre_marca'];
-		$estado = $_POST['estado'];
+	if (!empty($_POST["titulo"])&& !empty($_POST["noticia"]) && ($_FILES['imagen']['name']!=null)) {
+		$id_usuario = $_SESSION['id_usuario'];
+		$titulo = $_POST['titulo'];
+		$noticia = $_POST['noticia'];
+		$fecha_publicacion = date('Y-m-d');
 
 
-		$nombre_img = $_FILES['foto']['name'];
-		$temporal = $_FILES['foto']['tmp_name'];
-		$carpeta = 'img_marcas';
+		$nombre_img = $_FILES['imagen']['name'];
+		$temporal = $_FILES['imagen']['tmp_name'];
+		$carpeta = 'img_noticias';
 		$ruta = $carpeta . '/' . $nombre_img;
 		move_uploaded_file($temporal, '../'.$carpeta . '/' . $nombre_img);
 
-		$query = "INSERT INTO marcas (nom_marca, logo, estado) VALUES ('$nom_marca', '$ruta', '$estado')";
+		$query = "INSERT INTO noticias (id_usuario, fecha_publicacion, titulo, noticia,imagen) VALUES ($id_usuario, '$fecha_publicacion', '$titulo', '$noticia','$ruta')";
 		$execute = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
 
 		if ($execute) {
@@ -57,6 +68,7 @@ if (!empty($_POST['btnGuardar'])) {
 
 }
 
-	//Juego de registros de los premios creados
-$b_marca = mysqli_query($conexion, "SELECT * FROM marcas  ORDER BY id_marca;");
-$row_marca = mysqli_fetch_assoc($b_marca);
+	
+//Busco el registro de las noticias 
+$buscar_noticias = mysqli_query($conexion, "SELECT * FROM noticias ORDER BY id_noticia DESC");
+$row_noticias = mysqli_fetch_assoc($buscar_noticias);

@@ -1,5 +1,3 @@
-<?php include 'conexion/conexion.php' ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +5,9 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<script type="text/javascript" src="js/jquery.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="mis_css/footer.css" />
 	<link rel="stylesheet" type="text/css" href="mis_css/productos-destacados.css" />
 
-	<title>Inicio | Solcomercial</title>
+	<title>Contacto | Solcomercial</title>
 
 </head>
 
@@ -90,70 +90,55 @@
 			</div>
 		</div>
 	</nav>
+	<!---------------- contacto --------------->
 
-	<!---------------- Marcas ----------------->
+	<div class="container-fluid w-75 mb-5">
+		<h4 class="mt-5 mb-5 text-center" style="color:#177c03;">Formulario de contacto</h3>
 
-	<div class="contenedor">
+			<form class="row g-3 needs-validation" method="post">
 
-		<h4 class="text">Nuestras marcas</h4>
+				<div class="col-md-12 mt-4">
+					<label for="validationCustom01" class="form-label">Nombre completo *</label>
+					<input type="text" class="form-control" name="nombre" placeholder="Su nombre y apellido">
 
-		<div class="container-fluid bg-warning secundario ">
+				</div>
 
-			<div class="row cont-marcas">
+				<div class="col-md-12 mt-4">
+					<label for="validationCustomUsername" class="form-label">Correo *</label>
+					<div class="input-group has-validation">
+						<span class="input-group-text" id="inputGroupPrepend">@</span>
+						<input type="email" class="form-control" name="correo" placeholder="correo@algo.com">
 
-
-				<?php
-				$query = mysqli_query($conexion, "SELECT * FROM marcas");
-				while ($consulta = mysqli_fetch_array($query)) { ?>
-					<div class="col columnas m-2">
-						<div class="card  tarjeta ">
-							<img src="<?php echo $consulta['logo'] ?>" class="img-marca " alt="Imagen Frutos del campo">
-							<div class=" mt-3">
-								<p class="titulo_marca"></p><?php echo $consulta['nom_marca'] ?></p>
-							</div>
-						</div>
 					</div>
-				<?php
-				}
-				?>
+				</div>
 
+				<div class="col-md-3">
+					<label for="validationCustom04" class="form-label">Tipo de mensaje</label>
+					<select class="form-select" name="tipo">
+						<option selected disabled value="Felicitacion">Seleccione</option>
+						<option value="Felicitaciones">Felicitacion</option>
+						<option value="Tengo una Peticion">Petición</option>
+						<option value="Tengo una Queja">Queja</option>
+						<option value="Tengo un Reclamo">Reclamo</option>
+					</select>
+				</div>
 
-			</div>
-		</div>
+				<div class="col-md-12 mt-4">
+					<label for="validationCustom05" class="form-label">Mensaje *</label>
+					<input type="text" class="form-control" name="mensaje" placeholder="Su mensaje ">
+				</div>
+
+				<div class="col-12 mt-5 mb-5">
+					<button class=" btn" style=" color:white; background-color: #177c03; " type="submit" name="btnEnviar">Enviar</button>
+					<a href="index.php" class="btn btn-warning">Cancelar</a>
+				</div>
+			</form>
+<?php include ('./controladores/email-contacto.php')?>
 	</div>
 
-
-	<!--------------------- Productos -------------------->
-
-
-	<div class="contenedorP">
-		<div class="cont-txt-prod">
-			<h4 class="textP">Productos más destacados</h4>
-		</div>
-		<div class="container-fluid secundarioP ">
-
-			<div class="row cont-productos">
-				<?php
-				$query = mysqli_query($conexion, "SELECT * FROM productos WHERE  estado>0");
-				while ($consulta = mysqli_fetch_array($query)) { ?>
-					<div class="col-4 columnasP ">
-						<div class="card  tarjetaP ">
-							<img src="img/miniaturas/<?php echo $consulta['imagen']; ?>" class="img-producto " alt="Imagen Frutos del campo">
-							<div class=" mt-3">
-								<p class="titulo_producto"><?php echo $consulta['nombre_producto'] ?></p>
-							</div>
-						</div>
-					</div>
-				<?php
-				}
-				?>
-
-
-			</div>
-		</div>
-	</div>
-
-
+	<br>
+	<br>
+	<br>
 
 	<!---------------- Footer --------------->
 	<footer>
@@ -201,3 +186,7 @@
 </body>
 
 </html>
+
+<!-- 
+  </body>
+</html> -->

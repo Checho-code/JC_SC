@@ -24,7 +24,7 @@ if ($row_sectores['id_sector'] != '') {
     <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="../mis_css/menuAdmin.css" />
+    <link rel="stylesheet" type="text/css" href="../mis_css/menuPpal.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/productos-destacados.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/marcas.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/footer.css" />
