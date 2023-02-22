@@ -16,9 +16,8 @@ include '../vistas/menuAdmin.php';
   <link type="text/css" rel="shortcut icon" href="img/logo-mywebsite-urian-viera.svg" />
   <title>Marcas | Solcomercial</title>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script type="text/javascript" src="js/jquery.js"></script>
+ 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
@@ -126,11 +125,11 @@ include '../vistas/menuAdmin.php';
                                 echo ($est == 1) ? '<p style="color:green;font-weight:700; ">Activo </p>' : '<p style="color:red; font-weight:700; ">Inactivo </p>' ?></td>
 
                             <td>
-                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataMarca['id_marca']; ?>">
+                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresnM<?php echo $dataMarca['id_marca']; ?>">
                                 Eliminar
                               </button>
 
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataMarca['id_marca']; ?>">
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresnM<?php echo $dataMarca['id_marca']; ?>">
                                 Modificar
                               </button>
                             </td>
@@ -139,10 +138,10 @@ include '../vistas/menuAdmin.php';
 
 
                       <!--Ventana Modal para Actualizar--->
-                      <?php include('ModalEditar.php'); ?>
+                      <?php include('modals/ModalEditar.php'); ?>
 
                       <!--Ventana Modal para la Alerta de Eliminar--->
-                      <?php include('ModalEliminar.php'); ?>
+                      <?php include('modals/ModalEliminar.php'); ?>
 
 
                     <?php }while ($dataMarca = mysqli_fetch_assoc($b_marca)); ?>
@@ -166,20 +165,22 @@ include '../vistas/menuAdmin.php';
   <!---------------- Footer --------------->
   <?php include('../vistas/footer.php') ?>
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script src="../js/jquery.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/js_bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
 
   <script type="text/javascript">
     $(document).ready(function() {
 
-      $('.btnBorrar').click(function(e){
+      $('.btnBorrarM').click(function(e){
         e.preventDefault();
         var id = $(this).attr("id");
 
         var dataString = 'id='+ id;
         // alert (id + '--' +dataString);
-        url = "BorrarM.php";
+        url = "modals/BorrarM.php";
         $.ajax({
           type: "POST",
           url: url,
@@ -187,7 +188,7 @@ include '../vistas/menuAdmin.php';
           success: function(data)
           {
                   // alert (data);
-                  window.location.href="marcas_V.php";
+                  window.location.href="crear_marca.php";
                   $('#respuesta').html(data);
                 }
             });

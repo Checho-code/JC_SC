@@ -18,7 +18,7 @@
 					?>
 					<div class="col columnas m-2">
 						<div class="card  tarjeta ">
-							<img src="<?php echo $consulta['logo'] ?>" class="img-marca " alt="Imagen marca">
+							<img src="<?php echo $consulta['logo'] ?>" class="img-marca " alt="<?php echo $consulta['nom_marca'] ?>">
 							<div class=" mt-3">
 								<p class="titulo_marca"></p><?php echo $consulta['nom_marca'] ?></p>
 							</div>

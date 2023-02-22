@@ -1,6 +1,6 @@
 
 <?php
-include('../conexion/conexion.php');
+include('../../conexion/conexion.php');
 
 $id = $_REQUEST['id'];
 $nombre      = $_REQUEST['nombre_marca'];
@@ -10,7 +10,7 @@ $update = ("UPDATE marcas SET nom_marca  ='$nombre', estado  ='$estado' WHERE id
 $result_update = mysqli_query($conexion, $update);
 
 echo "<script type='text/javascript'>
-        window.location='marcas_V.php';
+        window.location='../marcas_V.php';
     </script>";
 
 ?>

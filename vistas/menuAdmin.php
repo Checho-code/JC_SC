@@ -53,8 +53,8 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" href="caja.php">Caja</a></li>
-            <li><a class="dropdown-item" href="crear_marca.php">Crear marca</a></li>
-            <li><a class="dropdown-item" href="crear-premios.php">Crear premios</a></li>
+            <li><a class="dropdown-item" href="marcas_V.php">Crear marca</a></li>
+            <li><a class="dropdown-item" href="premios_V.php">Crear premios</a></li>
             <li><a class="dropdown-item" href="solicitud-premio.php">Solicitud premios</a></li>
             <li><a class="dropdown-item" href="premios-entregados.php">Premios entregados</a></li>
             <li><a class="dropdown-item" href="#">Puntos Solcomercial</a></li>

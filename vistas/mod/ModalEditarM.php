@@ -12,7 +12,7 @@
       </div>
 
 
-      <form method="POST" action="recib_Update.php">
+      <form method="POST" action="mod/ModificarM.php">
         <input type="hidden" name="id" value="<?php echo $dataMarca['id_marca']; ?>">
         <h6 style="color: #000; text-align: center;" class="mt-3 fw-bold">Solo puede cambiar nombre y estado</h6>
         <div class="modal-body" id="cont_modal">

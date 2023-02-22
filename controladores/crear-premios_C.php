@@ -17,10 +17,11 @@ function RandomString()
 //Creo el codigo para registrar el premio
 if (isset($_POST['btnGuardarPremio'])) {
 
-    if (!empty($_POST['nombre_premio']) && !empty($_POST['puntos']) && ($_FILES['imagen']['name'] != null)) {
+    if (!empty($_POST['nombre_premio']) && !empty($_POST['puntos']) && !empty($_POST['estado']) && ($_FILES['imagen']['name'] != null)) {
         $rand = RandomString();
         $nombre_premio = ($_POST['nombre_premio']);
         $puntos = ($_POST['puntos']);
+        $estado = ($_POST['estado']);
         $imagen = $_FILES['imagen']['name'];
         $temporal = $_FILES['imagen']['tmp_name'];
         $nombrer = strtolower($imagen);
@@ -30,7 +31,7 @@ if (isset($_POST['btnGuardarPremio'])) {
         move_uploaded_file($temporal, '../' . $carpeta . '/' . $nom_img);
 
 
-        $sql = "INSERT INTO premios (nombre_premio, puntos, imagen) VALUES ('$nombre_premio', '$puntos', '$nom_img')";
+        $sql = "INSERT INTO premios (nombre_premio, puntos, estado, imagen) VALUES ('$nombre_premio', '$puntos', '$estado','$nom_img')";
         $execute = mysqli_query($conexion, $sql) or die(mysqli_error($conexion));
 
         if ($execute > 0) {
@@ -78,7 +79,7 @@ if (isset($_POST['btnGuardarPremio'])) {
 
 //Juego de registros de los premios creados
 $b_premios = mysqli_query($conexion, "SELECT * FROM premios ORDER BY id_premio");
-$row_premios = mysqli_fetch_assoc($b_premios);
+$dataPremios = mysqli_fetch_assoc($b_premios);
 
 
 
