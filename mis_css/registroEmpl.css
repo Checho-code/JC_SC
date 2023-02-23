@@ -1,7 +1,5 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -10,31 +8,11 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
-.titulo {
-    color: #177c03;
-}
-
-.form_regis {
-    width: 50rem;
-    margin: auto;
-    border-radius: 15px;
-    border: #177c03 solid 20px;
-}
-
-.logo {
-    width: 140px;
-    height: 140px;
+#registro{
     margin-top: 20px;
+    background-color: #f7f7f7;
+    border-radius: 20px;
 }
-
-.cont-img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 35px;
-}
-
 .label {
     color: #177c03;
     margin-bottom: 5px;

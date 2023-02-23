@@ -1,6 +1,6 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif !important;
-    
+   
 }
 
 .text {
@@ -11,16 +11,22 @@ body {
 }
 .contenedor {
     margin-top: 5px;
+    margin-bottom: 20px;
+    padding: 30px;   
 }
 
 .secundario {
     display: flex;
     justify-content: center;
+  
 }
 
 .cont-marcas {
     display: flex;
     justify-content: center;
+    border-radius: 30px;
+    box-shadow: 
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.422); 
 }
 
 .columnas {

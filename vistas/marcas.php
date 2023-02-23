@@ -5,7 +5,7 @@
 		
 		<h4 class="text">Nuestras marcas</h4>
 		
-		<div class="container-fluid bg-warning secundario ">
+		<div class="container-fluid secundario ">
 			
 			<div class="row cont-marcas">
 				

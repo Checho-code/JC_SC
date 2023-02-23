@@ -74,7 +74,6 @@ $row_ciudades = mysqli_fetch_assoc($las_ciudades);
     <link rel="stylesheet" type="text/css" href="../mis_css/productos-destacados.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/marcas.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/footer.css" />
-
     <link rel="stylesheet" type="text/css" href="mis_css/productos-destacados.css" />
     <script type="text/javascript">
         function validar(str) {

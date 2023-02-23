@@ -3,7 +3,12 @@ body {
     padding: 0px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
+.ppal{
+    box-shadow:
+    0 -8em 3em rgba(0,0,0,0.1),
+    0 0  0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
 .logo {
     display: flex;
     justify-content: center;
@@ -46,6 +51,9 @@ body {
 
 .navbar-contenedor {
     background-color: #fb0;
+    box-shadow:
+     0 -8em 3em rgba(0,0,0,0.1),
+    0.3em 0.3em 1em rgba(0,0,0,0.3);
 
 }
 

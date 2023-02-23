@@ -82,6 +82,7 @@ $row_usuarios = mysqli_fetch_assoc($los_usuarios);
 
             <div class="col-sm-12">
                 <h3 style="color: #177c03; text-align: center;">Listado de Vendedores </h3><br>
+                <h4 style="color: red; text-align: center; background-color: #000; ">hacer filtros=> X nombre y X rol </h4><br>
                 <br>
                 
                 

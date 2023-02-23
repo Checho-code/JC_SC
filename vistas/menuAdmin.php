@@ -31,7 +31,7 @@
     </div>
   </div>
 </div>
-<hr>
+
 <!----------------------------- Navegacion ----------------------------------->
 
 <nav class="navbar navbar-expand-lg  navbar-contenedor fixed-top">
@@ -52,33 +52,31 @@
             Solcomercial
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="caja.php">Caja</a></li>
             <li><a class="dropdown-item" href="marcas_V.php">Crear marca</a></li>
-            <li><a class="dropdown-item" href="premios_V.php">Crear premios</a></li>
+            <li><a class="dropdown-item" href="premios_V.php">Crear premio</a></li>
+            <li><a class="dropdown-item" href="noticias_V.php">Crear noticia</a></li>
+            <li><a class="dropdown-item" href="sectores_V.php">Crear sector</a></li>
+            <li><a class="dropdown-item" href="Puntos_Solcom.php">Puntos Solcomercial</a></li>
+            <li><a class="dropdown-item" href="contactanos2.php">Contáctanos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown p-2">
+          <a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="caja.php">Caja</a></li>
             <li><a class="dropdown-item" href="solicitud-premio.php">Solicitud premios</a></li>
             <li><a class="dropdown-item" href="premios-entregados.php">Premios entregados</a></li>
-            <li><a class="dropdown-item" href="#">Puntos Solcomercial</a></li>
-            <li><a class="dropdown-item" href="contactanos2.php">Contáctanos</a></li>
-            <li><a class="dropdown-item" href="noticias.php">Noticias</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown p-2">
           <a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Sectores
+            Empleados
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="crear-sector.php">Crear sector</a></li>
-            <li><a class="dropdown-item" href="listado-sectores.php">Listado de sectores</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown p-2">
-          <a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Vendedores
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="registro-vendedor.php">Registrar vendedor</a></li>
-            <li><a class="dropdown-item" href="lista-vendedores.php">Listado de vendedores</a></li>
-            <a class="dropdown-item" href="filtrar-vendedor.php" title="Buscar informacion sobre vendedores en un rango determinado">Filtrar</a>
+            <li><a class="dropdown-item" href="empleados_V.php">Registrar empleado</a></li>
+            <li><a class="dropdown-item" href="lista-vendedores.php">Listado empleados</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown p-2">

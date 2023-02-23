@@ -5,12 +5,18 @@ include '../conexion/conexion.php';
 include '../vistas/menuAdmin.php';
 
 if (isset($_POST['correo_usuario'])) {
-    $correo_usuario = ($_POST['correo_usuario']);
     $nombre_usuario = ($_POST['nombre_usuario']);
+    $correo_usuario = ($_POST['apellido_usuario']);
+    $tipo = ($_POST['tipo_doc']);
+    $num = ($_POST['apellido_usuario']);
+    $tel = ($_POST['apellido_usuario']);
+    $email = ($_POST['apellido_usuario']);
     $clave = password_hash($_POST['clave'], PASSWORD_DEFAULT);
+    $claverku = ($_POST['nivel']);
     $nivel = ($_POST['nivel']);
+    $estado = ($_POST['nivel']);
     $fecha_registro = date('Y-m-d');
-    $sql = "INSERT INTO usuarios (correo_usuario, nombre_usuario, clave, nivel, fecha_registro) VALUES (?,?,?,?,?)";
+    $sql = "INSERT INTO usuarios (nombre_usuario, apellido_usuario, tipo_doc, num_doc , telefono, email, clave, rku, nivel, estado, fecha_registro) VALUES (?,?,?,?,?)";
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param('sssis', $correo_usuario, $nombre_usuario, $clave, $nivel, $fecha_registro);
     $stmt->execute();

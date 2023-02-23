@@ -9,37 +9,30 @@ use PHPMailer\PHPMailer\Exception;
 //capturamos y escapamos todo lo que se envio por el formulario
 if (!empty($_POST['btnRegistrar'])) {
 
-	
+	if (!empty($_POST["nombre"]) and !empty($_POST["apellido"]) and !empty($_POST["tipo-doc"]) and !empty($_POST["numero"]) and !empty($_POST["tel"]) and !empty($_POST["nivel"]) and !empty($_POST["correo1"]) and !empty($_POST["correo2"]) and !empty($_POST["clave1"]) and !empty($_POST["clave2"])) {
 
-	if (!empty($_POST["nombre_usuario"]) and !empty($_POST["apellido"]) and !empty($_POST["tipo-doc"]) and !empty($_POST["numero"]) and !empty($_POST["tel"]) and !empty($_POST["correo1"]) and !empty($_POST["correo2"]) and !empty($_POST["clave1"]) and !empty($_POST["clave2"])) {
-		
-		
-
-		$nombre =  $_SESSION['nombre_usuario'] = htmlentities($_POST['nombre_usuario']);
-		$apellido = $_SESSION['apellido'] = htmlentities($_POST['apellido']);
-		$tipo_doc = $_SESSION['tipo-doc'] = htmlentities($_POST['tipo-doc']);
-		$num_doc = $_SESSION['numero'] = htmlentities($_POST['numero']);
-		$tel = $_SESSION['tel'] = htmlentities($_POST['tel']);
-		$email = $_SESSION['correo1'] = htmlentities($_POST['correo1']);
-		$email2 =$_SESSION['correo2'] = htmlentities( $_POST['correo2']);
-		$clave_natural = $_SESSION['clave1'] = htmlentities($_POST['clave1']);
+		$nombre = $_POST["nombre"];
+		$apellido = $_POST["apellido"];
+		$tipo_doc = $_POST["tipo-doc"];
+		$num_doc = $_POST["numero"];
+		$tel = $_POST["tel"];
+		$email = $_POST["correo1"];
+		$email2 = $_POST["correo2"];
+		$clave_natural = $_POST["clave1"];
 		$clave = password_hash($_POST['clave1'], PASSWORD_DEFAULT);
 		$clave2 = $_POST["clave2"];
-		$nivel = $_SESSION['nivel'] = 4;
+		$nivel = $_POST["nivel"];
 		$estado = 1;
 		$intentos = 0;
 		$fecha_registro = date('Y-m-d');
-		
-		
+
 		if ($email === $email2) {
-			
+
 			if ($clave_natural === $clave2) {
-				
+
 				//validamos si existe el usuario
 				$validar = "SELECT * FROM usuarios WHERE email='$email' OR num_doc='$num_doc'";
 				$result = mysqli_query($conexion, $validar);
-
-				
 
 				if ($result->num_rows > 0) {
 ?>
@@ -121,7 +114,7 @@ if (!empty($_POST['btnRegistrar'])) {
 							}).then((result) => {
 								if (result.isConfirmed) {
 
-									window.location = '../vistas/login.php';
+									window.location = '../vistas/empleados_V.php';
 								}
 							})
 						</script>
@@ -173,3 +166,7 @@ if (!empty($_POST['btnRegistrar'])) {
 
 	}
 }
+	//Juego de registros de los premios creados
+
+	$b_empleados = mysqli_query($conexion, "SELECT * FROM usuarios  WHERE nivel != 4 ORDER BY id_usuario;");
+	$dataEmpleados = mysqli_fetch_assoc($b_empleados);

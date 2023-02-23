@@ -29,8 +29,7 @@ include '../conexion/conexion.php'
 </head>
 
 <body>
-
-<?php
+	<?php
 	$nivel = $_SESSION['datosU']['nivel'];
 	switch ($nivel) {
 		case '1':
@@ -42,22 +41,23 @@ include '../conexion/conexion.php'
 		case '3':
 			include('../vistas/menuAdmin.php');
 			break;
-		case '4':
-			include('../vistas/menuCliente.php');
-			break;
-	}
-
-	?>
+			case '4':
+				include('../vistas/menuCliente.php');
+				break;
+			}
+			
+			?>
+	<h5 style="color:red; text-align: center; background-color: #000; ">Arreglar envio de correo, google bloquea cuenta si se envia desde aca</h5>
 	<!---------------- contacto --------------->
-
+	
 	<div class="container-fluid w-75 mb-5">
 		<h4 class="mt-5 mb-5 text-center" style="color:#177c03;">Formulario de contacto</h3>
-
-			<form class="row g-3 needs-validation" method="post">
-
-				<div class="col-md-12 mt-4">
-					<label for="validationCustom01" class="form-label">Nombre completo *</label>
-					<input type="text" class="form-control" name="nombre" placeholder="Su nombre y apellido">
+		
+		<form class="row g-3 needs-validation" method="post">
+			
+			<div class="col-md-12 mt-4">
+				<label for="validationCustom01" class="form-label">Nombre completo *</label>
+				<input type="text" class="form-control" name="nombre" placeholder="Su nombre y apellido">
 
 				</div>
 
@@ -87,7 +87,7 @@ include '../conexion/conexion.php'
 				</div>
 
 				<div class="col-12 mt-5 mb-5">
-					<button class=" btn" style=" color:white; background-color: #177c03; " type="submit" name="btnEnviar">Enviar</button>
+					<!-- <button class=" btn" style=" color:white; background-color: #177c03; " type="submit" name="btnEnviar">Enviar</button> -->
 					<a href="index.php" class="btn btn-warning">Cancelar</a>
 				</div>
 			</form>
@@ -104,7 +104,7 @@ include '../conexion/conexion.php'
 		<div class="container__footer">
 			<div class="box__footer">
 				<div class="logo">
-					<img src="img/sistema/logo.png" alt="">
+					<img src="../img/sistema/logo.png" alt="">
 				</div>
 				<div class="terms">
 					<p>Somos una empresa ubicada en el municipio de Andes-Antioquia, creada para
@@ -133,7 +133,7 @@ include '../conexion/conexion.php'
 
 		<div class="box__copyright">
 			<hr>
-			<p>Todos los derechos reservados © 2023 <b>Juanda-Code</b> <img src="img/código.png" alt="Logo programador" style="width: 3%; border-radius: 50%; "></p>
+			<p>Todos los derechos reservados © 2023 <b>Juanda-Code</b> <img src="../img/código.png" alt="Logo programador" style="width: 3%; border-radius: 50%; "></p>
 			<p>Contacto:<b> 300-725-61-49</b> -- E-mail: <b>codigopractico23@gmail.com</b></p>
 		</div>
 	</footer>

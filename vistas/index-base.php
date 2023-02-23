@@ -53,11 +53,11 @@ include '../conexion/conexion.php'
 
 	<!---------------- Marcas ----------------->
 
-	<div class="contenedor">
+	<div class="contenedor mb-5">
 
-		<h4 class="text">Nuestras marcas</h4>
+		<h4 class="text mb-5">Nuestras marcas</h4>
 
-		<div class="container-fluid bg-warning secundario ">
+		<div class="container-fluid secundario ">
 
 			<div class="row cont-marcas">
 
@@ -82,6 +82,7 @@ include '../conexion/conexion.php'
 		</div>
 	</div>
 
+<br>
 
 	<!--------------------- Productos -------------------->
 
@@ -116,11 +117,7 @@ include '../conexion/conexion.php'
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	
 
 	<!---------------- Footer --------------->
 	<?php include('footer.php') ?>

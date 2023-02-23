@@ -15,6 +15,7 @@ if (!empty($_POST['btnGuardar'])) {
 		$id_usuario = $_SESSION['id_usuario'];
 		$titulo = $_POST['titulo'];
 		$noticia = $_POST['noticia'];
+		$estado = $_POST['estado'];
 		$fecha_publicacion = date('Y-m-d');
 
 
@@ -24,15 +25,15 @@ if (!empty($_POST['btnGuardar'])) {
 		$ruta = $carpeta . '/' . $nombre_img;
 		move_uploaded_file($temporal, '../'.$carpeta . '/' . $nombre_img);
 
-		$query = "INSERT INTO noticias (id_usuario, fecha_publicacion, titulo, noticia,imagen) VALUES ($id_usuario, '$fecha_publicacion', '$titulo', '$noticia','$ruta')";
+		$query = "INSERT INTO noticias (id_usuario, fecha_publicacion, titulo, noticia, estado, imagen) VALUES ($id_usuario, '$fecha_publicacion', '$titulo', '$noticia', '$estado', '$ruta')";
 		$execute = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
 
 		if ($execute) {
 ?>
 			<script>
 				Swal.fire({
-					title: 'Muy bien!',
-					text: "Registro exitoso!",
+					title: 'Muy bien...!',
+					text: "La noticia se registro con exito!",
 					icon: 'success',
 					confirmButtonColor: '#3085d6',
 					confirmButtonText: 'Continuar'
@@ -44,7 +45,7 @@ if (!empty($_POST['btnGuardar'])) {
 			<script>
 				Swal.fire({
 					title: 'Ooopss...!',
-					text: "Error al registar marca, por favor intente de nuevo.!",
+					text: "Error al registar noticia, por favor intente de nuevo.!",
 					icon: 'error',
 					confirmButtonColor: '#3085d6',
 					confirmButtonText: 'Continuar'
@@ -68,7 +69,6 @@ if (!empty($_POST['btnGuardar'])) {
 
 }
 
-	
 //Busco el registro de las noticias 
-$buscar_noticias = mysqli_query($conexion, "SELECT * FROM noticias ORDER BY id_noticia DESC");
-$row_noticias = mysqli_fetch_assoc($buscar_noticias);
+$buscar_noticias = mysqli_query($conexion, "SELECT * FROM noticias ORDER BY id_noticia");
+$dataNoticias = mysqli_fetch_assoc($buscar_noticias);

@@ -38,6 +38,7 @@ include '../vistas/menuAdmin.php';
     <div class="container-fluid mt-5 mb-5 ">
         <?php include('../controladores/caja_C.php') ?>
         <div class="row">
+        <h2 style="color: red; text-align: center; margin-top: 40px; background-color: black; ">!!! Falta definir su contenido ¡¡¡</h2>
 
             <div class="col-sm-12">
                 <h3 style="color: #177c03; text-align: center;">Saldo en caja:
