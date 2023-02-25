@@ -31,7 +31,7 @@
 		</div>
 	</div>
 </div>
-<hr>
+
 <!----------------------------- Navegacion ----------------------------------->
 
 <nav class="navbar navbar-expand-lg navbar-contenedor fixed-top">

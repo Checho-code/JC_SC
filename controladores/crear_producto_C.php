@@ -34,7 +34,7 @@ if (isset($_POST['btnGuardar'])) {
 		
 		
 		$stmt = $conexion->prepare("INSERT INTO productos (nom_producto, precio, unidad, porcentaje, descripcion, imagen, estado, destacado, id_marca, id_categoria ) VALUES (?,?,?,?,?,?,?,?,?,?)");
-		$stmt->bind_param('sdsdssiiii', $nombre_producto, $precio, $unidad, $porcentaje, $descripcion, $nom_img, $estado, $destacado, $marca, $categoria);
+		$stmt->bind_param('sisdsssiii', $nombre_producto, $precio, $unidad, $porcentaje, $descripcion, $nom_img, $estado, $destacado, $marca, $categoria);
 		$stmt->execute();
 		$stmt->close();
 

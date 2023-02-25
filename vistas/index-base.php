@@ -67,7 +67,7 @@ include '../conexion/conexion.php'
 				while ($consulta = mysqli_fetch_array($query)) { ?>
 					<div class="col columnas m-2">
 						<div class="card  tarjeta ">
-							<img src="../<?php echo $consulta['logo'] ?>" class="img-marca " alt="Imagen Frutos del campo">
+							<img src="../images/img_marcas/<?php echo $consulta['logo'] ?>" class="img-marca " alt="Imagen Frutos del campo">
 							<div class=" mt-3">
 								<p class="titulo_marca"></p><?php echo $consulta['nom_marca'] ?></p>
 							</div>
@@ -95,13 +95,13 @@ include '../conexion/conexion.php'
 
 			<div class="row cont-productos">
 				<?php
-				$query = mysqli_query($conexion, "SELECT * FROM productos WHERE  estado>0");
+				$query = mysqli_query($conexion, "SELECT * FROM productos WHERE  estado='Disponible' AND destacado='1' ");
 				while ($consulta = mysqli_fetch_array($query)) { ?>
 					<div class="col-4 columnasP ">
 						<div class="card  tarjetaP ">
-							<img src="../img/miniaturas/<?php echo $consulta['imagen']; ?>" class="img-producto " alt="Imagen Frutos del campo">
+							<img src="../images/img_productos/<?php echo $consulta['imagen']; ?>" class="img-producto " alt="Imagen Frutos del campo" style="width: 100%; height: 100%;">
 							<div class=" mt-3">
-								<p class="titulo_producto"><?php echo $consulta['nombre_producto'] ?></p>
+								<p class="titulo_producto"><?php echo $consulta['nom_producto'] ?></p>
 							</div>
 						</div>
 					</div>

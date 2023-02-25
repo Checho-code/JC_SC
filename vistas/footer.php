@@ -24,7 +24,8 @@
 
     <div class="box__footer">
         <h2>Redes Sociales</h2>
-        <a href="#"> <i class="fab fa-facebook-square"></i> Facebook</a>
+        <a href="#"> <i class="fa-brands fa-android"></i> App Android</a>
+        <a href="#"> <i class="fa-brands fa-app-store"></i> App Apple</a>
         <a href="#"><i class="fab fa-whatsapp-square"></i> WhastsApp</a>
         <a href="#"><i class="fab fa-instagram-square"></i> Instagram</a>
     </div>

@@ -23,8 +23,8 @@ $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
       </div>
 
 
-      <form method="get" action="mod/ModificarProdts.php" enctype="multipart/form-data">
-        <input type="text" name="id" value="<?php echo $dataProduct['id_producto']; ?>">
+      <form method="post" action="mod/ModificarProdts.php" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?php echo $dataProduct['id_producto']; ?>">
         <h6 style="color: #000; text-align: center;" class="mt-3 fw-bold">Las imagenes no se pueden midificar</h6>
 
 
@@ -45,12 +45,14 @@ $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
         <div class="row justify-content-around  mt-3 p-2">
           <div class="col-5">
             <label for="nombre producto">Nombre</label>
-            <input name="nombre" type="text" class="form-control" value="<?php echo $dataProduct['nom_producto']; ?>">
+            <input name="nombre" required type="text" class="form-control" value="<?php echo $dataProduct['nom_producto']; ?>">
           </div>
 
           <div class="col-5">
             <label for="precios">Precio</label>
-            <input name="precio" type="text" class="form-control" value="<?php echo $dataProduct['precio']; ?>">
+            <input type="text"  maxlength="6" name="precio" placeholder="Ingrese precio de venta" class="form-control"
+              required autocomplete="off" value="<?php echo $dataProduct['precio']; ?>"
+              onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" min="1" />
           </div>
 
         </div>
@@ -58,26 +60,32 @@ $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
         <div class="row justify-content-around  mt-3 p-2">
           <div class="col-5">
             <label for="unidads">Unidad </label>
-            <input name="unidad" type="text" class="form-control" value="<?php echo $dataProduct['unidad']; ?>">
+            <input name="unidad" required type="text" class="form-control" value="<?php echo $dataProduct['unidad']; ?>">
           </div>
 
           <div class="col-5">
             <label for="porcentajes">Porcentaje </label>
-            <input name="porcentaje" type="text" class="form-control" value="<?php echo $dataProduct['porcentaje']; ?>">
+            <select class=" form-control" name="porcentaje" required>
+                      <option selected><?php echo $dataProduct['porcentaje']; ?></option>
+                      <?php for ($i = 10.0; $i >= 0.5; $i -= 0.5) {
+                        echo '<option value="' . $i . '"> ' . $i . '</option>';
+                      } ?>
+                    </select>
           </div>
         </div>
 
         <div class="row justify-content-around  mt-3 p-2">
           <div class="col-5">
             <label for="my-textarea">Descripción</label>
-            <textarea id="my-textarea" class="form-control" name="descripcion" rows="3"><?php echo $dataProduct['descripcion']; ?></textarea>
+            <textarea id="my-textarea" class="form-control" name="descripcion"
+              rows="3" required><?php echo $dataProduct['descripcion']; ?></textarea>
           </div>
-          
+
           <div class="col-5">
-            <label for="estados">Estado Act.=> <span class="text-dark text-bg-warning">"
-                <?php echo $dataProduct['estado']; ?>"
+            <label for="estados">Estado Act. => 
+            <span style="font-weight:400; background-color:#177c03; color:#fff; border-radius:6px; padding:4px;"  > " <?php echo $dataProduct['estado']; ?>"
               </span> </label>
-            <select class="tip-doc form-control" name="estado">
+            <select class="tip-doc form-control" name="estado" required>
               <option value="Disponible">Disponible</option>
               <option value="No disponible">No disponible</option>
             </select>
@@ -86,8 +94,11 @@ $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
         <div class="row justify-content-around  mt-3 p-2">
           <div class="col-5">
-            <label for="destacado">Destacar </label>
-            <select class="tip-doc form-control" name="destacado">
+            <label for="destacado">Destacar Act. => 
+            <span style="font-weight:400; background-color:#177c03; color:#fff; border-radius:6px; padding:4px;"  >  <?php $dest = $dataProduct['destacado'];
+                      echo ($dest === 1) ? '"Si"' : '"No"' ?></span>
+              </label>
+            <select class="tip-doc form-control" name="destacado" required>
               <option value="1">Si</option>
               <option value="0">No</option>
             </select>

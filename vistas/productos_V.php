@@ -34,7 +34,7 @@ include '../controladores/crear_producto_C.php';
 
 </head>
 
-<body >
+<body>
   <?php
   include '../conexion/conexion.php';
 
@@ -45,162 +45,168 @@ include '../controladores/crear_producto_C.php';
   ?>
 
 
- <!---------------- Formulario Registro --------------->
-  
- <div class="container mt-5">
- <h4 style="color: #177c03; text-align: center;" class="mb-3">
+  <!---------------- Formulario Registro --------------->
+
+  <div class="container mt-5">
+    <h4 style="color: #177c03; text-align: center;" class="mb-3">
       Formulario de manejo de Productos
     </h4>
-<div class="row text-center mt-5 mb-5" style="background-color: #cecece">
-  <div class="col-md-12 text-center ">
-    <strong>Registrar Nuevo Producto</strong>
-  </div>
-</div>
+    <div class="row text-center mt-5 mb-5" style="background-color: #cecece">
+      <div class="col-md-12 text-center ">
+        <strong>Registrar Nuevo Producto</strong>
+      </div>
+    </div>
 
-<div class="row clearfix">
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <div class="body">
-      <div class="row clearfix">
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="body">
+          <div class="row clearfix">
 
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <!--- Formulario para registrar Productos --->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <!--- Formulario para registrar Productos --->
 
-          <form method="post" enctype="multipart/form-data" style="background-color: #f7f7f7;border-radius: 20px; padding: 16px; ">
+              <form method="post" enctype="multipart/form-data"
+                style="background-color: #f7f7f7;border-radius: 20px; padding: 16px; ">
 
-            <div class="row justify-content-around mt-3 p-2" >
+                <div class="row justify-content-around mt-3 p-2">
 
-              <div class="col-5">
-                <label for="destacado">Marca *</label>
-                <select class="tip-doc form-control" name="marca">
-                  <option selected>Seleccionar</option>
-                  <!-- Codigo para llenar select con BD -->
-                  <?php
-                  $sqlM = ("SELECT * FROM marcas");
-                  if ($res = mysqli_query($conexion, $sqlM)) {
-                    $cant = mysqli_num_rows($res);
-                    if ($cant > 0) {
-                      while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
-                        echo '<option value="' . $row['id_marca'] . '">' . $row['nom_marca'] . '</option>';
+                  <div class="col-5">
+                    <label for="destacado">Marca *</label>
+                    <select class="form-control" name="marca" required>
+                      <option selected>Seleccionar</option>
+                      <!-- Codigo para llenar select con BD -->
+                      <?php
+                      $sqlM = ("SELECT * FROM marcas");
+                      if ($res = mysqli_query($conexion, $sqlM)) {
+                        $cant = mysqli_num_rows($res);
+                        if ($cant > 0) {
+                          while ($row = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
+                            echo '<option value="' . $row['id_marca'] . '">' . $row['nom_marca'] . '</option>';
+                          }
+                        }
                       }
-                    }
-                  }
-                  ?>
-                </select>
-              </div>
+                      ?>
+                    </select>
+                  </div>
 
-              <div class="col-5">
-                <label for="destacado">Categoria *</label>
-                <select class="tip-doc form-control" name="categoria">
-                  <option selected>Seleccionar</option>
-                  <!-- Codigo para llenar select con BD -->
-                  <?php
-                  $sqlC = ("SELECT * FROM categorias");
-                  if ($resC = mysqli_query($conexion, $sqlC)) {
-                    $cantC = mysqli_num_rows($resC);
-                    if ($cantC > 0) {
-                      while ($row = mysqli_fetch_array($resC, MYSQLI_ASSOC)) {
-                        echo '<option value="' . $row['id_categoria'] . '">' . $row['nom_categoria'] . '</option>';
+                  <div class="col-5">
+                    <label for="destacado">Categoria *</label>
+                    <select class="form-control" name="categoria" required>
+                      <option selected>Seleccionar</option>
+                      <!-- Codigo para llenar select con BD -->
+                      <?php
+                      $sqlC = ("SELECT * FROM categorias");
+                      if ($resC = mysqli_query($conexion, $sqlC)) {
+                        $cantC = mysqli_num_rows($resC);
+                        if ($cantC > 0) {
+                          while ($row = mysqli_fetch_array($resC, MYSQLI_ASSOC)) {
+                            echo '<option value="' . $row['id_categoria'] . '">' . $row['nom_categoria'] . '</option>';
+                          }
+                        }
                       }
-                    }
-                  }
-                  ?>
+                      ?>
 
-                </select>
-              </div>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row justify-content-around  mt-3 p-2">
+                  <div class="col-5">
+                    <label for="nombre producto">Nombre producto *</label>
+                    <input name="nombre" required type="text" class="form-control" placeholder="Ingrese nombre del producto"
+                      autocomplete="off">
+                  </div>
+
+                  <div class="col-5">
+                    <label for="precios">Precio *</label>
+                    <input type="text" maxlength="6" name="precio" placeholder="Ingrese precio de venta"
+                      class="form-control" required autocomplete="off"
+                      onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" min="1" />
+                  </div>
+
+                </div>
+
+                <div class="row justify-content-around  mt-3 p-2">
+                  <div class="col-5">
+                    <label for="unidads">Unidad *</label>
+                    <input name="unidad" required type="text" class="form-control" placeholder="Ejm: Kilo, Libra, Unidad....."
+                      autocomplete="off">
+                  </div>
+
+                  <div class="col-5">
+                    <label for="porcentajes">Porcentaje *</label>
+                    <select class="form-control" required name="porcentaje">
+                      <option selected>Seleccionar</option>
+                      <?php for ($i = 10.0; $i >= 0.5; $i -= 0.5) {
+                        echo '<option value="' . $i . '"> ' . $i . '</option>';
+                      } ?>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row justify-content-around  mt-3 p-2">
+                  <div class="col-5">
+                    <label for="descripcions">Descripción *</label>
+                    <textarea name="descripcion" required type="text" class="form-control"
+                      placeholder="Ingrese una descripcion corta" autocomplete="off"></textarea>
+                  </div>
+
+                  <div class="col-5">
+                    <label for="estados">Estado *</label>
+                    <select class="form-control" required name="estado">
+                      <option value="Disponible">Disponible</option>
+                      <option value="No disponible">No disponible</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row justify-content-around  mt-3 p-2">
+                  <div class="col-5">
+                    <label for="destacado">Destacar *</label>
+                    <select class="form-control" required name="destacado">
+                      <option value="1">Si</option>
+                      <option value="0">No</option>
+                    </select>
+                  </div>
+                  <div class="col-5">
+                    <label for="imagen">Seleccione la imagen del producto</label>
+                    <input type="file" required name="imagen" class="form-control-file"
+                      accept="image/jpeg, image/jpg, image/png, image/gif, image/webp" lang="es">
+                  </div>
+                </div>
+                <br>
+                <br>
+
+
+                <div class="row justify-content-around mt-3 p-2">
+                  <div class="botonera col-5">
+                    <a href="index-base.php"><input type="button" value="Cancelar" class="btn btn-warning"></a>
+                  </div>
+                  <div class="botonera col-5">
+
+                    <input type="submit" name="btnGuardar" value="Guardar" class="btn"
+                      style="background-color: #177c03; color:#ffffff">
+
+                  </div>
+                </div>
+
+
+              </form>
+
             </div>
-
-            <div class="row justify-content-around  mt-3 p-2">
-              <div class="col-5">
-                <label for="nombre producto">Nombre producto *</label>
-                <input name="nombre" type="text" class="form-control" placeholder="Ingrese nombre del producto"
-                  autocomplete="off">
-              </div>
-
-              <div class="col-5">
-                <label for="precios">Precio *</label>
-                <input name="precio" type="text" class="form-control" placeholder="Ingrese precio de venta"
-                  autocomplete="off">
-              </div>
-
-            </div>
-
-            <div class="row justify-content-around  mt-3 p-2">
-              <div class="col-5">
-                <label for="unidads">Unidad *</label>
-                <input name="unidad" type="text" class="form-control" placeholder="Ejm: Kilo, Libra, Unidad....."
-                  autocomplete="off">
-              </div>
-
-              <div class="col-5">
-                <label for="porcentajes">Porcentaje *</label>
-                <input name="porcentaje" type="text" class="form-control" placeholder="Ingrese nombre de la marca"
-                  autocomplete="off">
-              </div>
-            </div>
-
-            <div class="row justify-content-around  mt-3 p-2">
-              <div class="col-5">
-                <label for="descripcions">Descripción *</label>
-                <input name="descripcion" type="text" class="form-control" placeholder="Ingrese nombre de la marca"
-                  autocomplete="off">
-              </div>
-
-              <div class="col-5">
-                <label for="estados">Estado *</label>
-                <select class="tip-doc form-control" name="estado">
-                  <option value="1">Activo</option>
-                  <option value="0">Inactivo</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="row justify-content-around  mt-3 p-2">
-              <div class="col-5">
-                <label for="destacado">Destacar *</label>
-                <select class="tip-doc form-control" name="destacado">
-                  <option value="1">Si</option>
-                  <option value="0">No</option>
-                </select>
-              </div>
-              <div class="col-5">
-                <label for="imagen">Seleccione la imagen del producto</label>
-                <input type="file" name="imagen" class="form-control-file"
-                  accept="image/jpeg, image/jpg, image/png, image/gif, image/webp" lang="es">
-              </div>
-            </div>
-            <br>
-            <br>
-
-
-            <div class="row justify-content-around mt-3 p-2">
-              <div class="botonera col-5">
-                <a href="index-base.php"><input type="button" value="Cancelar" class="btn btn-warning"></a>
-              </div>
-              <div class="botonera col-5">
-
-                <input type="submit" name="btnGuardar" value="Guardar" class="btn"
-                  style="background-color: #177c03; color:#ffffff">
-
-              </div>
-            </div>
-
-
-          </form>
-
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
 
-<br>
-<br>
-<br>
-<hr>
+  <br>
+  <br>
+  <br>
+  <hr>
   <!-------------- Tabla de registros --------------->
-  <div class="container mt-5" >
-  
+  <div class="container mt-5">
+
     <div class="row text-center mt-2" style="background-color: #cecece">
       <div class="col-md-12">
         <strong>Lista de Productos <span style="color: crimson"> (
@@ -256,7 +262,7 @@ include '../controladores/crear_producto_C.php';
                     </td>
                     <td>
                       <?php $est = $dataProduct['estado'];
-                       echo ($est === 'Disponible') ? '<p style="color:green;font-weight:700; ">'.$est.'</p>' : '<p style="color:red; font-weight:700; ">'.$est.'</p>' ?>
+                      echo ($est === 'Disponible') ? '<p style="color:green;font-weight:700; ">' . $est . '</p>' : '<p style="color:red; font-weight:700; ">' . $est . '</p>' ?>
                     </td>
 
                     <td>
@@ -300,7 +306,7 @@ include '../controladores/crear_producto_C.php';
   <br>
   <br>
 
- 
+
 
   <!---------------- Footer --------------->
   <?php include('../vistas/footer.php') ?>

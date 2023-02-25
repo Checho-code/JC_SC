@@ -2,6 +2,10 @@
     display: flex;
     justify-content: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-shadow:
+    0 -8em 3em rgba(0,0,0,0.1),
+    0 0  0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0,0,0,0.3);
 }
 .card-body{
     display: flex;
@@ -68,6 +72,9 @@
 
 .navbar {
     background-color: #ffbb00;
+     box-shadow:
+     0 -8em 3em rgba(0,0,0,0.1),
+    0.3em 0.3em 1em rgba(0,0,0,0.3);
 }
 
 .link{
