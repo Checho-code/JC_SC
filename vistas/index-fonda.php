@@ -22,24 +22,7 @@ include '../conexion/conexion.php'
 	<link rel="stylesheet" type="text/css" href="../mis_css/productos-destacados.css" />
 	<link rel="stylesheet" type="text/css" href="../mis_css/marcas.css" />
 
-	<title><?php
-	$nivel = $_SESSION['datosU']['nivel'];
-	switch ($nivel) {
-		case '1':
-			echo ('Repartidor');
-			break;
-		case '2':
-			echo ('Vendedor');
-			break;
-		case '3':
-			echo('Admin');
-			break;
-		case '4':
-			echo('Cliente');
-			break;
-	}
-
-	?> | Solcomercial</title>
+	<title>Inicio | La fonda chocoana</title>
 
 </head>
 
@@ -65,32 +48,30 @@ include '../conexion/conexion.php'
 	?>
 
 
-
-
-
+	<!--------------------- Productos -------------------->
 	<!---------------- Marcas ----------------->
 
-	<div class="contenedor mb-5">
+	<div class="contenedor">
 
-		<h4 class="text mb-5">Nuestras marcas</h4>
+		<h4 class="text">Nuestras marcas</h4>
 
-		<div class="container-fluid secundario ">
+		<div class="container-fluid  secundario ">
 
 			<div class="row cont-marcas">
-			
 
-			<?php
-				$query = mysqli_query($conexion, "SELECT * FROM marcas");
+
+				<?php
+				$query = mysqli_query($conexion, "SELECT * FROM marcas WHERE nom_marca != 'La fonda chocoana'");
 				while ($consulta = mysqli_fetch_array($query)) { ?>
 					<div class="col columnas m-2">
 						<div class="card  tarjeta ">
 						<a class="link-img" href="<?php $nom= $consulta['nom_marca'] ;
 						if($nom=="Frutos del campo"){
-							echo "index-frutos.php";
+							echo "indexB-frutos.php";
 						}else{
-							echo "index-fonda.php";
+							echo "indexB-fonda.php";
 
-						}?>"><img  src="../images/img_marcas/<?php echo $consulta['logo'] ?>" class="img-marca " alt="Imagen Frutos del campo"></a>
+						}?>"><img  src="../images/img_marcas/<?php echo $consulta['logo'] ?>" class="img-marca " alt="Imagen Fonda chocoana"></a>
 							<div class=" mt-3">
 								<p class="titulo_marca">
 								<?php echo $consulta['nom_marca'] ?>
@@ -106,38 +87,12 @@ include '../conexion/conexion.php'
 			</div>
 		</div>
 	</div>
-
-<br>
-
+	
+	
+	
 	<!--------------------- Productos -------------------->
-
-
-	<div class="contenedorP">
-		<div class="cont-txt-prod">
-			<h4 class="textP">Productos más destacados</h4>
-		</div>
-		<div class="container-fluid secundarioP ">
-
-			<div class="row cont-productos">
-				<?php
-				$query = mysqli_query($conexion, "SELECT * FROM productos WHERE  estado='Disponible' AND destacado='1' ");
-				while ($consulta = mysqli_fetch_array($query)) { ?>
-					<div class="col-4 columnasP ">
-						<div class="card  tarjetaP ">
-							<img src="../images/img_productos/<?php echo $consulta['imagen']; ?>" class="img-producto " alt="Imagen Frutos del campo" style="width: 100%; height: 100%;">
-							<div class=" mt-3">
-								<p class="titulo_producto"><?php echo $consulta['nom_producto'] ?></p>
-							</div>
-						</div>
-					</div>
-				<?php
-				}
-				?>
-
-
-			</div>
-		</div>
-	</div>
+	<h4>La fonda chocoana</h4>
+	<?php include('ver-todos-frutos.php') ?>
 
 	<br>
 	<br>
@@ -147,9 +102,9 @@ include '../conexion/conexion.php'
 	<!---------------- Footer --------------->
 	<?php include('footer.php') ?>
 
-	<script src="../js/jquery.min.js"></script>
-  <script src="../js/popper.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
+	<script src="js/js_bootstrap/bootstrap.bundle.min.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/popper.min.js"></script>
 </body>
 
 </html>

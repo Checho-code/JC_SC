@@ -21,7 +21,7 @@
 						Bienvenido <b><?php echo $usuario; ?></b>
 					</button>
 					<ul class="dropdown-menu dropdown-menu-dark">
-						<li><a class="dropdown-item" href="#">Mi perfil</a></li>
+					<li><a class="dropdown-item" role="button"  data-toggle="modal" data-target="#perfilEmpl">Mi perfil</a></li>
 						<li><a class="dropdown-item" href="#">Pendiente</a></li>
 						<li><a class="dropdown-item" href="../controladores/cerrar_sesion_C.php">Cerrar Sesión</a></li>
 
@@ -31,6 +31,8 @@
 		</div>
 	</div>
 </div>
+<!--Ventana Modal--->
+<?php include('mod/mi-perfil.php'); ?>
 
 <!----------------------------- Navegacion ----------------------------------->
 
