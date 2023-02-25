@@ -13,8 +13,6 @@ if (!empty($_POST['btnRegistrar'])) {
 
 	if (!empty($_POST["nombre_usuario"]) and !empty($_POST["apellido"]) and !empty($_POST["tipo-doc"]) and !empty($_POST["numero"]) and !empty($_POST["tel"]) and !empty($_POST["correo1"]) and !empty($_POST["correo2"]) and !empty($_POST["clave1"]) and !empty($_POST["clave2"])) {
 		
-		
-
 		$nombre =  $_SESSION['nombre_usuario'] = htmlentities($_POST['nombre_usuario']);
 		$apellido = $_SESSION['apellido'] = htmlentities($_POST['apellido']);
 		$tipo_doc = $_SESSION['tipo-doc'] = htmlentities($_POST['tipo-doc']);

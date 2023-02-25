@@ -16,60 +16,9 @@ function RandomString()
 }
 
 
-function codificar()
-{
-    $characters = '0123456789';
-    $codigo = '';
-    for ($i = 0; $i <= 11; $i++) {
-        $codigo = @$codigo . @$characters[rand(0, strlen($characters))];
-    }
-    return $codigo;
-}
-
-function crearMiniatura($rand, $nombre_archivo)
-{
-    $nombre_archivo = $rand . "-" . $nombre_archivo;
-    $finalWidth = 500;
-    $dirFullImage = "img/";
-    $dirTumbsImage = "img/miniaturas/";
-    $tmpName = $_FILES['imagen']['tmp_name'];
-    $finalName = $dirFullImage . $rand . "-" . $_FILES['imagen']['name'];
-    //Copiar imagen a la carpeta principal
-    copiarImagen($tmpName, $finalName);
-    $im = null;
-    if (preg_match('/[.](jpg)$/', $nombre_archivo)) {
-        $im = imagecreatefromjpeg($finalName);
-    } else if (preg_match('/[.](jpeg)$/', $nombre_archivo)) {
-        $im = imagecreatefromjpeg($finalName);
-    } else if (preg_match('/[.](gif)$/', $nombre_archivo)) {
-        $im = imagecreatefromgif($finalName);
-    } else if (preg_match('/[.](png)$/', $nombre_archivo)) {
-        $im = imagecreatefrompng($finalName);
-    }
-    $width = round(imagesx($im));
-    $height = imagesy($im);
-
-    $minWidth = $finalWidth;
-    $minHeight = round($height * ($finalWidth / $width));
-
-    $imageTrueColor = imagecreatetruecolor($minWidth, $minHeight);
-    imagecopyresized($imageTrueColor, $im, 0, 0, 0, 0, $minWidth, $minHeight, $width, $height);
-
-    if (!file_exists($dirTumbsImage)) {
-        if (!mkdir($dirTumbsImage)) {
-            die("Hubo un problema con la miniatura");
-        }
-    }
-
-    imagejpeg($imageTrueColor, $dirTumbsImage . $nombre_archivo);
-    return $nombre_archivo;
-}
 
 
-function copiarImagen($origen, $destino)
-{
-    $resultado = move_uploaded_file($origen, $destino);
-}
+
 
 
 

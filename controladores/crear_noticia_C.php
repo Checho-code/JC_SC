@@ -12,6 +12,7 @@ function RandomString()
 
 if (!empty($_POST['btnGuardar'])) {
 	if (!empty($_POST["titulo"])&& !empty($_POST["noticia"]) && ($_FILES['imagen']['name']!=null)) {
+        $rand = RandomString();
 		$id_usuario = $_SESSION['id_usuario'];
 		$titulo = $_POST['titulo'];
 		$noticia = $_POST['noticia'];
@@ -19,13 +20,14 @@ if (!empty($_POST['btnGuardar'])) {
 		$fecha_publicacion = date('Y-m-d');
 
 
-		$nombre_img = $_FILES['imagen']['name'];
+		$imagen = $_FILES['imagen']['name'];
 		$temporal = $_FILES['imagen']['tmp_name'];
-		$carpeta = 'img_noticias';
-		$ruta = $carpeta . '/' . $nombre_img;
-		move_uploaded_file($temporal, '../'.$carpeta . '/' . $nombre_img);
+		$nombrer = strtolower($imagen);
+        $nom_img = $rand . '-' . $nombrer;
+		$carpeta = 'images/img_noticias';
+		move_uploaded_file($temporal, '../' .$carpeta . '/' . $nom_img);
 
-		$query = "INSERT INTO noticias (id_usuario, fecha_publicacion, titulo, noticia, estado, imagen) VALUES ($id_usuario, '$fecha_publicacion', '$titulo', '$noticia', '$estado', '$ruta')";
+		$query = "INSERT INTO noticias (id_usuario, fecha_publicacion, titulo, noticia, estado, imagen) VALUES ($id_usuario, '$fecha_publicacion', '$titulo', '$noticia', '$estado', '$nom_img')";
 		$execute = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
 
 		if ($execute) {

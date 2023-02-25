@@ -2,8 +2,8 @@
 session_start();
 $usuario = $_SESSION['datosU']['nombre_usuario'];
 include '../conexion/conexion.php';
-include '../vistas/menuAdmin.php';
-// error_reporting(0);
+include '../vistas/menuAdmin.php'; 
+//error_reporting(0);
 ?>
 
 <!DOCTYPE html>
@@ -128,7 +128,7 @@ include '../vistas/menuAdmin.php';
                             <td><?php echo $dataPremios['id_premio']; ?></td>
                             <td><?php echo $dataPremios['nombre_premio']; ?></td>
                             <td><?php echo $dataPremios['puntos']; ?></td>
-                            <td><img src="../img/premios/<?php echo $dataPremios['imagen']; ?>" width="100" height="100" /></td>
+                            <td><img src="../images/img_premios/<?php echo $dataPremios['imagen']; ?>" width="100" height="100" /></td>
                             <td><?php $est = $dataPremios['estado'];
                                 echo ($est == 1) ? '<p style="color:green;font-weight:700; ">Activo </p>' : '<p style="color:red; font-weight:700; ">Inactivo </p>' ?></td>
 

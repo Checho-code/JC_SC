@@ -22,12 +22,13 @@ if (isset($_POST['btnGuardarPremio'])) {
         $nombre_premio = ($_POST['nombre_premio']);
         $puntos = ($_POST['puntos']);
         $estado = ($_POST['estado']);
+
+
         $imagen = $_FILES['imagen']['name'];
         $temporal = $_FILES['imagen']['tmp_name'];
         $nombrer = strtolower($imagen);
         $nom_img = $rand . '-' . $nombrer;
-        $carpeta = 'img/premios';
-        $ruta = $carpeta . '/' . $nom_img;
+        $carpeta = 'images/img_premios';
         move_uploaded_file($temporal, '../' . $carpeta . '/' . $nom_img);
 
 

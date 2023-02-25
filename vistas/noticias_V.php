@@ -129,7 +129,7 @@ include '../vistas/menuAdmin.php';
                             <td><?php echo $dataNoticias['fecha_publicacion']; ?></td>
                             <td><?php echo $dataNoticias['titulo']; ?></td>
                             <td><?php echo $dataNoticias['noticia']; ?></td>
-                            <td><img src="../<?php echo $dataNoticias['imagen']; ?>" width="100" height="100" /></td>
+                            <td><img src="../images/img_noticias/<?php echo $dataNoticias['imagen']; ?>" width="100" height="100" /></td>
                             <td><?php $est = $dataNoticias['estado'];
                                 echo ($est == 1) ? '<p style="color:green;font-weight:700; ">Activo </p>' : '<p style="color:red; font-weight:700; ">Inactivo </p>' ?></td>
 

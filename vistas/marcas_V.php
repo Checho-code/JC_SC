@@ -3,7 +3,7 @@ session_start();
 $usuario = $_SESSION['datosU']['nombre_usuario'];
 include '../conexion/conexion.php';
 include '../vistas/menuAdmin.php';
-// error_reporting(0);
+error_reporting(0);
 ?>
 
 <!DOCTYPE html>
@@ -121,7 +121,7 @@ include '../vistas/menuAdmin.php';
                           <tr>
                             <td><?php echo $dataMarca['id_marca']; ?></td>
                             <td><?php echo $dataMarca['nom_marca']; ?></td>
-                            <td><img src="../<?php echo $dataMarca['logo']; ?>" width="100" height="100" /></td>
+                            <td><img src="../images/img_marcas/<?php echo $dataMarca['logo']; ?>" width="100" height="100" /></td>
                             <td><?php $est = $dataMarca['estado'];
                                 echo ($est == 1) ? '<p style="color:green;font-weight:700; ">Activo </p>' : '<p style="color:red; font-weight:700; ">Inactivo </p>' ?></td>
 

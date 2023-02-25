@@ -84,7 +84,8 @@
             Productos
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="crear-producto.php">Registrar producto</a></li>
+            <li><a class="dropdown-item" href="../papelera/crear-producto.php">Registrar producto old</a></li>
+            <li><a class="dropdown-item" href="../vistas/productos_V.php">Registrar producto</a></li>
             <li><a class="dropdown-item" href="listado-productos.php">Listado de productos</a></li>
           </ul>
         </li>

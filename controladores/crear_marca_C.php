@@ -1,19 +1,30 @@
 <?php
 require('../conexion/conexion.php');
 
+function RandomString()
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $randstring = '';
+    for ($i = 0; $i < 30; $i++) {
+        $randstring = @$randstring . @$characters[rand(0, strlen($characters))];
+    }
+    return $randstring;
+}
+
 if (!empty($_POST['btnGuardar'])) {
 	if (!empty($_POST["nombre_marca"])&& ($_FILES['foto']['name']!=null)) {
+		$rand = RandomString();
 		$nom_marca = $_POST['nombre_marca'];
 		$estado = $_POST['estado'];
 
-
-		$nombre_img = $_FILES['foto']['name'];
+		$imagen = $_FILES['foto']['name'];
 		$temporal = $_FILES['foto']['tmp_name'];
-		$carpeta = 'img_marcas';
-		$ruta = $carpeta . '/' . $nombre_img;
-		move_uploaded_file($temporal, '../'.$carpeta . '/' . $nombre_img);
+		$nombrer = strtolower($imagen);
+        $nom_img = $rand . '-' . $nombrer;
+		$carpeta = 'images/img_marcas';
+		move_uploaded_file($temporal, '../' .$carpeta . '/' . $nom_img);
 
-		$query = "INSERT INTO marcas (nom_marca, logo, estado) VALUES ('$nom_marca', '$ruta', '$estado')";
+		$query = "INSERT INTO marcas (nom_marca, logo, estado) VALUES ('$nom_marca', '$nom_img', '$estado')";
 		$execute = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
 
 		if ($execute) {
