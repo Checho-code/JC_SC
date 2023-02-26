@@ -69,7 +69,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto nav-item dropdown">
 					<li class="nav-item dropdown p-2">
-						<a class="nav-link fs-6 fw-semibold text-dark link" href="index-base.php">Inicio</a>
+						<a class="nav-link fs-6 fw-semibold text-dark link" href="../index.php">Inicio</a>
 					</li>
 
 

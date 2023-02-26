@@ -1,4 +1,5 @@
-<?php include 'conexion/conexion.php' ?>
+<?php include 'conexion/conexion.php' ;
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +55,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 
 	<!----------------------------- Navegacion ----------------------------------->
 
@@ -83,7 +84,7 @@
 				</ul>
 
 				<a class="car-button" href="#"><i class="coche icon fa-solid fa-cart-shopping"></i></a>
-				<span class="numProd">7</span>
+				<span class="numProd">0</span>
 
 				<ul class="navbar-nav nav-pills mr-l">
 					<form class="d-flex" role="search">
@@ -113,16 +114,17 @@
 				while ($consulta = mysqli_fetch_array($query)) { ?>
 					<div class="col columnas m-2">
 						<div class="card  tarjeta ">
-						<a class="link-img" href="<?php $nom= $consulta['nom_marca'] ;
-						if($nom=="Frutos del campo"){
-							echo "vistas/indexB-frutos.php";
-						}else{
-							echo "vistas/indexB-fonda.php";
+							<a class="link-img" href="<?php $nom = $consulta['nom_marca'];
+							if ($nom == "Frutos del campo") {
+								echo "vistas/indexB-frutos.php";
+							} else {
+								echo "vistas/indexB-fonda.php";
 
-						}?>"><img  src="images/img_marcas/<?php echo $consulta['logo'] ?>" class="img-marca " alt="Imagen Frutos del campo"></a>
+							} ?>"><img src="images/img_marcas/<?php echo $consulta['logo'] ?>" class="img-marca "
+									alt="Imagen Frutos del campo"></a>
 							<div class=" mt-3">
 								<p class="titulo_marca">
-								<?php echo $consulta['nom_marca'] ?>
+									<?php echo $consulta['nom_marca'] ?>
 								</p>
 							</div>
 						</div>
@@ -149,25 +151,29 @@
 			<div class="row cont-productos">
 				<?php
 				$query = mysqli_query($conexion, "SELECT * FROM productos WHERE  estado='Disponible' AND destacado='1'");
+				 $dataProductos = mysqli_fetch_assoc($query);
 				while ($consulta = mysqli_fetch_array($query)) { ?>
 					<div class="col-4 columnasP ">
 						<div class="card  tarjetaP ">
 							<img src="images/img_productos/<?php echo $consulta['imagen']; ?>" class="img-producto "
-								style="width: 100%; height: 100%;" alt="Imagen Frutos del campo">
+								style="width: 100%; height: 100%;" alt="Imagen productos del campo">
+
 							<div class=" mt-3">
 								<p class="titulo_producto">
 									<?php echo $consulta['nom_producto'] ?>
 								</p>
 							</div>
+							<div class=" mt-3">
+								<button type="button" class="ver" data-toggle="modal" data-target="#verProd<?php echo $consulta['id_producto'] ?>">Ver</button>
+								<?php include('vistas/mod/mod-prodct/ver-prodct.php'); ?><!--Ventana Modal--->
+							</div>
 						</div>
 					</div>
-					<?php
-				}
-				?>
-
+					<?php } ?>
 
 			</div>
 		</div>
+		
 	</div>
 
 
@@ -175,48 +181,48 @@
 	<!---------------- Footer --------------->
 	<footer>
 
-    <div class="container__footer">
-        <div class="box__footer">
-            <div class="logo">
-                <img src="img/sistema/logo.png" alt="">
-            </div>
-            <div class="terms">
-                <p>Somos una empresa ubicada en el municipio de Andes-Antioquia, creada para
-                    acompañar a los campesinos y emprendedores en el proceso de comercialización de sus
-                    productos, vinculando diferentes marcas, permitiendo tener un amplio portafolio al alcance
-                    de su mano y desde la comodidad de su hogar.</p>
-            </div>
-        </div>
+		<div class="container__footer">
+			<div class="box__footer">
+				<div class="logo">
+					<img src="img/sistema/logo.png" alt="">
+				</div>
+				<div class="terms">
+					<p>Somos una empresa ubicada en el municipio de Andes-Antioquia, creada para
+						acompañar a los campesinos y emprendedores en el proceso de comercialización de sus
+						productos, vinculando diferentes marcas, permitiendo tener un amplio portafolio al alcance
+						de su mano y desde la comodidad de su hogar.</p>
+				</div>
+			</div>
 
 
-        <div class="box__footer">
-            <h2>Nuestas marcas</h2>
-            <a href="#">Frutos del campo</a>
-            <a href="#">La fonda chocoana</a>
-            <a href="#">Artesanisa Andinas</a>
-        </div>
+			<div class="box__footer">
+				<h2>Nuestas marcas</h2>
+				<a href="#">Frutos del campo</a>
+				<a href="#">La fonda chocoana</a>
+				<a href="#">Artesanisa Andinas</a>
+			</div>
 
-        <div class="box__footer">
-            <h2>Redes Sociales</h2>
-            <a href="#"> <i class="fab fa-brands fa-android"></i> App Android</a>
-            <a href="#"> <i class="fab fa-brands fa-app-store"></i> App Apple</a>
-            <a href="#"><i class="fab fa-brands fa-whatsapp"></i> WhastsApp</a>
-            <a href="#"><i class="fab fa-brands fa-instagram"></i> Instagram</a>
-        </div>
+			<div class="box__footer">
+				<h2>Redes Sociales</h2>
+				<a href="#"> <i class="fab fa-brands fa-android"></i> App Android</a>
+				<a href="#"> <i class="fab fa-brands fa-app-store"></i> App Apple</a>
+				<a href="#"><i class="fab fa-brands fa-whatsapp"></i> WhastsApp</a>
+				<a href="#"><i class="fab fa-brands fa-instagram"></i> Instagram</a>
+			</div>
 
-    </div>
+		</div>
 
-    <div class="box__copyright">
-        <hr>
-        <p>Todos los derechos reservados © 2023 <b>Juanda-Code</b> <img src="img/código.png" alt="Logo programador"
-                style="width: 3%; border-radius: 50%; "></p>
-        <p>Contacto:<b> 300-725-61-49</b> -- E-mail: <b>codigopractico23@gmail.com</b></p>
-    </div>
-</footer>
+		<div class="box__copyright">
+			<hr>
+			<p>Todos los derechos reservados © 2023 <b>Juanda-Code</b> <img src="img/código.png" alt="Logo programador"
+					style="width: 3%; border-radius: 50%; "></p>
+			<p>Contacto:<b> 300-725-61-49</b> -- E-mail: <b>codigopractico23@gmail.com</b></p>
+		</div>
+	</footer>
 
-	<script src="js/js_bootstrap/bootstrap.bundle.min.js"></script>
-	<script src="js/jquery.js"></script>
-	<script src="js/popper.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>
