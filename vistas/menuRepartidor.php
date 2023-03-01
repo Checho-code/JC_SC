@@ -55,7 +55,7 @@
 					</a>
 					<ul class="dropdown-menu dropdown-menu-dark">
 						<li><a class="dropdown-item" href="contactanos2.php">Contáctanos</a></li>
-						<li><a class="dropdown-item" href="#">Noticias</a></li>
+						<li><a class="dropdown-item" href="mostrarNoticias.php">Noticias</a></li>
 					</ul>
 				</li>
 
@@ -72,11 +72,9 @@
 			<span class="numProd">0</span>
 
 			<ul class="navbar-nav nav-pills mr-l">
-				<form class="d-flex" role="search">
-					<input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"></input>
-					<button class="btn btn-outline-success " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-				</form>
-			</ul>
+					<a class="btn btn-success m-2" href="busca_prodB.php">BUSCAR PRODUCTOS <span style="margin-left: 10px;"><i class="fa-solid fa-magnifying-glass"></i></span></a>
+				</ul>
+
 
 		</div>
 	</div>

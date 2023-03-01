@@ -24,6 +24,7 @@ include '../conexion/conexion.php'
 	<link rel="stylesheet" type="text/css" href="../mis_css/footer.css" />
 	<link rel="stylesheet" type="text/css" href="../mis_css/productos-destacados.css" />
 	<link rel="stylesheet" type="text/css" href="../mis_css/marcas.css" />
+	<link rel="stylesheet" type="text/css" href="../mis_css/ver_prodct.css" />
 
 	<title>Inicio | Frutos del campo</title>
 
@@ -68,9 +69,9 @@ include '../conexion/conexion.php'
 				<div class="card  tarjeta ">
 				<a class="link-img" href="<?php $nom= $consulta['nom_marca'] ;
 				if($nom=="Frutos del campo"){
-					echo "indexB-frutos.php";
+					echo "index-frutos.php";
 				}else{
-					echo "indexB-fonda.php";
+					echo "index-fonda.php";
 
 				}?>"><img  src="../images/img_marcas/<?php echo $consulta['logo'] ?>" class="img-marca " alt="Imagen Frutos del campo"></a>
 					<div class=" mt-3">
@@ -92,7 +93,39 @@ include '../conexion/conexion.php'
 
 	<!--------------------- Productos -------------------->
 	<h4>Futos del campo</h4>
-	<?php include('ver-todos-frutos.php') ?>
+	<div class="contenedorP">
+		<div class="cont-txt-prod">
+			<h4 class="textP">Nuestros Productos</h4>
+		</div>
+		<div class="container-fluid secundarioP ">
+
+			<div class="row cont-productos">
+				<?php
+				$query = mysqli_query($conexion, "SELECT * FROM productos WHERE  estado='Disponible' AND id_marca= 1");
+				while ($consulta = mysqli_fetch_array($query)) { ?>
+					<div class="col-4 columnasP ">
+						<div class="card  tarjetaP ">
+							<img src="../images/img_productos/<?php echo $consulta['imagen']; ?>" class="img-producto "
+								style="width: 100%; height: 100%;" alt="Imagen Frutos del campo">
+							<div class=" mt-3">
+								<p class="titulo_producto">
+									<?php echo $consulta['nom_producto'] ?>
+								</p>
+							</div>
+							<div class=" mt-3">
+								<button type="button" class="ver" data-toggle="modal" data-target="#verProdConLogueo<?php echo $consulta['id_producto'] ?>">Ver</button>
+								<?php include('mod/mod_comprar_prod.php'); ?><!--Ventana Modal--->
+							</div>
+						</div>	
+					</div>
+					<?php
+				}
+				?>
+
+
+			</div>
+		</div>
+	</div>
 
 	<br>
 	<br>
@@ -100,11 +133,12 @@ include '../conexion/conexion.php'
 
 
 	<!---------------- Footer --------------->
-	<?php include('footer.php') ?>
+		<!---------------- Footer --------------->
+		<?php include('footer.php') ?>
 
-	<script src="js/js_bootstrap/bootstrap.bundle.min.js"></script>
-	<script src="js/jquery.js"></script>
-	<script src="js/popper.min.js"></script>
+<script src="../js/jquery-3.6.3.min.js"></script>
+<script src="../js/popper.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 </body>
 
 </html>

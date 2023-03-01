@@ -3,17 +3,10 @@ session_start();
 $usuario = $_SESSION['datosU']['nombre_usuario'];
 include '../conexion/conexion.php';
 include '../vistas/menuAdmin.php';
-/*Capturo el parametro para mostrar solo los clientes de este vendedor, si no hay parametro me guio por el nivel de la sesion */
-$nivel = $_SESSION['nivel'];
-if ($nivel >= 3) {
+
     $b_clientes = mysqli_query($conexion, "SELECT * FROM clientes ORDER BY nombre");
     $row_clientes = mysqli_fetch_assoc($b_clientes);
-} else {
-    echo "<script type='text/javascript'>
-	alert('No tiene permiso para visualizar este archivo');
-	window.location='index.php';
-	</script>";
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -35,7 +28,7 @@ if ($nivel >= 3) {
 
     <link rel="stylesheet" type="text/css" href="mis_css/productos-destacados.css" />
 
-    <title>Frutos del campo</title>
+    <title>Clientes | Solcomercial</title>
 
 </head>
 
@@ -44,7 +37,7 @@ if ($nivel >= 3) {
         <div class="row">
 
             <div class="col-sm-12">
-                <h3 style="color: #177c03; text-align: center;" >Lista de clientes</h3>
+                <h3 style="color: #177c03; text-align: center;" >Lista de clientes y sus compras</h3>
                 <br>
                 <div class="table-responsive">
                     <table class=" table table-bordered table-striped table-hover table-sm">

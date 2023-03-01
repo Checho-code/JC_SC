@@ -1,4 +1,4 @@
-<?php include 'conexion/conexion.php' ;
+<?php include 'conexion/conexion.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,10 +17,12 @@
 	<script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" type="text/css" href="css/css_bootstrap/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="mis_css/productos-destacados.css" />
 	<link rel="stylesheet" type="text/css" href="mis_css/menuBasico.css" />
 	<link rel="stylesheet" type="text/css" href="mis_css/marcas.css" />
 	<link rel="stylesheet" type="text/css" href="mis_css/footer.css" />
-	<link rel="stylesheet" type="text/css" href="mis_css/productos-destacados.css" />
+	<link rel="stylesheet" type="text/css" href="mis_css/ver_prodct.css" />
+
 
 	<title>Inicio | Solcomercial</title>
 
@@ -87,11 +89,7 @@
 				<span class="numProd">0</span>
 
 				<ul class="navbar-nav nav-pills mr-l">
-					<form class="d-flex" role="search">
-						<input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"></input>
-						<button class="btn btn-outline-success " type="submit"><i
-								class="fa-solid fa-magnifying-glass"></i></button>
-					</form>
+					<a class="btn btn-success m-2" href="busca_prodB.php">BUSCAR PRODUCTOS <span style="margin-left: 10px;"><i class="fa-solid fa-magnifying-glass"></i></span></a>
 				</ul>
 
 			</div>
@@ -116,12 +114,13 @@
 						<div class="card  tarjeta ">
 							<a class="link-img" href="<?php $nom = $consulta['nom_marca'];
 							if ($nom == "Frutos del campo") {
-								echo "vistas/indexB-frutos.php";
+								echo "indexB-frutos.php";
+
 							} else {
-								echo "vistas/indexB-fonda.php";
+								echo "indexB-fonda.php";
 
 							} ?>"><img src="images/img_marcas/<?php echo $consulta['logo'] ?>" class="img-marca "
-									alt="Imagen Frutos del campo"></a>
+									alt="Imagen <?php echo $consulta['nom_marca'] ?>"></a>
 							<div class=" mt-3">
 								<p class="titulo_marca">
 									<?php echo $consulta['nom_marca'] ?>
@@ -151,12 +150,12 @@
 			<div class="row cont-productos">
 				<?php
 				$query = mysqli_query($conexion, "SELECT * FROM productos WHERE  estado='Disponible' AND destacado='1'");
-				 $dataProductos = mysqli_fetch_assoc($query);
+				$dataProductos = mysqli_fetch_assoc($query);
 				while ($consulta = mysqli_fetch_array($query)) { ?>
 					<div class="col-4 columnasP ">
 						<div class="card  tarjetaP ">
 							<img src="images/img_productos/<?php echo $consulta['imagen']; ?>" class="img-producto "
-								style="width: 100%; height: 100%;" alt="Imagen productos del campo">
+								style="width: 100%; height: 100%;" alt="Imagen <?php echo $consulta['nom_producto'] ?> ">
 
 							<div class=" mt-3">
 								<p class="titulo_producto">
@@ -164,16 +163,17 @@
 								</p>
 							</div>
 							<div class=" mt-3">
-								<button type="button" class="ver" data-toggle="modal" data-target="#verProd<?php echo $consulta['id_producto'] ?>">Ver</button>
-								<?php include('vistas/mod/mod-prodct/ver-prodct.php'); ?><!--Ventana Modal--->
+								<button type="button" class="ver" data-toggle="modal"
+									data-target="#verProdSinLogueo<?php echo $consulta['id_producto'] ?>">Ver</button>
+								<?php include('mod_ver_prodct.php'); ?><!--Ventana Modal--->
 							</div>
 						</div>
 					</div>
-					<?php } ?>
+				<?php } ?>
 
 			</div>
 		</div>
-		
+
 	</div>
 
 
@@ -220,9 +220,9 @@
 		</div>
 	</footer>
 
-	<script src="js/jquery.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery-3.6.3.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

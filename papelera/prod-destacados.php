@@ -21,6 +21,10 @@
 									<?php echo $consulta['nom_producto'] ?>
 								</p>
 							</div>
+							<div class=" mt-3">
+								<button type="button" class="ver" data-toggle="modal" data-target="#verProdConLogueo<?php echo $consulta['id_producto'] ?>">Ver</button>
+								<?php include('mod/mod_comprar_prod.php'); ?><!--Ventana Modal--->
+							</div>
 						</div>
 					</div>
 					<?php

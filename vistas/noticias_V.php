@@ -16,9 +16,11 @@ include '../vistas/menuAdmin.php';
   <link type="text/css" rel="shortcut icon" href="img/logo-mywebsite-urian-viera.svg" />
   <title>Noticias | Solcomercial</title>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script type="text/javascript" src="js/jquery.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
@@ -38,9 +40,9 @@ include '../vistas/menuAdmin.php';
     include '../conexion/conexion.php';
 
 
-    $sqlNoticia   = ("SELECT * FROM noticias ORDER BY id_noticia");
+    $sqlNoticia = ("SELECT * FROM noticias ORDER BY id_noticia");
     $queryNoticia = mysqli_query($conexion, $sqlNoticia);
-    $cantidad     = mysqli_num_rows($queryNoticia);
+    $cantidad = mysqli_num_rows($queryNoticia);
     ?>
 
 
@@ -55,7 +57,9 @@ include '../vistas/menuAdmin.php';
         <strong>Registrar Nueva Noticia</strong>
       </div>
       <div class="col-md-8">
-        <strong>Lista de Noticias <span style="color: crimson"> ( <?php echo $cantidad; ?> )</span> </strong>
+        <strong>Lista de Noticias <span style="color: crimson"> (
+            <?php echo $cantidad; ?> )
+          </span> </strong>
       </div>
     </div>
 
@@ -71,7 +75,8 @@ include '../vistas/menuAdmin.php';
 
                 <div class="form-group mt-4">
                   <label for="titulo">Titulo de la noticia *</label>
-                  <input type="text" name="titulo" autocomplete="off" class="form-control" placeholder="Titulo de la noticia" />
+                  <input type="text" name="titulo" autocomplete="off" class="form-control"
+                    placeholder="Titulo de la noticia" />
                 </div>
 
                 <div class="form-group mt-5 mb-5">
@@ -81,7 +86,8 @@ include '../vistas/menuAdmin.php';
 
                 <div class="input-group mt-5 mb-5">
                   <label for="imagen">Seleccione la imagen de la noticia *</label>
-                  <input type="file" name="imagen" class="form-control-file" accept="image/jpeg, image/jpg, image/png, image/gif" lang="es">
+                  <input type="file" name="imagen" class="form-control-file"
+                    accept="image/jpeg, image/jpg, image/png, image/gif" lang="es">
                 </div>
 
                 <div class="form-group mt-5 mb-5">
@@ -93,10 +99,11 @@ include '../vistas/menuAdmin.php';
                 </div>
 
                 <div class="form-group mt-5 mb-5">
-                  <input type="submit" name="btnGuardar" value="Guardar" class="btn" style="background-color: #177c03; color:#ffffff">
+                  <input type="submit" name="btnGuardar" value="Guardar" class="btn"
+                    style="background-color: #177c03; color:#ffffff">
                   <a href="index-base.php"><input type="button" value="Cancelar" class="btn btn-warning"></a>
                 </div>
-       
+
               </form>
 
             </div>
@@ -125,38 +132,51 @@ include '../vistas/menuAdmin.php';
                         <?php
                         do { ?>
                           <tr>
-                            <td><?php echo $dataNoticias['id_noticia']; ?></td>
-                            <td><?php echo $dataNoticias['fecha_publicacion']; ?></td>
-                            <td><?php echo $dataNoticias['titulo']; ?></td>
-                            <td><?php echo $dataNoticias['noticia']; ?></td>
-                            <td><img src="../images/img_noticias/<?php echo $dataNoticias['imagen']; ?>" width="100" height="100" /></td>
-                            <td><?php $est = $dataNoticias['estado'];
-                                echo ($est == 1) ? '<p style="color:green;font-weight:700; ">Activo </p>' : '<p style="color:red; font-weight:700; ">Inactivo </p>' ?></td>
+                            <td>
+                              <?php echo $dataNoticias['id_noticia']; ?>
+                            </td>
+                            <td>
+                              <?php echo $dataNoticias['fecha_publicacion']; ?>
+                            </td>
+                            <td>
+                              <?php echo $dataNoticias['titulo']; ?>
+                            </td>
+                            <td>
+                              <?php echo $dataNoticias['noticia']; ?>
+                            </td>
+                            <td>
+                              <?php $est = $dataNoticias['estado'];
+                              echo ($est == 1) ? '<p style="color:green;font-weight:700; ">Activo </p>' : '<p style="color:red; font-weight:700; ">Inactivo </p>' ?>
+                            </td>
 
+                            <td><img src="../images/img_noticias/<?php echo $dataNoticias['imagen']; ?>" width="100"
+                                height="100" /></td>
                             <td>
                               <div class=" container-fluid">
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataNoticias['id_noticia']; ?>">
+                                <button type="button" class="btn btn-danger" data-toggle="modal"
+                                  data-target="#deleteChildresn<?php echo $dataNoticias['id_noticia']; ?>">
                                   <i class="fa-solid fa-trash-can"></i>
                                 </button>
                                 <br>
                                 <br>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataNoticias['id_noticia']; ?>">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                  data-target="#editChildresn<?php echo $dataNoticias['id_noticia']; ?>">
                                   <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
                               </div>
                             </td>
                           </tr>
-                      </tbody>
+                        </tbody>
 
 
-                      <!--Ventana Modal para Actualizar--->
-                      <?php include('mod/ModalEditarN.php'); ?>
+                        <!--Ventana Modal para Actualizar--->
+                        <?php include('mod/ModalEditarN.php'); ?>
 
-                      <!--Ventana Modal para la Alerta de Eliminar--->
-                      <?php include('mod/ModalEliminarN.php'); ?>
+                        <!--Ventana Modal para la Alerta de Eliminar--->
+                        <?php include('mod/ModalEliminarN.php'); ?>
 
 
-                    <?php } while ($dataNoticias = mysqli_fetch_assoc($buscar_noticias)); ?>
+                      <?php } while ($dataNoticias = mysqli_fetch_assoc($buscar_noticias)); ?>
 
                     </table>
                   </div>
@@ -180,7 +200,9 @@ include '../vistas/menuAdmin.php';
   <br>
 
   <div class="video">
-    <iframe width="860" height="415" src="https://www.youtube.com/embed/x8hEbhePSF4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="860" height="415" src="https://www.youtube.com/embed/x8hEbhePSF4" title="YouTube video player"
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
   </div>
   <br><br>
 
@@ -190,14 +212,14 @@ include '../vistas/menuAdmin.php';
   <!---------------- Footer --------------->
   <?php include('../vistas/footer.php') ?>
 
-  <script src="../js/jquery.min.js"></script>
+  <script src="../js/jquery-3.6.3.min.js"></script>
   <script src="../js/popper.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
 
   <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
 
-      $('.btnBorrarN').click(function(e) {
+      $('.btnBorrarN').click(function (e) {
         e.preventDefault();
         var id = $(this).attr("id");
 
@@ -208,7 +230,7 @@ include '../vistas/menuAdmin.php';
           type: "POST",
           url: url,
           data: dataString,
-          success: function(data) {
+          success: function (data) {
             window.location.href = "noticias_V.php";
             $('#respuesta').html(data);
           }

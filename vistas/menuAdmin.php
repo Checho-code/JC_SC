@@ -77,7 +77,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" href="empleados_V.php">Registrar empleado</a></li>
-            <li><a class="dropdown-item" href="lista-vendedores.php">Listado empleados</a></li>
+            <li><a class="dropdown-item" href="lista-vendedores.php">Transacciones empleados</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown p-2">
@@ -85,9 +85,8 @@
             Productos
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="../papelera/crear-producto.php">Registrar producto old</a></li>
             <li><a class="dropdown-item" href="../vistas/productos_V.php">Registrar producto</a></li>
-            <li><a class="dropdown-item" href="listado-productos.php">Listado de productos</a></li>
+            <li><a class="dropdown-item" href="../vistas/listar-producto.php">Listado de productos</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown p-2">
@@ -104,7 +103,7 @@
             Clientes
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="ver-cli.php">Listado de clientes</a></li> <!---- aca voy ---->
+            <li><a class="dropdown-item" href="ver-cli-compras.php">Listado de clientes y sus compras</a></li> <!---- aca voy ---->
             <li><a class="dropdown-item" href="ver-usuario.php">Listado de usuarios</a></li>
             <li><a class="dropdown-item" href="cambio-clave.php">Cambiar contraseña</a></li>
           </ul>
@@ -126,11 +125,9 @@
       <span class="numProd">0</span>
 
       <ul class="navbar-nav nav-pills mr-l">
-        <form class="d-flex me-1 " role="search">
-          <input class="form-control m-2 " type="search" placeholder="Buscar" aria-label="Search"></input>
-          <button class="btn btn-outline-success " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
-      </ul>
+					<a class="btn btn-success m-2" href="busca_prodB.php">BUSCAR PRODUCTOS <span style="margin-left: 10px;"><i class="fa-solid fa-magnifying-glass"></i></span></a>
+				</ul>
+
 
     </div>
   </div>

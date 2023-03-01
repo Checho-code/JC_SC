@@ -72,6 +72,7 @@ error_reporting(0);
         <br>
         <br>
         <br>
+        <hr>
 
         <h5 style="color: #177c03; text-align: center;">Video Frutos del campo </h5>
         <br>
@@ -80,7 +81,6 @@ error_reporting(0);
             <iframe width="860" height="415" src="https://www.youtube.com/embed/x8hEbhePSF4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <br><br>
-        <hr>
         <br>
 
         <h2 style="color: #177c03; text-align: center;">Las noticias </h2>

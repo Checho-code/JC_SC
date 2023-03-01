@@ -14,7 +14,7 @@ if (isset($_POST['btnGuardar'])) {
 
 	if (!empty($_POST['marca']) && !empty($_POST['categoria']) && !empty($_POST['nombre']) && !empty($_POST['precio']) && !empty($_POST['unidad']) && !empty($_POST['porcentaje']) && !empty($_POST['descripcion']) && !empty($_POST['estado']) && !empty($_POST['destacado']) && ($_FILES['imagen']['name'] != null)) {
 		$rand = RandomString();
-		
+
 		$nombre_producto = ($_POST['nombre']);
 		$precio = ($_POST['precio']);
 		$unidad = ($_POST['unidad']);
@@ -24,15 +24,15 @@ if (isset($_POST['btnGuardar'])) {
 		$destacado = ($_POST['destacado']);
 		$marca = ($_POST['marca']);
 		$categoria = ($_POST['categoria']);
-		
+
 		$imagen = $_FILES['imagen']['name'];
 		$temporal = $_FILES['imagen']['tmp_name'];
 		$nombrer = strtolower($imagen);
 		$nom_img = $rand . '-' . $nombrer;
 		$carpeta = 'images/img_productos';
 		move_uploaded_file($temporal, '../' . $carpeta . '/' . $nom_img);
-		
-		
+
+
 		$stmt = $conexion->prepare("INSERT INTO productos (nom_producto, precio, unidad, porcentaje, descripcion, imagen, estado, destacado, id_marca, id_categoria ) VALUES (?,?,?,?,?,?,?,?,?,?)");
 		$stmt->bind_param('sisdsssiii', $nombre_producto, $precio, $unidad, $porcentaje, $descripcion, $nom_img, $estado, $destacado, $marca, $categoria);
 		$stmt->execute();
@@ -40,8 +40,7 @@ if (isset($_POST['btnGuardar'])) {
 
 		if ($stmt) {
 			/**	alerta reg exitoso */
-?>
-
+			?>
 			<script>
 				Swal.fire({
 					title: 'Muy bien...!',
@@ -52,14 +51,14 @@ if (isset($_POST['btnGuardar'])) {
 				}).then((result) => {
 					if (result.isConfirmed) {
 
-						window.location = '../vistas/productos_V.php';
+						window.location.href  = 'listar-producto.php';
 					}
 				})
 			</script>
-		<?php
+			<?php
 		} else {
 			/**	alerta reg invalido */
-		?>
+			?>
 			<script>
 				Swal.fire({
 					title: 'Ooopss...!',
@@ -69,7 +68,7 @@ if (isset($_POST['btnGuardar'])) {
 					confirmButtonText: 'Continuar'
 				})
 			</script>
-		<?php
+			<?php
 		}
 	} else {
 		/**cerrar si no vacios */
@@ -83,7 +82,7 @@ if (isset($_POST['btnGuardar'])) {
 				confirmButtonText: 'Continuar'
 			})
 		</script>
-<?php
+		<?php
 	}
 }
 /**cerrar btnGuardar */

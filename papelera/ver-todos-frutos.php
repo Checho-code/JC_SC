@@ -9,7 +9,7 @@
 
 			<div class="row cont-productos">
 				<?php
-				$query = mysqli_query($conexion, "SELECT * FROM productos WHERE  estado='Disponible'");
+				$query = mysqli_query($conexion, "SELECT * FROM productos WHERE  estado='Disponible' AND id_marca= 1");
 				while ($consulta = mysqli_fetch_array($query)) { ?>
 					<div class="col-4 columnasP ">
 						<div class="card  tarjetaP ">
@@ -20,7 +20,11 @@
 									<?php echo $consulta['nom_producto'] ?>
 								</p>
 							</div>
-						</div>
+							<div class=" mt-3">
+								<button type="button" class="ver" data-toggle="modal" data-target="#verProdConLogueo<?php echo $consulta['id_producto'] ?>">Ver</button>
+								<?php include('mod/mod_comprar_prod.php'); ?><!--Ventana Modal--->
+							</div>
+						</div>	
 					</div>
 					<?php
 				}
