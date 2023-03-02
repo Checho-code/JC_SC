@@ -87,10 +87,9 @@
 
 				<a class="car-button" href="#"><i class="coche icon fa-solid fa-cart-shopping"></i></a>
 				<span class="numProd">0</span>
-
-				<ul class="navbar-nav nav-pills mr-l">
+				<!-- <ul class="navbar-nav nav-pills mr-l">
 					<a class="btn btn-success m-2" href="busca_prodB.php">BUSCAR PRODUCTOS <span style="margin-left: 10px;"><i class="fa-solid fa-magnifying-glass"></i></span></a>
-				</ul>
+				</ul> -->
 
 			</div>
 		</div>
@@ -143,17 +142,19 @@
 
 	<div class="contenedorP">
 		<div class="cont-txt-prod">
-			<h4 class="textP">Productos más destacados</h4>
+			<h4 class="textP">Productos Destacados</h4>
 		</div>
 		<div class="container-fluid secundarioP ">
 
 			<div class="row cont-productos">
 				<?php
-				$query = mysqli_query($conexion, "SELECT * FROM productos WHERE  estado='Disponible' AND destacado='1'");
-				$dataProductos = mysqli_fetch_assoc($query);
-				while ($consulta = mysqli_fetch_array($query)) { ?>
-					<div class="col-4 columnasP ">
-						<div class="card  tarjetaP ">
+				$sql = ("SELECT * FROM productos WHERE destacado = 1 AND estado = 'Disponible'");
+				$productos = mysqli_query($conexion, $sql);
+				$consulta = mysqli_fetch_assoc($productos);
+
+				do { ?>
+					<div class="col-4 columnas ">
+						<div class="card  tarjeta  ">
 							<img src="images/img_productos/<?php echo $consulta['imagen']; ?>" class="img-producto "
 								style="width: 100%; height: 100%;" alt="Imagen <?php echo $consulta['nom_producto'] ?> ">
 
@@ -165,11 +166,12 @@
 							<div class=" mt-3">
 								<button type="button" class="ver" data-toggle="modal"
 									data-target="#verProdSinLogueo<?php echo $consulta['id_producto'] ?>">Ver</button>
-								<?php include('mod_ver_prodct.php'); ?><!--Ventana Modal--->
+									<?php include('mod_ver_prodct.php'); ?><!--Ventana Modal--->
+								</div>
 							</div>
 						</div>
-					</div>
-				<?php } ?>
+				<?php } while ($consulta = mysqli_fetch_assoc($productos)) ?>
+
 
 			</div>
 		</div>

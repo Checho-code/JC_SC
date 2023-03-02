@@ -9,26 +9,59 @@
         border: #177c03 solid 1px;
         border-radius: 20px;
     }
-    .camb-pass{
+
+    .camb-pass {
+        font-weight: 600;
         text-decoration: none;
         text-align: center;
         display: inline-block;
-        padding:10px;
+        padding: 10px;
         width: 220px;
         background-color: #177c03;
-        color:#fff;
+        color: #fff;
         border-radius: 20px;
+        border:none;
     }
-    .close{
+
+    .cierra {
+        font-weight: 600;
         text-decoration: none;
         text-align: center;
         display: inline-block;
-        padding:10px;
+        padding: 10px;
         width: 220px;
         background-color: #ffdd00;
-        color:#000;
+        color: #177c03;
         border-radius: 20px;
+        border:none;
     }
+    
+    .camb-pass:hover {
+        text-decoration: none;
+        text-align: center;
+        display: inline-block;
+        padding: 10px;
+        width: 220px;
+        background-color: #fff;
+        color: #177c03;
+        border-radius: 20px;
+        border: solid 2px #177c03;
+        box-shadow: 5px 5px 15px #177c03;
+    }
+
+    .cierra:hover {
+        text-decoration: none;
+        text-align: center;
+        display: inline-block;
+        padding: 10px;
+        width: 220px;
+        background-color: #fff;
+        color: #ffdd00;
+        border-radius: 20px;
+        border: solid 2px #ffdd00;
+        box-shadow: 5px 5px 15px #ffdd00;
+    }
+
 </style>
 <!--ventana para Update--->
 <div class="modal fade" id="perfilEmpl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -40,7 +73,7 @@
                 </h4>
             </div>
 
-            <div class="row justify-content-around mt-3 p-2">
+            <div class="row justify-content-around  p-2">
 
                 <div class="col-5 text-center">
                     <label for="nombres" class="label">Nombre </label>
@@ -59,7 +92,7 @@
             </div>
 
 
-            <div class="row justify-content-around  mt-3 p-2">
+            <div class="row justify-content-around   p-2">
                 <div class="col-5 text-center">
                     <label for="tipo-docs" class="label">Tipo documento </label>
                     <p class="datos">
@@ -76,7 +109,7 @@
 
             </div>
 
-            <div class="row justify-content-around  mt-3 p-2">
+            <div class="row justify-content-around   p-2">
                 <div class="col-5 text-center">
                     <label for="num-tel" class="label">Num. telefono </label>
                     <p class="datos">
@@ -112,7 +145,7 @@
 
             </div>
 
-            <div class="row justify-content-around mt-3 p-2">
+            <div class="row justify-content-around  p-2">
 
                 <div class="col-10 text-center">
                     <label for="correo1s" class="label">Correo </label>
@@ -123,7 +156,7 @@
 
             </div>
 
-            <div class="row justify-content-around mt-3 p-2">
+            <div class="row justify-content-around  p-2">
                 <div class="col-5 text-center">
                     <label for="clave1s" class="label">Contraseña </label>
                     <p class="datos">
@@ -134,12 +167,12 @@
             </div>
 
             <div class="modal-footer justify-content-center">
-                <div class="row justify-content-between mt-3 p-2">
+                <div class="row justify-content-between  p-2">
                     <div class="col-5">
-                        <button type="button" class="close btn btn-warning" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="cierra" data-dismiss="modal">Cerrar</button>
                     </div>
                     <div class="col-5">
-                        <a class="camb-pass" href="#">Cambiar contraseña</a>
+                        <a class="camb-pass" href="../vistas/cambio-clave.php">Cambiar contraseña</a>
                     </div>
                 </div>
             </div>

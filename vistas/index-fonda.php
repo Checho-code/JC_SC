@@ -93,10 +93,10 @@ include '../conexion/conexion.php'
 	
 	
 	<!--------------------- Productos -------------------->
-	<h4>La fonda chocoana</h4>
+	
 	<div class="contenedorP">
 		<div class="cont-txt-prod">
-			<h4 class="textP">Nuestros Productos</h4>
+			<h4 class="textP">Productos de La Fonda Chocoana</h4>
 		</div>
 		<div class="container-fluid secundarioP ">
 

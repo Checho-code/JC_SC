@@ -80,7 +80,7 @@ include '../vistas/menuAdmin.php';
                                 <div class="container text-center">
                                     <div class="row align-items-start">
                                         <div class="col">
-                                            <input type="submit" class="btn btn-info" value="Buscar"
+                                            <input type="submit" class="btn btn-warning" value="Buscar"
                                                 style="margin-bottom: 5px;">
                                         </div>
                                     </div>
@@ -101,13 +101,12 @@ include '../vistas/menuAdmin.php';
         $row_usuarios = mysqli_fetch_assoc($los_usuarios);
     } elseif (!empty($_POST['buscaNombre']) && empty($_POST['buscaRol'])) {
         $nom = $_POST['buscaNombre'];
-        $sql = ("SELECT * FROM usuarios WHERE nombre_usuario = '$nom'");
+        $sql = ("SELECT * FROM usuarios WHERE nombre_usuario lIKE '%$nom%'");
         $los_usuarios = mysqli_query($conexion, $sql);
         $row_usuarios = mysqli_fetch_assoc($los_usuarios);
 
     } elseif (empty($_POST['buscaNombre']) && !empty($_POST['buscaRol'])) {
         $rol = $_POST['buscaRol'];
-        echo "este es el nivel  $rol";
 
         $sql = ("SELECT * FROM usuarios WHERE nivel = '$rol'");
         $los_usuarios = mysqli_query($conexion, $sql);
@@ -117,7 +116,7 @@ include '../vistas/menuAdmin.php';
         $rol = $_POST['buscaRol'];
 
 
-        $sql = ("SELECT * FROM usuarios WHERE nombre_usuario = '$nom' AND nivel = '$rol'");
+        $sql = ("SELECT * FROM usuarios WHERE nombre_usuario LIKE '%$nom%' AND nivel = '$rol'");
         $los_usuarios = mysqli_query($conexion, $sql);
         $row_usuarios = mysqli_fetch_assoc($los_usuarios);
 

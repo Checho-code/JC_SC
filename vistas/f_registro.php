@@ -96,7 +96,7 @@
 				<div class="col-5">
 					<label for="clave1s" class="label">Contraseña *</label>
 					<div class="input-group ">
-						<input required type="password" class="form-control" name="clave1" id="password" <?php if (isset($_REQUEST['clave1']) && $_REQUEST['clave1'] != '') : ?> value="<?php echo $_REQUEST['clave1']; ?>" <?php endif; ?>>
+						<input required type="password" class="form-control" name="clave1" id="password" <?php if (isset($_REQUEST['clave1']) && $_REQUEST['clave1'] != '') : ?> value="<?php echo $_REQUEST['clave1']; ?>" <?php endif; ?>><span class=" input-group-text" id="basic-addon2"><i class="fa-solid fa-eye" id="eye"></i></span>
 
 					</div>
 				</div>
@@ -104,7 +104,7 @@
 				<div class="col-5">
 					<label for="clave2s" class="label">Repetir Contraseña *</label>
 					<div class="input-group ">
-						<input required type="password" class="form-control" name="clave2" id="password1" <?php if (isset($_REQUEST['clave2']) && $_REQUEST['clave2'] != '') : ?> value="<?php echo $_REQUEST['clave2']; ?>" <?php endif; ?>>
+						<input required type="password" class="form-control" name="clave2" id="password1" <?php if (isset($_REQUEST['clave2']) && $_REQUEST['clave2'] != '') : ?> value="<?php echo $_REQUEST['clave2']; ?>" <?php endif; ?>><span class=" input-group-text" id="basic-addon2"><i class="fa-solid fa-eye" id="eye1"></i></span>
 
 					</div>
 				</div>
@@ -124,7 +124,7 @@
 
 			<div class="row justify-content-around mt-3 p-2">
 				<div class="botonera col-3">
-					<a href="login.php" class="btn-cancel">Cancelar</a>
+					<a href="login.php" class="btn-cancel">Login</a>
 				</div>
 				<div class="botonera col-3">
 					<input type="submit" class="btn-reg" name="btnRegistrar" value="Registrar">

@@ -97,7 +97,7 @@ error_reporting(0);
             }else{
                 echo '<div class="text-center p-2 mb-5" style="color:#177c03; font-weight: 600;"> <h4>Resultado de la busqueda</h4></div>';
                 $nom = $_POST['buscarProd'];
-                $sql = ("SELECT * FROM productos WHERE nom_producto= '$nom' AND estado = 'Disponible'");
+                $sql = ("SELECT * FROM productos WHERE nom_producto LIKE '%$nom%' AND estado = 'Disponible'");
                 $productos = mysqli_query($conexion, $sql);
                 $row_prod = mysqli_fetch_assoc($productos);
             

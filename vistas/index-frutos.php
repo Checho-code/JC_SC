@@ -92,10 +92,10 @@ include '../conexion/conexion.php'
 
 
 	<!--------------------- Productos -------------------->
-	<h4>Futos del campo</h4>
+	
 	<div class="contenedorP">
 		<div class="cont-txt-prod">
-			<h4 class="textP">Nuestros Productos</h4>
+			<h4 class="textP">Productos de Futos del campo</h4>
 		</div>
 		<div class="container-fluid secundarioP ">
 
