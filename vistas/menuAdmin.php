@@ -77,6 +77,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" href="empleados_V.php">Registrar empleado</a></li>
+            <li><a class="dropdown-item" href="lista_empleados.php">Lista empleados</a></li>
             <li><a class="dropdown-item" href="lista-vendedores.php">Transacciones empleados</a></li>
           </ul>
         </li>
@@ -104,7 +105,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" href="ver-cli-compras.php">Listado de clientes y sus compras</a></li> <!---- aca voy ---->
-            <li><a class="dropdown-item" href="ver-usuario.php">Listado de usuarios</a></li>
+            <li><a class="dropdown-item" href="listar-usuario.php">Listado de usuarios</a></li>
             <li><a class="dropdown-item" href="cambio-clave.php">Cambiar contraseña</a></li>
           </ul>
         </li>

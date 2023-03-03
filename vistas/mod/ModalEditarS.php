@@ -12,7 +12,7 @@
       </div>
 
 
-      <form method="POST" action="mod/ModificarM.php">
+      <form method="POST" action="">
         <input type="hidden" name="id" value="<?php echo $dataMarca['id_marca']; ?>">
         <h6 style="color: #000; text-align: center;" class="mt-3 fw-bold">Lo único que nos se puede modificar es la imágen</h6>
         
@@ -36,9 +36,12 @@
           </div>
         </div>
 
+        <?php include 'ModificarS.php';?>
+        
         <div class="modal-footer">
           <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn" style="color: #fff; background-color: #177c03; ">Guardar Cambios</button>
+
+          <button type="submit" name="btnUpSec" class="btn" style="color: #fff; background-color: #177c03; ">Guardar Cambios</button>
         </div>
       </form>
 

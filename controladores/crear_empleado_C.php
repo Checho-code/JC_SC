@@ -9,7 +9,7 @@ use PHPMailer\PHPMailer\Exception;
 //capturamos y escapamos todo lo que se envio por el formulario
 if (!empty($_POST['btnRegistrar'])) {
 
-	if (!empty($_POST["nombre"]) and !empty($_POST["apellido"]) and !empty($_POST["tipo-doc"]) and !empty($_POST["numero"]) and !empty($_POST["tel"]) and !empty($_POST["nivel"]) and !empty($_POST["correo1"]) and !empty($_POST["correo2"]) and !empty($_POST["clave1"]) and !empty($_POST["clave2"])) {
+	if (!empty($_POST["nombre"]) and !empty($_POST["apellido"]) and !empty($_POST["tipo-doc"]) and !empty($_POST["numero"]) and !empty($_POST["tel"]) and ($_POST["nivel"] !="Seleccione") and !empty($_POST["correo1"]) and !empty($_POST["correo2"]) and !empty($_POST["clave1"]) and !empty($_POST["clave2"])) {
 
 		$nombre = $_POST["nombre"];
 		$apellido = $_POST["apellido"];

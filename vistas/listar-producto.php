@@ -68,19 +68,19 @@ include '../controladores/crear_producto_C.php';
 
 
           <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover">
+            <table class="table table-bordered  table-hover">
               <thead>
                 <tr>
-                  <th scope="col">Id</th>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Precio</th>
-                  <th scope="col">Unidad</th>
-                  <th scope="col">%</th>
-                  <th scope="col">Descripcion</th>
-                  <th scope="col">Imagen</th>
-                  <th scope="col">Estado</th>
-                  <th scope="col">Destacar</th>
-                  <th scope="col">Acciones</th>
+                  <th style="background-color: #cecece; font-size: 0.85rem;">Id</th>
+                  <th style="background-color: #cecece; font-size: 0.85rem;">Nombre</th>
+                  <th style="background-color: #cecece; font-size: 0.85rem;">Precio</th>
+                  <th style="background-color: #cecece; font-size: 0.85rem;">Unidad</th>
+                  <th style="background-color: #cecece; font-size: 0.85rem;">%</th>
+                  <th style="background-color: #cecece; font-size: 0.85rem;">Descripcion</th>
+                  <th style="background-color: #cecece; font-size: 0.85rem;">Imagen</th>
+                  <th style="background-color: #cecece; font-size: 0.85rem;">Estado</th>
+                  <th style="background-color: #cecece; font-size: 0.85rem;">Destacar</th>
+                  <th style="background-color: #cecece; font-size: 0.85rem;">Acciones</th>
                 </tr>
               </thead>
               <tbody>

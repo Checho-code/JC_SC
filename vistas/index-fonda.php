@@ -50,90 +50,22 @@ include '../conexion/conexion.php'
 	?>
 
 
-	<!--------------------- Productos -------------------->
-	<!---------------- Marcas ----------------->
+	    <!---------------- Marcas ----------------->
 
-	<div class="contenedor">
-
-		<h4 class="text">Nuestras marcas</h4>
-
-		<div class="container-fluid  secundario ">
-
-			<div class="row cont-marcas">
-
-
-				<?php
-				$query = mysqli_query($conexion, "SELECT * FROM marcas WHERE nom_marca != 'La fonda chocoana'");
-				while ($consulta = mysqli_fetch_array($query)) { ?>
-					<div class="col columnas m-2">
-						<div class="card  tarjeta ">
-						<a class="link-img" href="<?php $nom= $consulta['nom_marca'] ;
-						if($nom=="Frutos del campo"){
-							echo "index-frutos.php";
-						}else{
-							echo "index-fonda.php";
-
-						}?>"><img  src="../images/img_marcas/<?php echo $consulta['logo'] ?>" class="img-marca " alt="Imagen Fonda chocoana"></a>
-							<div class=" mt-3">
-								<p class="titulo_marca">
-								<?php echo $consulta['nom_marca'] ?>
-								</p>
-							</div>
-						</div>
-					</div>
-					<?php
-				}
-				?>
-
-
-			</div>
-		</div>
-	</div>
-	
-	
-	
-	<!--------------------- Productos -------------------->
-	
-	<div class="contenedorP">
-		<div class="cont-txt-prod">
-			<h4 class="textP">Productos de La Fonda Chocoana</h4>
-		</div>
-		<div class="container-fluid secundarioP ">
-
-			<div class="row cont-productos">
-				<?php
-				$query = mysqli_query($conexion, "SELECT * FROM productos WHERE  estado='Disponible' AND id_marca= 2");
-				while ($consulta = mysqli_fetch_array($query)) { ?>
-					<div class="col-4 columnasP ">
-						<div class="card  tarjetaP ">
-							<img src="../images/img_productos/<?php echo $consulta['imagen']; ?>" class="img-producto "
-								style="width: 100%; height: 100%;" alt="Imagen Frutos del campo">
-							<div class=" mt-3">
-								<p class="titulo_producto">
-									<?php echo $consulta['nom_producto'] ?>
-								</p>
-							</div>
-							<div class=" mt-3">
-								<button type="button" class="ver" data-toggle="modal" data-target="#verProdConLogueo<?php echo $consulta['id_producto'] ?>">Ver</button>
-								<?php include('mod/mod_comprar_prod.php'); ?><!--Ventana Modal--->
-							</div>
-						</div>	
-					</div>
-					<?php
-				}
-				?>
-
-
-			</div>
-		</div>
-	</div>
+		<?php include 'mostrar_marcas.php'; ?>
+    
+    
+    
+    <!--------------------- Productos Fonda -------------------->
+    
+    <?php include 'mostrar_prod_fonda.php'; ?>
 
 	<br>
 	<br>
 	<br>
 	
 
-	<!---------------- Footer --------------->
+	
 	<!---------------- Footer --------------->
 	<?php include('footer.php') ?>
 

@@ -116,16 +116,16 @@ include '../vistas/menuAdmin.php';
 
 
                   <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-hover">
                       <thead>
                         <tr>
-                          <th scope="col">Id</th>
-                          <th scope="col">Publicado</th>
-                          <th scope="col">Titulo</th>
-                          <th scope="col">Noticia</th>
-                          <th scope="col">Estado</th>
-                          <th scope="col">imagen</th>
-                          <th scope="col">Acciones</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Id</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Publicado</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Titulo</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Noticia</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Estado</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">imagen</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Acciones</th>
                         </tr>
                       </thead>
                       <tbody>

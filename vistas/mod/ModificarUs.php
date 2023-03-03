@@ -1,7 +1,8 @@
 
 <?php
-include('../../conexion/conexion.php');
+//include('../../conexion/conexion.php');
 
+if(isset($_POST['btnUpUs'])){
 $id = $_REQUEST['id'];
 $nombre      = $_REQUEST['nombre'];
 $apellido      = $_REQUEST['apellido'];
@@ -14,9 +15,11 @@ $email      = $_REQUEST['correo'];
 $update = ("UPDATE usuarios SET nombre_usuario  ='$nombre', apellido_usuario  ='$apellido', tipo_doc ='$tipo',  num_doc ='$numero', telefono  ='$tel', email ='$email', estado  ='$estado' WHERE id_usuario='$id'");
 $result_update = mysqli_query($conexion, $update);
 
- echo "<script type='text/javascript'>
-         window.location='../ver-usuario.php';
-    </script>";
+    if($result_update>0){
+        ?>
+        <script>
+             window.location.href = "ver-usuario.php";
+        </script>
+<?php } 
 
-
-?>
+        }

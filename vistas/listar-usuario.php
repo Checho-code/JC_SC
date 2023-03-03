@@ -25,11 +25,7 @@ $row_usuarios = mysqli_fetch_assoc($los_usuarios);
 
   <link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="../mis_css/menuPpal.css" />
-  <link rel="stylesheet" type="text/css" href="../mis_css/productos-destacados.css" />
-  <link rel="stylesheet" type="text/css" href="../mis_css/marcas.css" />
   <link rel="stylesheet" type="text/css" href="../mis_css/footer.css" />
-
-  <link rel="stylesheet" type="text/css" href="mis_css/productos-destacados.css" />
 
   <title>Usuarios | Solcomercial</title>
 
@@ -39,23 +35,23 @@ $row_usuarios = mysqli_fetch_assoc($los_usuarios);
   <div class="container-fluid mt-5 mb-5 ">
     <div class="row justify-content-center ">
       <div class="col-sm-12">
-        <h3 style="color: #177c03; text-align: center;">Listado de Usuarios </h3>
+        <h4 style="color: #177c03; text-align: center;">Listado de Usuarios </h4>
         <br>
         <div class="table-responsive">
-          <table class="table table-bordered table-striped table-hover table-sm ">
+          <table class="table table-bordered  table-hover ">
             <tbody>
-              <tr class="thead-dark">
-                <th scope="col">ID</th>
-                <th scope="col">NOMBRE</th>
-                <th scope="col">APELLIDO</th>
-                <th scope="col">TIPO DOC.</th>
-                <th scope="col">NUMERO</th>
-                <th scope="col">TELEFONO</th>
-                <th scope="col">CORREO</th>
-                <th scope="col">CLAVE</th>
-                <th scope="col">ESTADO</th>
-                <th scope="col">FEC.REGISTRO</th>
-                <th scope="col">ACCIONES</th>
+              <tr>
+                <th style="background-color: #cecece; font-size: 0.85rem;">ID</th>
+                <th style="background-color: #cecece; font-size: 0.85rem;">Nombre</th>
+                <th style="background-color: #cecece; font-size: 0.85rem;">Apellido</th>
+                <th style="background-color: #cecece; font-size: 0.85rem;">Tipo Doc.</th>
+                <th style="background-color: #cecece; font-size: 0.85rem;">Número</th>
+                <th style="background-color: #cecece; font-size: 0.85rem;">Teléfono</th>
+                <th style="background-color: #cecece; font-size: 0.85rem;">Correo</th>
+                <th style="background-color: #cecece; font-size: 0.85rem;">Clave</th>
+                <th style="background-color: #cecece; font-size: 0.85rem;">Estado</th>
+                <th style="background-color: #cecece; font-size: 0.85rem;">F.Registro</th>
+                <th style="background-color: #cecece; font-size: 0.85rem;">Acciones</th>
               </tr>
               <?PHP do { ?>
                 <tr>

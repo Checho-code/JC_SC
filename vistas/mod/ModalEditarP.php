@@ -14,7 +14,7 @@
             </div>
 
 
-            <form method="POST" action="mod/ModificarP.php">
+            <form method="POST" action="">
                 <input type="hidden" name="id" value="<?php echo $dataPremios['id_premio']; ?>">
                 <h6 style="color: #000; text-align: center;" class="mt-3 fw-bold">La imágen no se puede modificar</h6>
 
@@ -50,11 +50,12 @@
                         </select>
                     </div>
                 </div>
+                <?php include 'ModificarP.php';?>
 
-                <div class="modal-footer justify-content-between mt-3">
-                    <button type="submit" class="btn" style="color: #fff; background-color: #177c03; ">Guardar
-                        Cambios</button>
+                <div class="modal-footer ">
                     <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" name="btnUpPre" class="btn" style="color: #fff; background-color: #177c03; ">Guardar
+                        Cambios</button>
                 </div>
             </form>
 

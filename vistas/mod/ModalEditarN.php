@@ -14,7 +14,7 @@
             </div>
 
 
-            <form method="POST" action="mod/ModificarN.php">
+            <form method="POST" action="">
                 <input type="hidden" name="id" value="<?php echo $dataNoticias['id_noticia']; ?>">
                 <h6 style="color: #000; text-align: center;" class="mt-3 fw-bold">La imágen no se puede modificar</h6>
 
@@ -48,11 +48,10 @@
                         </select>
                     </div>
                 </div>
-
+                <?php include 'ModificarN.php';?>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn" style="color: #fff; background-color: #177c03; ">Guardar
-                        Cambios</button>
+                    <button type="submit" name="btnUpNot" class="btn" style="color: #fff; background-color: #177c03; ">Guardar Cambios</button>
                 </div>
             </form>
 

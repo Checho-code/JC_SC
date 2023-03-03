@@ -40,17 +40,17 @@ include '../vistas/menuAdmin.php';
                 <h3 style="color: #177c03; text-align: center;" >Lista de clientes y sus compras</h3>
                 <br>
                 <div class="table-responsive">
-                    <table class=" table table-bordered table-striped table-hover table-sm">
+                    <table class=" table table-bordered  table-hover">
                         <tbody>
                             <tr class="thead-dark">
-                                <th scope="col">Id</th>
-                                <th scope="col">Correo</th>
-                                <th scope="col">Cedula</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Telefono</th>
-                                <th scope="col">Observacion</th>
-                                <th scope="col">Compras</th>
-                                <th scope="col">Saldo</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Id</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Correo</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Cedula</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Nombre</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Telefono</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Observacion</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Compras</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Saldo</th>
 
                                 <?php do { ?>
                             <tr align="center" valign="middle">

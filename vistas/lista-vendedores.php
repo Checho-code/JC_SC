@@ -139,20 +139,20 @@ include '../vistas/menuAdmin.php';
             <div class="col-sm-12">
                 <h3 style="color: #177c03; text-align: center;">Listado de Empleados </h3><br>
                 <div class="table-responsive">
-                    <table class=" table table-bordered table-striped table-hover table-sm">
+                    <table class=" table table-bordered table-hover table-sm">
 
                         <tbody>
                             <tr align="center" valign="middle" class="thead-dark">
-                                <th scope="col">ID</th>
-                                <th scope="col">Cedula</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Pedidos</th>
-                                <th scope="col">Recaudos</th>
-                                <th scope="col">Pagado</th>
-                                <th scope="col">Saldo recaudos</th>
-                                <th scope="col">Fecha registro</th>
-                                <th scope="col">Pagar comisiones</th>
-                                <th scope="col">Recibir</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">ID</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Cedula</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Nombre</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Pedidos</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Recaudos</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Pagado</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Saldo recaudos</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Fecha registro</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Pagar comisiones</th>
+                                <th style="background-color: #cecece; font-size: 0.85rem;">Recibir</th>
                             </tr>
                             <?PHP
                             if($row_usuarios>0){

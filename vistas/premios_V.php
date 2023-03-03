@@ -65,7 +65,7 @@ include '../vistas/menuAdmin.php';
 
             <div class="col-sm-5">
               <!--- Formulario para registrar Premios --->
-              <?php include('../controladores/crear-premios_C.php') ?>
+              <?php include('../controladores/crear-premios_C.php'); ?>
               <form method="post" enctype="multipart/form-data">
 
                 <div class="form-group mt-4">
@@ -109,15 +109,15 @@ include '../vistas/menuAdmin.php';
 
 
                   <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered  table-hover">
                       <thead>
                         <tr>
-                          <th scope="col">Id</th>
-                          <th scope="col">Nombre</th>
-                          <th scope="col">Puntos</th>
-                          <th scope="col">Imagen</th>
-                          <th scope="col">Estado</th>
-                          <th scope="col">Acciones</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Id</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Nombre</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Puntos</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Imagen</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Estado</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Acciones</th>
                         </tr>
                       </thead>
                       <tbody>

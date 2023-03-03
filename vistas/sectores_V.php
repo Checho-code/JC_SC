@@ -121,14 +121,14 @@ include '../vistas/menuAdmin.php';
 
 
                   <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered  table-hover">
                       <thead>
                         <tr>
-                          <th scope="col">Id</th>
-                          <th scope="col">Nombre</th>
-                          <th scope="col">Logo</th>
-                          <th scope="col">Estado</th>
-                          <th scope="col">Acciones</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Id</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Nombre</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Logo</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Estado</th>
+                          <th style="background-color: #cecece; font-size: 0.85rem;">Acciones</th>
                         </tr>
                       </thead>
                       <tbody>

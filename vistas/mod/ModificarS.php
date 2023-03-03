@@ -1,16 +1,21 @@
 
 <?php
-include('../../conexion/conexion.php');
+//include('../../conexion/conexion.php');
+
+if(isset($_POST['btnUpSec'])){
 
 $id = $_REQUEST['id'];
 $nombre      = $_REQUEST['nombre_marca'];
 $estado 	 = $_REQUEST['estado'];
 
-$update = ("UPDATE marcas SET nom_marca  ='$nombre', estado  ='$estado' WHERE id_marca='$id'");
+$update = ("UPDATE sector SET nom_marca  ='$nombre', estado  ='$estado' WHERE id_marca='$id'");
 $result_update = mysqli_query($conexion, $update);
 
-echo "<script type='text/javascript'>
-        window.location='../marcas_V.php';
-    </script>";
+if($result_update>0){
+    ?>
+    <script>
+      window.location.href = "sectores_V.php";  
+    </script>
+<?php } 
 
-?>
+    }
