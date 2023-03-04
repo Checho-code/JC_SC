@@ -47,7 +47,7 @@ include '../conexion/conexion.php'
 			}
 			
 			?>
-	<h5 style="color:red; text-align: center; background-color: #000; ">Arreglar envio de correo, google bloquea cuenta si se envia desde aca</h5>
+	<!-- <h5 style="color:red; text-align: center; background-color: #000; ">Arreglar envio de correo, google bloquea cuenta si se envia desde aca</h5> -->
 	<!---------------- contacto --------------->
 	
 	<div class="container-fluid w-75 mb-5">
@@ -73,25 +73,26 @@ include '../conexion/conexion.php'
 				<div class="col-md-3">
 					<label for="validationCustom04" class="form-label">Tipo de mensaje</label>
 					<select class="form-select" name="tipo">
-						<option selected disabled value="Felicitacion">Seleccione</option>
+						<option selected value="0">Seleccione</option>
 						<option value="Felicitaciones">Felicitacion</option>
 						<option value="Tengo una Peticion">Petición</option>
 						<option value="Tengo una Queja">Queja</option>
 						<option value="Tengo un Reclamo">Reclamo</option>
 					</select>
 				</div>
-
+				
 				<div class="col-md-12 mt-4">
 					<label for="validationCustom05" class="form-label">Mensaje *</label>
 					<input type="text" class="form-control" name="mensaje" placeholder="Su mensaje ">
 				</div>
+				
+				<?php include ('../controladores/email-contacto2.php')?>
 
 				<div class="col-12 mt-5 mb-5">
-					<!-- <button class=" btn" style=" color:white; background-color: #177c03; " type="submit" name="btnEnviar">Enviar</button> -->
 					<a href="index.php" class="btn btn-warning">Cancelar</a>
+					 <button class=" btn" style=" color:white; background-color: #177c03; width: 150px; margin-left: 50px; " type="submit" name="btnEnviar">Enviar</button> 
 				</div>
 			</form>
-<?php include ('../controladores/email-contacto2.php')?>
 	</div>
 
 	<br>

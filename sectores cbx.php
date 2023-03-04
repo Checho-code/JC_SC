@@ -6,30 +6,40 @@ $resultadoD = mysqli_query($conexion, $queryD);
 ?>
 
 <html>
-	<head>
-		<title>ComboBox Ajax, PHP y MySQL</title>
-		
-		<script language="javascript" src="js/jquery-3.6.3.min.js"></script>
-		
-		
-	</head>
-	
-	<body>
-	<form action="process.php" method="post">
-            <select name="dpto" id="dpto">
-                <option value="-1"></option>
+
+<head>
+    <title>ComboBox Ajax, PHP y MySQL</title>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script> -->
+    <script src="js/jquery-3.6.3.min.js"></script>
+
+</head>
+
+<body>
+
+    <h3>CBX ANIDADOS</h3>
+
+    <form action="process.php" method="post">
+
+        <div id="cont-dpto">
+            <label for="dpto">Departamentos</label>
+
+            <select id="dpto">
+                <option value="0">Seleccione</option>
                 <?php
-                foreach ($resultadoD as $dpto) {
-                    ?>
-                    <option value="<?php echo $dpto['id_dpto']; ?>"><?php echo $dpto['nombre_dpto']; ?></option>
-                    <?php
+                while ($row = mysqli_fetch_array($resultadoD, MYSQLI_ASSOC)) {
+                    echo '<option value="' . $row['id_dpto'] . '">' . $row['nombre_dpto'] . '</option>';
                 }
+
                 ?>
             </select>
-            <select name="city" id="city"></select>
-        </form>
+        </div>
 
-	
+        <div id="cont-city"> </div>
 
-	</body>
+    </form>
+
+    <script type="text/javascript" src="js/cargar_dpto.js"></script>
+</body>
+
 </html>

@@ -6,15 +6,23 @@
 
         <div class="row cont-productos">
                 <?php
-				$sql = ("SELECT * FROM productos WHERE id_marca = 2 AND estado = 'Disponible'");
+                  $sql = ("SELECT id_marca FROM marcas WHERE nom_marca LIKE '%Fonda%'");
+                  $marcas = mysqli_query($conexion, $sql);
+                  $mar = mysqli_fetch_assoc($marcas);
+                 $idMk= $mar['id_marca'];
+
+				$sql = ("SELECT * FROM productos WHERE id_marca = ' $idMk' AND estado = 'Disponible'");
 				$productos = mysqli_query($conexion, $sql);
 				$consulta = mysqli_fetch_assoc($productos);
 
 				do { ?>
                 <div class="col-3 columnasP m-2 ">
                     <div class="card  tarjetaP">
+
+                    <div class="cont-imgP mt-3">
                         <img src="images/img_productos/<?php echo $consulta['imagen']; ?>" class="img-producto "
                             alt="Imagen <?php echo $consulta['nom_producto'] ?> ">
+                    </div>
 
                         <div class=" mt-3">
                             <p class="titulo_producto">

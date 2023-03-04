@@ -8,8 +8,11 @@
 
     <div class="row contMarca">
         <?php
-        $query = mysqli_query($conexion, "SELECT * FROM marcas");
-        while ($consulta = mysqli_fetch_array($query)){ ?>
+        $query = mysqli_query($conexion, "SELECT * FROM marcas WHERE estado = 1");
+        while ($consulta = mysqli_fetch_array($query)){
+            
+            $_SESSION['datosMarcas'] = $consulta;
+            ?>
         <div class="col columnasMarca m-2">
             <div class="card  tarjetaMarca ">
                 <a class="link-imgMarca" href="<?php $nom = $consulta['nom_marca'];

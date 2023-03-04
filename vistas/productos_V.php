@@ -19,7 +19,8 @@ include '../vistas/menuAdmin.php';
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
-  
+  <script src="js/jquery-3.6.3.min.js"></script>
+
   <link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="../mis_css/menuPpal.css" />
   <link rel="stylesheet" type="text/css" href="../mis_css/productos-destacados.css" />
@@ -58,8 +59,8 @@ include '../vistas/menuAdmin.php';
                 
                 <div class="col-5">
                   <label for="destacado">Marca *</label>
-                  <select class="form-control" name="marca" >
-                      <option value="Seleccione">Seleccione</option>
+                  <select id="marca" class="form-control" name="marca" >
+                      <option value="0">Seleccione</option>
                       <!-- Codigo para llenar select con BD -->
                       <?php
                       $sqlM = ("SELECT * FROM marcas");
@@ -75,25 +76,10 @@ include '../vistas/menuAdmin.php';
                     </select>
                   </div>
 
-                  <div class="col-5">
-                    <label for="destacado">Categoria *</label>
-                    <select class="form-control" name="categoria" >
-                    <option value="Seleccione">Seleccione</option>
-                      <!-- Codigo para llenar select con BD -->
-                      <?php
-                      $sqlC = ("SELECT * FROM categorias");
-                      if ($resC = mysqli_query($conexion, $sqlC)) {
-                        $cantC = mysqli_num_rows($resC);
-                        if ($cantC > 0) {
-                          while ($row = mysqli_fetch_array($resC, MYSQLI_ASSOC)) {
-                            echo '<option value="' . $row['id_categoria'] . '">' . $row['nom_categoria'] . '</option>';
-                          }
-                        }
-                      }
-                      ?>
+                  <div class="col-5" id="cont-categoria">
 
-                    </select>
                   </div>
+
                 </div>
                 
                 <div class="row justify-content-around  mt-3 p-2">
@@ -192,6 +178,7 @@ include '../vistas/menuAdmin.php';
   <script src="../js/jquery-3.6.3.min.js"></script>
   <script src="../js/popper.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/cargar_categorias.js"></script>
   
 </body>
 

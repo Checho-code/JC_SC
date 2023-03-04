@@ -113,7 +113,7 @@
 				<div class="col-md-3">
 					<label for="validationCustom04" class="form-label">Tipo de mensaje</label>
 					<select class="form-select" name="tipo">
-						<option selected disabled value="Felicitacion">Seleccione</option>
+						<option selected disabled value="0">Seleccione</option>
 						<option value="Felicitaciones">Felicitacion</option>
 						<option value="Tengo una Peticion">Petición</option>
 						<option value="Tengo una Queja">Queja</option>
@@ -126,12 +126,13 @@
 					<input type="text" class="form-control" name="mensaje" placeholder="Su mensaje ">
 				</div>
 
+				<?php include ('./controladores/email-contacto.php')?>
+
 				<div class="col-12 mt-5 mb-5">
-					<button class=" btn" style=" color:white; background-color: #177c03; " type="submit" name="btnEnviar">Enviar</button>
 					<a href="index.php" class="btn btn-warning">Cancelar</a>
+					<button class=" btn" style=" color:white; background-color: #177c03; width: 150px; margin-left: 50px; " type="submit" name="btnEnviar">Enviar</button>
 				</div>
 			</form>
-<?php include ('./controladores/email-contacto.php')?>
 	</div>
 
 	<br>

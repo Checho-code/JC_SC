@@ -12,7 +12,7 @@ function RandomString()
 
 if (isset($_POST['btnSaveProd'])) {
 
-	if (($_POST['marca'] !="Seleccione") && ($_POST['categoria'] !="Seleccione") && !empty($_POST['nombre']) && !empty($_POST['precio']) && !empty($_POST['unidad']) && ($_POST['porcentaje'] !="Seleccione") && !empty($_POST['descripcion']) && ($_POST['estado'] !="Seleccione") && ($_POST['destacado'] !="Seleccione") && ($_FILES['imagen']['name'] != null)) {
+	if (($_POST['marca'] !="0") && !empty($_POST['categoria'] ) && !empty($_POST['nombre']) && !empty($_POST['precio']) && !empty($_POST['unidad']) && ($_POST['porcentaje'] !="Seleccione") && !empty($_POST['descripcion']) && ($_POST['estado'] !="Seleccione") && ($_POST['destacado'] !="Seleccione") && ($_FILES['imagen']['name'] != null)) {
 		$rand = RandomString();
 
 		$nombre_producto = ($_POST['nombre']);

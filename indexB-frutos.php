@@ -103,7 +103,7 @@
 	
     <!--------------------- Productos Destacados -------------------->
 	
-    <?php include 'mostrar_prod_destacadosB.php'; ?>
+    <?php include 'mostrar_prod_frutosB.php'; ?>
 
 
     <br>

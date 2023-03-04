@@ -101,7 +101,7 @@
 	
     <!--------------------- Productos Destacados -------------------->
 	
-    <?php include 'mostrar_prod_destacadosB.php'; ?>
+    <?php include 'mostrar_prod_fondaB.php'; ?>
    
     
     <br>

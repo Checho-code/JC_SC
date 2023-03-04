@@ -58,55 +58,55 @@ if (!empty($_POST['btnRegistrar'])) {
 					$sql = $conexion->query("INSERT INTO usuarios (nombre_usuario,apellido_usuario,tipo_doc,num_doc,telefono,email,clave,rku,nivel,estado,intentos,fecha_registro) VALUES('$nombre', '$apellido','$tipo_doc', '$num_doc','$tel','$email','$clave','$clave2','$nivel','$estado','$intentos','$fecha_registro')");
 					if ($sql) {
 
-			// 			error_reporting(0); //No mostrar errores de php.ini
+						error_reporting(0); //No mostrar errores de php.ini
 
-			// 			//Load Composer's autoloader
-			// 			require '../phpMailer/Exception.php';
-			// 			require '../phpMailer/PHPMailer.php';
-			// 			require '../phpMailer/SMTP.php';
-
-
-			// 			$password = $clave_natural;
-			// 			$nom = $nombre;
-			// 			$correo = $email;
+						//Load Composer's autoloader
+						require '../phpMailer/Exception.php';
+						require '../phpMailer/PHPMailer.php';
+						require '../phpMailer/SMTP.php';
 
 
-			// 			$mail = new PHPMailer(true);
+						$password = $clave_natural;
+						$nom = $nombre;
+						$correo = $email;
 
 
-			// 			//Server settings
-			// 			// $mail->SMTPDebug = 0;
-			// 			$mail->isSMTP();
-			// 			$mail->Host = 'smtp.gmail.com';
-			// 			$mail->SMTPAuth = true;
-			// 			$mail->Username = 'frrutosdelcampoandes@gmail.com';
-			// 			$mail->Password = 'ntbctqrnqpxfjzxf';
-			// 			$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-			// 			$mail->Port = 465;
-
-			// 			//Recipients
-			// 			$mail->setFrom('frrutosdelcampoandes@gmail.com', 'Solcomercial');
-			// 			$mail->addAddress($correo);
-
-			// 			//Content
-			// 			$mail->isHTML(true);
-			// 			$mail->Subject = 'Bienvenid@ a Solcomercial';
-			// 			$mail->Body = 'Cordial saludo de parte del equipo de Solcomercial.<br/><br/>
-
-            // Señor(a) <b>' . $nom . '.</b><br/><br/><br/>
-            //     Queremos darte la bienvenida a nuestra tienda virtual, por la cual podrás tener acceso a gran variedad de productos, y así ayudar a fortalecer el trabajo de muchos emprendedores y productores de nuestro país.<br/><br/>
-
-            //     Tu registro fue exitoso y te recordamos tus datos de acceso, los cuales son:<br/><br/>
-
-            //     E-mail: <b>' . $correo . '</b><br/>
-
-            //     Contraseña: <b>' . $password . '</b><br/><br/>
-
-            //     Ya estás listo para realizar tu primer pedido y empezar a acumular por cada compra que realices,
-            //      y redimir entre una gran cantidad de premios y obsequios que tenemos para ti.';
+						$mail = new PHPMailer(true);
 
 
-			// 			$mail->send();
+						//Server settings
+						// $mail->SMTPDebug = 0;
+						$mail->isSMTP();
+						$mail->Host = 'smtp.gmail.com';
+						$mail->SMTPAuth = true;
+						$mail->Username = 'solucionsolcomercial@gmail.com';
+						$mail->Password = 'rcoxzhhydqwryqnq';
+						$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+						$mail->Port = 465;
+
+						//Recipients
+						$mail->setFrom('solucionsolcomercial@gmail.com', 'Solcomercial');
+						$mail->addAddress($correo);
+
+						//Content
+						$mail->isHTML(true);
+						$mail->Subject = 'Bienvenid@ a Solcomercial';
+						$mail->Body = 'Cordial saludo de parte del equipo de Solcomercial.<br/><br/>
+
+            Señor(a) <b>' . $nom . '.</b><br/><br/><br/>
+                Queremos darte la bienvenida a nuestra tienda virtual, por la cual podrás tener acceso a gran variedad de productos, y así ayudar a fortalecer el trabajo de muchos emprendedores y productores de nuestro país.<br/><br/>
+
+                Tu registro fue exitoso y te recordamos tus datos de acceso, los cuales son:<br/><br/>
+
+                E-mail: <b>' . $correo . '</b><br/>
+
+                Contraseña: <b>' . $password . '</b><br/><br/>
+
+                Ya estás listo para realizar tu primer pedido y empezar a acumular por cada compra que realices,
+                 y redimir entre una gran cantidad de premios y obsequios que tenemos para ti.';
+
+
+						$mail->send();
 					?>
 
 						<script>

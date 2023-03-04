@@ -4,22 +4,21 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+
 // require('escape.php');
 
 //capturamos y escapamos todo lo que se envio por el formulario
 if (isset($_POST['btnEnviar'])) {
 
 
-    if (!empty($_POST["nombre"]) and !empty($_POST["correo"]) and !empty($_POST["tipo"]) and !empty(["mensaje"])) {
+    if (!empty($_POST["nombre"]) and !empty($_POST["correo"]) and ($_POST["tipo"] != "0") and !empty(["mensaje"])) {
 
         $nom = $_POST["nombre"];
         $em = $_POST["correo"];
         $tip = $_POST["tipo"];
         $msg = $_POST["mensaje"];
 
-        //Registramos el usuario
-        // $sql = $conexion->query("INSERT INTO usuarios (nombre_usuario,apellido_usuario,tipo_doc,num_doc,telefono,email,clave,rku,nivel,estado,intentos,fecha_registro) VALUES('$nombre', '$apellido','$tipo_doc', '$num_doc','$tel','$email','$clave','$clave2','$nivel','$estado','$intentos','$fecha_registro')");
-        // if ($sql) {
+
 
         // error_reporting(0); //No mostrar errores de php.ini
 
@@ -33,69 +32,74 @@ if (isset($_POST['btnEnviar'])) {
         $correo = $em;
         $tipo = $tip;
         $mensaje = $msg;
-
+        $para = "solucionsolcomercial@gmail.com";
 
         $mail = new PHPMailer(true);
 
+        try {
+            //Server settings
+            $mail->SMTPDebug = 0;
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'solucionsolcomercial@gmail.com';
+            $mail->Password = 'rcoxzhhydqwryqnq';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port = 465;
 
-        //Server settings
-        // $mail->SMTPDebug = 0;
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'frrutosdelcampoandes@gmail.com';
-        $mail->Password = 'ntbctqrnqpxfjzxf';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port = 465;
+            //Recipients
+            $mail->setFrom('solucionsolcomercial@gmail.com', 'Solcomercial');
+            $mail->addAddress('solucionsolcomercial@gmail.com');
 
-        //Recipients
-        $mail->setFrom('frrutosdelcampoandes@gmail.com', 'Solcomercial');
-        $mail->addAddress('frrutosdelcampoandes@gmail.com');
-
-        //Content
-        $mail->isHTML(true);
-        $mail->Subject = $tipo;
-        $mail->Body = 'Hola señores Solcomercial<br><br> 
+            //Content
+            $mail->isHTML(true);
+            $mail->Subject = $tipo;
+            $mail->Body = 'Hola señores Solcomercial<br><br> 
                                          Mi nombre es: <b>' . $nombre . '.</b><br><br>
                                          Mi correo es: <b> ' . $correo . ' .</b><br><br> 
-                                         Este es mi mensaje:<br><br>'.$mensaje.'<br><br><br>
+                                         Este es mi mensaje:<br><br>' . $mensaje . '<br><br><br>
                                          Gracias por su atencion y espero su respuesta.';
 
 
-        $mail->send();
-?>
-        <script>
-            Swal.fire({
-                title: 'Mensaje enviado con éxito.!',
-                text: "Gracias por su mensaje, pronto recibirá nuestra respuesta.!",
-                icon: 'success',
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Continuar'
-            }).then((result) => {
-                if (result.isConfirmed) {
+            $mail->send();
+            ?>
+            <script>
+                Swal.fire({
+                    title: 'El correo ha sido enviado con éxito.!',
+                    text: "Gracias por su mensaje, pronto recibirá nuestra respuesta.!",
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Continuar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
 
-                }
-            })
-        </script>
-    <?php
-
-
-        // }
-
-        //---------------------------------- End validar usuario
-
-    } else {
-    ?>
+                    }
+                })
+            </script>
+            <?php
+        } catch (Exception $e) {
+            ?>
+            <script>
+                Swal.fire({
+                    title: 'Ooopss...!',
+                    text: "Lo sentimos, no se pudo enviar el correo, vuelve a intentarlo.!",
+                    icon: 'error',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Continuar'
+                })
+            </script>
+            <?php
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    } else { ?>
         <script>
             Swal.fire({
                 title: 'Ooopss...!',
-                text: "Lo sentimos, debes completar todos los campos para enviar el mensaje, vuelve a intentarlo.!",
+                text: "Lo sentimos, debes completar todos los campos para enviar el correo, vuelve a intentarlo.!",
                 icon: 'error',
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Continuar'
             })
         </script>
-<?php
-
-    }
+    <?php }
 }

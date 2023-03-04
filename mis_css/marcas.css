@@ -28,6 +28,8 @@ body {
     border-radius: 30px;
     box-shadow: 
     0.3em 0.3em 1em rgba(0, 0, 0, 0.422); 
+    /* background-color: #177c17; */
+    width: 100%;
 }
 
 .columnasMarca {
@@ -44,7 +46,8 @@ body {
     padding: 10px;
     cursor: pointer;
     margin: 20px 0px;
-    width: 50%;
+    width:auto ;
+    height: 85%;
 }
 
 .link-imgMarca{
@@ -52,12 +55,13 @@ body {
 }
 
 .img-marca {
-    width: 80%;
-    height: 80%;
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    padding: 5px;
+    border-radius: 15px;
     border: solid 3px #177c17;
     box-shadow: -2px -2px 5px 2px #177c17 inset;
-    border-radius: 15px;
-    padding: 5px;
 }
 
 .nombreMarca{
@@ -65,4 +69,5 @@ body {
     color: #177c17 ;
     font-size: 1.2em;
     font-weight: 600;
+    margin-top: 20px;
 }
