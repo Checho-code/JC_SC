@@ -1,7 +1,13 @@
 <?php
 session_start();
 $usuario = $_SESSION['datosU']['nombre_usuario'];
-include '../conexion/conexion.php'
+$idUs = $_SESSION['datosU']['id_usuario'];
+
+include '../conexion/conexion.php';
+
+$buscar_usuario = mysqli_query($conexion, "SELECT * FROM carrito WHERE id_usuario ='$idUs' AND estado = 'No enviado'");
+$row_usuario = mysqli_fetch_assoc($buscar_usuario);
+$num_row = mysqli_num_rows($buscar_usuario);
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +17,7 @@ include '../conexion/conexion.php'
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -41,23 +47,23 @@ include '../conexion/conexion.php'
 		case '3':
 			include('../vistas/menuAdmin.php');
 			break;
-			case '4':
-				include('../vistas/menuCliente.php');
-				break;
-			}
-			
-			?>
+		case '4':
+			include('../vistas/menuCliente.php');
+			break;
+	}
+
+	?>
 	<!-- <h5 style="color:red; text-align: center; background-color: #000; ">Arreglar envio de correo, google bloquea cuenta si se envia desde aca</h5> -->
 	<!---------------- contacto --------------->
-	
+
 	<div class="container-fluid w-75 mb-5">
 		<h4 class="mt-5 mb-5 text-center" style="color:#177c03;">Formulario de contacto</h3>
-		
-		<form class="row g-3 needs-validation" method="post">
-			
-			<div class="col-md-12 mt-4">
-				<label for="validationCustom01" class="form-label">Nombre completo *</label>
-				<input type="text" class="form-control" name="nombre" placeholder="Su nombre y apellido">
+
+			<form class="row g-3 needs-validation" method="post">
+
+				<div class="col-md-12 mt-4">
+					<label for="validationCustom01" class="form-label">Nombre completo *</label>
+					<input type="text" class="form-control" name="nombre" placeholder="Su nombre y apellido">
 
 				</div>
 
@@ -80,17 +86,17 @@ include '../conexion/conexion.php'
 						<option value="Tengo un Reclamo">Reclamo</option>
 					</select>
 				</div>
-				
+
 				<div class="col-md-12 mt-4">
 					<label for="validationCustom05" class="form-label">Mensaje *</label>
 					<input type="text" class="form-control" name="mensaje" placeholder="Su mensaje ">
 				</div>
-				
-				<?php include ('../controladores/email-contacto2.php')?>
+
+				<?php include('../controladores/email-contacto2.php') ?>
 
 				<div class="col-12 mt-5 mb-5">
 					<a href="index.php" class="btn btn-warning">Cancelar</a>
-					 <button class=" btn" style=" color:white; background-color: #177c03; width: 150px; margin-left: 50px; " type="submit" name="btnEnviar">Enviar</button> 
+					<button class=" btn" style=" color:white; background-color: #177c03; width: 150px; margin-left: 50px; " type="submit" name="btnEnviar">Enviar</button>
 				</div>
 			</form>
 	</div>

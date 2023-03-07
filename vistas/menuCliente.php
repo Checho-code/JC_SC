@@ -42,8 +42,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-contenedor fixed-top">
 	<div class="container-fluid ">
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
@@ -55,8 +54,7 @@
 				</li>
 
 				<li class="nav-item dropdown p-2">
-					<a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link" href="#" role="button"
-						data-bs-toggle="dropdown" aria-expanded="false">
+					<a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						Solcomercial
 
 					</a>
@@ -79,10 +77,9 @@
 				</li>
 			</ul>
 
-			<a class="car-button" href="#" data-toggle="modal" data-target="#modal_cart"><i
-					class="coche icon fa-solid fa-cart-shopping"></i></a>
+			<a class="car-button" href="#" data-toggle="modal" data-target="#modal_cart"><i class="coche icon fa-solid fa-cart-shopping"></i></a>
 			<span class="numProd">
-				<?php echo $toltalCantidad ?>
+				<?php echo $num_row ?>
 			</span>
 
 			<!-- <ul class="navbar-nav nav-pills mr-l">

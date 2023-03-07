@@ -13,7 +13,7 @@
             do { ?>
                 <div class="col-3 columnasP m-2 ">
 
-                    <form method="POST" action="../controladores/addCarrito.php">
+                    <form id="formulario" method="POST">
 
                         <div class="card  tarjetaP">
 
@@ -22,6 +22,8 @@
                             <input type="hidden" name="idProd" id="idProd" value="<?php echo $consulta['id_producto'] ?>">
                             <input type="hidden" name="idMarca" id="idMarca" value="<?php echo $consulta['id_marca'] ?>">
                             <input type="hidden" name="cantidad" id="cantidad" value="1">
+                            <input type="hidden" name="precio" id="precio" value="<?php echo $consulta['precio'] ?>">
+
 
                             <div class=" mt-1">
                                 <p class="titulo_producto">
@@ -29,14 +31,11 @@
                                 </p>
                             </div>
 
-                            <div class="cont-imgP mt-3">
+                            <div class="cont-imgP mt-1">
 
-                                <a data-toggle="modal"
-                                    data-target="#verProdConLogueo<?php echo $consulta['id_producto'] ?>">
+                                <a data-toggle="modal" data-target="#verProdConLogueo<?php echo $consulta['id_producto'] ?>">
 
-                                    <img title="Mostar descripcion del producto"
-                                        src="../images/img_productos/<?php echo $consulta['imagen']; ?>"
-                                        class="img-producto " alt="Imagen <?php echo $consulta['nom_producto'] ?> ">
+                                    <img title="Mostar descripcion del producto" src="../images/img_productos/<?php echo $consulta['imagen']; ?>" class="img-producto " alt="Imagen <?php echo $consulta['nom_producto'] ?> ">
                                 </a>
 
                             </div>
@@ -45,11 +44,8 @@
 
 
 
-                            <div class="w-75 mt-3 mx-4" style="background-color: #fd0; border-radius: 45px; ">
-
-                                <input type="hidden" name="precio" id="precio" value="<?php echo $consulta['precio'] ?>">
-
-                                <p class="titulo_producto " style=" font-weight: 600; "> $
+                            <div class="contPrecio">
+                                <p class="precio "> $
                                     <?php echo $consulta['precio'] ?>
                                 </p>
                             </div>
@@ -57,8 +53,7 @@
 
 
                             <div class=" mt-1 mb-4">
-                                <button title="Agregar producto al carrito" type="submit" class="verP" id="addcar"
-                                    name="btnAddCar">Agregar
+                                <button title="Agregar producto al carrito" type="submit" class="verP" id="addcar" name="btnAddCar">Agregar
                                     <i class="fa-solid fa-cart-plus" style="margin-left: 8px; font-size: 1.2em;"></i>
                                 </button>
                             </div>

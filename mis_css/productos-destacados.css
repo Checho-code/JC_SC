@@ -11,6 +11,7 @@ body {
         /*aca voy*/
         0 0 0 2px rgb(255, 255, 255),
         0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    padding: 15px;
 }
 
 .tituloP {
@@ -36,6 +37,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
 
 .columnasP {
@@ -52,7 +54,6 @@ body {
     align-items: center;
     padding: 10px;
     cursor: pointer;
-    margin: 20px 0px;
     /* background-color: #177c03; */
 }
 
@@ -70,6 +71,23 @@ body {
     height: 210px;
     object-fit: cover;
 
+}
+
+.contPrecio {
+    width: 90%;
+    height: 2em;
+    margin: 10px 0px;
+    background-color: #fd0;
+    border-radius: 45px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.precio {
+    margin-top: 3px;
+    color: #177c03;
+    font-weight: 600;
+    text-align: center;
 }
 
 .titulo_producto {
