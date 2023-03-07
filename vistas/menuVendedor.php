@@ -20,10 +20,13 @@
 				<div class="dropdown">
 					<button class="btn1 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 						<i class="fa-solid fa-user" id="user"></i>
-						Bienvenido <b><?php echo $usuario; ?></b>
+						Bienvenido <b>
+							<?php echo $usuario; ?>
+						</b>
 					</button>
 					<ul class="dropdown-menu dropdown-menu-dark">
-					<li><a class="dropdown-item" role="button"  data-toggle="modal" data-target="#perfilEmpl">Mi perfil</a></li>
+						<li><a class="dropdown-item" role="button" data-toggle="modal" data-target="#perfilEmpl">Mi
+								perfil</a></li>
 						<li><a class="dropdown-item" href="#">Mis ventas</a></li>
 						<li><a class="dropdown-item" href="../controladores/cerrar_sesion_C.php">Cerrar Sesión</a></li>
 					</ul>
@@ -38,7 +41,8 @@
 
 <nav class="navbar navbar-expand-lg  navbar-contenedor fixed-top">
 	<div class="container-fluid ">
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
@@ -51,7 +55,8 @@
 
 
 				<li class="nav-item dropdown p-2">
-					<a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					<a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link" href="#" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false">
 						Solcomercial
 
 					</a>
@@ -70,7 +75,7 @@
 				</li>
 			</ul>
 
-			<a class="car-button" href="#"><i class="coche icon fa-solid fa-cart-shopping"></i></a>
+			<a class="car-button" href="carrito.php"><i class="coche icon fa-solid fa-cart-shopping"></i></a>
 			<span class="numProd">0</span>
 
 			<!-- <ul class="navbar-nav nav-pills mr-l">

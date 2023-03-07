@@ -1,10 +1,10 @@
 <?php
+session_start();
 require('../conexion/conexion.php');
 
 //Busco el registro  del usuario para determinar si ya tiene intentos
 
 if (!empty($_POST["btnLogin"])) {
-	session_start();
 
 
 	error_reporting(0);
