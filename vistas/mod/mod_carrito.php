@@ -1,84 +1,106 @@
 <!-- MODAL CARRITO -->
-<div class="modal fade" id="modal_cart" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
+<?php @$userLine = $row_usuario['id_usuario']; ?>
+<div class="modal fade" id="modal_cart<?php echo $row_usuario['id_usuario']; ?>" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Mi carrito</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header bg-success ">
+                <h5 class="modal-title fw-bold text-light mx-2">Mi Carrito</h5>
+                <!-- <button type="button" class="btn text-light border-2 bg-danger" data-dismiss="modal">X</button> -->
             </div>
+
+            <h6 class="modal-title text-light text-center bg-success">"Al refrescar, debe regresar al carrito para
+                ver
+                los
+                cambios"
+            </h6>
             <div class="modal-body">
+                <div class="col-12">
 
+                    <div class="row mt-3">
+                        <div class="col-12 p-2">
 
-
-                <div class="modal-body">
-                    <div>
-                        <div class="p-2">
-                            <ul class="list-group mb-3">
-                                <?php
-                                if (isset($_SESSION['carrito'])) {
-                                    $total = 0;
-                                    for ($i = 0; $i <= count($miCarrito) - 1; $i++) {
-                                        if (isset($miCarrito[$i])) {
-                                            if ($miCarrito[$i] != NULL) {
-                                                ?>
-                                                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                                    <div class="row col-12">
-                                                        <div class="col-6 p-0" style="text-align: left; color: #000000;">
-                                                            <h6 class="my-0">Cantidad:
-                                                                <?php echo $miCarrito[$i]['cantidad'] ?> :
-                                                                <?php echo $miCarrito[$i]['titulo']; // echo substr($miCarrito[$i]['titulo'],0,10); echo utf8_decode($titulomostrado)."..."; ?>
-                                                            </h6>
-                                                        </div>
-                                                        <div class="col-6 p-0" style="text-align: right; color: #000000;">
-                                                            <span class="text-muted" style="text-align: right; color: #000000;">
-                                                                <?php echo $miCarrito[$i]['precio'] * $miCarrito[$i]['cantidad']; ?>
-                                                                €
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <?php
-                                                $total = $total + ($miCarrito[$i]['precio'] * $miCarrito[$i]['cantidad']);
-                                            }
-                                        }
-                                    }
-                                }
-                                ?>
-                                <li class="list-group-item d-flex justify-content-between">
-                                    <span style="text-align: left; color: #000000;">Total (EUR)</span>
-                                    <strong style="text-align: left; color: #000000;">
+                            <div class="table-responsive">
+                                <table class="table  table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="bg-success-subtle " style="font-size: 0.8rem;">Producto
+                                            </th>
+                                            <th class="bg-success-subtle" style="font-size: 0.8rem;">Cantidad</th>
+                                            <th class="bg-success-subtle" style="font-size: 0.8rem;">Acciones</th>
+                                            <th class="bg-success-subtle" style="font-size: 0.8rem;">Precio Und.
+                                            </th>
+                                            <th class="bg-success-subtle" style=" font-size: 0.8rem;">Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bodyTable mt-2">
                                         <?php
-                                        if (isset($_SESSION['carrito'])) {
-                                            $total = 0;
-                                            for ($i = 0; $i <= count($miCarrito) - 1; $i++) {
-                                                if (isset($miCarrito[$i])) {
-                                                    if ($miCarrito[$i] != NULL) {
-                                                        $total = $total + ($miCarrito[$i]['precio'] * $miCarrito[$i]['cantidad']);
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        $total = (!isset($total)) ? '0' : $total;
-                                        echo $total; ?> $
-                                    </strong>
-                                </li>
-                            </ul>
+                                        do { ?>
+                                            <form method="POST">
+                                                <tr>
+
+                                                    <td class="w-25 ">
+                                                        <?php echo $row_usuario['nom_producto']; ?>
+                                                    </td>
+
+                                                    <td class="w-0 ">
+                                                        <input type="number" class="w-50 text-center" name="cantidad" value="<?php echo $row_usuario['cantidad']; ?>">
+                                                        <input type="hidden" value="<?php echo $row_usuario['id_carrito']; ?>" name="id_carrito">
+                                                    </td>
+
+                                                    <td class="w-25 ">
+                                                        <button title="Al refrescar, debe regresar al carrito para ver los cambios" class="btn btn-sm btn-warning " name="btnModCant" type="submit">
+                                                            <i class="fa-solid fa-rotate"></i>
+                                                        </button>
+                                                        <button title="Al refrescar, debe regresar al carrito para ver los cambios" class="btn btn-sm btn-danger " name="btnModCant" type="submit">
+                                                            <i class="fa-solid fa-trash-can"></i>
+                                                        </button>
+
+                                                    </td>
+
+                                                    <td class="w-25 ">
+                                                        <?php echo "$ " . $row_usuario['precio']; ?>
+                                                    </td>
+                                                    <td class="subtotal w-25">
+                                                        <?php $subt = $row_usuario['cantidad'] * $row_usuario['precio'];
+
+                                                        echo "$ " . $subt; ?>
+                                                        <input type="hidden" value="<?php echo  $tot = $tot + $subt;  ?>">
+                                                    </td>
+                                                </tr>
+                                    </tbody>
+                                    </form>
+
+
+                                <?php } while ($row_usuario = mysqli_fetch_assoc($buscar_usuario)); ?>
+
+                                </table>
+
+                                <div class="contTotal col-12 text-center bg-warning mt-5 p-3">
+                                    <h5>Total a pagar: <span class="total fw-bold text-light bg-success mt-4 w-75 p-2 mx-5"><?php echo "$ " . $tot ?></span>
+                                    </h5>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
 
-
-
             </div>
             <div class="modal-footer">
-
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <a type="button" class="btn btn-primary" href="../../controladores/vaciarCarrito.php">Vaciar
-                    carrito</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <form method="POST">
+                    <input type="text" name="idUs" value="<?php echo $userLine ?>">
+                    <button type="submit" class="btn btn-danger">
+                        Vaciar Carrito <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </form>
                 <a type="button" class="btn btn-success" href="#">Continuar
                     pedido</a>
             </div>
+
         </div>
     </div>
 </div>
+
+
 <!-- END MODAL CARRITO -->

@@ -51,9 +51,9 @@ $num_row = mysqli_num_rows($buscar_usuario);
 			include('../vistas/menuCliente.php');
 			break;
 	}
+	include 'mod/mod_carrito.php';
 
 	?>
-	<!-- <h5 style="color:red; text-align: center; background-color: #000; ">Arreglar envio de correo, google bloquea cuenta si se envia desde aca</h5> -->
 	<!---------------- contacto --------------->
 
 	<div class="container-fluid w-75 mb-5">

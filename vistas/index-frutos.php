@@ -56,6 +56,8 @@ $num_row = mysqli_num_rows($buscar_usuario);
 			include('../vistas/menuCliente.php');
 			break;
 	}
+	include 'mod/mod_carrito.php';
+
 	?>
 
 	<!---------------- Marcas ----------------->

@@ -16,7 +16,7 @@ if (isset($_POST['btnAddCar'])) {
 
     $num_row = '';
     $id_MK = '';
-    $buscar_usuario = mysqli_query($conexion, "SELECT id_marca FROM carrito WHERE id_usuario ='$idUser' AND estado = 'No enviado'");
+    $buscar_usuario = mysqli_query($conexion, "SELECT id_marca FROM carrito WHERE id_usuario ='$idUser' AND estado = 0");
     $row_usuario = mysqli_fetch_assoc($buscar_usuario);
     $num_row = mysqli_num_rows($buscar_usuario);
     $id_MK = $row_usuario['id_marca'];

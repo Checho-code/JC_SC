@@ -77,12 +77,11 @@
 				</li>
 			</ul>
 
-			<a class="car-button" href="#" data-toggle="modal" data-target="#modal_cart"><i class="coche icon fa-solid fa-cart-shopping"></i></a>
-			<span class="numProd">
-				<?php echo $num_row ?>
-			</span>
-
-			<!-- <ul class="navbar-nav nav-pills mr-l">
+			<button class="car-button" type="button" data-toggle="modal" data-target="#modal_cart<?php echo $row_usuario['id_usuario']; ?>"><i class="coche icon fa-solid fa-cart-shopping"></i></a>
+				<span class="numProd">
+					<?php echo $num_row ?>
+				</span>
+				<!-- <ul class="navbar-nav nav-pills mr-l">
 					<a class="btn btn-success m-2" href="busca_prodB.php">BUSCAR PRODUCTOS <span style="margin-left: 10px;"><i class="fa-solid fa-magnifying-glass"></i></span></a>
 				</ul> -->
 
