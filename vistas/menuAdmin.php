@@ -23,7 +23,8 @@
             Bienvenido <b><?php echo $usuario; ?></b>
           </button>
           <ul class="dropdown-menu dropdown-menu-dark">
-          <li><a class="dropdown-item" role="button"  data-toggle="modal" data-target="#perfilEmpl">Mi perfil</a></li>
+            <li><a class="dropdown-item" role="button" data-toggle="modal" data-target="#perfilEmpl">Mi
+                perfil</a></li>
             <li><a class="dropdown-item" href="../controladores/cerrar_sesion_C.php">Cerrar Sesión</a></li>
           </ul>
         </div>
@@ -104,7 +105,9 @@
             Clientes
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="ver-cli-compras.php">Listado de clientes y sus compras</a></li> <!---- aca voy ---->
+            <li><a class="dropdown-item" href="ver-cli-compras.php">Listado de clientes y sus compras</a>
+            </li>
+            <!---- aca voy ---->
             <li><a class="dropdown-item" href="listar-usuario.php">Listado de usuarios</a></li>
             <li><a class="dropdown-item" href="cambio-clave.php">Cambiar contraseña</a></li>
           </ul>
@@ -117,14 +120,17 @@
             <li><a class="dropdown-item" href="info-gnral.php">Informe general</a></li>
             <li><a class="dropdown-item" href="info-vendedor.php">Informe por vendedor</a></li>
             <li><a class="dropdown-item" href="info-productos.php">Informe por producto y rango</a></li>
-            <li><a class="dropdown-item" href="info-vendedoryrango.php">Informe por vendedor y rango</a></li>
+            <li><a class="dropdown-item" href="info-vendedoryrango.php">Informe por vendedor y rango</a>
+            </li>
           </ul>
         </li>
       </ul>
-
-      <a class="car-button" href="#"><i class="coche icon fa-solid fa-cart-shopping"></i></a>
-      <span class="numProd">0</span>
-
+      <div class="btnCarrito">
+        <button class="car-button" type="button" data-toggle="modal" data-target="#modal_cart<?php echo $row_usuario['id_usuario']; ?>"><i class="coche icon fa-solid fa-cart-shopping"></i></button>
+        <span class="numProd">
+          <?php echo $num_row ?>
+        </span>
+      </div>
       <!-- <ul class="navbar-nav nav-pills mr-l">
 					<a class="btn btn-success m-2" href="busca_prodB.php">BUSCAR PRODUCTOS <span style="margin-left: 10px;"><i class="fa-solid fa-magnifying-glass"></i></span></a>
 				</ul> -->

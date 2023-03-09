@@ -3,19 +3,14 @@ session_start();
 $usuario = $_SESSION['datosU']['nombre_usuario'];
 include '../conexion/conexion.php';
 include '../vistas/menuAdmin.php';
-include '../controladores/crear_sector_C.php';
 $queryDpto = ("SELECT id_dpto, nombre_dpto, estado FROM departamentos ORDER BY nombre_dpto ASC");
 $resDpto = mysqli_query($conexion, $queryDpto);
 $cantDpto = mysqli_num_rows($resDpto);
 
-$Dpto = ("SELECT * FROM departamentos ORDER BY id_dpto ASC");
-$rDpto = mysqli_query($conexion, $Dpto);
-$dataD = mysqli_fetch_assoc($rDpto);
-
 $queryCity = ("SELECT * FROM ciudades");
 $resCity = mysqli_query($conexion, $queryCity);
 $cantCity = mysqli_num_rows($resCity);
-$dataCity = mysqli_fetch_assoc($resCity);
+
 
 $querySect = ("SELECT * FROM sectores");
 $resSect = mysqli_query($conexion, $querySect);
@@ -63,6 +58,7 @@ $cantSect = mysqli_num_rows($resSect);
             </div>
 
         </div>
+        <?php include '../controladores/crear_sector_C.php'; ?>
 
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -71,7 +67,7 @@ $cantSect = mysqli_num_rows($resSect);
 
                         <div class="col-12">
                             <!--- Formulario para registrar Marca --->
-                            <form method="post" action="#">
+                            <form method="post">
 
                                 <div class="form-group mt-4 mb-2 p-3" style=" background-color:#f6f6f6; border-radius: 20px; ">
                                     <h5 class="text-center mb-3" style="color:#177c03">Departamento</h5>
@@ -87,11 +83,7 @@ $cantSect = mysqli_num_rows($resSect);
 
                                         ?>
                                     </select>
-                                    <label for="tipo-docs" class="mb-1">Seleccione su estado </label>
-                                    <select class="tip-doc form-control" name="estadoDepto">
-                                        <option value="1">Activo</option>
-                                        <option value="0">Inactivo</option>
-                                    </select>
+
                                 </div>
 
                                 <div class="form-group mt-4 mb-2 p-3" style=" background-color:#f6f6f6; border-radius: 20px; ">
@@ -101,13 +93,6 @@ $cantSect = mysqli_num_rows($resSect);
                                         <!-- Este campo lo llena la funcion cargar_ciudades.js -->
                                     </div>
 
-                                    <div class="mt-3 ">
-                                        <label for="tipo-docs" class="mb-1">Seleccione su estado </label>
-                                        <select class="tip-doc form-control" name="estadoCiudad">
-                                            <option value="1">Activo</option>
-                                            <option value="0">Inactivo</option>
-                                        </select>
-                                    </div>
                                 </div>
 
                                 <div class="form-group mt-4 mb-5 p-3" style=" background-color:#f6f6f6; border-radius: 20px; ">
@@ -115,11 +100,6 @@ $cantSect = mysqli_num_rows($resSect);
                                     <label for="tipo-docs" class="mb-1">Nombre sector</label>
                                     <input class="tip-doc form-control mb-3" name="sector">
 
-                                    <label for="tipo-docs" class="mb-1">Seleccione su estado </label>
-                                    <select class="tip-doc form-control" name="estadoSector">
-                                        <option value="1">Activo</option>
-                                        <option value="0">Inactivo</option>
-                                    </select>
                                 </div>
 
                                 <div class="form-group mt-5 mb-5">
@@ -153,12 +133,12 @@ $cantSect = mysqli_num_rows($resSect);
                         <table class="table table-bordered  table-hover">
                             <thead>
                                 <tr>
-                                    <th style="background-color: #cecece; font-size: 0.85rem;">Id Sect
+                                    <th style="background-color: #cecece; font-size: 0.85rem;">Id Sector
                                     </th>
-                                    <th style="background-color: #cecece; font-size: 0.85rem;">Nom.
+                                    <th style="background-color: #cecece; font-size: 0.85rem;">Nombre
                                         Sector
                                     </th>
-                                    <th style="background-color: #cecece; font-size: 0.85rem;">Est.
+                                    <th style="background-color: #cecece; font-size: 0.85rem;">Estado
                                         Sector</th>
 
                                     <th style="background-color: #cecece; font-size: 0.85rem;">Acciones
@@ -169,31 +149,35 @@ $cantSect = mysqli_num_rows($resSect);
 
 
                                 <?php
-                                do { ?>
-                                    <tr>
-                                        <td>
-                                            <?php echo $dataSector['id_sector']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $dataSector['nom_sector']; ?>
-                                        </td>
-                                        <td>
-                                            <?php $est = $dataSector['estado'];
-                                            echo ($est === '1') ? '<p style="color:green;font-weight:700; ">Activo</p>' : '<p style="color:red; font-weight:700; ">Inactivo</p>' ?>
-                                        </td>
+                                if ($cantSect == 0) {
+                                    echo '<h6 class="text-light text-center bg-danger"> No hay sectores registrados</h6>';
+                                } else {
+
+                                    do { ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $dataSector['id_sector']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $dataSector['nom_sector']; ?>
+                                            </td>
+                                            <td>
+                                                <?php $est = $dataSector['estado'];
+                                                echo ($est === '1') ? '<p style="color:green;font-weight:700; ">Activo</p>' : '<p style="color:red; font-weight:700; ">Inactivo</p>' ?>
+                                            </td>
 
 
 
-                                        <td>
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataSector['id_sector']; ?>">
-                                                <i class="fa-solid fa-trash-can"></i>
-                                            </button>
+                                            <td>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteSector<?php echo $dataSector['id_sector']; ?>">
+                                                    <i class="fa-solid fa-trash-can"></i>
+                                                </button>
 
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataSector['id_sector']; ?>">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataSector['id_sector']; ?>">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
                             </tbody>
 
 
@@ -204,7 +188,9 @@ $cantSect = mysqli_num_rows($resSect);
                             <?php include('mod/ModalEliminarSect.php'); ?>
 
 
-                        <?php } while ($dataSector = mysqli_fetch_assoc($b_sector)); ?>
+                    <?php } while ($dataSector = mysqli_fetch_assoc($b_sector));
+                                } ?>
+
 
 
                         </table>
@@ -221,6 +207,9 @@ $cantSect = mysqli_num_rows($resSect);
                 <strong>Lista de Departamentos <span style="color: crimson"> ( <?php echo $cantDpto ?>)</span> </strong>
             </div>
         </div>
+
+
+
         <div class="col-12">
             <div class="row mt-3">
                 <div class="col-12 p-2">
@@ -233,10 +222,10 @@ $cantSect = mysqli_num_rows($resSect);
 
                                     <th style="background-color: #cecece; font-size: 0.85rem;">Id Depto
                                     </th>
-                                    <th style="background-color: #cecece; font-size: 0.85rem;">Nom.
+                                    <th style="background-color: #cecece; font-size: 0.85rem;">Nombre
                                         Depto
                                     </th>
-                                    <th style="background-color: #cecece; font-size: 0.85rem;">Est.
+                                    <th style="background-color: #cecece; font-size: 0.85rem;">Estado
                                         Depto</th>
 
                                     <th style="background-color: #cecece; font-size: 0.85rem;">Acciones
@@ -247,28 +236,29 @@ $cantSect = mysqli_num_rows($resSect);
 
 
                                 <?php
+
+                                $sql = ("SELECT * FROM departamentos ");
+                                $dptos = mysqli_query($conexion, $sql);
+                                $row_dpto = mysqli_fetch_assoc($dptos);
                                 do { ?>
                                     <tr>
 
                                         <td>
-                                            <?php echo $dataD['id_dpto']; ?>
+                                            <?php echo $row_dpto['id_dpto']; ?>
                                         </td>
                                         <td>
-                                            <?php echo $dataD['nombre_dpto']; ?>
+                                            <?php echo $row_dpto['nombre_dpto']; ?>
                                         </td>
                                         <td>
-                                            <?php $estD = $dataD['estado'];
+                                            <?php $estD = $row_dpto['estado'];
                                             echo ($estD === '1') ? '<p style="color:green;font-weight:700; ">Activo</p>' : '<p style="color:red; font-weight:700; ">Inactivo</p>' ?>
                                         </td>
 
 
                                         <td>
-                                            <!-- <button type="button" class="btn btn-danger" data-toggle="modal"
-                                            data-target="#deleteChildresn</?php echo $dataD['id_dpto']; ?>">
-                                            <i class="fa-solid fa-trash-can"></i>
-                                        </button> -->
 
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editDpto<?php echo $dataD['id_dpto']; ?>">
+
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editDpto<?php echo $row_dpto['id_dpto']; ?>">
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                             </button>
                                         </td>
@@ -279,11 +269,15 @@ $cantSect = mysqli_num_rows($resSect);
                             <!--Ventana Modal para Actualizar--->
                             <?php include('mod/ModalEditarDpto.php'); ?>
 
-                            <!--Ventana Modal para la Alerta de Eliminar--->
-                            <!-- </?php include('mod/ModalEliminarProdts.php'); ?> -->
 
 
-                        <?php } while ($dataD = mysqli_fetch_assoc($rDpto)); ?>
+
+                        <?php } while ($row_dpto = mysqli_fetch_assoc($dptos));
+
+                        ?>
+
+
+
 
 
                         </table>
@@ -300,6 +294,10 @@ $cantSect = mysqli_num_rows($resSect);
                 <strong>Lista de Ciudades <span style="color: crimson"> (<?php echo $cantCity ?> )</span> </strong>
             </div>
         </div>
+
+
+
+
         <div class="col-12">
             <div class="row mt-3">
                 <div class="col-12 p-2">
@@ -328,26 +326,29 @@ $cantSect = mysqli_num_rows($resSect);
 
 
                                 <?php
+
+                                $sql = ("SELECT * FROM ciudades ");
+                                $citys = mysqli_query($conexion, $sql);
+                                $row_citys = mysqli_fetch_assoc($citys);
+
                                 do { ?>
                                     <tr>
 
                                         <td>
-                                            <?php echo $dataCity['id_ciudad']; ?>
+                                            <?php echo $row_citys['id_ciudad']; ?>
                                         </td>
                                         <td>
-                                            <?php echo $dataCity['nombre_ciudad']; ?>
+                                            <?php echo $row_citys['nombre_ciudad']; ?>
                                         </td>
                                         <td>
-                                            <?php $est = $dataCity['estado'];
+                                            <?php $est = $row_citys['estado'];
                                             echo ($est === '1') ? '<p style="color:green;font-weight:700; ">Activo</p>' : '<p style="color:red; font-weight:700; ">Inactivo</p>' ?>
                                         </td>
 
                                         <td>
-                                            <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn</?php echo $dataCity['id_ciudad']; ?>">
-                                                <i class="fa-solid fa-trash-can"></i>
-                                            </button> -->
 
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editCity<?php echo $dataCity['id_ciudad']; ?>">
+
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editCity<?php echo $row_citys['id_ciudad']; ?>">
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                             </button>
                                         </td>
@@ -358,11 +359,10 @@ $cantSect = mysqli_num_rows($resSect);
                             <!--Ventana Modal para Actualizar--->
                             <?php include('mod/ModalEditarCity.php'); ?>
 
-                            <!--Ventana Modal para la Alerta de Eliminar--->
-                            <!-- </?php include('mod/ModalEliminarProdts.php'); ?> -->
+                        <?php } while ($row_citys = mysqli_fetch_assoc($citys)); ?>
 
 
-                        <?php } while ($dataCity = mysqli_fetch_assoc($resCity)); ?>
+
 
 
                         </table>
@@ -397,14 +397,17 @@ $cantSect = mysqli_num_rows($resSect);
 
                 var dataString = 'id=' + id;
                 // alert (id + '--' +dataString);
-                url = "mod/BorrarS.php";
+                url = "mod/BorrarSect.php";
                 $.ajax({
                     type: "POST",
                     url: url,
                     data: dataString,
                     success: function(data) {
+                        alert("Sector eliminado con exito...!");
                         window.location.href = "sectores_V.php";
                         $('#respuesta').html(data);
+
+
                     }
 
                 });

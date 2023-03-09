@@ -5,15 +5,13 @@ require('../conexion/conexion.php');
 
 if (isset($_POST['btnGuardar'])) {
 
-	if (($_POST["dpto"] != "0") && ($_POST["estadoDepto"] != "2") && ($_POST["ciudad"] != "0") && ($_POST["estadoCiudad"] != "2") && ($_POST["sector"] != "0") && ($_POST["estadoSector"] != "2")) {
+	if (($_POST["dpto"] != "0") && ($_POST["ciudad"] != "0") &&  (!empty($_POST["sector"]))) {
 
 
 		$depto = $_POST['dpto'];
-		$estDpto = $_POST['estadoDepto'];
 		$city = $_POST['ciudad'];
-		$estCity = $_POST['estadoCiudad'];
 		$sector = $_POST['sector'];
-		$estSect = $_POST['estadoSector'];
+		$estSect = 0;
 
 		$query = "INSERT INTO sectores (nom_sector, estado, id_ciudad, id_dpto  ) VALUES ('$sector', '$estSect','$city','$depto')";
 		$execute = mysqli_query($conexion, $query) or die(mysqli_error($conexion));

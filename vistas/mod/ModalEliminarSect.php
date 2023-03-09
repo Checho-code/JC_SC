@@ -1,6 +1,6 @@
 <!-- Ventana modal para eliminar -->
 <?php $idDelete = $dataSector['nom_sector']; ?>
-<div class="modal fade" id="deleteChildresn<?php echo $dataSector['id_sector']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="deleteSector<?php echo $dataSector['id_sector']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

@@ -13,13 +13,11 @@ include '../vistas/menuAdmin.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="js/jquery.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
     <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
@@ -50,8 +48,7 @@ include '../vistas/menuAdmin.php';
                                         <div class="col">
 
                                             <h6>Buscar por Nombre</h6>
-                                            <input type="text" name="buscaNombre" id="buscaNombre"
-                                                style="border-radius: 10px;">
+                                            <input type="text" name="buscaNombre" id="buscaNombre" style="border-radius: 10px;">
 
                                         </div>
                                     </div>
@@ -80,8 +77,7 @@ include '../vistas/menuAdmin.php';
                                 <div class="container text-center">
                                     <div class="row align-items-start">
                                         <div class="col">
-                                            <input type="submit" class="btn btn-warning" value="Buscar"
-                                                style="margin-bottom: 5px;">
+                                            <input type="submit" class="btn btn-warning" value="Buscar" style="margin-bottom: 5px;">
                                         </div>
                                     </div>
                                 </div>
@@ -104,7 +100,6 @@ include '../vistas/menuAdmin.php';
         $sql = ("SELECT * FROM usuarios WHERE nombre_usuario lIKE '%$nom%'");
         $los_usuarios = mysqli_query($conexion, $sql);
         $row_usuarios = mysqli_fetch_assoc($los_usuarios);
-
     } elseif (empty($_POST['buscaNombre']) && !empty($_POST['buscaRol'])) {
         $rol = $_POST['buscaRol'];
 
@@ -119,7 +114,6 @@ include '../vistas/menuAdmin.php';
         $sql = ("SELECT * FROM usuarios WHERE nombre_usuario LIKE '%$nom%' AND nivel = '$rol'");
         $los_usuarios = mysqli_query($conexion, $sql);
         $row_usuarios = mysqli_fetch_assoc($los_usuarios);
-
     }
 
 
@@ -155,55 +149,51 @@ include '../vistas/menuAdmin.php';
                                 <th style="background-color: #cecece; font-size: 0.85rem;">Recibir</th>
                             </tr>
                             <?PHP
-                            if($row_usuarios>0){
-                            do { ?>
-                                <tr align="center" valign="middle">
-                                    <td>
-                                        <?php echo $row_usuarios['id_usuario'];
-                                        $id_usu = $row_usuarios['id_usuario']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row_usuarios['num_doc']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row_usuarios['nombre_usuario']; ?>
-                                    </td>
-                                    <td><a href="ver_pedidos.php?id_usuario=<?php echo $row_usuarios['id_usuario']; ?>"
-                                            class="btn btn-warning btn-sm">Pedidos</a></td>
+                            if ($row_usuarios > 0) {
+                                do { ?>
+                                    <tr align="center" valign="middle">
+                                        <td>
+                                            <?php echo $row_usuarios['id_usuario'];
+                                            $id_usu = $row_usuarios['id_usuario']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row_usuarios['num_doc']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row_usuarios['nombre_usuario']; ?>
+                                        </td>
+                                        <td><a href="ver_pedidos.php?id_usuario=<?php echo $row_usuarios['id_usuario']; ?>" class="btn btn-warning btn-sm">Pedidos</a></td>
 
-                                    <td>
-                                        <?php $total_recaudos = 0;
-                                        $abonos_recaudos = 0;
-                                        $saldo_recaudos = 0;
-                                        $pagos = 0;
-                                        $saldo_rec = 0;
-                                        $b_recaudos = mysqli_query($conexion, "SELECT * FROM recaudos WHERE id_usuario=$id_usu");
-                                        while ($row_recaudos = mysqli_fetch_assoc($b_recaudos)) {
-                                            $total_recaudos += $row_recaudos['total_recaudo'];
-                                            $abonos_recaudos += $row_recaudos['abono_recaudo'];
-                                            $pagos += $row_recaudos['abono_recaudo'];
-                                        }
-                                        echo number_format($total_recaudos);
-                                        ?>
-                                    </td>
-                                    <td><a href="ver_recaudos.php?id_usuario=<?php echo $row_usuarios['id_usuario']; ?>"><dfn
-                                                title="Click para ver todos los recaudos del usuario">
-                                                <?php echo number_format($pagos); ?>
-                                            </dfn></a></td>
-                                    <td>
-                                        <?php $saldo_rec = $total_recaudos - $pagos;
-                                        echo number_format($saldo_rec); ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row_usuarios['fecha_registro']; ?>
-                                    </td>
-                                    <td><a href="pagar_comision.php?id_usuario=<?php echo $row_usuarios['id_usuario']; ?>"
-                                            class="btn btn-success btn-sm">Pagar comision</a></td>
-                                    <td><a href="recaudar.php?id_usuario=<?php echo $row_usuarios['id_usuario']; ?>"
-                                            class="btn btn-sm btn-info">Recibir recaudo</a></td>
-                                </tr>
-                            <?php } while ($row_usuarios = mysqli_fetch_assoc($los_usuarios));
-                            }else{
+                                        <td>
+                                            <?php $total_recaudos = 0;
+                                            $abonos_recaudos = 0;
+                                            $saldo_recaudos = 0;
+                                            $pagos = 0;
+                                            $saldo_rec = 0;
+                                            $b_recaudos = mysqli_query($conexion, "SELECT * FROM recaudos WHERE id_usuario=$id_usu");
+                                            while ($row_recaudos = mysqli_fetch_assoc($b_recaudos)) {
+                                                $total_recaudos += $row_recaudos['total_recaudo'];
+                                                $abonos_recaudos += $row_recaudos['abono_recaudo'];
+                                                $pagos += $row_recaudos['abono_recaudo'];
+                                            }
+                                            echo number_format($total_recaudos);
+                                            ?>
+                                        </td>
+                                        <td><a href="ver_recaudos.php?id_usuario=<?php echo $row_usuarios['id_usuario']; ?>"><dfn title="Click para ver todos los recaudos del usuario">
+                                                    <?php echo number_format($pagos); ?>
+                                                </dfn></a></td>
+                                        <td>
+                                            <?php $saldo_rec = $total_recaudos - $pagos;
+                                            echo number_format($saldo_rec); ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row_usuarios['fecha_registro']; ?>
+                                        </td>
+                                        <td><a href="pagar_comision.php?id_usuario=<?php echo $row_usuarios['id_usuario']; ?>" class="btn btn-success btn-sm">Pagar comision</a></td>
+                                        <td><a href="recaudar.php?id_usuario=<?php echo $row_usuarios['id_usuario']; ?>" class="btn btn-sm btn-info">Recibir recaudo</a></td>
+                                    </tr>
+                                <?php } while ($row_usuarios = mysqli_fetch_assoc($los_usuarios));
+                            } else {
                                 ?>
                                 <script>
                                     Swal.fire({
@@ -214,15 +204,14 @@ include '../vistas/menuAdmin.php';
                                         confirmButtonText: 'Continuar'
                                     })
                                 </script>
-                        <?php
+                            <?php
                             }
                             ?>
                         </tbody>
                     </table>
 
                 </div>
-                <a href="index-base.php"><input type="button" value="Salir" class="btn"
-                        style=" color:white; background-color:red;"></a>
+                <a href="index-base.php"><input type="button" value="Salir" class="btn" style=" color:white; background-color:red;"></a>
 
             </div>
         </div>
@@ -235,8 +224,8 @@ include '../vistas/menuAdmin.php';
     <?php include('footer.php') ?>
 
     <script src="../js/jquery.min.js"></script>
-  <script src="../js/popper.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 </body>
 
 </html>

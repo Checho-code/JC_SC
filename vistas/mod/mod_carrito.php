@@ -44,14 +44,14 @@
 
                                                     <td class="w-0 ">
                                                         <input type="number" class="w-50 text-center" name="cantidad" value="<?php echo $row_usuario['cantidad']; ?>">
-                                                        <input type="hidden" value="<?php echo $row_usuario['id_carrito']; ?>" name="id_carrito">
+                                                        <input type="text" value="<?php echo $row_usuario['id_carrito']; ?>" name="id_carrito">
                                                     </td>
 
                                                     <td class="w-25 ">
                                                         <button title="Al refrescar, debe regresar al carrito para ver los cambios" class="btn btn-sm btn-warning " name="btnModCant" type="submit">
                                                             <i class="fa-solid fa-rotate"></i>
                                                         </button>
-                                                        <button title="Al refrescar, debe regresar al carrito para ver los cambios" class="btn btn-sm btn-danger " name="btnModCant" type="submit">
+                                                        <button title="Al refrescar, debe regresar al carrito para ver los cambios" class="btn btn-sm btn-danger " name="btnDelProdCar" type="submit">
                                                             <i class="fa-solid fa-trash-can"></i>
                                                         </button>
 
@@ -67,8 +67,8 @@
                                                         <input type="hidden" value="<?php echo  $tot = $tot + $subt;  ?>">
                                                     </td>
                                                 </tr>
+                                            </form>
                                     </tbody>
-                                    </form>
 
 
                                 <?php } while ($row_usuario = mysqli_fetch_assoc($buscar_usuario)); ?>
@@ -87,15 +87,16 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Continuar comprando</button>
                 <form method="POST">
-                    <input type="text" name="idUs" value="<?php echo $userLine ?>">
-                    <button type="submit" class="btn btn-danger">
+                    <button type="submit" class="btn btn-danger" name="btnVaciarCar">
                         Vaciar Carrito <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </form>
-                <a type="button" class="btn btn-success" href="#">Continuar
+
+                <a type="button" class="btn btn-success" href="../../../JC_SC/vistas/realizar_pedido.php">Realizar
                     pedido</a>
+
             </div>
 
         </div>
