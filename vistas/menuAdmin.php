@@ -57,6 +57,7 @@
             <li><a class="dropdown-item" href="marcas_V.php">Crear marca</a></li>
             <li><a class="dropdown-item" href="premios_V.php">Crear premio</a></li>
             <li><a class="dropdown-item" href="noticias_V.php">Crear noticia</a></li>
+            <li><a class="dropdown-item" href="mostrarNoticias.php">Ver noticias</a></li>
             <li><a class="dropdown-item" href="sectores_V.php">Crear sector</a></li>
             <li><a class="dropdown-item" href="Puntos_Solcom.php">Puntos Solcomercial</a></li>
             <li><a class="dropdown-item" href="contactanos2.php">Contáctanos</a></li>
@@ -89,6 +90,7 @@
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" href="../vistas/productos_V.php">Registrar producto</a></li>
             <li><a class="dropdown-item" href="../vistas/listar-producto.php">Listado de productos</a></li>
+            <li><a class="dropdown-item" href="../vistas/categorias_V.php">Registrar categorias</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown p-2">

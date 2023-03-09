@@ -27,32 +27,35 @@ include '../conexion/conexion.php'
     <link rel="stylesheet" type="text/css" href="../mis_css/productos-destacados.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/marcas.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/footer.css" />
-
     <link rel="stylesheet" type="text/css" href="mis_css/productos-destacados.css" />
-
+    <style>
+    .btnCarrito {
+        visibility: hidden;
+    }
+    </style>
     <title>Frutos del campo</title>
 
 </head>
 
 <body>
-<?php
-	$nivel = $_SESSION['datosU']['nivel'];
-	switch ($nivel) {
-		case '1':
-			include('../vistas/menuRepartidor.php');
-			break;
-		case '2':
-			include('../vistas/menuVendedor.php');
-			break;
-		case '3':
-			include('../vistas/menuAdmin.php');
-			break;
-		case '4':
-			include('../vistas/menuCliente.php');
-			break;
-	}
+    <?php
+    $nivel = $_SESSION['datosU']['nivel'];
+    switch ($nivel) {
+        case '1':
+            include('../vistas/menuRepartidor.php');
+            break;
+        case '2':
+            include('../vistas/menuVendedor.php');
+            break;
+        case '3':
+            include('../vistas/menuAdmin.php');
+            break;
+        case '4':
+            include('../vistas/menuCliente.php');
+            break;
+    }
 
-	?>
+    ?>
 
     <div class="container-fluid mt-5 mb-5 ">
 
@@ -77,7 +80,7 @@ include '../conexion/conexion.php'
                         </div>
                         <br>
                         <br>
-                        <div class="row" >
+                        <div class="row">
                             <div class="col-6 ">
                                 <input type="submit" value="Guardar cambios" class="btn" name="btnCambioClave"
                                     style="background-color: #177c03; color:#ffffff;" />

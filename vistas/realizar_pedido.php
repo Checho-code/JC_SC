@@ -33,6 +33,7 @@ $resDpto = mysqli_query($conexion, $queryDpto);
     <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
     <link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
 
     <link rel="stylesheet" type="text/css" href="../mis_css/menuPpal.css" />
@@ -40,6 +41,42 @@ $resDpto = mysqli_query($conexion, $queryDpto);
     <link rel="stylesheet" type="text/css" href="../mis_css/productos-destacados.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/marcas.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/ver_prodct.css" />
+
+
+    <script language="javascript">
+        $(document).ready(function() {
+            $("#cbx-deptos").change(function() {
+
+                // $('#cbx_localidad').find('option').remove().end().append(
+                //     '<option value="whatever"></option>').val('whatever');
+
+                $("#cbx-deptos option:selected").each(function() {
+                    id_dpto = $(this).val();
+                    $.post("../controladores/cargar_ciudades_C.php", {
+                        id_dpto: id_dpto
+                    }, function(data) {
+                        $("#cbx-ciudad").html(data);
+                    });
+                });
+            })
+        });
+
+        $(document).ready(function() {
+            $("#cbx-ciudad").change(function() {
+                $("#cbx-ciudad option:selected").each(function() {
+                    id_ciudad = $(this).val();
+                    $.post("../controladores/cargar_sectores_C.php", {
+                        id_ciudad: id_ciudad
+                    }, function(data) {
+                        $("#cbx-sector").html(data);
+                    });
+                });
+            })
+        });
+    </script>
+
+
+
     <style>
         .btnCarrito {
             visibility: hidden;
@@ -94,7 +131,7 @@ $resDpto = mysqli_query($conexion, $queryDpto);
 
     <div class="container-fluid">
         <form method="POST">
-
+            <?php include '../controladores/crear_pedido_C.php'; ?>
             <h4 class="modal-title  text-center ">Detalles de su pedido</h4>
             <div class="row">
                 <div class="col-12">
@@ -171,12 +208,12 @@ $resDpto = mysqli_query($conexion, $queryDpto);
 
                         <div class="col-5">
                             <label for="nombres" class="label">Nombre *</label>
-                            <input name="nombre" type="text" value="<?php echo $nombre ?> " class="form-control">
+                            <input readonly name="nombre" type="text" value="<?php echo $nombre ?> " class="form-control">
                         </div>
 
                         <div class="col-5">
                             <label for="apellidos" class="label">Apellido *</label>
-                            <input required name="apellido" type="text" value="<?php echo $apellido ?>" class="form-control">
+                            <input readonly name="apellido" type="text" value="<?php echo $apellido ?>" class="form-control">
                         </div>
                     </div>
 
@@ -185,13 +222,13 @@ $resDpto = mysqli_query($conexion, $queryDpto);
 
                         <div class="col-5">
                             <label for="correo1s" class="label">Correo *</label>
-                            <input required type="email" name="correo1" class="form-control " value="<?php echo $correo ?>">
+                            <input readonly type="email" name="correo1" class="form-control " value="<?php echo $correo ?>">
 
                         </div>
 
                         <div class="col-5">
                             <label for="num-docs" class="label">Num. docuemnto *</label>
-                            <input required name="numero" type="text" value="<?php echo $cc ?>" class="form-control">
+                            <input readonly name="numero" type="text" value="<?php echo $cc ?>" class="form-control">
                         </div>
 
                     </div>
@@ -200,15 +237,20 @@ $resDpto = mysqli_query($conexion, $queryDpto);
 
                         <div class="col-5">
                             <label for="num-tel" class="label">Num. telefono *</label>
-                            <input required name="tel" type="number" class="form-control" value="<?php echo $tel ?>">
+                            <input readonly name="tel" type="number" class="form-control" value="<?php echo $tel ?>">
                         </div>
 
                         <div class="col-5">
+                            <label for="num-docs" class="label">Direccion *</label>
+                            <input required name="direccion" type="text" class="form-control">
+                        </div>
 
+                    </div>
 
-                            <h5 class="text-center mb-3" style="color:#177c03">Departamento</h5>
-                            <label for="tipo-docs" class="mb-1">Seleccione un Departamento</label>
-                            <select class="tip-doc form-control mb-3" name="dpto" id="deptos">
+                    <div class="row justify-content-around  mt-3 p-2">
+                        <div class="col-3">
+                            <label for="tipo-docs" class="label">Seleccione un Departamento *</label>
+                            <select class="tip-doc form-control mb-3" name="dpto" id="cbx-deptos">
                                 <option value="0">Seleccione</option>
 
                                 <?php
@@ -221,58 +263,57 @@ $resDpto = mysqli_query($conexion, $queryDpto);
                             </select>
                         </div>
 
-                    </div>
+                        <div class="col-3">
+                            <!-- Este campo lo llena la funcion cargar_ciudades.js -->
 
-                    <div class="row justify-content-around  mt-3 p-2">
-
-                        <div class="col-5">
-                            <h5 class="text-center mb-3" style="color:#177c03">Ciudad</h5>
-                            <div class="" id="cont-ciudad">
-                                <!-- Este campo lo llena la funcion cargar_ciudades.js -->
-                            </div>
-
+                            <label class='label'>Seleccione una Ciudad *</label>
+                            <select id='cbx-ciudad' name='ciudad' class='form-control'>
+                                <option value='0'>Seleccione</option>
                         </div>
 
-                        <div class="col-5">
-                            <h5 class="text-center mb-3" style="color:#177c03">Sector</h5>
-                            <label for="tipo-docs" class="mb-1">Nombre sector</label>
-                            <input class="tip-doc form-control mb-3" name="sector">
+
+
+                        <div class="col-3">
+                            <!-- Este campo lo llena la funcion cargar_sectores.js -->
+                            <label class='label'>Seleccione una Sector *</label>
+                            <select id='cbx-sector' name='sector' class='form-control'>
+                                <option value='0'>Seleccione</option>
                         </div>
+
+
 
                     </div>
 
-                    <div class="row justify-content-around  mt-3 p-2">
+                    <div class="row justify-content-around  mt-3 mb-5 p-2">
 
-                        <div class="col-5">
+
+                        <div class="col-5 ">
                             <label for="tipo-rol" class="label">Observaciones *</label>
                             <textarea required class="tipo-rol form-control " name="observaciones">
 
-                            </textarea>
+                                </textarea>
 
                         </div>
 
                     </div>
 
-                    <div class="modal-footer">
-                        <a type="button" href="../vistas/index-base.php" class="btn btn-warning">Cancelar</a>
-                        <button type="submit" class="btn btn-success" method="POST">Enviar
-                            pedido
-                        </button>
+
+                    <div class="row justify-content-center">
+                        <div class="col-2">
+                            <a type="button" href="../vistas/index-base.php" class="btn btn-warning w-50">Cancelar</a>
+                        </div>
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-success w-75" method="POST">Enviar
+                                pedido
+                            </button>
+                        </div>
 
                     </div>
+
                 </form>
 
 
             </div>
-
-
-
-
-            <!-- END MODAL CARRITO -->
-
-
-
-
 
 
             <br>
@@ -283,10 +324,10 @@ $resDpto = mysqli_query($conexion, $queryDpto);
             <!---------------- Footer --------------->
             <?php include('footer.php') ?>
 
-            <script src="../js/jquery-3.6.3.min.js"></script>
+
+            <script src=" ../js/jquery-3.6.3.min.js"></script>
             <script src="../js/popper.min.js"></script>
             <script src="../js/bootstrap.min.js"></script>
-            <script src="../js/cargar_ciudades.js"></script>
 
 
 

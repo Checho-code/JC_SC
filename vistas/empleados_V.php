@@ -30,7 +30,11 @@ include '../vistas/menuAdmin.php';
     <link rel="stylesheet" type="text/css" href="../mis_css/marcas.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/footer.css" />
     <link rel="stylesheet" href="../mis_css/registroEmpl.css">
-
+    <style>
+    .btnCarrito {
+        visibility: hidden;
+    }
+    </style>
 </head>
 
 <body>
@@ -41,7 +45,7 @@ include '../vistas/menuAdmin.php';
         <h4 style="color: #177c03; text-align: center;" class="mb-5">
             Formulario de Registro de Empleados
         </h4>
-<a type="button" href="lista_empleados.php" class="btn btn-warning">Lista Empleados</a>
+        <a type="button" href="lista_empleados.php" class="btn btn-warning">Lista Empleados</a>
         <div class="row text-center mt-5" style="background-color: #cecece">
             <div class="col-md-12 text-center">
                 <strong>Registrar Nuevo Empleado</strong>
@@ -64,14 +68,14 @@ include '../vistas/menuAdmin.php';
                                     <div class="col-5">
                                         <label for="nombres" class="label">Nombre *</label>
                                         <input name="nombre" type="text" autofocus="autofocus" class="form-control"
-                                            <?php if (isset($_REQUEST['nombre']) && $_REQUEST['nombre'] != ''): ?>
+                                            <?php if (isset($_REQUEST['nombre']) && $_REQUEST['nombre'] != '') : ?>
                                             value="<?php echo $_REQUEST['nombre']; ?>" <?php endif; ?>>
                                     </div>
 
                                     <div class="col-5">
                                         <label for="apellidos" class="label">Apellido *</label>
                                         <input required name="apellido" type="text" class="form-control"
-                                            <?php if (isset($_REQUEST['apellido']) && $_REQUEST['apellido'] != ''): ?>
+                                            <?php if (isset($_REQUEST['apellido']) && $_REQUEST['apellido'] != '') : ?>
                                             value="<?php echo $_REQUEST['apellido']; ?>" <?php endif; ?>>
                                     </div>
                                 </div>
@@ -88,7 +92,7 @@ include '../vistas/menuAdmin.php';
                                     <div class="col-5">
                                         <label for="num-docs" class="label">Num. docuemnto *</label>
                                         <input required name="numero" type="text" class="form-control"
-                                            <?php if (isset($_REQUEST['numero']) && $_REQUEST['numero'] != ''): ?>
+                                            <?php if (isset($_REQUEST['numero']) && $_REQUEST['numero'] != '') : ?>
                                             value="<?php echo $_REQUEST['numero']; ?>" <?php endif; ?>>
                                     </div>
 
@@ -99,7 +103,7 @@ include '../vistas/menuAdmin.php';
                                     <div class="col-5">
                                         <label for="num-tel" class="label">Num. telefono *</label>
                                         <input required name="tel" type="number" class="form-control"
-                                            <?php if (isset($_REQUEST['tel']) && $_REQUEST['tel'] != ''): ?>
+                                            <?php if (isset($_REQUEST['tel']) && $_REQUEST['tel'] != '') : ?>
                                             value="<?php echo $_REQUEST['tel']; ?>" <?php endif; ?>>
                                     </div>
 
@@ -120,14 +124,14 @@ include '../vistas/menuAdmin.php';
                                     <div class="col-5">
                                         <label for="correo1s" class="label">Correo *</label>
                                         <input required type="email" name="correo1" class="form-control "
-                                            <?php if (isset($_REQUEST['correo1']) && $_REQUEST['correo1'] != ''): ?>
+                                            <?php if (isset($_REQUEST['correo1']) && $_REQUEST['correo1'] != '') : ?>
                                             value="<?php echo $_REQUEST['correo1']; ?>" <?php endif; ?>>
                                     </div>
 
                                     <div class="col-5">
                                         <label for="correo2s" class="label">Repetir correo *</label>
                                         <input required type="email" name="correo2" class="form-control "
-                                            <?php if (isset($_REQUEST['correo2']) && $_REQUEST['correo2'] != ''): ?>
+                                            <?php if (isset($_REQUEST['correo2']) && $_REQUEST['correo2'] != '') : ?>
                                             value="<?php echo $_REQUEST['correo2']; ?>" <?php endif; ?>>
                                     </div>
 
@@ -141,7 +145,7 @@ include '../vistas/menuAdmin.php';
                                         <div class="input-group ">
                                             <input required type="password" class="form-control" name="clave1"
                                                 id="password"
-                                                <?php if (isset($_REQUEST['clave1']) && $_REQUEST['clave1'] != ''): ?>
+                                                <?php if (isset($_REQUEST['clave1']) && $_REQUEST['clave1'] != '') : ?>
                                                 value="<?php echo $_REQUEST['clave1']; ?>" <?php endif; ?>>
 
                                         </div>
@@ -152,7 +156,7 @@ include '../vistas/menuAdmin.php';
                                         <div class="input-group ">
                                             <input required type="password" class="form-control" name="clave2"
                                                 id="password1"
-                                                <?php if (isset($_REQUEST['clave2']) && $_REQUEST['clave2'] != ''): ?>
+                                                <?php if (isset($_REQUEST['clave2']) && $_REQUEST['clave2'] != '') : ?>
                                                 value="<?php echo $_REQUEST['clave2']; ?>" <?php endif; ?>>
 
                                         </div>

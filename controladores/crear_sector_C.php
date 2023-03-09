@@ -11,7 +11,7 @@ if (isset($_POST['btnGuardar'])) {
 		$depto = $_POST['dpto'];
 		$city = $_POST['ciudad'];
 		$sector = $_POST['sector'];
-		$estSect = 0;
+		$estSect = 1;
 
 		$query = "INSERT INTO sectores (nom_sector, estado, id_ciudad, id_dpto  ) VALUES ('$sector', '$estSect','$city','$depto')";
 		$execute = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
