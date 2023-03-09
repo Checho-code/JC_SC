@@ -17,11 +17,9 @@ include '../controladores/crear_producto_C.php';
   <link type="text/css" rel="shortcut icon" href="img/logo-mywebsite-urian-viera.svg" />
   <title>Productos | Solcomercial</title>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+  </script>
   <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
@@ -46,10 +44,10 @@ include '../controladores/crear_producto_C.php';
 
   <!---------------- Formulario Registro --------------->
 
-    <h4 style="color: #177c03; text-align: center;" class="mb-3">
-      Listado de Productos
-    </h4>
-   
+  <h4 style="color: #177c03; text-align: center;" class="mb-3">
+    Listado de Productos
+  </h4>
+
   <!-------------- Tabla de registros --------------->
   <div class="container mt-5">
 
@@ -105,8 +103,7 @@ include '../controladores/crear_producto_C.php';
                     <td>
                       <?php echo $dataProduct['descripcion']; ?>
                     </td>
-                    <td><img src="../images/img_productos/<?php echo $dataProduct['imagen']; ?>" width="100"
-                        height="100" />
+                    <td><img src="../images/img_productos/<?php echo $dataProduct['imagen']; ?>" width="100" height="100" />
                     </td>
                     <td>
                       <?php $est = $dataProduct['estado'];
@@ -118,28 +115,26 @@ include '../controladores/crear_producto_C.php';
                       echo ($est == 1) ? '<p style="color:green;font-weight:700; ">Si </p>' : '<p style="color:red; font-weight:700; ">No</p>' ?>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-danger" data-toggle="modal"
-                        data-target="#deleteChildresn<?php echo $dataProduct['id_producto']; ?>">
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataProduct['id_producto']; ?>">
                         <i class="fa-solid fa-trash-can"></i>
                       </button>
 
-                      <button type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#editChildresn<?php echo $dataProduct['id_producto']; ?>">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataProduct['id_producto']; ?>">
                         <i class="fa-solid fa-pen-to-square"></i>
                       </button>
                     </td>
                   </tr>
-                </tbody>
+              </tbody>
 
 
-                <!--Ventana Modal para Actualizar--->
-                <?php include('mod/ModalEditarProdts.php'); ?>
+              <!--Ventana Modal para Actualizar--->
+              <?php include('mod/ModalEditarProdts.php'); ?>
 
-                <!--Ventana Modal para la Alerta de Eliminar--->
-                <?php include('mod/ModalEliminarProdts.php'); ?>
+              <!--Ventana Modal para la Alerta de Eliminar--->
+              <?php include('mod/ModalEliminarProdts.php'); ?>
 
 
-              <?php } while ($dataProduct = mysqli_fetch_assoc($b_productos)); ?>
+            <?php } while ($dataProduct = mysqli_fetch_assoc($b_productos)); ?>
 
             </table>
           </div>
@@ -164,9 +159,9 @@ include '../controladores/crear_producto_C.php';
   <script src="../js/bootstrap.min.js"></script>
 
   <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
 
-      $('.btnBorrar').click(function (e) {
+      $('.btnBorrar').click(function(e) {
         e.preventDefault();
         var id = $(this).attr("id");
 
@@ -177,7 +172,7 @@ include '../controladores/crear_producto_C.php';
           type: "POST",
           url: url,
           data: dataString,
-          success: function (data) {
+          success: function(data) {
             window.location.href = "listar-producto.php";
             $('#respuesta').html(data);
           }

@@ -65,8 +65,11 @@ $row_ciudades = mysqli_fetch_assoc($las_ciudades);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="js/jquery.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
     <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
@@ -76,43 +79,43 @@ $row_ciudades = mysqli_fetch_assoc($las_ciudades);
     <link rel="stylesheet" type="text/css" href="../mis_css/footer.css" />
     <link rel="stylesheet" type="text/css" href="mis_css/productos-destacados.css" />
     <script type="text/javascript">
-        function validar(str) {
-            var xmlhttp;
+    function validar(str) {
+        var xmlhttp;
 
 
-            if (str == "") {
-                document.getElementById("txtHint").innerHTML = "";
-                return;
-            }
-
-            if (window.XMLHttpRequest) {
-                xmlhttp = new XMLHttpRequest();
-            } else {
-                xmlhttp = new ActiveXObjet("Microsoft.XMLHTTP");
-
-            }
-            xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    document.getElementById("sector").innerHTML = xmlhttp.responseText;
-                }
-            }
-
-            xmlhttp.open("GET", "b_sector.php?sector=" + str, true);
-            xmlhttp.send();
+        if (str == "") {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
         }
 
-        function cargar(id_sector, nombre_sector, observacion) {
-            document.editar_sector.id_sector2.value = id_sector;
-            document.editar_sector.nombre_sector2.value = nombre_sector;
-            document.editar_sector.observacion2.value = observacion;
-        }
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObjet("Microsoft.XMLHTTP");
 
-        function eliminar(id_sector) {
-            var confirmar = confirm('Seguro que desea eliminar este sector?, esta accion no se puede deshacer');
-            if (confirmar) {
-                window.location = 'eliminar_sector.php?id_sector=' + id_sector;
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("sector").innerHTML = xmlhttp.responseText;
             }
         }
+
+        xmlhttp.open("GET", "b_sector.php?sector=" + str, true);
+        xmlhttp.send();
+    }
+
+    function cargar(id_sector, nombre_sector, observacion) {
+        document.editar_sector.id_sector2.value = id_sector;
+        document.editar_sector.nombre_sector2.value = nombre_sector;
+        document.editar_sector.observacion2.value = observacion;
+    }
+
+    function eliminar(id_sector) {
+        var confirmar = confirm('Seguro que desea eliminar este sector?, esta accion no se puede deshacer');
+        if (confirmar) {
+            window.location = 'eliminar_sector.php?id_sector=' + id_sector;
+        }
+    }
     </script>
     <title>Frutos del campo</title>
 
@@ -122,7 +125,7 @@ $row_ciudades = mysqli_fetch_assoc($las_ciudades);
 
     <datalist id="ciudades">
         <?php do { ?>
-            <option value="<?php echo $row_ciudades['id_ciudad']; ?>"><?php echo $row_ciudades['nombre_ciudad']; ?></option>
+        <option value="<?php echo $row_ciudades['id_ciudad']; ?>"><?php echo $row_ciudades['nombre_ciudad']; ?></option>
         <?php } while ($row_ciudades = mysqli_fetch_assoc($las_ciudades)); ?>
     </datalist>
     <div class="container-fluid mt-5 mb-5 ">
@@ -130,32 +133,36 @@ $row_ciudades = mysqli_fetch_assoc($las_ciudades);
         <div class="row">
 
             <div class="col-sm-12">
-                <h3  style="color: #177c03; text-align: center;">Crear sector</h3>
+                <h3 style="color: #177c03; text-align: center;">Crear sector</h3>
                 <br>
-                    <br>
+                <br>
                 <form name="nuevo_sector" method="post">
                     <div class="form-group">
                         <label for="ciudad">Ciudad *</label>
-                        <input type=text name="ciudad" class="form-control" required placeholder="Ingrese el nombre de la ciudad" autocomplete="off" list="ciudades">
+                        <input type=text name="ciudad" class="form-control" required
+                            placeholder="Ingrese el nombre de la ciudad" autocomplete="off" list="ciudades">
                     </div>
 
                     <br>
                     <br>
                     <div class="form-group">
                         <label for="nombre_sector">Nombre del sector *</label>
-                        <input type=text name="nombre_sector" class="form-control" required placeholder="Ingrese el nombre del sector" autocomplete="off" onKeyUp="validar(this.value)">
+                        <input type=text name="nombre_sector" class="form-control" required
+                            placeholder="Ingrese el nombre del sector" autocomplete="off" onKeyUp="validar(this.value)">
                     </div>
                     <br>
                     <br>
                     <div id="sector" class="rojo"></div>
                     <div class="form-group">
                         <label for="observacion">Observacion </label>
-                        <textarea name="observacion" class="form-control" placeholder="Escriba cualquier observacion respecto al nuevo sector"></textarea>
+                        <textarea name="observacion" class="form-control"
+                            placeholder="Escriba cualquier observacion respecto al nuevo sector"></textarea>
                     </div>
                     <br>
                     <br>
                     <div class="form-group">
-                        <input type="submit" class="btn" value="Crear sector" style="background-color: #177c03; color:#ffffff"/>
+                        <input type="submit" class="btn" value="Crear sector"
+                            style="background-color: #177c03; color:#ffffff" />
                         <a href="index-base.php"><input type="button" value="Cancelar" class="btn btn-warning"></a>
 
                     </div>
@@ -164,8 +171,8 @@ $row_ciudades = mysqli_fetch_assoc($las_ciudades);
             </div>
         </div>
         <br>
-                    <br><br>
-                    <br>
+        <br><br>
+        <br>
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
@@ -180,17 +187,27 @@ $row_ciudades = mysqli_fetch_assoc($las_ciudades);
                                 <th scope="col">Eliminar</th>
                             </tr>
                             <?php do { ?>
-                                <tr align="center" valign="middle">
-                                    <td><?PHP echo @$row_sectores['id_sector'];
-                                        $id_sector = @$row_sectores['id_sector']; ?></td>
-                                    <td><?php echo $row_sectores['nombre_ciudad']; ?></td>
-                                    <td><?PHP echo @$row_sectores['nombre_sector'];
-                                        $nombre_sector = @$row_sectores['nombre_sector']; ?></td>
-                                    <td><?PHP echo @$row_sectores['observacion'];
-                                        $observacion = @$row_sectores['observacion']; ?></td>
-                                    <td><a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal" onClick="cargar(<?php echo $id_sector; ?>, '<?php echo $nombre_sector; ?>', '<?php echo $observacion; ?>')">Editar</a></td>
-                                    <td><a href="#" class="btn btn-danger btn-sm" onClick="eliminar(<?php echo $id_sector; ?>)">Eliminar</a></td>
-                                </tr>
+                            <tr align="center" valign="middle">
+                                <td>
+                                    <?PHP echo @$row_sectores['id_sector'];
+                                        $id_sector = @$row_sectores['id_sector']; ?>
+                                </td>
+                                <td><?php echo $row_sectores['nombre_ciudad']; ?></td>
+                                <td>
+                                    <?PHP echo @$row_sectores['nombre_sector'];
+                                        $nombre_sector = @$row_sectores['nombre_sector']; ?>
+                                </td>
+                                <td>
+                                    <?PHP echo @$row_sectores['observacion'];
+                                        $observacion = @$row_sectores['observacion']; ?>
+                                </td>
+                                <td><a href="#" class="btn btn-warning btn-sm" data-toggle="modal"
+                                        data-target="#exampleModal"
+                                        onClick="cargar(<?php echo $id_sector; ?>, '<?php echo $nombre_sector; ?>', '<?php echo $observacion; ?>')">Editar</a>
+                                </td>
+                                <td><a href="#" class="btn btn-danger btn-sm"
+                                        onClick="eliminar(<?php echo $id_sector; ?>)">Eliminar</a></td>
+                            </tr>
                             <?php } while ($row_sectores = mysqli_fetch_assoc($b_sectores)); ?>
                         </tbody>
                     </table>
@@ -202,7 +219,8 @@ $row_ciudades = mysqli_fetch_assoc($las_ciudades);
         <div class="row">
             <div class="col-md-12">
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -216,17 +234,20 @@ $row_ciudades = mysqli_fetch_assoc($las_ciudades);
                                 <form name="editar_sector" method="post">
                                     <div class="form-group">
                                         <label for="nombre_sector2">Nombre del sector *</label>
-                                        <input type=text name="nombre_sector2" class="form-control" required placeholder="Ingrese el nombre del sector" autocomplete="off">
+                                        <input type=text name="nombre_sector2" class="form-control" required
+                                            placeholder="Ingrese el nombre del sector" autocomplete="off">
                                     </div>
                                     <div id="sector" class="rojo"></div>
                                     <div class="form-group">
                                         <label for="observacion2">Observacion </label>
-                                        <textarea name="observacion2" class="form-control" placeholder="Escriba cualquier observacion respecto al nuevo sector"></textarea>
+                                        <textarea name="observacion2" class="form-control"
+                                            placeholder="Escriba cualquier observacion respecto al nuevo sector"></textarea>
                                         <input type="hidden" name="id_sector2" />
                                     </div>
                                     <div class="form-group">
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
                                             <button type="submit" class="btn btn-primary">Guardar</button>
                                         </div>
                                     </div>
@@ -250,6 +271,8 @@ $row_ciudades = mysqli_fetch_assoc($las_ciudades);
     <script src="js/js_bootstrap/bootstrap.bundle.min.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/popper.min.js"></script>
+    <script src="../js/cargar_dpto.js"></script>
+
 </body>
 
 </html>
