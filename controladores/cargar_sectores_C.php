@@ -2,14 +2,19 @@
 
 include('../conexion/conexion.php');
 
-$ciudad = $_POST['id_ciudad'];
+$deptos = $_POST['ciudad'];
 
-echo '<div class="bg-danger">' . $ciudad . '</div>';
 
-$query = "SELECT * FROM  sectores WHERE id_ciudad  = '$ciudad' AND estado = 0";
-$resultado = $mysqli->query($query);
 
-while ($row = $resultado->fetch_assoc()) {
-    $html .= "<option value='" . $row['id-sector'] . "'>" . $row['nom_sector'] . "</option>";
+$queryS = "SELECT id_sector , nom_sector FROM  sectores WHERE id_ciudad = '$deptos' AND estado = 1";
+$resultadoS = mysqli_query($conexion, $queryS);
+
+$html = "
+                        <select id='sector' name='sector' class='form-control'>
+                        <option value='0'>Seleccione</option>";
+
+while ($rowS = $resultadoS->fetch_assoc()) {
+    $html .= "<option value='" . $rowS['id_sector'] . "'>" . $rowS['nom_sector'] . "</option>";
 }
+
 echo $html;

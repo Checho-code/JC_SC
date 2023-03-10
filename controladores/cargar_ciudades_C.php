@@ -2,16 +2,16 @@
 
 include('../conexion/conexion.php');
 
-$deptos = $_POST['id_dpto'];
-// $id_estado = $_POST['id_estado'];
-echo '<div class="bg-danger">' . $deptos . '</div>';
+$deptos = $_POST['deptos'];
 
 
 
-$queryM = "SELECT * FROM  ciudades WHERE id_dpto = '$deptos' AND estado = 1";
-$resultadoM = $mysqli->query($queryM);
+$queryM = "SELECT id_ciudad, nombre_ciudad FROM  ciudades WHERE id_dpto = '$deptos' AND estado = 1";
+$resultadoM = mysqli_query($conexion, $queryM);
 
-$html = "<option value='0'>Seleccionar Municipio</option>";
+$html = "
+                        <select id='ciudad' name='ciudad' class='form-control'>
+                        <option value='0'>Seleccione</option>";
 
 while ($rowM = $resultadoM->fetch_assoc()) {
     $html .= "<option value='" . $rowM['id_ciudad'] . "'>" . $rowM['nombre_ciudad'] . "</option>";

@@ -1,74 +1,102 @@
 <?php
 require('../conexion/conexion.php');
-function RandomString()
-{
-	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	$randstring = '';
-	for ($i = 0; $i < 30; $i++) {
-		$randstring = @$randstring . @$characters[rand(0, strlen($characters))];
-	}
-	return $randstring;
-}
-
-if (isset($_POST['btnSaveProd'])) {
-
-	if (($_POST['marca'] !="0") && !empty($_POST['categoria'] ) && !empty($_POST['nombre']) && !empty($_POST['precio']) && !empty($_POST['unidad']) && ($_POST['porcentaje'] !="Seleccione") && !empty($_POST['descripcion']) && ($_POST['estado'] !="Seleccione") && ($_POST['destacado'] !="Seleccione") && ($_FILES['imagen']['name'] != null)) {
-		$rand = RandomString();
-
-		$nombre_producto = ($_POST['nombre']);
-		$precio = ($_POST['precio']);
-		$unidad = ($_POST['unidad']);
-		$porcentaje = ($_POST['porcentaje']);
-		$descripcion = ($_POST['descripcion']);
-		$estado = ($_POST['estado']);
-		$destacado = ($_POST['destacado']);
-		$marca = ($_POST['marca']);
-		$categoria = ($_POST['categoria']);
-
-		$imagen = $_FILES['imagen']['name'];
-		$temporal = $_FILES['imagen']['tmp_name'];
-		$nombrer = strtolower($imagen);
-		$nom_img = $rand . '-' . $nombrer;
-		$carpeta = 'images/img_productos';
-		move_uploaded_file($temporal, '../' . $carpeta . '/' . $nom_img);
 
 
-		$stmt = $conexion->prepare("INSERT INTO productos (nom_producto, precio, unidad, porcentaje, descripcion, imagen, estado, destacado, id_marca, id_categoria ) VALUES (?,?,?,?,?,?,?,?,?,?)");
-		$stmt->bind_param('sisdsssiii', $nombre_producto, $precio, $unidad, $porcentaje, $descripcion, $nom_img, $estado, $destacado, $marca, $categoria);
-		$stmt->execute();
-		$stmt->close();
+if (isset($_POST['btnEnviarPedido'])) {
 
-		if ($stmt) {
-			/**	alerta reg exitoso */
-			?>
-			<script>
-				Swal.fire({
-					title: 'Muy bien...!',
-					text: "Registro realizado con éxito.!",
-					icon: 'success',
-					confirmButtonColor: '#3085d6',
-					confirmButtonText: 'Continuar'
-				}).then((result) => {
-					if (result.isConfirmed) {
+	if (!empty($_POST['nombre']) && !empty($_POST['apellido']) && !empty($_POST['correo']) && !empty($_POST['numero']) && !empty($_POST['tel']) && !empty($_POST['direccion']) && ($_POST['dpto'] != "0") && ($_POST['ciudad'] != "0") && ($_POST['sector'] != "0") && !empty($_POST['observaciones'])) {
 
-						window.location.href  = 'listar-producto.php';
-					}
-				})
-			</script>
-			<?php
+
+		$nombre = ($_POST['nombre']);
+		$apellido = ($_POST['apellido']);
+		$correo = ($_POST['correo']);
+		$doc = ($_POST['numero']);
+		$tel = ($_POST['tel']);
+		$direccion = ($_POST['direccion']);
+		$dpto = ($_POST['dpto']);
+		$city = ($_POST['ciudad']);
+		$sector = ($_POST['sector']);
+		$obser = ($_POST['observaciones']);
+		$rol = ($_POST['rol']);
+		$idUs = ($_POST['idUser']);
+		$total = ($_POST['total']);
+		$idVendedor = '';
+		if ($rol === 2) {
+			$idVendedor = $idUs;
 		} else {
-			/**	alerta reg invalido */
-			?>
-			<script>
-				Swal.fire({
-					title: 'Ooopss...!',
-					text: "Lo sentimos, no se pudo completar el registro, vuelve a intentarlo.!",
-					icon: 'error',
-					confirmButtonColor: '#3085d6',
-					confirmButtonText: 'Continuar'
-				})
-			</script>
-			<?php
+			$idVendedor = '';
+		}
+
+		//validamos si el cliente esta registrado
+		$verCli = mysqli_query($conexion, "SELECT idCliente  FROM clientes WHERE cedula = '$doc' AND correo = '$correo'");
+		$row_cli = mysqli_fetch_assoc($verCli);
+		$num_rowCli = mysqli_num_rows($verCli);
+		$verCli->close();
+
+
+		$fecha = date('Y-m-d');
+
+
+		if ($num_rowCli > 0) {
+			$idCli = $row_cli['idCliente'];
+			//si cliente esta reg llenamos el pedido
+			$stmt = $conexion->prepare("INSERT INTO pedidos (id_vendedor, idCliente, fecha, total_pedido, direccion, id_dpto, id_ciudad, id_sector, observacion) VALUES (?,?,?,?,?,?,?,?,?)");
+			$stmt->bind_param('iisdsiiis', $idVendedor, $idCli, $fecha, $total, $direccion, $dpto, $city, $sector, $obser);
+			$stmt->execute();
+			$stmt->close();
+
+			if ($stmt) {
+				$ultimo_id = mysqli_insert_id($conexion);
+				echo "id de pedido => " . $ultimo_id;
+				echo "<br>";
+				//actualizamos el carrito
+				$update = ("UPDATE carrito SET idPedido  ='$ultimo_id', idCliente ='$idCli', estado  =1 WHERE id_usuario='$idUs' AND estado = 0");
+				$result_update = mysqli_query($conexion, $update);
+
+
+				if ($result_update > 0) {
+?>
+					<script>
+						window.location.href = '../vistas/graciasPorCompra.php';
+					</script>
+					<?php
+
+				}
+			}
+		} else {
+			//sino esta reg, lo registramos
+			$stmt = $conexion->prepare("INSERT INTO clientes ( nombre, apellido, cedula, correo, telefono, rol) VALUES (?,?,?,?,?,?)");
+			$stmt->bind_param('sssssi', $nombre, $apellido, $doc, $correo, $tel, $rol);
+			$stmt->execute();
+			$stmt->close();
+
+			if ($stmt) {
+				//traemos el id cliente
+				$idCli = mysqli_insert_id($conexion);
+
+				// llenamos el pedido
+				$stmt = $conexion->prepare("INSERT INTO pedidos (id_vendedor, idCliente, fecha, total_pedido, direccion, id_dpto, id_ciudad, id_sector, observacion) VALUES (?,?,?,?,?,?,?,?,?)");
+				$stmt->bind_param('iisdsiiis', $idVendedor, $idCli, $fecha, $total, $direccion, $dpto, $city, $sector, $obser);
+				$stmt->execute();
+				$stmt->close();
+
+				if ($stmt) {
+					//actualizamos el carrito
+					$idPed = mysqli_insert_id($conexion);
+					$update = ("UPDATE carrito SET idPedido  ='$idPed', idCliente ='$idCli', estado  =1 WHERE id_usuario='$idUs' AND estado = 0");
+					$result_update = mysqli_query($conexion, $update);
+
+
+					if ($result_update > 0) {
+					?>
+						<script>
+							window.location.href = '../vistas/graciasPorCompra.php';
+						</script>
+		<?php
+
+					}
+				}
+			}
 		}
 	} else {
 		/**cerrar si no vacios */
@@ -82,11 +110,11 @@ if (isset($_POST['btnSaveProd'])) {
 				confirmButtonText: 'Continuar'
 			})
 		</script>
-		<?php
+<?php
 	}
 }
 /**cerrar btnGuardar */
 
 //Busco el registro de las noticias 
-$b_productos = mysqli_query($conexion, "SELECT * FROM productos ORDER BY id_producto");
-$dataProduct = mysqli_fetch_assoc($b_productos);
+// $b_productos = mysqli_query($conexion, "SELECT * FROM productos ORDER BY id_producto");
+// $dataProduct = mysqli_fetch_assoc($b_productos);

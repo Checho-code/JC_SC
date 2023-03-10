@@ -1,27 +1,28 @@
 
 $(document).ready(function () {
-    recargarCiudades();
 
     $('#deptos').change(function () {
-        console.log("Hola ciudad");
         recargarCiudades();
+        $('#sector').find('option').remove().end().append(
+            '<option value="whatever"></option>').val('whatever');
+
 
     });
 
 
-});
+})
 
 
 function recargarCiudades() {
-
     $.ajax({
         type: "POST",
         url: "../controladores/cargar_ciudades_C.php",
         data: "deptos=" + $('#deptos').val(),
         success: function (r) {
-            $('#ciudad').html(r);
+            $('#contCiudad').html(r);
         }
     });
+
 
 }
 
