@@ -1,0 +1,122 @@
+.btnCarrito {
+    visibility: hidden;
+}
+
+.titPro {
+    background-color: #177c03 !important;
+    color: #fff;
+    text-align: center;
+}
+
+.titDetPed {
+    color: #177c03;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.ctTot {
+    display: flex;
+    justify-content: end;
+
+}
+
+.cajaTot {
+    display: flex;
+    justify-content: end;
+    width: max-content;
+    margin: 45px 10px 5px 0px;
+    padding: 12px 50px;
+    border-radius: 45px;
+    border-bottom: #177c03 solid 2px;
+    border-left: #177c03 solid 2px;
+    border-right: #177c03 solid 2px;
+}
+
+.tit5 {
+    font-size: 1.1em;
+    font-weight: 600;
+
+}
+
+.txtotal {
+    background-color: #177c03;
+    color: #fff;
+    border-radius: 20px;
+    padding: 5px 35px;
+    margin-left: 20px;
+}
+
+
+.btnsePed {
+    width: auto;
+    background-color: #177c03;
+    color: #fff;
+    padding: 10px 40px;
+}
+
+.btnCancel {
+    width: auto;
+    background-color: #fd0;
+    color: #000;
+    padding: 10px 50px;
+}
+
+.labels {
+    color: #177c03;
+    font-weight: 550;
+
+}
+
+.cliSinReg {
+    box-shadow: 5px 12px 40px 5px #00000063;
+    padding: 0px 0px 50px 0px;
+    border-radius: 25px;
+    margin: 50px 25px 10px;
+
+}
+
+.contValidCobert {
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.contForVali {
+    border-radius: 25px;
+    text-align: center;
+    padding: 20px 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 10px 5px #00000063;
+}
+
+.contar {
+    color: #177c03;
+    font-weight: 600;
+    margin: 30px 0px;
+}
+
+.advertir {
+    color: #e00;
+    font-size: 0.75em;
+    margin-top: 20px;
+
+}
+
+.conInformar {
+    display: flex;
+    justify-content: center;
+}
+
+.informar {
+    width: fit-content;
+    color: #177c03;
+    font-weight: 550;
+    border-radius: 25px;
+    border-bottom: 1px solid #177c03;
+    box-shadow: inset 2px 2px 5px #177c03;
+    padding: 10px 25px;
+}

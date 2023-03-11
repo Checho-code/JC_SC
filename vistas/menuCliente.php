@@ -42,8 +42,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-contenedor fixed-top">
     <div class="container-fluid ">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -55,8 +54,7 @@
                 </li>
 
                 <li class="nav-item dropdown p-2">
-                    <a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Solcomercial
 
                     </a>
@@ -79,12 +77,12 @@
                 </li>
             </ul>
 
-            <button class="car-button" type="button" data-toggle="modal"
-                data-target="#modal_cart<?php echo $row_usuario['id_usuario']; ?>"><i
-                    class="coche icon fa-solid fa-cart-shopping"></i></button>
-            <span class="numProd">
-                <?php echo $num_row ?>
-            </span>
+            <div class="btnCarrito">
+                <button class="car-button" type="button" data-toggle="modal" data-target="#modal_cart<?php echo $row_usuario['id_usuario']; ?>"><i class="coche icon fa-solid fa-cart-shopping"></i></button>
+                <span class="numProd">
+                    <?php echo $num_row ?>
+                </span>
+            </div>
             <!-- <ul class="navbar-nav nav-pills mr-l">
 					<a class="btn btn-success m-2" href="busca_prodB.php">BUSCAR PRODUCTOS <span style="margin-left: 10px;"><i class="fa-solid fa-magnifying-glass"></i></span></a>
 				</ul> -->

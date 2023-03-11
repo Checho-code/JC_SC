@@ -1,0 +1,126 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.cabeza {
+    display: flex;
+    justify-content: center;
+    background-color: #ffae00;
+}
+
+.inf {
+    margin-left: auto;
+    padding: 6px 20px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+    border-radius: 20px;
+    border-bottom: solid 3px #177c03;
+    border-left: solid 3px #177c03;
+    border-right: solid 3px #177c03;
+}
+
+
+.closes {
+    padding: 5px 8px;
+    margin-left: 130px;
+    font-weight: 700;
+    background-color: #177c03;
+    color: white;
+    border-radius: 50%;
+    border: #fff solid 1px;
+}
+
+.contWarning {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.warning {
+    text-align: center;
+    background-color: #ffae00;
+    color: #fff;
+    padding: 6px 25px;
+    border-radius: 25px;
+    width: auto;
+    border-bottom: solid 2px #177c03;
+    border-right: solid 2px #177c03;
+    border-left: solid 2px #177c03;
+}
+
+.titTabla {
+    font-size: 0.85em;
+    background-color: #177c03 !important;
+    color: #fff;
+    text-align: center;
+}
+
+.accion {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ct {
+    display: flex;
+    justify-content: end;
+    padding: 10px;
+}
+
+.contTotal {
+    /* background-color: #ffae00; */
+    text-align: end;
+    margin-top: 20px;
+    padding: 15px 25px 5px 25px;
+    border-radius: 45px;
+    border-bottom: #177c03 solid 2px;
+    border-left: #177c03 solid 2px;
+    border-right: #177c03 solid 2px;
+    width: max-content;
+
+}
+
+.tit-total {
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.val-total {
+    font-weight: 600;
+    background-color: #177c03;
+    color: #fff;
+    padding: 1px 15px;
+    margin-left: 10px;
+    border-radius: 15px;
+    margin-top: 6px;
+
+}
+
+/************* botones *************/
+.boto {
+    display: flex;
+    justify-content: space-around;
+}
+
+.segcomp {
+    background-color: #ffae00;
+    font-size: 1.1rem;
+    color: #000;
+    border: none;
+}
+
+.vaciarCar {
+    background-color: #d93333;
+    font-size: 1.1rem;
+    color: #ffffff;
+    border: none;
+}
+
+.pedir {
+    background-color: #177c03;
+    font-size: 1.1rem;
+    color: #ffffff;
+    border: none;
+}

@@ -62,7 +62,7 @@ if (isset($_POST['btnEnviar'])) {
 
 
             $mail->send();
-            ?>
+?>
             <script>
                 Swal.fire({
                     title: 'El correo ha sido enviado con éxito.!',
@@ -76,9 +76,9 @@ if (isset($_POST['btnEnviar'])) {
                     }
                 })
             </script>
-            <?php
+        <?php
         } catch (Exception $e) {
-            ?>
+        ?>
             <script>
                 Swal.fire({
                     title: 'Ooopss...!',
@@ -88,7 +88,7 @@ if (isset($_POST['btnEnviar'])) {
                     confirmButtonText: 'Continuar'
                 })
             </script>
-            <?php
+        <?php
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     } else { ?>
@@ -101,5 +101,5 @@ if (isset($_POST['btnEnviar'])) {
                 confirmButtonText: 'Continuar'
             })
         </script>
-    <?php }
+<?php }
 }
