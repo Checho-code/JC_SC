@@ -19,7 +19,10 @@ $buscar_usuario = mysqli_query($conexion, "SELECT * FROM carrito");
 $row_usuario = mysqli_fetch_assoc($buscar_usuario);
 $num_row = mysqli_num_rows($buscar_usuario);
 
-
+$sql = "SELECT COUNT(*) total FROM pedidos WHERE estado = 0";
+$result = mysqli_query($conexion, $sql);
+$fila = mysqli_fetch_assoc($result);
+$pedPendientes = $fila['total'];
 
 
 ?>
@@ -34,10 +37,8 @@ $num_row = mysqli_num_rows($buscar_usuario);
 
     <script type="text/javascript" src="js/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
     <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 
@@ -49,9 +50,9 @@ $num_row = mysqli_num_rows($buscar_usuario);
     <link rel="stylesheet" type="text/css" href="../mis_css/realizarPedido.css " />
 
     <style>
-    .btnCarrito {
-        visibility: hidden;
-    }
+        .btnCarrito {
+            visibility: hidden;
+        }
     </style>
     <title>Detalles Compra | Solcomercial</title>
 
@@ -85,8 +86,7 @@ $num_row = mysqli_num_rows($buscar_usuario);
 
     <div class="container w-75 ">
         <div class="row col-12 justify-content-center">
-            <a class="text-decoration-none text-success text-center bg-warning w-25" href=" index-base.php">Ir a <i
-                    class="fa-solid fa-house-chimney"></i></a>
+            <a class="text-decoration-none text-success text-center bg-warning w-25" href=" index-base.php">Ir a <i class="fa-solid fa-house-chimney"></i></a>
         </div>
     </div>
 
@@ -207,10 +207,8 @@ $num_row = mysqli_num_rows($buscar_usuario);
 
                                     <td class="w-0 ">2
                                         </?php echo $row_usuario['cantidad']; ?>
-                                        <input type="hidden" class="w-50 text-center" name="cantidad"
-                                            value="</?php echo $row_usuario['cantidad']; ?>">
-                                        <input type="hidden" value="</?php echo $row_usuario['id_carrito']; ?>"
-                                            name="id_carrito">
+                                        <input type="hidden" class="w-50 text-center" name="cantidad" value="</?php echo $row_usuario['cantidad']; ?>">
+                                        <input type="hidden" value="</?php echo $row_usuario['id_carrito']; ?>" name="id_carrito">
                                     </td>
 
                                     <td class="w-25 ">3
@@ -220,8 +218,7 @@ $num_row = mysqli_num_rows($buscar_usuario);
                                         </?php echo "$ " . $row_usuario['precio']; ?>
                                     </td>
                                     <td class="subtotal w-25">5
-                                        </?php $subt=$row_usuario['cantidad'] * $row_usuario['precio']; echo "$ " .
-                                            $subt; ?>
+                                        </?php $subt=$row_usuario['cantidad'] * $row_usuario['precio']; echo "$ " . $subt; ?>
                                         <input type="hidden" value="</?php echo  $tot = $tot + $subt;  ?>">
                                     </td>
                                 </tr>
@@ -285,8 +282,7 @@ $num_row = mysqli_num_rows($buscar_usuario);
 
         <div class="box__copyright">
             <hr>
-            <p>Todos los derechos reservados © 2023 <b>Juanda-Code</b> <img src="../img/código.png"
-                    alt="Logo programador" style="width: 3%; border-radius: 50%; "></p>
+            <p>Todos los derechos reservados © 2023 <b>Juanda-Code</b> <img src="../img/código.png" alt="Logo programador" style="width: 3%; border-radius: 50%; "></p>
             <p>Contacto:<b> 300-725-61-49</b> -- E-mail: <b>codigopractico23@gmail.com</b></p>
         </div>
     </footer>

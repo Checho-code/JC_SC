@@ -38,7 +38,8 @@
 
 <nav class="navbar navbar-expand-lg  navbar-contenedor fixed-top">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -50,7 +51,8 @@
                 </li>
 
                 <li class="nav-item dropdown p-2">
-                    <a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         Solcomercial
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark">
@@ -64,7 +66,8 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown p-2">
-                    <a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link " href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         Admin
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark">
@@ -74,7 +77,8 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown p-2">
-                    <a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link " href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         Empleados
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark">
@@ -84,7 +88,8 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown p-2">
-                    <a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link " href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         Productos
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark">
@@ -94,7 +99,8 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown p-2">
-                    <a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle fs-6 fw-semibold text-dark link" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         Pedidos
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark">
@@ -103,7 +109,8 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown p-2">
-                    <a class=" nav-link dropdown-toggle fs-6 fw-semibold text-dark link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class=" nav-link dropdown-toggle fs-6 fw-semibold text-dark link " href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         Clientes
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark">
@@ -115,7 +122,8 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown p-2">
-                    <a class=" nav-link dropdown-toggle fs-6 fw-semibold text-dark link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class=" nav-link dropdown-toggle fs-6 fw-semibold text-dark link" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         Informes
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark">
@@ -128,34 +136,33 @@
                 </li>
             </ul>
             <div class="btnCarrito">
-                <button class="car-button" type="button" data-toggle="modal" data-target="#modal_cart<?php echo $row_usuario['id_usuario']; ?>"><i class="coche icon fa-solid fa-cart-shopping"></i></button>
+                <button class="car-button" type="button" data-toggle="modal"
+                    data-target="#modal_cart<?php echo $row_usuario['id_usuario']; ?>"><i
+                        class="coche icon fa-solid fa-cart-shopping"></i></button>
                 <span class="numProd">
                     <?php echo $num_row ?>
                 </span>
             </div>
 
             <?php if ($pedPendientes > 0) { ?>
-                <style>
-                    .btnPedidos {
-                        visibility: visible;
-                    }
-                </style>
-
+            <style>
+            .btnPedidos {
+                visibility: visible;
+            }
+            </style>
             <?php } else { ?>
-                <style>
-                    .btnPedidos {
-                        visibility: hidden;
-                    }
-                </style>
+            <style>
+            .btnPedidos {
+                visibility: hidden;
+            }
+            </style>
 
             <?php
 
             } ?>
             <div class="area btnPedidos">
-                <a title="Numero de Pedidos Nuevos" class="btn" href="#!" role="button">
+                <a title="Numero de Pedidos Nuevos" class="btn" href="ver-pedidos-nuevos.php" role="button">
                     <span class="txt "><?php echo $pedPendientes . " Pedidos"; ?>
-
-
                 </a>
             </div>
 

@@ -118,17 +118,18 @@ $pedPendientes = $fila['total'];
     <br>
 
 
-    <script>
-    Push.create("Hola Admin", {
-        body: "Acabas de recibir un pedido nuevo, porfavor verifica...!!!",
-        icon: '../img/sistema/logo.png',
-        timeout: 5000,
-        onClick: function() {
-            window.location.href = 'mostrarNoticias.php';
-            this.close();
-        }
-    });
-    </script>
+    <!-- // <script>
+        // Push.create("Hola Admin", {
+        //         body: "Acabas de recibir un pedido nuevo, porfavor verifica...!!!",
+        //         icon: '../img/sistema/logo.png',
+        //         timeout: 5000,
+        //         onClick: function() {
+        //             window.location.href = 'ver-pedidos-nuevos.php';
+        //             this.close();
+        //         }
+        //     });
+        // 
+   // </script> -->
 
 
     <!---------------- Footer --------------->
