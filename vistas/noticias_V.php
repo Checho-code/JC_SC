@@ -2,7 +2,10 @@
 session_start();
 $usuario = $_SESSION['datosU']['nombre_usuario'];
 include '../conexion/conexion.php';
-include '../vistas/menuAdmin.php';
+$sql = "SELECT COUNT(*) total FROM pedidos WHERE estado = 0";
+$result = mysqli_query($conexion, $sql);
+$fila = mysqli_fetch_assoc($result);
+$pedPendientes = $fila['total'];
 // error_reporting(0);
 ?>
 
@@ -16,10 +19,8 @@ include '../vistas/menuAdmin.php';
     <link type="text/css" rel="shortcut icon" href="img/logo-mywebsite-urian-viera.svg" />
     <title>Noticias | Solcomercial</title>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
     <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 
@@ -29,25 +30,26 @@ include '../vistas/menuAdmin.php';
     <link rel="stylesheet" type="text/css" href="../mis_css/marcas.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/footer.css" />
     <style>
-    .btnCarrito {
-        visibility: hidden;
-    }
+        .btnCarrito {
+            visibility: hidden;
+        }
     </style>
 
 </head>
 
 <body>
+    <?php include '../vistas/menuAdmin.php'; ?>
 
     <div class="container mt-5 ">
 
         <?php
-    include '../conexion/conexion.php';
+        include '../conexion/conexion.php';
 
 
-    $sqlNoticia = ("SELECT * FROM noticias ORDER BY id_noticia");
-    $queryNoticia = mysqli_query($conexion, $sqlNoticia);
-    $cantidad = mysqli_num_rows($queryNoticia);
-    ?>
+        $sqlNoticia = ("SELECT * FROM noticias ORDER BY id_noticia");
+        $queryNoticia = mysqli_query($conexion, $sqlNoticia);
+        $cantidad = mysqli_num_rows($queryNoticia);
+        ?>
 
 
         <h4 style="color: #177c03; text-align: center;">
@@ -79,20 +81,17 @@ include '../vistas/menuAdmin.php';
 
                                 <div class="form-group mt-4">
                                     <label for="titulo">Titulo de la noticia *</label>
-                                    <input type="text" name="titulo" autocomplete="off" class="form-control"
-                                        placeholder="Titulo de la noticia" />
+                                    <input type="text" name="titulo" autocomplete="off" class="form-control" placeholder="Titulo de la noticia" />
                                 </div>
 
                                 <div class="form-group mt-5 mb-5">
                                     <label for="noticia">Noticia *</label>
-                                    <textarea name="noticia" class="form-control"
-                                        placeholder="Escriba aquí su publicacion"></textarea>
+                                    <textarea name="noticia" class="form-control" placeholder="Escriba aquí su publicacion"></textarea>
                                 </div>
 
                                 <div class="input-group mt-5 mb-5">
                                     <label for="imagen">Seleccione la imagen de la noticia *</label>
-                                    <input type="file" name="imagen" class="form-control-file"
-                                        accept="image/jpeg, image/jpg, image/png, image/gif" lang="es">
+                                    <input type="file" name="imagen" class="form-control-file" accept="image/jpeg, image/jpg, image/png, image/gif" lang="es">
                                 </div>
 
                                 <div class="form-group mt-5 mb-5">
@@ -104,10 +103,8 @@ include '../vistas/menuAdmin.php';
                                 </div>
 
                                 <div class="form-group mt-5 mb-5">
-                                    <input type="submit" name="btnGuardar" value="Guardar" class="btn"
-                                        style="background-color: #177c03; color:#ffffff">
-                                    <a href="index-base.php"><input type="button" value="Cancelar"
-                                            class="btn btn-warning"></a>
+                                    <input type="submit" name="btnGuardar" value="Guardar" class="btn" style="background-color: #177c03; color:#ffffff">
+                                    <a href="index-base.php"><input type="button" value="Cancelar" class="btn btn-warning"></a>
                                 </div>
 
                             </form>
@@ -142,44 +139,39 @@ include '../vistas/menuAdmin.php';
                                             </thead>
                                             <tbody>
                                                 <?php
-                        do { ?>
-                                                <tr>
-                                                    <td>
-                                                        <?php echo $dataNoticias['id_noticia']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $dataNoticias['fecha_publicacion']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $dataNoticias['titulo']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $dataNoticias['noticia']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php $est = $dataNoticias['estado'];
-                              echo ($est == 1) ? '<p style="color:green;font-weight:700; ">Activo </p>' : '<p style="color:red; font-weight:700; ">Inactivo </p>' ?>
-                                                    </td>
+                                                do { ?>
+                                                    <tr>
+                                                        <td>
+                                                            <?php echo $dataNoticias['id_noticia']; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $dataNoticias['fecha_publicacion']; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $dataNoticias['titulo']; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $dataNoticias['noticia']; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php $est = $dataNoticias['estado'];
+                                                            echo ($est == 1) ? '<p style="color:green;font-weight:700; ">Activo </p>' : '<p style="color:red; font-weight:700; ">Inactivo </p>' ?>
+                                                        </td>
 
-                                                    <td><img src="../images/img_noticias/<?php echo $dataNoticias['imagen']; ?>"
-                                                            width="100" height="100" /></td>
-                                                    <td>
-                                                        <div class=" container-fluid">
-                                                            <button type="button" class="btn btn-danger"
-                                                                data-toggle="modal"
-                                                                data-target="#deleteChildresn<?php echo $dataNoticias['id_noticia']; ?>">
-                                                                <i class="fa-solid fa-trash-can"></i>
-                                                            </button>
-                                                            <br>
-                                                            <br>
-                                                            <button type="button" class="btn btn-primary"
-                                                                data-toggle="modal"
-                                                                data-target="#editChildresn<?php echo $dataNoticias['id_noticia']; ?>">
-                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                        <td><img src="../images/img_noticias/<?php echo $dataNoticias['imagen']; ?>" width="100" height="100" /></td>
+                                                        <td>
+                                                            <div class=" container-fluid">
+                                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataNoticias['id_noticia']; ?>">
+                                                                    <i class="fa-solid fa-trash-can"></i>
+                                                                </button>
+                                                                <br>
+                                                                <br>
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataNoticias['id_noticia']; ?>">
+                                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                             </tbody>
 
 
@@ -190,7 +182,7 @@ include '../vistas/menuAdmin.php';
                                             <?php include('mod/ModalEliminarN.php'); ?>
 
 
-                                            <?php } while ($dataNoticias = mysqli_fetch_assoc($buscar_noticias)); ?>
+                                        <?php } while ($dataNoticias = mysqli_fetch_assoc($buscar_noticias)); ?>
 
                                         </table>
                                     </div>
@@ -214,10 +206,7 @@ include '../vistas/menuAdmin.php';
     <br>
 
     <div class="video">
-        <iframe width="860" height="415" src="https://www.youtube.com/embed/x8hEbhePSF4" title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+        <iframe width="860" height="415" src="https://www.youtube.com/embed/x8hEbhePSF4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <br><br>
 
@@ -232,31 +221,31 @@ include '../vistas/menuAdmin.php';
     <script src="../js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
-    $(document).ready(function() {
+        $(document).ready(function() {
 
-        $('.btnBorrarN').click(function(e) {
-            e.preventDefault();
-            var id = $(this).attr("id");
+            $('.btnBorrarN').click(function(e) {
+                e.preventDefault();
+                var id = $(this).attr("id");
 
-            var dataString = 'id=' + id;
-            // alert (id + '--' +dataString);
-            url = "mod/BorrarN.php";
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: dataString,
-                success: function(data) {
-                    window.location.href = "noticias_V.php";
-                    $('#respuesta').html(data);
-                }
+                var dataString = 'id=' + id;
+                // alert (id + '--' +dataString);
+                url = "mod/BorrarN.php";
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: dataString,
+                    success: function(data) {
+                        window.location.href = "noticias_V.php";
+                        $('#respuesta').html(data);
+                    }
+
+                });
+                return false;
 
             });
-            return false;
+
 
         });
-
-
-    });
     </script>
 
 </body>

@@ -3,8 +3,11 @@ session_start();
 $usuario = $_SESSION['datosU']['nombre_usuario'];
 $nivel = $_SESSION['datosU']['nivel'];
 include '../conexion/conexion.php';
-include '../vistas/menuAdmin.php';
-?>
+$sql = "SELECT COUNT(*) total FROM pedidos WHERE estado = 0";
+$result = mysqli_query($conexion, $sql);
+    $fila = mysqli_fetch_assoc($result);
+    $pedPendientes = $fila['total'];
+    ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -39,6 +42,7 @@ include '../vistas/menuAdmin.php';
 </head>
 
 <body>
+    <?php include '../vistas/menuAdmin.php';?>
     <!-- Tabla buscar -->
     <div class="container mt-5">
 

@@ -2,7 +2,10 @@
 session_start();
 $usuario = $_SESSION['datosU']['nombre_usuario'];
 include '../conexion/conexion.php';
-include '../vistas/menuAdmin.php';
+$sql = "SELECT COUNT(*) total FROM pedidos WHERE estado = 0";
+$result = mysqli_query($conexion, $sql);
+    $fila = mysqli_fetch_assoc($result);
+    $pedPendientes = $fila['total'];
 // error_reporting(0);
 ?>
 
@@ -37,17 +40,18 @@ include '../vistas/menuAdmin.php';
 </head>
 
 <body>
+    <?php include '../vistas/menuAdmin.php';?>
 
     <div class="container mt-5 ">
 
         <?php
-    include '../conexion/conexion.php';
+        include '../conexion/conexion.php';
 
 
-    $sqlCateg = ("SELECT * FROM categorias ORDER BY id_categoria");
-    $queryCteg = mysqli_query($conexion, $sqlCateg);
-    $cantidad = mysqli_num_rows($queryCteg);
-    ?>
+        $sqlCateg = ("SELECT * FROM categorias ORDER BY id_categoria");
+        $queryCteg = mysqli_query($conexion, $sqlCateg);
+        $cantidad = mysqli_num_rows($queryCteg);
+        ?>
 
 
         <h4 style="color: #177c03; text-align: center;">
@@ -82,13 +86,13 @@ include '../vistas/menuAdmin.php';
                                     <select class="tip-doc form-control" name="marca">
                                         <option value="0">Seleccione</option>
                                         <?php
-                    $sqlMarca = ("SELECT * FROM marcas ORDER BY id_marca");
-                    $queryMarca = mysqli_query($conexion, $sqlMarca);
-                    while ($row = mysqli_fetch_array($queryMarca, MYSQLI_ASSOC)) {
-                      echo '<option value="' . $row['id_marca'] . '">' . $row['nom_marca'] . '</option>';
-                    }
+                                        $sqlMarca = ("SELECT * FROM marcas ORDER BY id_marca");
+                                        $queryMarca = mysqli_query($conexion, $sqlMarca);
+                                        while ($row = mysqli_fetch_array($queryMarca, MYSQLI_ASSOC)) {
+                                            echo '<option value="' . $row['id_marca'] . '">' . $row['nom_marca'] . '</option>';
+                                        }
 
-                    ?>
+                                        ?>
                                     </select>
                                 </div>
 
@@ -132,7 +136,7 @@ include '../vistas/menuAdmin.php';
                                             </thead>
                                             <tbody>
                                                 <?php
-                        do { ?>
+                                                do { ?>
                                                 <tr>
                                                     <td>
                                                         <?php echo $dataCateg['id_categoria']; ?>
@@ -142,7 +146,7 @@ include '../vistas/menuAdmin.php';
                                                     </td>
                                                     <td>
                                                         <?php $marca = $dataCateg['id_marca'];
-                              echo ($marca == 114) ? '<p style="color:green;font-weight:700; ">Frutos </p>' : '<p style="color: orange ; font-weight:700; ">Fonda</p>' ?>
+                                                            echo ($marca == 114) ? '<p style="color:green;font-weight:700; ">Frutos </p>' : '<p style="color: orange ; font-weight:700; ">Fonda</p>' ?>
                                                     </td>
 
                                                     <td>

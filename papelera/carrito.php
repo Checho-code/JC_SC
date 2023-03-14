@@ -6,12 +6,15 @@ require('../conexion/conexion.php');
 @session_start();
 $cedula = $_SESSION['datosU']['num_doc'];
 $usuario = $_SESSION['datosU']['nombre_usuario'];
+
 //Busco el cliente para ver si está registrado
+
 $buscar_cliente = @mysqli_query($conexion, "SELECT * FROM clientes WHERE cedula='$cedula'");
 $row_elcliente = @mysqli_fetch_assoc($buscar_cliente);
 $telefono = @$row_elcliente['telefono'];
 $obs = @$row_elcliente['observacion'];
 // $url = $_SERVER['PHP_SELF'];
+
 
 $idCliente = '';
 //Codigo para registrar el pedido
@@ -101,7 +104,6 @@ $row_carrito = mysqli_fetch_assoc($b_carrito);
 if (@$_SESSION['id_usuario'] != '') {
 	$b_clientes = mysqli_query($conexion, "SELECT * FROM clientes");
 	$row_clientes = mysqli_fetch_assoc($b_clientes);
-
 }
 
 ?>
@@ -128,11 +130,10 @@ if (@$_SESSION['id_usuario'] != '') {
 			}
 			if (window.XMLHttpRequest) {
 				xmlhttp = new XMLHttpRequest();
-			}
-			else {
+			} else {
 				xmlhttp = new ActiveXObjet("Microsoft.XMLHTTP");
 			}
-			xmlhttp.onreadystatechange = function () {
+			xmlhttp.onreadystatechange = function() {
 				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 					/*subtotal=cantidad*costo;
 					subtotal=new Intl.NumberFormat().format(subtotal);*/
@@ -161,11 +162,10 @@ if (@$_SESSION['id_usuario'] != '') {
 			}
 			if (window.XMLHttpRequest) {
 				xmlhttp = new XMLHttpRequest();
-			}
-			else {
+			} else {
 				xmlhttp = new ActiveXObjet("Microsoft.XMLHTTP");
 			}
-			xmlhttp.onreadystatechange = function () {
+			xmlhttp.onreadystatechange = function() {
 				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 					subtotal = cantidad * costo;
 					subtotal = new Intl.NumberFormat().format(subtotal);
@@ -178,11 +178,10 @@ if (@$_SESSION['id_usuario'] != '') {
 			}
 
 
-			xmlhttp.open("GET", "ajx_actualizar_carrito.php?id_registro=" + id_registro + "&cantidad=" + cantidad + "&invitado=" + invitado, true);
+			xmlhttp.open("GET", "ajx_actualizar_carrito.php?id_registro=" + id_registro + "&cantidad=" + cantidad +
+				"&invitado=" + invitado, true);
 			xmlhttp.send();
 		}
-
-
 	</script>
 </head>
 
@@ -194,14 +193,16 @@ if (@$_SESSION['id_usuario'] != '') {
 	</datalist>
 	<datalist id="sectores">
 		<?php do { ?>
-			<option value="<?php echo $row_sectores['id_sector']; ?>"><?php echo $row_sectores['nombre_ciudad'] . " - " . $row_sectores['nombre_sector']; ?></option>
+			<option value="<?php echo $row_sectores['id_sector']; ?>">
+				<?php echo $row_sectores['nombre_ciudad'] . " - " . $row_sectores['nombre_sector']; ?></option>
 
 		<?php } while ($row_sectores = mysqli_fetch_assoc($b_sectores)); ?>
 	</datalist>
 	<div class="container-fluid">
 
 		<div class="row fixed-top">
-			<div class="col-md-11"><!--INICIO DEL MENU-->
+			<div class="col-md-11">
+				<!--INICIO DEL MENU-->
 
 				<?php //session_start(); 
 				if ($_SESSION['nivel'] > 2) {
@@ -212,8 +213,7 @@ if (@$_SESSION['id_usuario'] != '') {
 				?>
 
 			</div>
-			<div class="col-md-1" align="center"><a href="carrito"><img src="img/sistema/carrito.png" width="70"
-						height="60" /></a>
+			<div class="col-md-1" align="center"><a href="carrito"><img src="img/sistema/carrito.png" width="70" height="60" /></a>
 				<div align="center"><span class="carro" id="carro">
 						<?php echo $filas2; ?>
 				</div>
@@ -248,8 +248,7 @@ if (@$_SESSION['id_usuario'] != '') {
 				} ?>
 				<div class="table-responsive">
 					<form name="form-carro" method="post">
-						<table border="1"
-							class="table table-bordered table-striped table-hover table-sm <?php echo $ver; ?>">
+						<table border="1" class="table table-bordered table-striped table-hover table-sm <?php echo $ver; ?>">
 							<tbody>
 								<tr class="thead-dark">
 									<th scope="col">Imagen</th>
@@ -264,30 +263,68 @@ if (@$_SESSION['id_usuario'] != '') {
 								$contador = 1;
 								do { ?>
 									<tr align="center" valign="middle">
+
 										<?php $idProducto = @$row_carrito['idProducto'];
 										$b_prod = mysqli_query($conexion, "SELECT nombre_producto, imagen FROM productos WHERE idProducto=$idProducto LIMIT 1");
 										$row_prod = @mysqli_fetch_assoc($b_prod);
 										?>
-										<td><img src="img/miniaturas/<?php echo $row_prod['imagen']; ?>" width="45"
-												height="45" /></td>
+										<td><img src="img/miniaturas/<?php echo $row_prod['imagen']; ?>" width="45" height="45" /></td>
 										<td>
 											<?php echo $row_prod['nombre_producto']; ?>
 										</td>
-										<td><input type="text" name="cantidad<?php echo $contador; ?>"
-												value="<?php echo $row_carrito['cantidad']; ?>" class="form-control"
-												required
-												onkeyup="actualizar(<?php echo $row_carrito['id_registro']; ?>, this.value, <?php echo $row_carrito['precio_costo']; ?>, <?php echo $contador; ?>, '<?php echo $invitado; ?>')"
-												autocomplete="off" size="3"></td>
+
+
+
+
+
+
+
+
+
+
+
+										<td><input type="text" name="cantidad<?php echo $contador; ?>" value="<?php echo $row_carrito['cantidad']; ?>" class="form-control" required onkeyup="actualizar(<?php echo $row_carrito['id_registro']; ?>, this.value, <?php echo $row_carrito['precio_costo']; ?>, <?php echo $contador; ?>, '<?php echo $invitado; ?>')" autocomplete="off" size="3">
+										</td>
+
+
+
+
+
 										<td>
 											<?php echo number_format($row_carrito['precio_costo']);
 											$subtotal = $row_carrito['cantidad'] * $row_carrito['precio_costo']; ?>
 										</td>
+
+
 										<td id="subtotal<?php echo $contador; ?>"><?php echo number_format($subtotal);
-										   $total = $total + $subtotal; ?></td>
-										<td><a href="quitar_carrito.php?reg=<?php echo $row_carrito['id_registro']; ?>"
-												class="btn btn-danger btn-sm">Quitar</a></td>
+																					$total = $total + $subtotal; ?>
+										</td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+										<td><a href="quitar_carrito.php?reg=<?php echo $row_carrito['id_registro']; ?>" class="btn btn-danger btn-sm">Quitar</a></td>
 									</tr>
-									<?php $contador++;
+								<?php $contador++;
 								} while ($row_carrito = @mysqli_fetch_assoc($b_carrito)); ?>
 								<h3 class="total" id="txtHint">Total de la compra: $
 									<?php echo number_format($total, 2); ?>
@@ -297,14 +334,12 @@ if (@$_SESSION['id_usuario'] != '') {
 					</form>
 
 				</div>
-				<button type="button" class="btn btn-dark <?php echo $ver; ?>" data-toggle="modal"
-					data-target="#exampleModal">
+				<button type="button" class="btn btn-dark <?php echo $ver; ?>" data-toggle="modal" data-target="#exampleModal">
 					<b>Enviar pedido</b>
 				</button><br><br>
 
 
-				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-					aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -319,51 +354,38 @@ if (@$_SESSION['id_usuario'] != '') {
 								<form name="enviar" method="post">
 									<div class="form-group">
 										<label for="cedula_cliente">Número de cédula del cliente: *</label>
-										<input type="text" name="cedula_cliente" class="form-control" required
-											placeholder="Ingrese su numero de cedula" list="clientes" autocomplete="off"
-											onChange="comprobar()" value="<?php echo $cedula; ?>">
+										<input type="text" name="cedula_cliente" class="form-control" required placeholder="Ingrese su numero de cedula" list="clientes" autocomplete="off" onChange="comprobar()" value="<?php echo $cedula; ?>">
 									</div>
-									<div class="form-group" id="txtHintt"
-										style="background-color: #F9060A; border-radius: 3px; padding-left: 5px;"></div>
+									<div class="form-group" id="txtHintt" style="background-color: #F9060A; border-radius: 3px; padding-left: 5px;"></div>
 
 									<div class="form-group">
 										<label for="nombre_cliente">Nombre completo del cliente: *</label>
-										<input type="text" name="nombre_cliente" class="form-control" required
-											placeholder="Ingrese su nombre completo" autocomplete="off"
-											value="<?php echo $nombre; ?>">
+										<input type="text" name="nombre_cliente" class="form-control" required placeholder="Ingrese su nombre completo" autocomplete="off" value="<?php echo $nombre; ?>">
 									</div>
 
 									<div class="form-group">
 										<label for="telefono_cliente">Telefono: *</label>
-										<input type="text" name="telefono_cliente" class="form-control" required
-											placeholder="Ingrese su número de telefono" autocomplete="off"
-											value="<?php echo $telefono; ?>">
+										<input type="text" name="telefono_cliente" class="form-control" required placeholder="Ingrese su número de telefono" autocomplete="off" value="<?php echo $telefono; ?>">
 									</div>
 
 									<div class="form-group">
 										<label for="observacion">Observacion, direccion y/o órden de compra: </label>
-										<textarea name="observacion" rows="4" class="form-control"
-											placeholder="Ingrese la informacion adicional que considere necesaria para la entrega, como horario, nombre de la calle, preguntar por, nro de puerta, orden de compra, etc"
-											required><?php echo $obs; ?></textarea>
+										<textarea name="observacion" rows="4" class="form-control" placeholder="Ingrese la informacion adicional que considere necesaria para la entrega, como horario, nombre de la calle, preguntar por, nro de puerta, orden de compra, etc" required><?php echo $obs; ?></textarea>
 									</div>
 
 									<div class="form-group">
 										<label for="id_sector"> </label>
-										<input type="hidden" name="id_sector" class="form-control" required
-											placeholder="Elija el sector" list="sectores" value="1">
+										<input type="hidden" name="id_sector" class="form-control" required placeholder="Elija el sector" list="sectores" value="1">
 									</div>
 
 									<div class="form-group">
-										<label for="contrato"><b><dfn
-													title="Acepto que el supermercado el tesoro use mis datos para contactarme y enviar los pedidos que quega de hoy en adelante">Acepto
+										<label for="contrato"><b><dfn title="Acepto que el supermercado el tesoro use mis datos para contactarme y enviar los pedidos que quega de hoy en adelante">Acepto
 													manejo de datos *</dfn></b></label>
 										<input type="checkbox" name="acepto" class="form-control" required>
 									</div>
 
 
-									<button type="submit"
-										class="btn btn-primary">Enviar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
-										type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+									<button type="submit" class="btn btn-primary">Enviar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 								</form>
 
 

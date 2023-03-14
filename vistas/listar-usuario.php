@@ -2,12 +2,15 @@
 session_start();
 $usuario = $_SESSION['datosU']['nombre_usuario'];
 include '../conexion/conexion.php';
-include '../vistas/menuAdmin.php';
+$sql = "SELECT COUNT(*) total FROM pedidos WHERE estado = 0";
+$result = mysqli_query($conexion, $sql);
+    $fila = mysqli_fetch_assoc($result);
+    $pedPendientes = $fila['total'];
 
-$los_usuarios = mysqli_query($conexion, "SELECT * FROM usuarios WHERE nivel = 4");
-$row_usuarios = mysqli_fetch_assoc($los_usuarios);
-
-?>
+    $los_usuarios = mysqli_query($conexion, "SELECT * FROM usuarios WHERE nivel = 4");
+    $row_usuarios = mysqli_fetch_assoc($los_usuarios);
+    
+    ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -36,6 +39,7 @@ $row_usuarios = mysqli_fetch_assoc($los_usuarios);
 </head>
 
 <body>
+    <?php include '../vistas/menuAdmin.php';?>
     <div class="container-fluid mt-5 mb-5 ">
         <div class="row justify-content-center ">
             <div class="col-sm-12">

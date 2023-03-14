@@ -40,6 +40,9 @@
                                     </thead>
                                     <tbody class="bodyTable mt-2">
                                         <?php
+                                        $subt = 0;
+                                        $tot = 0;
+
                                         do { ?>
                                         <form method="POST">
                                             <tr>
@@ -56,6 +59,9 @@
                                                         value="<?php echo $row_usuario['id_carrito']; ?>"
                                                         name="id_carrito">
                                                 </td>
+
+
+
 
                                                 <td class=" w-25 ">
                                                     <div class="accion">
@@ -75,12 +81,14 @@
                                                 </td>
 
                                                 <td class="w-25 ">
-                                                    <?php echo "$ " . $row_usuario['precio']; ?>
+                                                    <?php echo "$ " . number_format($row_usuario['precio']);
+                                                        $subt = $row_usuario['cantidad'] * $row_usuario['precio'] ?>
                                                 </td>
-                                                <td class="subtotal w-25">
-                                                    <?php $subt = $row_usuario['cantidad'] * $row_usuario['precio'];
 
-                                                        echo "$ " . $subt; ?>
+
+
+                                                <td class="subtotal w-25">
+                                                    <?php echo "$ " . number_format($subt); ?>
                                                     <input type="hidden" value="<?php echo  $tot = $tot + $subt;  ?>">
                                                 </td>
                                             </tr>
@@ -88,13 +96,14 @@
                                     </tbody>
 
 
-                                    <?php } while ($row_usuario = mysqli_fetch_assoc($buscar_usuario)); ?>
+                                    <?php
+                                        } while ($row_usuario = mysqli_fetch_assoc($buscar_usuario)); ?>
 
                                 </table>
                                 <div class="ct">
                                     <div class="contTotal col-12">
-                                        <h5 class="tit-total">Total a Pagar: <span
-                                                class="val-total "><?php echo "$ " . $tot ?></span>
+                                        <h5 class="tit-total" id="txtHint">Total a Pagar: <span
+                                                class="val-total "><?php echo "$ " . number_format($tot) ?></span>
                                         </h5>
                                     </div>
                                 </div>

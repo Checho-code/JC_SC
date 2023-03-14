@@ -2,7 +2,10 @@
 session_start();
 $usuario = $_SESSION['datosU']['nombre_usuario'];
 include '../conexion/conexion.php';
-include '../vistas/menuAdmin.php';
+$sql = "SELECT COUNT(*) total FROM pedidos WHERE estado = 0";
+$result = mysqli_query($conexion, $sql);
+$fila = mysqli_fetch_assoc($result);
+$pedPendientes = $fila['total'];
 //error_reporting(0);
 ?>
 
@@ -16,10 +19,8 @@ include '../vistas/menuAdmin.php';
     <link type="text/css" rel="shortcut icon" href="img/logo-mywebsite-urian-viera.svg" />
     <title>Premios | Solcomercial</title>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
     <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 
@@ -29,25 +30,26 @@ include '../vistas/menuAdmin.php';
     <link rel="stylesheet" type="text/css" href="../mis_css/marcas.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/footer.css" />
     <style>
-    .btnCarrito {
-        visibility: hidden;
-    }
+        .btnCarrito {
+            visibility: hidden;
+        }
     </style>
 
 </head>
 
 <body>
+    <?php include '../vistas/menuAdmin.php'; ?>
 
     <div class="container mt-5 ">
 
         <?php
-    include '../conexion/conexion.php';
+        include '../conexion/conexion.php';
 
 
-    $sqlPremio   = ("SELECT * FROM premios ORDER BY id_premio");
-    $queryPremio = mysqli_query($conexion, $sqlPremio);
-    $cantidad     = mysqli_num_rows($queryPremio);
-    ?>
+        $sqlPremio   = ("SELECT * FROM premios ORDER BY id_premio");
+        $queryPremio = mysqli_query($conexion, $sqlPremio);
+        $cantidad     = mysqli_num_rows($queryPremio);
+        ?>
 
 
         <h4 style="color: #177c03; text-align: center;">
@@ -77,20 +79,17 @@ include '../vistas/menuAdmin.php';
 
                                 <div class="form-group mt-4">
                                     <label for="nombre_premio">Nombre del premio *</label>
-                                    <input type="text" name="nombre_premio" class="form-control" autocomplete="off"
-                                        placeholder="Nombre del premio " />
+                                    <input type="text" name="nombre_premio" class="form-control" autocomplete="off" placeholder="Nombre del premio " />
                                 </div>
 
                                 <div class="form-group mt-5 mb-5">
                                     <label for="puntos">Puntos necesarios *</label>
-                                    <input type="number" name="puntos" class="form-control"
-                                        placeholder="Puntos requeridos" />
+                                    <input type="number" name="puntos" class="form-control" placeholder="Puntos requeridos" />
                                 </div>
 
                                 <div class="form-group mt-5 mb-5">
                                     <label for="imagen">Seleccione la imagen del premio *</label>
-                                    <input type="file" name="imagen" class="form-control-file"
-                                        accept="image/jpeg, image/jpg, image/png, image/gif, image/webp" lang="es">
+                                    <input type="file" name="imagen" class="form-control-file" accept="image/jpeg, image/jpg, image/png, image/gif, image/webp" lang="es">
                                 </div>
 
                                 <div class="form-group mt-5 mb-5">
@@ -101,10 +100,8 @@ include '../vistas/menuAdmin.php';
                                     </select>
                                 </div>
                                 <div class="form-group mt-5 mb-5">
-                                    <input type="submit" name="btnGuardarPremio" class="btn btn-primary"
-                                        value="Crear premio" style="background-color: #177c03; color:#ffffff" />
-                                    <a href="index-base.php"><input type="button" value="Cancelar"
-                                            class="btn btn-warning"></a>
+                                    <input type="submit" name="btnGuardarPremio" class="btn btn-primary" value="Crear premio" style="background-color: #177c03; color:#ffffff" />
+                                    <a href="index-base.php"><input type="button" value="Cancelar" class="btn btn-warning"></a>
 
                                 </div>
 
@@ -139,30 +136,26 @@ include '../vistas/menuAdmin.php';
                                             </thead>
                                             <tbody>
                                                 <?php
-                        do { ?>
-                                                <tr>
-                                                    <td><?php echo $dataPremios['id_premio']; ?></td>
-                                                    <td><?php echo $dataPremios['nombre_premio']; ?></td>
-                                                    <td><?php echo $dataPremios['puntos']; ?></td>
-                                                    <td><img src="../images/img_premios/<?php echo $dataPremios['imagen']; ?>"
-                                                            width="100" height="100" /></td>
-                                                    <td><?php $est = $dataPremios['estado'];
-                                echo ($est == 1) ? '<p style="color:green;font-weight:700; ">Activo </p>' : '<p style="color:red; font-weight:700; ">Inactivo </p>' ?>
-                                                    </td>
+                                                do { ?>
+                                                    <tr>
+                                                        <td><?php echo $dataPremios['id_premio']; ?></td>
+                                                        <td><?php echo $dataPremios['nombre_premio']; ?></td>
+                                                        <td><?php echo $dataPremios['puntos']; ?></td>
+                                                        <td><img src="../images/img_premios/<?php echo $dataPremios['imagen']; ?>" width="100" height="100" /></td>
+                                                        <td><?php $est = $dataPremios['estado'];
+                                                            echo ($est == 1) ? '<p style="color:green;font-weight:700; ">Activo </p>' : '<p style="color:red; font-weight:700; ">Inactivo </p>' ?>
+                                                        </td>
 
-                                                    <td>
-                                                        <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                            data-target="#deleteChildresn<?php echo $dataPremios['id_premio']; ?>">
-                                                            <i class="fa-solid fa-trash-can"></i>
-                                                        </button>
+                                                        <td>
+                                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataPremios['id_premio']; ?>">
+                                                                <i class="fa-solid fa-trash-can"></i>
+                                                            </button>
 
-                                                        <button type="button" class="btn btn-primary"
-                                                            data-toggle="modal"
-                                                            data-target="#editChildresn<?php echo $dataPremios['id_premio']; ?>">
-                                                            <i class="fa-solid fa-pen-to-square"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataPremios['id_premio']; ?>">
+                                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
                                             </tbody>
 
 
@@ -173,7 +166,7 @@ include '../vistas/menuAdmin.php';
                                             <?php include('mod/ModalEliminarP.php'); ?>
 
 
-                                            <?php } while ($dataPremios = mysqli_fetch_assoc($b_premios)); ?>
+                                        <?php } while ($dataPremios = mysqli_fetch_assoc($b_premios)); ?>
 
                                         </table>
                                     </div>
@@ -199,31 +192,31 @@ include '../vistas/menuAdmin.php';
     <script src="../js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
-    $(document).ready(function() {
+        $(document).ready(function() {
 
-        $('.btnBorrarP').click(function(e) {
-            e.preventDefault();
-            var id = $(this).attr("id");
+            $('.btnBorrarP').click(function(e) {
+                e.preventDefault();
+                var id = $(this).attr("id");
 
-            var dataString = 'id=' + id;
-            // alert (id + '--' +dataString);
-            url = "mod/BorrarP.php";
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: dataString,
-                success: function(data) {
-                    window.location.href = "premios_V.php";
-                    $('#respuesta').html(data);
-                }
+                var dataString = 'id=' + id;
+                // alert (id + '--' +dataString);
+                url = "mod/BorrarP.php";
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: dataString,
+                    success: function(data) {
+                        window.location.href = "premios_V.php";
+                        $('#respuesta').html(data);
+                    }
+
+                });
+                return false;
 
             });
-            return false;
+
 
         });
-
-
-    });
     </script>
 
 </body>

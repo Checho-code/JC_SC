@@ -2,8 +2,11 @@
 session_start();
 $usuario = $_SESSION['datosU']['nombre_usuario'];
 include '../conexion/conexion.php';
-include '../vistas/menuAdmin.php';
 include('mod/ModificarE.php');
+$sql = "SELECT COUNT(*) total FROM pedidos WHERE estado = 0";
+$result = mysqli_query($conexion, $sql);
+$fila = mysqli_fetch_assoc($result);
+$pedPendientes = $fila['total'];
 // error_reporting(0);
 ?>
 
@@ -18,10 +21,8 @@ include('mod/ModificarE.php');
     <title>Empleados | Solcomercial</title>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
     <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
 
@@ -32,13 +33,14 @@ include('mod/ModificarE.php');
     <link rel="stylesheet" type="text/css" href="../mis_css/footer.css" />
     <link rel="stylesheet" href="../mis_css/registroEmpl.css">
     <style>
-    .btnCarrito {
-        visibility: hidden;
-    }
+        .btnCarrito {
+            visibility: hidden;
+        }
     </style>
 </head>
 
 <body>
+    <?php include '../vistas/menuAdmin.php'; ?>
 
     <div class="container mt-5  ">
         <h4 style="color: #177c03; text-align: center;" class="mb-5">
@@ -88,30 +90,30 @@ include('mod/ModificarE.php');
                     <tbody>
                         <?php
                         do { ?>
-                        <tr>
-                            <td style="font-size: 0.85em;">
-                                <?php echo $dataEmp['id_usuario']; ?>
-                            </td>
-                            <td style="font-size: 0.85em;">
-                                <?php echo $dataEmp['nombre_usuario']; ?>
-                            </td style="font-size: 0.85em;">
-                            <td style="font-size: 0.85em;">
-                                <?php echo $dataEmp['apellido_usuario']; ?>
-                            </td>
-                            <td style="font-size: 0.85em;">
-                                <?php echo $dataEmp['tipo_doc']; ?>
-                            </td>
-                            <td style="font-size: 0.85em;">
-                                <?php echo $dataEmp['num_doc']; ?>
-                            </td>
-                            <td style="font-size: 0.85em;">
-                                <?php echo $dataEmp['telefono']; ?>
-                            </td>
-                            <td style="font-size: 0.85em;">
-                                <?php echo $dataEmp['email']; ?>
-                            </td>
-                            <td style="font-size: 0.85em;">
-                                <?php $niv = $dataEmp['nivel'];
+                            <tr>
+                                <td style="font-size: 0.85em;">
+                                    <?php echo $dataEmp['id_usuario']; ?>
+                                </td>
+                                <td style="font-size: 0.85em;">
+                                    <?php echo $dataEmp['nombre_usuario']; ?>
+                                </td style="font-size: 0.85em;">
+                                <td style="font-size: 0.85em;">
+                                    <?php echo $dataEmp['apellido_usuario']; ?>
+                                </td>
+                                <td style="font-size: 0.85em;">
+                                    <?php echo $dataEmp['tipo_doc']; ?>
+                                </td>
+                                <td style="font-size: 0.85em;">
+                                    <?php echo $dataEmp['num_doc']; ?>
+                                </td>
+                                <td style="font-size: 0.85em;">
+                                    <?php echo $dataEmp['telefono']; ?>
+                                </td>
+                                <td style="font-size: 0.85em;">
+                                    <?php echo $dataEmp['email']; ?>
+                                </td>
+                                <td style="font-size: 0.85em;">
+                                    <?php $niv = $dataEmp['nivel'];
                                     switch ($niv) {
                                         case 1:
                                             echo '<p>Repartidor</p>';
@@ -127,29 +129,27 @@ include('mod/ModificarE.php');
                                             break;
                                     }
                                     ?>
-                            </td>
+                                </td>
 
-                            <td style="font-size: 0.85em;">
-                                <?php $est = $dataEmp['estado'];
+                                <td style="font-size: 0.85em;">
+                                    <?php $est = $dataEmp['estado'];
                                     echo ($est == 1) ? '<p style="color:green;font-weight:700; ">Activo </p>' : '<p style="color:red; font-weight:700; ">Inactivo </p>' ?>
-                            </td>
-                            <td style="font-size: 0.85em;">
-                                <?php echo $dataEmp['fecha_registro']; ?>
-                            </td>
+                                </td>
+                                <td style="font-size: 0.85em;">
+                                    <?php echo $dataEmp['fecha_registro']; ?>
+                                </td>
 
-                            <td style="font-size: 0.85em; text-align:center; ">
-                                <button type="button" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#deleteChildresn<?php echo $dataEmp['id_usuario']; ?>">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                                <br>
-                                <br>
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#editChildresn<?php echo $dataEmp['id_usuario']; ?>">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </button>
-                            </td>
-                        </tr>
+                                <td style="font-size: 0.85em; text-align:center; ">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteChildresn<?php echo $dataEmp['id_usuario']; ?>">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $dataEmp['id_usuario']; ?>">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                </td>
+                            </tr>
                     </tbody>
 
 
@@ -160,7 +160,7 @@ include('mod/ModificarE.php');
                     <?php include('mod/ModalEliminarE.php'); ?>
 
 
-                    <?php } while ($dataEmp = mysqli_fetch_assoc($queryEmpleado)); ?>
+                <?php } while ($dataEmp = mysqli_fetch_assoc($queryEmpleado)); ?>
 
                 </table>
             </div>
@@ -181,31 +181,31 @@ include('mod/ModificarE.php');
     <script src="../js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
-    $(document).ready(function() {
+        $(document).ready(function() {
 
-        $('.btnBorrar').click(function(e) {
-            e.preventDefault();
-            var id = $(this).attr("id");
+            $('.btnBorrar').click(function(e) {
+                e.preventDefault();
+                var id = $(this).attr("id");
 
-            var dataString = 'id=' + id;
-            // alert (id + '--' +dataString);
-            url = "mod/BorrarE.php";
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: dataString,
-                success: function(data) {
-                    window.location.href = "lista_empleados.php";
-                    $('#respuesta').html(data);
-                }
+                var dataString = 'id=' + id;
+                // alert (id + '--' +dataString);
+                url = "mod/BorrarE.php";
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: dataString,
+                    success: function(data) {
+                        window.location.href = "lista_empleados.php";
+                        $('#respuesta').html(data);
+                    }
+
+                });
+                return false;
 
             });
-            return false;
+
 
         });
-
-
-    });
     </script>
 
 </body>

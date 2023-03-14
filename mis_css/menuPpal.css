@@ -79,6 +79,60 @@ body {
     visibility: visible;
 }
 
+.btnPedidos {
+    visibility: hidden;
+
+}
+
+.txt {
+    font-size: 1.3em;
+    text-transform: uppercase;
+    color: #fff;
+    animation: blur1 1s ease-out infinite;
+    text-shadow: 2px 2px 7px #000000,
+        2px 2px 8px #000000;
+}
+
+.area {
+    border-radius: 50px;
+    background-color: #06870f;
+    text-align: center;
+    letter-spacing: 7px;
+    font-weight: 700;
+    animation: blur 2s ease-out infinite;
+    box-shadow: 4px 6px 7px #000000;
+}
+
+@keyframes blur1 {
+    from {
+        text-shadow: 0px 0px 5px #ffffff,
+            0px 0px 5px #ffffff,
+            0px 0px 5px #ffffff,
+            0px 0px 5px #ffffff,
+            0px 0px 3px #ffffff,
+            0px 0px 3px #ffffff,
+            0px 0px 3px #ffffff,
+            0px 0px 1px #ffffff,
+            0px 0px 1px #fff,
+            0px 0px 1px #ffffff
+    }
+}
+
+@keyframes blur {
+    from {
+        box-shadow: 0px 0px 5px #ffffff,
+            0px 0px 5px #ffffff,
+            0px 0px 5px #ffffff,
+            0px 0px 5px #ffffff,
+            0px 0px 3px #ffffff,
+            0px 0px 3px #ffffff,
+            0px 0px 3px #ffffff,
+            0px 0px 1px #ffffff,
+            0px 0px 1px #fff,
+            0px 0px 1px #ffffff
+    }
+}
+
 .coche {
     font-size: 1.3em;
     color: #ffffff;

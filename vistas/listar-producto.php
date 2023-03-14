@@ -2,8 +2,11 @@
 session_start();
 $usuario = $_SESSION['datosU']['nombre_usuario'];
 include '../conexion/conexion.php';
-include '../vistas/menuAdmin.php';
 include '../controladores/crear_producto_C.php';
+$sql = "SELECT COUNT(*) total FROM pedidos WHERE estado = 0";
+$result = mysqli_query($conexion, $sql);
+    $fila = mysqli_fetch_assoc($result);
+    $pedPendientes = $fila['total'];
 // error_reporting(0);
 ?>
 
@@ -38,9 +41,10 @@ include '../controladores/crear_producto_C.php';
 </head>
 
 <body>
+    <?php include '../vistas/menuAdmin.php';?>
     <?php
   include '../conexion/conexion.php';
-
+  
 
   $sqlProd = ("SELECT * FROM productos ORDER BY id_producto");
   $queryProd = mysqli_query($conexion, $sqlProd);

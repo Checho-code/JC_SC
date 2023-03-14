@@ -2,7 +2,10 @@
 session_start();
 $usuario = $_SESSION['datosU']['nombre_usuario'];
 include '../conexion/conexion.php';
-include '../vistas/menuAdmin.php';
+$sql = "SELECT COUNT(*) total FROM pedidos WHERE estado = 0";
+$result = mysqli_query($conexion, $sql);
+    $fila = mysqli_fetch_assoc($result);
+    $pedPendientes = $fila['total'];
 
 $b_clientes = mysqli_query($conexion, "SELECT * FROM clientes ORDER BY nombre");
 $row_clientes = mysqli_fetch_assoc($b_clientes);
@@ -39,6 +42,7 @@ $row_clientes = mysqli_fetch_assoc($b_clientes);
 </head>
 
 <body>
+    <?php include '../vistas/menuAdmin.php';?>
     <div class="container-fluid mt-5 mb-5 ">
         <div class="row">
 

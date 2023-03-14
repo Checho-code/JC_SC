@@ -9,6 +9,11 @@ $buscar_usuario = mysqli_query($conexion, "SELECT carrito.id_carrito, carrito.id
 $row_usuario = mysqli_fetch_assoc($buscar_usuario);
 $num_row = mysqli_num_rows($buscar_usuario);
 
+$sql = "SELECT COUNT(*) total FROM pedidos WHERE estado = 0";
+$result = mysqli_query($conexion, $sql);
+$fila = mysqli_fetch_assoc($result);
+$pedPendientes = $fila['total'];
+
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +31,12 @@ $num_row = mysqli_num_rows($buscar_usuario);
     </script>
     <script src="https://kit.fontawesome.com/754bcf2a5e.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/push.min.js"></script>
+
+
+    <style>
+
+    </style>
 
     <link rel="stylesheet" type="text/css" href="../css/css_bootstrap/bootstrap.min.css" />
 
@@ -35,7 +46,6 @@ $num_row = mysqli_num_rows($buscar_usuario);
     <link rel="stylesheet" type="text/css" href="../mis_css/marcas.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/ver_prodct.css" />
     <link rel="stylesheet" type="text/css" href="../mis_css/carrito.css" />
-
 
     <title>
         <?php
@@ -62,6 +72,8 @@ $num_row = mysqli_num_rows($buscar_usuario);
 
 <body>
 
+
+
     <?php
     $nivel = $_SESSION['datosU']['nivel'];
     switch ($nivel) {
@@ -85,7 +97,10 @@ $num_row = mysqli_num_rows($buscar_usuario);
 
     <!---------------- Marcas ----------------->
 
+
     <?php include 'mostrar_marcas.php'; ?>
+
+
 
 
 
@@ -98,10 +113,22 @@ $num_row = mysqli_num_rows($buscar_usuario);
     <?php include 'mostrar_prod_destacados.php'; ?>
 
 
+    <br>
+    <br>
+    <br>
 
-    <br>
-    <br>
-    <br>
+
+    <script>
+    Push.create("Hola Admin", {
+        body: "Acabas de recibir un pedido nuevo, porfavor verifica...!!!",
+        icon: '../img/sistema/logo.png',
+        timeout: 5000,
+        onClick: function() {
+            window.location.href = 'mostrarNoticias.php';
+            this.close();
+        }
+    });
+    </script>
 
 
     <!---------------- Footer --------------->
@@ -111,6 +138,7 @@ $num_row = mysqli_num_rows($buscar_usuario);
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/validar_numeroNegativo_input.js"></script>
+
 
 
 
